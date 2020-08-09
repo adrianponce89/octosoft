@@ -40,8 +40,6 @@ export default function App() {
                     <title>Octosoft</title>
                 </Helmet>
 
-                {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
                 <Switch>
                     <Route exact path="/">
                         <Home/>
@@ -54,7 +52,7 @@ export default function App() {
                     <Route path={"/language"}> <Service service={SERVICES.language}/> </Route>
                     <Route path={"/marketing"}> <Service service={SERVICES.marketing}/> </Route>
                     <Route path={"/media"}> <Service service={SERVICES.media}/> </Route>
-                    <Route path={"/productions"}> <Service service={SERVICES.productions}/> </Route>
+                    <Route path={"/productions"}> <Service service={SERVICES.production}/> </Route>
 
                     <Route path="/contact">
                         <Contact/>
