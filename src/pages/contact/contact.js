@@ -103,7 +103,7 @@ export const Contact = () => {
                     </Hidden>
                 </Grid>
             </Template>
-            }
+
         </>
     )
 };

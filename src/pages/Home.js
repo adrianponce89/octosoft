@@ -11,7 +11,8 @@ import {services} from "../SERVICES";
 import HeroImage from '../assets/header_cropped.png';
 import {makeStyles} from '@material-ui/core/styles';
 import NavBar from "./NavBar";
-import {Link as RouterLink} from "react-router-dom";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import useTheme from "@material-ui/core/styles/useTheme";
 
 const useStyles = makeStyles(theme => ({
     expander: {
@@ -39,8 +40,10 @@ const useStyles = makeStyles(theme => ({
 
 export const Home = () => {
     const classes = useStyles();
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
 
-    return <div >
+    return <div>
         <NavBar/>
         <div className={classes.container}>
             <div className={classes.expander}>
@@ -52,13 +55,12 @@ export const Home = () => {
         <section id="work">
             <Box mx={8} style={{minHeight: "100vh"}}>
                 <Box my={10} className={classes.workTitle}>
-                    <Typography variant={"h3"} style={{fontWeight: "bold"}}>WORK WITH US</Typography>
+                    <Typography variant={"h3"} style={{fontWeight: "bold", fontSize:`${isSmall?'x-large':'xxx-large'}`}}>WORK WITH US</Typography>
                 </Box>
-                <Grid container spacing={10} justify="center"
-                      alignItems="center">
+                <Grid container spacing={isSmall ? 0 : 10} justify="center" alignItems="center">
                     {services.map(service =>
-                        <Grid item sm={10} md={8} lg={5}>
-                            <Box m={4}>
+                        <Grid item xs={12} sm={12} md={8} lg={5}>
+                            <Box my={2}>
                                 <Card>
                                     <CardActionArea href={`/${service.url}`}>
                                         <CardMedia

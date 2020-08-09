@@ -2,10 +2,12 @@ import React from "react";
 import {getLines} from "../Contentful";
 import {makeStyles} from '@material-ui/core/styles';
 import BackgroundImage from '../assets/clouds.jpg';
+import useTheme from "@material-ui/core/styles/useTheme";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles(theme => ({
     header: {
-        height: '300px',
+        height: '35vh',
         backgroundImage: `url(${BackgroundImage})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
@@ -21,13 +23,23 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 'bold',
         fontSize: '10vh',
         textAlign: 'end',
+    },
+    textSmall: {
+        padding: '5px',
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: "xxx-large",
+        textAlign: 'end',
     }
 }));
 
 export const Header = ({headerTitle}) => {
     const classes = useStyles();
+    const theme = useTheme();
+    const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+
     return <div className={classes.header}>
-        <div className={classes.text}>
+        <div className={isSmall?classes.textSmall:classes.text}>
             {getLines(headerTitle)}
         </div>
     </div>

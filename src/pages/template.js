@@ -3,6 +3,8 @@ import {Header} from "./Header";
 import {makeStyles} from '@material-ui/core/styles';
 import Paper from "@material-ui/core/Paper";
 import NavBar from "./NavBar";
+import useTheme from "@material-ui/core/styles/useTheme";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles(theme => ({
     backgroundBox: {
@@ -24,12 +26,13 @@ const useStyles = makeStyles(theme => ({
 
 export const Template = ({headerTitle, innerTitle, children}) => {
     const classes = useStyles();
+
     return (<>
             <NavBar/>
-            <div className={classes.backgroundBox}>
+            <div className={classes.backgroundBox} style={{minHeight: '100vh'}}>
                 <>
                     <Header headerTitle={headerTitle}/>
-                    <Paper style={{minHeight: '100vh'}} className={classes.container}>
+                    <Paper  className={classes.container}>
                         <div className={classes.title}>
                             {innerTitle}
                         </div>
