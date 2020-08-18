@@ -3,11 +3,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
+import logoProfessionals from '../assets/images/Logo_Professionals.png';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -17,16 +17,39 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     color: 'black',
+    background: (props) => props.boxShadow || '#fff',
   },
   links: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'right',
+    alignItems: 'center',
   },
   link: {
     padding: 20,
     color: theme.palette.text.primary,
     textDecoration: 'none',
+  },
+  textLogo: {
+    width: 40,
+    fontSize: 20,
+    fontWeight: 800,
+    opacity: (props) => props.opacity,
+  },
+  logo: {
+    width: 46,
+    height: 46,
+    marginRight: 10,
+    opacity: (props) => props.opacity,
+  },
+  linkText: {
+    fontWeight: 'bold',
+    color: (props) => props.color || 'black',
+  },
+  appbar: {
+    height: 80,
+    background: 'none',
+    boxShadow: (props) => props.boxShadow || '2',
   },
 }));
 
@@ -42,30 +65,80 @@ function HideOnScroll(props) {
 }
 
 export default function NavBar(props) {
-  const classes = useStyles();
+  const classes = useStyles(props);
   return (
     <React.Fragment>
-      <CssBaseline />
       <HideOnScroll {...props}>
-        <AppBar>
+        <AppBar className={classes.appbar}>
           <Toolbar className={classes.toolbar}>
             <RouterLink to={'/'} className={classes.link}>
-              <Typography>{'Octosoft'}</Typography>
+              <div className={classes.links}>
+                <div className={classes.logo}>
+                  <img
+                    src={logoProfessionals}
+                    className={classes.logo}
+                  />
+                </div>
+                <div className={classes.textLogo}>
+                  {'Octosoft Professionals'}
+                </div>
+              </div>
             </RouterLink>
             <Box className={classes.links}>
               <RouterLink
                 className={classes.link}
                 margin={2}
+                to={'/'}
+              >
+                <div className={classes.linkText}>{'Home'}</div>
+              </RouterLink>
+              <RouterLink
+                className={classes.link}
+                margin={2}
+                to={'/'}
+              >
+                <div className={classes.linkText}>{'About Us'}</div>
+              </RouterLink>
+              <RouterLink
+                className={classes.link}
+                margin={2}
+                to={'/'}
+              >
+                <div className={classes.linkText}>{'Blogs'}</div>
+              </RouterLink>
+              <RouterLink
+                className={classes.link}
+                margin={2}
+                to={'/'}
+              >
+                <div className={classes.linkText}>
+                  {'Our Services'}
+                </div>
+              </RouterLink>
+              <RouterLink
+                className={classes.link}
+                margin={2}
+                to={'/'}
+              >
+                <div className={classes.linkText}>
+                  {'Borderless Identities'}
+                </div>
+              </RouterLink>
+              <RouterLink
+                className={classes.link}
+                margin={2}
                 to={'/testimonies'}
               >
-                <Typography>{'Testimonies'}</Typography>
+                <div className={classes.linkText}>
+                  {'Client Support'}
+                </div>
               </RouterLink>
               <RouterLink
                 className={classes.link}
                 margin={2}
                 to={'/contact'}
               >
-                <Typography>{'Contact'}</Typography>
+                <div className={classes.linkText}>{'Contact Us'}</div>
               </RouterLink>
             </Box>
           </Toolbar>
