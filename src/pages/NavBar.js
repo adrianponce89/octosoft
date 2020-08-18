@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     color: 'black',
-    background: (props) => props.boxShadow || '#fff',
+    background: (props) => props.background || '#fff',
   },
   links: {
     display: 'flex',
