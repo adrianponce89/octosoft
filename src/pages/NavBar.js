@@ -118,7 +118,7 @@ export default function NavBar(props) {
               <RouterLink
                 className={classes.link}
                 margin={2}
-                to={'/'}
+                to={'/testimonies'}
               >
                 <div className={classes.linkText}>
                   {'Borderless Identities'}
@@ -127,7 +127,7 @@ export default function NavBar(props) {
               <RouterLink
                 className={classes.link}
                 margin={2}
-                to={'/testimonies'}
+                to={'/clientsupport'}
               >
                 <div className={classes.linkText}>
                   {'Client Support'}
