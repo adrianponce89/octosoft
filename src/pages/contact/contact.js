@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Contact = () => {
+export default () => {
   const classes = useStyles();
   const [state, setState] = useState({
     name: '',

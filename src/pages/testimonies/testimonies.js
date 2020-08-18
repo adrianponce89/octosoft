@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Template } from '../template';
-import { fetchFromContentfulByContentType } from '../../Contentful';
 import Paper from '@material-ui/core/Paper';
 import { Typography } from '@material-ui/core';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
+import { fetchFromContentfulByContentType } from '../../Contentful';
+import { Template } from '../template';
 
 const useStyles = makeStyles((theme) => ({
   testimony: {
@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Testimonies = () => {
+export default () => {
   const [data, setData] = React.useState({});
   const classes = useStyles();
   useEffect(() => {

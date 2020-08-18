@@ -1,5 +1,4 @@
 import card from './assets/cards.png';
-import React from 'react';
 
 const design = {
   title: 'Design',
@@ -49,6 +48,7 @@ const media = {
   url: 'media',
   id: '2Fy5ahj8Kk5Y0Mzy4gkac4',
 };
+
 export const SERVICES = {
   design,
   development,

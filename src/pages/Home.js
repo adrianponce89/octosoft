@@ -1,3 +1,4 @@
+import React from 'react';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -5,14 +6,12 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
-import React from 'react';
-import '../App.css';
-import { services } from '../SERVICES';
-import HeroImage from '../assets/header_cropped.png';
 import { makeStyles } from '@material-ui/core/styles';
-import NavBar from './NavBar';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useTheme from '@material-ui/core/styles/useTheme';
+import HeroImage from '../assets/header_cropped.png';
+import { services } from '../SERVICES';
+import NavBar from './NavBar';
 
 const useStyles = makeStyles((theme) => ({
   expander: {
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Home = () => {
+export default () => {
   const classes = useStyles();
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));

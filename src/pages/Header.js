@@ -1,9 +1,9 @@
 import React from 'react';
-import { getLines } from '../Contentful';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/clouds.jpg';
 import useTheme from '@material-ui/core/styles/useTheme';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { getLines } from '../Contentful';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Header = ({ headerTitle }) => {
+export default ({ headerTitle }) => {
   const classes = useStyles();
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down('sm'));

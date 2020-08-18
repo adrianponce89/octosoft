@@ -1,10 +1,8 @@
 import React from 'react';
-import { Header } from './Header';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
+import Header from './Header';
 import NavBar from './NavBar';
-import useTheme from '@material-ui/core/styles/useTheme';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const useStyles = makeStyles((theme) => ({
   backgroundBox: {
