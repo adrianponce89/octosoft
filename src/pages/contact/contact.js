@@ -10,12 +10,10 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import MailBox from '../../assets/mailbox.jpg';
 import Container from '../../components/Container';
+import BackgroundImage from '../../assets/Background.png';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    padding: 10,
-  },
+  root: {},
   formContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -31,13 +29,14 @@ const useStyles = makeStyles((theme) => ({
   },
   mailBoxImg: {
     width: '35vh',
-    height: '80vh',
+    height: '75vh',
     backgroundImage: `url(${MailBox})`,
     backgroundColor: '#cccccc',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     borderRadius: '5px',
+    boxShadow: '1px 1px 2px gray',
   },
   buttonContainer: {
     flex: 1,
@@ -58,7 +57,10 @@ const Contact = () => {
   const [content, setContent] = useState();
   const classes = useStyles();
   return (
-    <Container className={classes.root}>
+    <Container
+      className={classes.root}
+      background={`url(${BackgroundImage})`}
+    >
       <h1>Contact Us</h1>
       <div className={classes.formContainer}>
         <Grid
@@ -100,7 +102,7 @@ const Contact = () => {
               />
             </FormControl>
           </Grid>
-          <Grid className={classes.gridItem} item xs={6}>
+          <Grid className={classes.gridItem} item xs={12} sm={6}>
             <FormControl variant="outlined" size="small" fullWidth>
               <InputLabel htmlFor="EmailInput">Your Email</InputLabel>
               <OutlinedInput
@@ -111,7 +113,13 @@ const Contact = () => {
               />
             </FormControl>
           </Grid>
-          <Grid className={classes.gridItem} item xs={6} lg={4}>
+          <Grid
+            className={classes.gridItem}
+            item
+            xs={12}
+            sm={6}
+            lg={4}
+          >
             <FormControl variant="outlined" size="small" fullWidth>
               <InputLabel htmlFor="PhoneInput">
                 Your Phone Number
@@ -132,7 +140,7 @@ const Contact = () => {
                 value={content}
                 onChange={({ target }) => setContent(target.value)}
                 multiline
-                rows={6}
+                rows={12}
                 size="small"
               />
             </FormControl>

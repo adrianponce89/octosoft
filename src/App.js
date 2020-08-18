@@ -12,6 +12,7 @@ import Testimonies from './pages/testimonies/testimonies';
 import { SERVICES } from './SERVICES';
 import Service from './pages/service/service';
 import Home from './pages/Home';
+import NavBar from './pages/NavBar';
 import './App.css';
 
 const theme = createMuiTheme({
@@ -42,7 +43,7 @@ export default function App() {
         <Helmet>
           <title>Octosoft</title>
         </Helmet>
-
+        <NavBar />
         <Switch>
           <Route exact path="/">
             <Home />
