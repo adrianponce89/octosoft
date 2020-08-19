@@ -72,12 +72,12 @@ const ClientSupport = () => {
         >
           <Grid className={classes.gridItem} item xs={12} sm={6}>
             <FormControl variant="outlined" size="small" fullWidth>
-              <InputLabel htmlFor="NameInput">Your Name</InputLabel>
+              <InputLabel htmlFor="NameInput">Client Name</InputLabel>
               <OutlinedInput
                 id="NameInput"
                 value={name}
                 onChange={({ target }) => setName(target.value)}
-                label="Your Name"
+                label="Client Name"
               />
             </FormControl>
           </Grid>
@@ -92,7 +92,7 @@ const ClientSupport = () => {
                 value={subject}
                 onChange={({ target }) => setSubject(target.value)}
               >
-                <MenuItem value={'General'}>General</MenuItem>
+                <MenuItem value="General">General</MenuItem>
                 {services.map((service) => (
                   <MenuItem value={service.title}>
                     {service.title}
