@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import MailBox from '../assets/person-holding-black-android-smartphone-3787312.jpg';
+import Smartphone from '../assets/smartphone.jpg';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
 import { services } from '../SERVICES';
@@ -29,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
   },
-  mailBoxImg: {
+  smartphoneImg: {
     width: '35vh',
     height: '75vh',
-    backgroundImage: `url(${MailBox})`,
+    backgroundImage: `url(${Smartphone})`,
     backgroundColor: '#cccccc',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -54,6 +54,7 @@ const ClientSupport = () => {
   const [name, setName] = useState();
   const [subject, setSubject] = useState();
   const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
   const [content, setContent] = useState();
   const classes = useStyles();
   return (
@@ -69,7 +70,7 @@ const ClientSupport = () => {
           md={8}
           spacing={3}
         >
-          <Grid className={classes.gridItem} item xs={6} sm={4}>
+          <Grid className={classes.gridItem} item xs={12} sm={6}>
             <FormControl variant="outlined" size="small" fullWidth>
               <InputLabel htmlFor="NameInput">Your Name</InputLabel>
               <OutlinedInput
@@ -113,6 +114,19 @@ const ClientSupport = () => {
               />
             </FormControl>
           </Grid>
+          <Grid className={classes.gridItem} item xs={12} sm={6}>
+            <FormControl variant="outlined" size="small" fullWidth>
+              <InputLabel htmlFor="PhoneInput">
+                Your Phone Number
+              </InputLabel>
+              <OutlinedInput
+                id="PhoneInput"
+                value={phone}
+                onChange={({ target }) => setPhone(target.value)}
+                label="Your Phone Number"
+              />
+            </FormControl>
+          </Grid>
           <Grid
             className={classes.gridItem}
             item
@@ -146,7 +160,7 @@ const ClientSupport = () => {
         </Grid>
         <Hidden smDown>
           <Grid item className={classes.imgContainer} md={4}>
-            <div className={classes.mailBoxImg} />
+            <div className={classes.smartphoneImg} />
           </Grid>
         </Hidden>
       </div>
