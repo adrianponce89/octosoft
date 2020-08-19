@@ -51,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClientSupport = () => {
-  const [name, setName] = useState();
-  const [subject, setSubject] = useState();
+  const [clientname, setClientName] = useState();
+  const [problem, setProblem] = useState();
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
   const [content, setContent] = useState();
@@ -75,8 +75,8 @@ const ClientSupport = () => {
               <InputLabel htmlFor="NameInput">Client Name</InputLabel>
               <OutlinedInput
                 id="NameInput"
-                value={name}
-                onChange={({ target }) => setName(target.value)}
+                value={clientname}
+                onChange={({ target }) => setClientName(target.value)}
                 label="Client Name"
               />
             </FormControl>
@@ -89,8 +89,8 @@ const ClientSupport = () => {
               <Select
                 label="Name your problem"
                 id="ServiceInput"
-                value={subject}
-                onChange={({ target }) => setSubject(target.value)}
+                value={problem}
+                onChange={({ target }) => setProblem(target.value)}
               >
                 <MenuItem value="General">General</MenuItem>
                 {services.map((service) => (
