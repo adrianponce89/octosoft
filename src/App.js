@@ -46,32 +46,30 @@ export default function App() {
         </Helmet>
         <NavBar />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
+          <Route exact path="/" component={Home} />
 
-          <Route path={'/assistance'}>
+          <Route path="/assistance">
             <Service service={SERVICES.assistance} />
           </Route>
-          <Route path={'/design'}>
+          <Route path="/design">
             <Service service={SERVICES.design} />
           </Route>
-          <Route path={'/development'}>
+          <Route path="/development">
             <Service service={SERVICES.development} />
           </Route>
-          <Route path={'/education'}>
+          <Route path="/education">
             <Service service={SERVICES.education} />
           </Route>
-          <Route path={'/language'}>
+          <Route path="/language">
             <Service service={SERVICES.language} />
           </Route>
-          <Route path={'/marketing'}>
+          <Route path="/marketing">
             <Service service={SERVICES.marketing} />
           </Route>
-          <Route path={'/media'}>
+          <Route path="/media">
             <Service service={SERVICES.media} />
           </Route>
-          <Route path={'/productions'}>
+          <Route path="/productions">
             <Service service={SERVICES.production} />
           </Route>
 
