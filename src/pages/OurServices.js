@@ -5,17 +5,17 @@ import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
 
 const styles = makeStyles({
-  containHead: {
+  headContainer: {
     margin: 'auto',
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
   },
-  titleHead: {
+  headTitle: {
     margin: '30px 0 25px 0',
     fontSize: 40,
   },
-  subTitleHead: {
+  headSubTitle: {
     margin: 0,
     fontSize: 19,
     fontWeight: 500,
@@ -26,28 +26,32 @@ const styles = makeStyles({
     flexDirection: 'row',
     flexWrap: 'wrap',
   },
-  containButton: {
+  descriptionButton: {
     width: '25%',
   },
-  stylesButton: {
+  button: {
     cursor: 'pointer',
     height: 50,
     margin: '15px 10px 0 0',
     boxShadow:
-      '0px 3px 1px 2px rgba(0 0 0 / 10%), 0px 0px 0px 0px rgb(0 0 0 / 15%), 0px 5px 5px 0px rgb(0 0 0 / 13%), 0px 5px 5px 0px rgb(0 0 0 / 13%)',
+      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 0px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
     display: 'flex',
     alignItems: 'center',
   },
-  iconsButton: {
+  highlightedButton: {
+    boxShadow:
+      'inset 0 0 0 2px #007bff, 0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 0px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+  },
+  buttonIcon: {
     margin: '0 25px 0 15px',
     width: 32,
     height: 32,
   },
-  textButton: {
+  buttonText: {
     width: '50%',
     fontWeight: 'bolder',
   },
-  containerInfo: {
+  infoContainer: {
     margin: '69px 25px',
     display: 'flex',
     flexDirection: 'row',
@@ -70,19 +74,19 @@ const styles = makeStyles({
     flexDirection: 'column',
     flexWrap: 'wrap',
   },
-  stylesBulletpoint: {
+  descriptionItem: {
     fontWeight: 'bolder',
   },
 });
 
 const OurServices = () => {
   const classes = styles();
-  const [index, setSelectIndex] = useState('0');
+  const [index, selectedIndex] = useState(0);
   return (
     <Container background={`url(${BackgroundImage})`}>
-      <div className={classes.containHead}>
-        <h1 className={classes.titleHead}>Our Services</h1>
-        <p className={classes.subTitleHead}>
+      <div className={classes.headContainer}>
+        <h1 className={classes.headTitle}>Our Services</h1>
+        <p className={classes.headSubTitle}>
           Learn about our departaments and the services they can
           provide to your business
         </p>
@@ -90,24 +94,28 @@ const OurServices = () => {
       <div className={classes.keypad}>
         {DummyData.map((data, i) => (
           <div
-            className={classes.containButton}
+            className={classes.descriptionButton}
             onClick={() => {
-              setSelectIndex(i);
+              selectedIndex(i);
             }}
           >
-            <div className={classes.stylesButton}>
+            <div
+              className={`${classes.button} ${
+                i === index ? classes.highlightedButton : ''
+              }`}
+            >
               <img
                 src={data.iconUrl}
-                className={classes.iconsButton}
+                className={classes.buttonIcon}
               />
-              <div className={classes.textButton}>
+              <div className={classes.buttonText}>
                 {`${data.title}`}
               </div>
             </div>
           </div>
         ))}
       </div>
-      <div className={classes.containerInfo}>
+      <div className={classes.infoContainer}>
         <div>
           <img
             src={DummyData[index].iconUrl}
@@ -119,7 +127,7 @@ const OurServices = () => {
         </div>
         <div className={classes.containerDescription}>
           {DummyData[index].description.map((item) => (
-            <li className={classes.stylesBulletpoint}>{item}</li>
+            <li className={classes.descriptionItem}>{item}</li>
           ))}
         </div>
       </div>
