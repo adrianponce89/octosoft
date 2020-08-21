@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
-import { makeStyles } from '@material-ui/core/styles';
+import Hidden from '@material-ui/core/Hidden';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import Box from '@material-ui/core/Box';
+import { makeStyles } from '@material-ui/core/styles';
 import { ReactComponent as OctoLogo } from '../assets/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -65,8 +68,52 @@ function HideOnScroll(props) {
   );
 }
 
+const NavLinks = (props) => {
+  const classes = useStyles(props);
+  return (
+    <React.Fragment>
+      <RouterLink className={classes.link} margin={2} to="/">
+        <div className={classes.linkText}>{'Home'}</div>
+      </RouterLink>
+      <RouterLink className={classes.link} margin={2} to="/">
+        <div className={classes.linkText}>{'About Us'}</div>
+      </RouterLink>
+      <RouterLink className={classes.link} margin={2} to="/">
+        <div className={classes.linkText}>{'Blogs'}</div>
+      </RouterLink>
+      <RouterLink
+        className={classes.link}
+        margin={2}
+        to="/ourservices"
+      >
+        <div className={classes.linkText}>{'Our Services'}</div>
+      </RouterLink>
+      <RouterLink
+        className={classes.link}
+        margin={2}
+        to="testimonies"
+      >
+        <div className={classes.linkText}>
+          {'Borderless Identities'}
+        </div>
+      </RouterLink>
+      <RouterLink
+        className={classes.link}
+        margin={2}
+        to="/clientsupport"
+      >
+        <div className={classes.linkText}>{'Client Support'}</div>
+      </RouterLink>
+      <RouterLink className={classes.link} margin={2} to="contact">
+        <div className={classes.linkText}>{'Contact Us'}</div>
+      </RouterLink>
+    </React.Fragment>
+  );
+};
+
 export default function NavBar(props) {
   const classes = useStyles(props);
+  const [showDrawer, setShowDrawer] = useState(false);
   return (
     <React.Fragment>
       <HideOnScroll {...props}>
@@ -82,50 +129,34 @@ export default function NavBar(props) {
                 </div>
               </div>
             </RouterLink>
-            <Box className={classes.links}>
-              <RouterLink className={classes.link} margin={2} to="/">
-                <div className={classes.linkText}>{'Home'}</div>
-              </RouterLink>
-              <RouterLink className={classes.link} margin={2} to="/">
-                <div className={classes.linkText}>{'About Us'}</div>
-              </RouterLink>
-              <RouterLink className={classes.link} margin={2} to="/">
-                <div className={classes.linkText}>{'Blogs'}</div>
-              </RouterLink>
-              <RouterLink className={classes.link} margin={2} to="/">
-                <div className={classes.linkText}>
-                  {'Our Services'}
-                </div>
-              </RouterLink>
-              <RouterLink
-                className={classes.link}
-                margin={2}
-                to="testimonies"
+            <Hidden lgUp>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => setShowDrawer(true)}
+                edge="start"
               >
-                <div className={classes.linkText}>
-                  {'Borderless Identities'}
-                </div>
-              </RouterLink>
-              <RouterLink
-                className={classes.link}
-                margin={2}
-                to="/clientsupport"
-              >
-                <div className={classes.linkText}>
-                  {'Client Support'}
-                </div>
-              </RouterLink>
-              <RouterLink
-                className={classes.link}
-                margin={2}
-                to="contact"
-              >
-                <div className={classes.linkText}>{'Contact Us'}</div>
-              </RouterLink>
-            </Box>
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+            <Hidden mdDown>
+              <Box className={classes.links}>
+                <NavLinks {...props} />
+              </Box>
+            </Hidden>
           </Toolbar>
         </AppBar>
       </HideOnScroll>
+      <Hidden lgUp>
+        <SwipeableDrawer
+          anchor={'right'}
+          open={showDrawer}
+          onClose={() => setShowDrawer(false)}
+          onOpen={() => setShowDrawer(true)}
+        >
+          <NavLinks {...props} />
+        </SwipeableDrawer>
+      </Hidden>
     </React.Fragment>
   );
 }
