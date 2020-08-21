@@ -37,9 +37,13 @@ const styles = makeStyles({
   buttonText: {
     width: '50%',
     fontWeight: 'bolder',
+    '@media (max-width: 576px)': {
+      fontSize: '3.3vw',
+    },
   },
   infoContainer: {
     margin: 'auto',
+    paddingTop: 20,
   },
   iconsDescriptions: {
     width: 250,
@@ -48,16 +52,15 @@ const styles = makeStyles({
     transition: 'fill 1.1s ease',
   },
   titleDescriptions: {
+    margin: '20px 0 20px 0',
     fontSize: 27,
     fontWeight: 'bolder',
     textAlign: 'center',
-    margin: '50px 25px',
   },
   containerDescription: {
     background: '#ECECEC',
-    margin: 26,
     padding: 25,
-    width: '38vw',
+    height: '320px',
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
@@ -124,10 +127,10 @@ const OurServices = (props) => {
       <Grid
         container
         direction="row"
-        justify="center"
+        justify="space-evenly"
         className={classes.infoContainer}
       >
-        <div>
+        <Grid container lg={3} direction="column" alignItems="center">
           <OctoLogo
             fill={DummyData[index].color}
             className={classes.iconsDescriptions}
@@ -135,12 +138,16 @@ const OurServices = (props) => {
           <div className={classes.titleDescriptions}>
             {DummyData[index].title}
           </div>
-        </div>
-        <div className={classes.containerDescription}>
+        </Grid>
+        <Grid
+          container
+          lg={6}
+          className={classes.containerDescription}
+        >
           {DummyData[index].description.map((item) => (
             <li className={classes.descriptionItem}>{item}</li>
           ))}
-        </div>
+        </Grid>
       </Grid>
     </Container>
   );
