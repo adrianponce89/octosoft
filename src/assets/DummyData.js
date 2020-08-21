@@ -2,7 +2,6 @@ const data = [
   {
     _id: '0',
     title: 'Design & Media',
-    iconUrl: 'images/250h/Logo_Design.png',
     color: '#c01ffc',
     description: [
       'Logo Designs',
@@ -18,7 +17,6 @@ const data = [
   {
     _id: '1',
     title: 'Marketing',
-    iconUrl: 'images/250h/Logo_Marketing.png',
     color: '#33cc66',
     description: [
       'SEO',
@@ -36,7 +34,6 @@ const data = [
   {
     _id: '2',
     title: 'Development',
-    iconUrl: 'images/250h/Logo_Development.png',
     color: '#e82365',
     description: [
       'Software Enginieering',
@@ -53,7 +50,6 @@ const data = [
   {
     _id: '3',
     title: 'IT',
-    iconUrl: 'images/250h/Logo_Media.png',
     color: '#214fc1',
     description: [
       'IT HelpDesk Supper',
@@ -75,7 +71,6 @@ const data = [
   {
     _id: '4',
     title: 'Education',
-    iconUrl: 'images/250h/Logo_Education.png',
     color: '#ff9929',
     description: [
       'Logo Designs',
@@ -91,7 +86,6 @@ const data = [
   {
     _id: '5',
     title: 'Admins',
-    iconUrl: 'images/250h/Logo_Assistance.png',
     color: '#ff1e00',
     description: [
       'SEO',
@@ -109,7 +103,6 @@ const data = [
   {
     _id: '6',
     title: 'Productions',
-    iconUrl: 'images/250h/Logo_Productions.png',
     color: '#ff55be',
     description: [
       'Software Enginieering',
@@ -126,7 +119,6 @@ const data = [
   {
     _id: '7',
     title: 'Lenguage Services',
-    iconUrl: 'images/250h/Logo_Language_Services.png',
     color: '#2af4b1',
     description: [
       'IT HelpDesk Supper',

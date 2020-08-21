@@ -3,6 +3,8 @@ import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
+import { ReactComponent as OctoLogo } from '../assets/logo.svg';
+import { Grid, Typography } from '@material-ui/core';
 
 const styles = makeStyles({
   headContainer: {
@@ -28,6 +30,9 @@ const styles = makeStyles({
   },
   descriptionButton: {
     width: '25%',
+    '@media (max-width: 576px)': {
+      width: '50%',
+    },
   },
   button: {
     cursor: 'pointer',
@@ -46,6 +51,7 @@ const styles = makeStyles({
     margin: '0 25px 0 15px',
     width: 32,
     height: 32,
+    fill: (props) => props.color,
   },
   buttonText: {
     width: '50%',
@@ -58,6 +64,10 @@ const styles = makeStyles({
   },
   iconsDescriptions: {
     margin: '20px 50px 0 50px',
+    width: 250,
+    height: 250,
+    fill: (props) => props.fill,
+    transition: 'fill 1.1s ease',
   },
   titleDescriptions: {
     fontSize: 27,
@@ -79,8 +89,8 @@ const styles = makeStyles({
   },
 });
 
-const OurServices = () => {
-  const classes = styles();
+const OurServices = (props) => {
+  const classes = styles(props);
   const [index, selectedIndex] = useState(0);
   return (
     <Container background={`url(${BackgroundImage})`}>
@@ -104,9 +114,9 @@ const OurServices = () => {
                 i === index ? classes.highlightedButton : ''
               }`}
             >
-              <img
-                src={data.iconUrl}
+              <OctoLogo
                 className={classes.buttonIcon}
+                fill={data.color}
               />
               <div className={classes.buttonText}>
                 {`${data.title}`}
@@ -117,8 +127,8 @@ const OurServices = () => {
       </div>
       <div className={classes.infoContainer}>
         <div>
-          <img
-            src={DummyData[index].iconUrl}
+          <OctoLogo
+            fill={DummyData[index].color}
             className={classes.iconsDescriptions}
           />
           <div className={classes.titleDescriptions}>
