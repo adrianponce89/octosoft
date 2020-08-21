@@ -7,7 +7,7 @@ import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import Slide from '@material-ui/core/Slide';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
-import logoProfessionals from '../assets/images/Logo_Professionals.png';
+import { ReactComponent as OctoLogo } from '../assets/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     height: 46,
     marginRight: 10,
     opacity: (props) => props.opacity,
+    fill: '#33adff',
   },
   linkText: {
     fontWeight: 'bold',
@@ -74,10 +75,7 @@ export default function NavBar(props) {
             <RouterLink to={'/'} className={classes.link}>
               <div className={classes.links}>
                 <div className={classes.logo}>
-                  <img
-                    src={logoProfessionals}
-                    className={classes.logo}
-                  />
+                  <OctoLogo className={classes.logo} />
                 </div>
                 <div className={classes.textLogo}>
                   {'Octosoft Professionals'}
