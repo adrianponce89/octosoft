@@ -4,51 +4,32 @@ import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
 import { ReactComponent as OctoLogo } from '../assets/logo.svg';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 const styles = makeStyles({
-  headContainer: {
-    margin: 'auto',
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-  },
   headTitle: {
-    margin: '30px 0 25px 0',
     fontSize: 40,
   },
   headSubTitle: {
-    margin: 0,
     fontSize: 19,
-    fontWeight: 500,
+    fontWeight: 'bold',
+    marginBottom: 25,
   },
   keypad: {
-    margin: '20px 90px 0 90px',
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
-  descriptionButton: {
-    width: '25%',
-    '@media (max-width: 576px)': {
-      width: '50%',
-    },
+    margin: 'auto',
   },
   button: {
+    margin: 10,
     cursor: 'pointer',
     height: 50,
-    margin: '15px 10px 0 0',
     boxShadow:
       '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 0px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
-    display: 'flex',
-    alignItems: 'center',
   },
   highlightedButton: {
     boxShadow:
       'inset 0 0 0 2px #007bff, 0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 0px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
   },
   buttonIcon: {
-    margin: '0 25px 0 15px',
     width: 32,
     height: 32,
     fill: (props) => props.color,
@@ -58,12 +39,9 @@ const styles = makeStyles({
     fontWeight: 'bolder',
   },
   infoContainer: {
-    margin: '69px 25px',
-    display: 'flex',
-    flexDirection: 'row',
+    margin: 'auto',
   },
   iconsDescriptions: {
-    margin: '20px 50px 0 50px',
     width: 250,
     height: 250,
     fill: (props) => props.fill,
@@ -94,22 +72,40 @@ const OurServices = (props) => {
   const [index, selectedIndex] = useState(0);
   return (
     <Container background={`url(${BackgroundImage})`}>
-      <div className={classes.headContainer}>
+      <Grid container direction="column" alignItems="center">
         <h1 className={classes.headTitle}>Our Services</h1>
-        <p className={classes.headSubTitle}>
+        <Grid
+          container
+          justify="center"
+          xs={10}
+          className={classes.headSubTitle}
+        >
           Learn about our departaments and the services they can
           provide to your business
-        </p>
-      </div>
-      <div className={classes.keypad}>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        justify="center"
+        md={10}
+        xs={12}
+        className={classes.keypad}
+      >
         {DummyData.map((data, i) => (
-          <div
-            className={classes.descriptionButton}
+          <Grid
+            container
+            justify="center"
+            alignItems="center"
+            xs={6}
+            lg={3}
             onClick={() => {
               selectedIndex(i);
             }}
           >
-            <div
+            <Grid
+              container
+              justify="space-evenly"
+              alignItems="center"
               className={`${classes.button} ${
                 i === index ? classes.highlightedButton : ''
               }`}
@@ -121,11 +117,16 @@ const OurServices = (props) => {
               <div className={classes.buttonText}>
                 {`${data.title}`}
               </div>
-            </div>
-          </div>
+            </Grid>
+          </Grid>
         ))}
-      </div>
-      <div className={classes.infoContainer}>
+      </Grid>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        className={classes.infoContainer}
+      >
         <div>
           <OctoLogo
             fill={DummyData[index].color}
@@ -140,7 +141,7 @@ const OurServices = (props) => {
             <li className={classes.descriptionItem}>{item}</li>
           ))}
         </div>
-      </div>
+      </Grid>
     </Container>
   );
 };
