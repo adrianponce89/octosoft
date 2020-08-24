@@ -76,7 +76,7 @@ const NavLinks = (props) => {
       <RouterLink className={classes.link} margin={2} to="/">
         <div className={classes.linkText}>{'Home'}</div>
       </RouterLink>
-      <RouterLink className={classes.link} margin={2} to="/">
+      <RouterLink className={classes.link} margin={2} to="/aboutus">
         <div className={classes.linkText}>{'About Us'}</div>
       </RouterLink>
       <RouterLink className={classes.link} margin={2} to="/">

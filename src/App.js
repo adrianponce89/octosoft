@@ -15,6 +15,7 @@ import Home from './pages/Home';
 import NavBar from './pages/NavBar';
 import ClientSupport from './pages/ClientSupport';
 import OurServices from './pages/OurServices';
+import AboutUs from './pages/AboutUs';
 import './App.css';
 
 const theme = createMuiTheme({
@@ -78,6 +79,7 @@ export default function App() {
           <Route path="/testimonies" component={Testimonies} />
           <Route path="/clientsupport" component={ClientSupport} />
           <Route path="/ourservices" component={OurServices} />
+          <Route path="/aboutus" component={AboutUs} />
         </Switch>
       </ThemeProvider>
     </Router>
