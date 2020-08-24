@@ -23,11 +23,11 @@ const styles = makeStyles({
     cursor: 'pointer',
     height: 50,
     boxShadow:
-      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 0px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
   },
   highlightedButton: {
     boxShadow:
-      'inset 0 0 0 2px #007bff, 0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 0px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+      'inset 0 0 0 2px #007bff, 0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
   },
   buttonIcon: {
     width: 32,
@@ -42,8 +42,10 @@ const styles = makeStyles({
     },
   },
   infoContainer: {
-    margin: 'auto',
-    paddingTop: 20,
+    margin: '40px auto 40px auto',
+    padding: '20px 0 20px 0',
+    boxShadow:
+      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
   },
   iconsDescriptions: {
     width: 250,
