@@ -100,7 +100,7 @@ const OurServices = (props) => {
             justify="center"
             alignItems="center"
             xs={6}
-            lg={3}
+            md={3}
             onClick={() => {
               selectedIndex(i);
             }}
@@ -130,7 +130,7 @@ const OurServices = (props) => {
         justify="space-evenly"
         className={classes.infoContainer}
       >
-        <Grid container lg={3} direction="column" alignItems="center">
+        <Grid container md={3} direction="column" alignItems="center">
           <OctoLogo
             fill={DummyData[index].color}
             className={classes.iconsDescriptions}
@@ -141,7 +141,7 @@ const OurServices = (props) => {
         </Grid>
         <Grid
           container
-          lg={6}
+          md={6}
           className={classes.containerDescription}
         >
           {DummyData[index].description.map((item) => (

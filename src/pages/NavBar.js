@@ -48,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   linkText: {
     fontWeight: 'bold',
+    fontSize: '14px',
     color: (props) => props.color || 'black',
   },
   appbar: {
@@ -129,7 +130,7 @@ export default function NavBar(props) {
                 </div>
               </div>
             </RouterLink>
-            <Hidden lgUp>
+            <Hidden mdUp>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -139,7 +140,7 @@ export default function NavBar(props) {
                 <MenuIcon />
               </IconButton>
             </Hidden>
-            <Hidden mdDown>
+            <Hidden smDown>
               <Box className={classes.links}>
                 <NavLinks {...props} />
               </Box>
@@ -147,7 +148,7 @@ export default function NavBar(props) {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Hidden lgUp>
+      <Hidden mdUp>
         <SwipeableDrawer
           anchor={'right'}
           open={showDrawer}
