@@ -70,6 +70,28 @@ const styles = makeStyles({
   descriptionItem: {
     fontWeight: 'bolder',
   },
+  itemAvatar: {
+    padding: 20,
+  },
+  iconAvatar: {
+    width: 150,
+    height: 150,
+    fill: (props) => props.fill,
+  },
+  descriptionAvatars: {
+    background: '#ECECEC',
+    marginTop: 15,
+    width: 150,
+    height: 60,
+  },
+  containerPartners: {
+    background: '#ECECEC',
+  },
+  itemPartners: {
+    margin: 20,
+    background: '#5c5f5c',
+    height: 60,
+  },
 });
 
 const OurServices = (props) => {
@@ -85,7 +107,7 @@ const OurServices = (props) => {
           xs={10}
           className={classes.headSubTitle}
         >
-          Learn about our departaments and how they cab help you and
+          Learn about our departaments and how they can help you and
           your company.
         </Grid>
       </Grid>
@@ -159,11 +181,55 @@ const OurServices = (props) => {
           xs={10}
           className={classes.headSubTitle}
         >
-          Learn about our departaments and how they cab help you and
+          Learn about our departaments and how they can help you and
           your company.
         </Grid>
       </Grid>
-      <Grid></Grid>
+      <Grid
+        container
+        direction="row"
+        className={classes.containerAvatars}
+      >
+        {DummyData.map((data) => (
+          <Grid
+            container
+            lg={3}
+            direction="column"
+            alignItems="center"
+            className={classes.itemAvatar}
+          >
+            <OctoLogo
+              className={classes.iconAvatar}
+              fill={data.color}
+            />
+            <div className={classes.descriptionAvatars}></div>
+          </Grid>
+        ))}
+      </Grid>
+
+      <Grid container direction="column" alignItems="center">
+        <h1 className={classes.headTitle}>Our Partners</h1>
+        <Grid
+          container
+          justify="center"
+          xs={10}
+          className={classes.headSubTitle}
+        >
+          Learn about our departaments and how they can help you and
+          your company.
+        </Grid>
+        <Grid
+          container
+          justify="center"
+          className={classes.containerPartners}
+        >
+          {DummyData.map((data) => (
+            <Grid container lg={4} justify="center">
+              <Grid container className={classes.itemPartners}></Grid>
+            </Grid>
+          ))}
+        </Grid>
+      </Grid>
     </Container>
   );
 };
