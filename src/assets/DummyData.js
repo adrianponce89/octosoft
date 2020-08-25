@@ -139,4 +139,38 @@ const data = [
   },
 ];
 
-module.exports = { data };
+const dataAbout = [
+  {
+    picUrl: '/mailbox.jpg',
+    name: 'Conterence Room Setup Or Upgrade',
+  },
+  {
+    picUrl:
+      'https://cdn.pixabay.com/photo/2020/05/19/05/42/weaver-5189346_960_720.jpg',
+    name: 'Conference Room Setups And Support',
+  },
+  {
+    picUrl: '/mailbox.jpg',
+    name: 'iOS And Android Development',
+  },
+  {
+    picUrl:
+      'https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_960_720.jpg',
+    name: 'Data Backup And Recovery',
+  },
+  {
+    picUrl: '/mailbox.jpg',
+    name: 'Social Media Campaings',
+  },
+  {
+    picUrl: '/mailbox.jpg',
+    name: 'VoIP And Unfied Communicarions Support',
+  },
+  {
+    picUrl: '/mailbox.jpg',
+    name: 'Ads Creation & Solutions',
+  },
+  { picUrl: '/mailbox.jpg', name: 'Content Creation' },
+];
+
+module.exports = { data, dataAbout };
