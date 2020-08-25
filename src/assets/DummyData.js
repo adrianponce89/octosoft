@@ -145,8 +145,7 @@ const dataAbout = [
     name: 'Conterence Room Setup Or Upgrade',
   },
   {
-    picUrl:
-      'https://cdn.pixabay.com/photo/2020/05/19/05/42/weaver-5189346_960_720.jpg',
+    picUrl: '/mailbox.jpg',
     name: 'Conference Room Setups And Support',
   },
   {
@@ -154,8 +153,7 @@ const dataAbout = [
     name: 'iOS And Android Development',
   },
   {
-    picUrl:
-      'https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_960_720.jpg',
+    picUrl: '/mailbox.jpg',
     name: 'Data Backup And Recovery',
   },
   {
