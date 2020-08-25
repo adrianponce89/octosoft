@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import Container from '../components/Container';
+import AvatarTeam from '../components/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
+import { dataAbout as DummyDataAbout } from '../assets/DummyData';
 import { ReactComponent as OctoLogo } from '../assets/logo.svg';
 import { Grid } from '@material-ui/core';
 
 const styles = makeStyles({
   headTitle: {
     fontSize: 40,
+    '@media (max-width: 576px)': {
+      fontSize: '10vw',
+    },
   },
   headSubTitle: {
     fontSize: 19,
@@ -70,23 +75,35 @@ const styles = makeStyles({
   descriptionItem: {
     fontWeight: 'bolder',
   },
+  backgroundAvatar: {
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  },
+  containerPartners: {
+    background: '#ECECEC',
+  },
+  itemPartners: {
+    margin: 24,
+    padding: 25,
+    background: '#5c5f5c',
+  },
 });
 
-const OurServices = (props) => {
+const AboutUs = (props) => {
   const classes = styles(props);
   const [index, selectedIndex] = useState(0);
   return (
     <Container background={`url(${BackgroundImage})`}>
       <Grid container direction="column" alignItems="center">
-        <h1 className={classes.headTitle}>Our Services</h1>
+        <h1 className={classes.headTitle}>The Octosoft Team</h1>
         <Grid
           container
           justify="center"
           xs={10}
           className={classes.headSubTitle}
         >
-          Learn about our departaments and the services they can
-          provide to your business
+          Learn about our departaments and how they can help you and
+          your company.
         </Grid>
       </Grid>
       <Grid
@@ -151,8 +168,59 @@ const OurServices = (props) => {
           ))}
         </Grid>
       </Grid>
+      <Grid container direction="column" alignItems="center">
+        <h1 className={classes.headTitle}>Our Team</h1>
+        <Grid
+          container
+          justify="center"
+          xs={10}
+          className={classes.headSubTitle}
+        >
+          Learn about our departaments and how they can help you and
+          your company.
+        </Grid>
+      </Grid>
+      <Grid container direction="row" justify="center">
+        {DummyDataAbout.map((dataAbout) => (
+          <AvatarTeam
+            name={dataAbout.name}
+            background={`url(${dataAbout.picUrl})`}
+          />
+        ))}
+      </Grid>
+      <Grid container direction="column" alignItems="center">
+        <h1 className={classes.headTitle}>Our Partners</h1>
+        <Grid
+          container
+          justify="center"
+          xs={10}
+          className={classes.headSubTitle}
+        >
+          Learn about our departaments and how they can help you and
+          your company.
+        </Grid>
+        <Grid
+          container
+          justify="center"
+          className={classes.containerPartners}
+        >
+          {DummyDataAbout.map((dataAbout) => (
+            <Grid container md={4} justify="center">
+              <Grid
+                container
+                justify="center"
+                alignContent="center"
+                wrap
+                className={classes.itemPartners}
+              >
+                {dataAbout.name}
+              </Grid>
+            </Grid>
+          ))}
+        </Grid>
+      </Grid>
     </Container>
   );
 };
 
-export default OurServices;
+export default AboutUs;
