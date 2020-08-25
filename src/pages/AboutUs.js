@@ -147,7 +147,7 @@ const AboutUs = (props) => {
             justify="center"
             alignItems="center"
             xs={6}
-            lg={3}
+            md={3}
             onClick={() => {
               selectedIndex(i);
             }}
@@ -177,7 +177,7 @@ const AboutUs = (props) => {
         justify="space-evenly"
         className={classes.infoContainer}
       >
-        <Grid container lg={3} direction="column" alignItems="center">
+        <Grid container md={3} direction="column" alignItems="center">
           <OctoLogo
             fill={DummyData[index].color}
             className={classes.iconsDescriptions}
@@ -188,7 +188,7 @@ const AboutUs = (props) => {
         </Grid>
         <Grid
           container
-          lg={6}
+          md={6}
           className={classes.containerDescription}
         >
           {DummyData[index].description.map((item) => (
@@ -216,7 +216,7 @@ const AboutUs = (props) => {
         {DummyDataAbout.map((dataAbout) => (
           <Grid
             container
-            lg={3}
+            md={3}
             xs={6}
             direction="column"
             alignItems="center"
@@ -261,7 +261,7 @@ const AboutUs = (props) => {
           className={classes.containerPartners}
         >
           {DummyDataAbout.map((dataAbout) => (
-            <Grid container lg={4} justify="center">
+            <Grid container md={4} justify="center">
               <Grid
                 container
                 justify="center"
