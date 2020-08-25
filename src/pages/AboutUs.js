@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Container from '../components/Container';
+import AvatarTeam from '../components/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
@@ -74,38 +75,9 @@ const styles = makeStyles({
   descriptionItem: {
     fontWeight: 'bolder',
   },
-  itemAvatar: {
-    padding: 20,
-  },
-  iconAvatar: {
-    width: 160,
-    height: 160,
-    '@media (max-width: 576px)': {
-      width: 100,
-      height: 100,
-    },
-    background: '#ECECEC',
-    clipPath:
-      'polygon(50% 0, 85.5% 14.5%, 100% 50%, 85.5% 85.5%, 50% 100%, 14.5% 85.5%, 0 50%, 14.5% 14.5% )',
-  },
-  picAvatar: {
-    width: 160,
-    '@media (max-width: 576px)': {
-      width: 100,
-    },
-  },
-  descriptionAvatars: {
-    background: '#ECECEC',
-    marginTop: 15,
-    padding: 5,
-    width: 150,
-    height: 65,
-    '@media (max-width: 576px)': {
-      fontSize: '3vw',
-      width: 100,
-      height: 55,
-    },
-    overflow: 'hidden',
+  backgroundAvatar: {
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   containerPartners: {
     background: '#ECECEC',
@@ -208,40 +180,12 @@ const AboutUs = (props) => {
           your company.
         </Grid>
       </Grid>
-      <Grid
-        container
-        direction="row"
-        className={classes.containerAvatars}
-      >
+      <Grid container direction="row" justify="center">
         {DummyDataAbout.map((dataAbout) => (
-          <Grid
-            container
-            md={3}
-            xs={6}
-            direction="column"
-            alignItems="center"
-            className={classes.itemAvatar}
-          >
-            <Grid
-              container
-              justify="center"
-              alignContent="center"
-              className={classes.iconAvatar}
-            >
-              <img
-                src={dataAbout.picUrl}
-                className={classes.picAvatar}
-              />
-            </Grid>
-            <Grid
-              container
-              justify="center"
-              alignContent="center"
-              className={classes.descriptionAvatars}
-            >
-              {dataAbout.name}
-            </Grid>
-          </Grid>
+          <AvatarTeam
+            name={dataAbout.name}
+            background={`url(${dataAbout.picUrl})`}
+          />
         ))}
       </Grid>
       <Grid container direction="column" alignItems="center">
