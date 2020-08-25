@@ -83,7 +83,7 @@ const styles = makeStyles({
     background: '#ECECEC',
   },
   itemPartners: {
-    margin: 10,
+    margin: 24,
     padding: 25,
     background: '#5c5f5c',
   },

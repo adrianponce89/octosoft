@@ -32,6 +32,7 @@ const styles = makeStyles({
       height: 55,
     },
     overflow: 'hidden',
+    textAlign: 'center',
   },
 });
 
