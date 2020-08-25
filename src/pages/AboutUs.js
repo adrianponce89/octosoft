@@ -3,12 +3,16 @@ import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
+import { dataAbout as DummyDataAbout } from '../assets/DummyData';
 import { ReactComponent as OctoLogo } from '../assets/logo.svg';
 import { Grid } from '@material-ui/core';
 
 const styles = makeStyles({
   headTitle: {
     fontSize: 40,
+    '@media (max-width: 576px)': {
+      fontSize: '10vw',
+    },
   },
   headSubTitle: {
     fontSize: 19,
@@ -74,27 +78,46 @@ const styles = makeStyles({
     padding: 20,
   },
   iconAvatar: {
-    width: 150,
-    height: 150,
-    fill: (props) => props.fill,
+    width: 160,
+    height: 160,
+    '@media (max-width: 576px)': {
+      width: 100,
+      height: 100,
+    },
+    background: '#ECECEC',
+    clipPath:
+      'polygon(50% 0, 85.5% 14.5%, 100% 50%, 85.5% 85.5%, 50% 100%, 14.5% 85.5%, 0 50%, 14.5% 14.5% )',
+  },
+  picAvatar: {
+    width: 160,
+    '@media (max-width: 576px)': {
+      width: 100,
+    },
   },
   descriptionAvatars: {
     background: '#ECECEC',
     marginTop: 15,
+    padding: 5,
     width: 150,
-    height: 60,
+    height: 65,
+    '@media (max-width: 576px)': {
+      fontSize: '3vw',
+      width: 100,
+      height: 55,
+    },
+    overflow: 'hidden',
   },
   containerPartners: {
     background: '#ECECEC',
   },
   itemPartners: {
-    margin: 20,
+    margin: 10,
+    padding: 25,
     background: '#5c5f5c',
-    height: 60,
   },
 });
 
-const OurServices = (props) => {
+const AboutUs = (props) => {
   const classes = styles(props);
   const [index, selectedIndex] = useState(0);
   return (
@@ -190,23 +213,37 @@ const OurServices = (props) => {
         direction="row"
         className={classes.containerAvatars}
       >
-        {DummyData.map((data) => (
+        {DummyDataAbout.map((dataAbout) => (
           <Grid
             container
             lg={3}
+            xs={6}
             direction="column"
             alignItems="center"
             className={classes.itemAvatar}
           >
-            <OctoLogo
+            <Grid
+              container
+              justify="center"
+              alignContent="center"
               className={classes.iconAvatar}
-              fill={data.color}
-            />
-            <div className={classes.descriptionAvatars}></div>
+            >
+              <img
+                src={dataAbout.picUrl}
+                className={classes.picAvatar}
+              />
+            </Grid>
+            <Grid
+              container
+              justify="center"
+              alignContent="center"
+              className={classes.descriptionAvatars}
+            >
+              {dataAbout.name}
+            </Grid>
           </Grid>
         ))}
       </Grid>
-
       <Grid container direction="column" alignItems="center">
         <h1 className={classes.headTitle}>Our Partners</h1>
         <Grid
@@ -223,9 +260,17 @@ const OurServices = (props) => {
           justify="center"
           className={classes.containerPartners}
         >
-          {DummyData.map((data) => (
+          {DummyDataAbout.map((dataAbout) => (
             <Grid container lg={4} justify="center">
-              <Grid container className={classes.itemPartners}></Grid>
+              <Grid
+                container
+                justify="center"
+                alignContent="center"
+                wrap
+                className={classes.itemPartners}
+              >
+                {dataAbout.name}
+              </Grid>
             </Grid>
           ))}
         </Grid>
@@ -234,4 +279,4 @@ const OurServices = (props) => {
   );
 };
 
-export default OurServices;
+export default AboutUs;
