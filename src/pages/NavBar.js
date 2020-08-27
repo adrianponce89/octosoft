@@ -79,7 +79,7 @@ const NavLinks = (props) => {
       <RouterLink className={classes.link} margin={2} to="/aboutus">
         <div className={classes.linkText}>{'About Us'}</div>
       </RouterLink>
-      <RouterLink className={classes.link} margin={2} to="/">
+      <RouterLink className={classes.link} margin={2} to="/blogs">
         <div className={classes.linkText}>{'Blogs'}</div>
       </RouterLink>
       <RouterLink
