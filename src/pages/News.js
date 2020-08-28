@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Container from '../components/Container';
+import Post from '../components/Post';
 import BackgroundImage from '../assets/Background.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, TextField } from '@material-ui/core';
@@ -7,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import imgWoman from '../assets/woman.jpg';
+import { post as DummyPosts } from '../assets/DummyData';
 
 const styles = makeStyles({
   root: {
@@ -54,15 +55,6 @@ const styles = makeStyles({
     position: 'absolute',
     top: 0,
     right: 0,
-  },
-  containerPost: {
-    display: 'flex',
-  },
-  picPost: {
-    flex: 1,
-    background: `url(${imgWoman})`,
-    backgroundSize: 'cover',
-    height: '50vh',
   },
 });
 
@@ -165,31 +157,18 @@ const Blogs = (props) => {
               </div>
             </Paper>
           </Grid>
-
           <Grid item md={8}>
-            <Paper elevation={3} className={classes.backgroundGlobal}>
-              <Grid item md={12}>
-                <div className={classes.containerPost}>
-                  <Paper className={classes.picPost}></Paper>
-                </div>
-                <h4 className={`${classes.subTitle}`}>
-                  5 Tips to create better customer engagement
-                </h4>
-                <p>
-                  Culpa qui culpa aliqua consectetur nostrud
-                  adipisicing veniam quis commodo exercitation
-                  consectetur dolor mollit. Minim nostrud cillum irure
-                  amet adipisicing qui proident officia sint cillum
-                  incididunt. Ut est labore ex anim laboris
-                  reprehenderit eu reprehenderit pariatur. Eu cillum
-                  sunt deserunt exercitation enim deserunt nulla
-                  eiusmod anim exercitation deserunt proident id
-                  minim. Velit tempor pariatur amet nisi anim dolore
-                  voluptate dolore culpa amet mollit.
-                </p>
-              </Grid>
-            </Paper>
+            <Grid container spacing={3}>
+              {DummyPosts.map((dataPost) => (
+                <Post
+                  background={`url(${dataPost.picUrl})`}
+                  title={dataPost.title}
+                  description={dataPost.description}
+                />
+              ))}
+            </Grid>
           </Grid>
+
           <Grid item md={4}>
             <Grid container spacing={3}>
               <Grid item md={12}>
