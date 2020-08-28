@@ -25,6 +25,7 @@ const styles = makeStyles({
   },
   subTitle: {
     margin: 0,
+    marginBottom: 10,
   },
   inputSearch: {
     fontFamily: 'Lato',
@@ -56,6 +57,11 @@ const styles = makeStyles({
     top: 0,
     right: 0,
   },
+  titleListPost: {
+    margin: 0,
+    padding: 5,
+  },
+  backgroundListPost: { background: '#ECECEC' },
 });
 
 const Blogs = (props) => {
@@ -179,6 +185,20 @@ const Blogs = (props) => {
                   <h2 className={`${classes.subTitle}`}>
                     Latest Posts
                   </h2>
+                  <Grid container spacing={3}>
+                    {DummyPosts.map((dataPost) => (
+                      <Grid item md={12}>
+                        <Paper
+                          elevation={0}
+                          className={classes.backgroundListPost}
+                        >
+                          <h4 className={classes.titleListPost}>
+                            {dataPost.title}
+                          </h4>
+                        </Paper>
+                      </Grid>
+                    ))}
+                  </Grid>
                 </Paper>
               </Grid>
               <Grid item md={12}>
@@ -189,6 +209,20 @@ const Blogs = (props) => {
                   <h2 className={`${classes.subTitle}`}>
                     Recommended Posts
                   </h2>
+                  <Grid container spacing={3}>
+                    {DummyPosts.map((dataPost) => (
+                      <Grid item md={12}>
+                        <Paper
+                          elevation={0}
+                          className={classes.backgroundListPost}
+                        >
+                          <h4 className={classes.titleListPost}>
+                            {dataPost.title}
+                          </h4>
+                        </Paper>
+                      </Grid>
+                    ))}
+                  </Grid>
                 </Paper>
               </Grid>
             </Grid>
