@@ -17,6 +17,7 @@ import ClientSupport from './pages/ClientSupport';
 import OurServices from './pages/OurServices';
 import AboutUs from './pages/AboutUs';
 import News from './pages/News';
+import BorderlessIdentities from './pages/BorderlessIdentities';
 import './App.css';
 
 const theme = createMuiTheme({
@@ -82,6 +83,10 @@ export default function App() {
           <Route path="/ourservices" component={OurServices} />
           <Route path="/aboutus" component={AboutUs} />
           <Route path="/news" component={News} />
+          <Route
+            path="/borderlessIdentities"
+            component={BorderlessIdentities}
+          />
         </Switch>
       </ThemeProvider>
     </Router>
