@@ -198,4 +198,27 @@ const post = [
   },
 ];
 
-module.exports = { data, dataAbout, post };
+const borderlessItem = [
+  {
+    picUrl: '/mailbox.jpg',
+    description:
+      'Dolor sit commodo laborum magna. Cillum ut incididunt in velit nostrud Esse ad anim ipsum culpa do in in velit sunt qui eiusmod sunt ad reprehenderit.',
+  },
+  {
+    picUrl: '/woman.jpg',
+    description:
+      'Et aliquip minim sit do dolor voluptate non do excepteur nisi.',
+  },
+  {
+    picUrl: '/mailbox.jpg',
+    description:
+      'Incididunt aliqua laboris ea ut minim culpa sunt Lorem esse cillum nisi.',
+  },
+  {
+    picUrl: '/woman.jpg',
+    description:
+      'Nisi labore id aliquip elit culpa. Ad nulla id fugiat nulla in fugiat quis sit. Dolor sit commodo laborum magna. Cillum qui non non ipsum ea. Veniam ea deserunt ad et adipisicing consequat proident aliquip ad cupidatat.',
+  },
+];
+
+module.exports = { data, dataAbout, post, borderlessItem };
