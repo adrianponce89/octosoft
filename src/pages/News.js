@@ -4,11 +4,12 @@ import Post from '../components/Post';
 import BackgroundImage from '../assets/Background.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, TextField } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { post as DummyPosts } from '../assets/DummyData';
+import { post as DummyPosts, post } from '../assets/DummyData';
 
 const styles = makeStyles({
   root: {
@@ -88,19 +89,32 @@ const Blogs = (props) => {
                 alignItems="center"
                 xs={12}
               >
-                <Grid item xs={12} md={10}>
-                  <TextField
-                    className={classes.inputSearch}
-                    id="outlined-search"
-                    label="Search..."
-                    type="search"
-                    value={search}
-                    variant="outlined"
-                    size="small"
-                    onChange={({ target }) => setSearch(target.value)}
+                <Grid item md={10}>
+                  <Autocomplete
+                    freeSolo
+                    disableClearable
+                    options={DummyPosts.map((option) => option.title)}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        className={classes.inputSearch}
+                        id="outlined-search"
+                        label="Search..."
+                        value={search}
+                        variant="outlined"
+                        size="small"
+                        InputProps={{
+                          ...params.InputProps,
+                          type: 'search',
+                        }}
+                        onChange={({ target }) =>
+                          setSearch(target.value)
+                        }
+                      />
+                    )}
                   />
                 </Grid>
-                <SearchIcon fontSize="large" />
+                <SearchIcon md={2} fontSize="large" />
               </Grid>
             </Paper>
           </Grid>
