@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
 import BackgroundBanner from '../assets/BackgroundBanner.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
-import { borderlessItem as DummyItems } from '../assets/DummyData';
 import BorderlessItems from '../components/BorderlessItems';
+import { fetchFromContentfulByContentType } from '../Contentful';
 
 const styles = makeStyles({
   root: {},
@@ -24,6 +24,15 @@ const styles = makeStyles({
 
 const BorderlessIdentities = () => {
   const classes = styles();
+
+  const [borderlessItems, setBorderlessItems] = useState([]);
+  useEffect(() => {
+    fetchFromContentfulByContentType(
+      'borderlessItem',
+      setBorderlessItems,
+    );
+  }, []);
+
   return (
     <Container
       background={`url(${BackgroundImage})`}
@@ -40,10 +49,10 @@ const BorderlessIdentities = () => {
             </h1>
           </Grid>
           <Grid item>
-            {DummyItems.map((item, i) => (
+            {borderlessItems.map(({ fields }, i) => (
               <BorderlessItems
-                background={`url(${item.picUrl})`}
-                description={item.description}
+                background={`url(${fields.photo.fields.file.url})`}
+                description={fields.description}
                 textAlign={i % 2 ? '' : 'left'}
                 flexDirection={i % 2 ? '' : 'row'}
               />
