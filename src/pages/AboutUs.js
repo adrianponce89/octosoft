@@ -96,9 +96,7 @@ const AboutUs = (props) => {
 
   const [teamMembers, setTeamMemberss] = useState([]);
   useEffect(() => {
-    fetchFromContentfulByContentType('teamMember', (data) => {
-      setTeamMemberss(data);
-    });
+    fetchFromContentfulByContentType('teamMember', setTeamMemberss);
   }, []);
 
   return (

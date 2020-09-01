@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import Container from '../components/Container';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import BackgroundImage from '../assets/Background.png';
-import { data as DummyData } from '../assets/DummyData';
-import { ReactComponent as OctoLogo } from '../assets/logo.svg';
 import { Grid } from '@material-ui/core';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import Container from '../components/Container';
+import BackgroundImage from '../assets/Background.png';
+import { ReactComponent as OctoLogo } from '../assets/logo.svg';
+import { fetchFromContentfulByContentType } from '../Contentful';
 
 const styles = makeStyles({
   headTitle: {
@@ -61,20 +62,23 @@ const styles = makeStyles({
   },
   containerDescription: {
     background: '#ECECEC',
-    padding: 25,
     height: '320px',
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
-  },
-  descriptionItem: {
-    fontWeight: 'bolder',
+    overflow: 'auto',
   },
 });
 
 const OurServices = (props) => {
   const classes = styles(props);
   const [index, selectedIndex] = useState(0);
+
+  const [services, setServices] = useState([]);
+  useEffect(() => {
+    fetchFromContentfulByContentType('service', setServices);
+  }, []);
+
   return (
     <Container background={`url(${BackgroundImage})`}>
       <Grid container direction="column" alignItems="center">
@@ -96,7 +100,7 @@ const OurServices = (props) => {
         xs={12}
         className={classes.keypad}
       >
-        {DummyData.map((data, i) => (
+        {services.map(({ fields }, i) => (
           <Grid
             container
             justify="center"
@@ -117,40 +121,53 @@ const OurServices = (props) => {
             >
               <OctoLogo
                 className={classes.buttonIcon}
-                fill={data.color}
+                fill={fields.color}
               />
               <div className={classes.buttonText}>
-                {`${data.title}`}
+                {`${fields.title}`}
               </div>
             </Grid>
           </Grid>
         ))}
       </Grid>
-      <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        className={classes.infoContainer}
-      >
-        <Grid container md={3} direction="column" alignItems="center">
-          <OctoLogo
-            fill={DummyData[index].color}
-            className={classes.iconsDescriptions}
-          />
-          <div className={classes.titleDescriptions}>
-            {DummyData[index].title}
-          </div>
-        </Grid>
+      {services.length > 0 ? (
         <Grid
           container
-          md={6}
-          className={classes.containerDescription}
+          direction="row"
+          justify="space-evenly"
+          className={classes.infoContainer}
         >
-          {DummyData[index].description.map((item) => (
-            <li className={classes.descriptionItem}>{item}</li>
-          ))}
+          <Grid
+            container
+            md={3}
+            direction="column"
+            alignItems="center"
+          >
+            <OctoLogo
+              fill={services[index].fields.color}
+              className={classes.iconsDescriptions}
+            />
+            <div className={classes.titleDescriptions}>
+              {services[index].fields.title}
+            </div>
+          </Grid>
+          <Grid
+            container
+            md={6}
+            className={classes.containerDescription}
+          >
+            <div
+              dangerouslySetInnerHTML={{
+                __html: documentToHtmlString(
+                  services[index].fields.content,
+                ),
+              }}
+            />
+          </Grid>
         </Grid>
-      </Grid>
+      ) : (
+        ''
+      )}
     </Container>
   );
 };
