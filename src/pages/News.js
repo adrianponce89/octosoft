@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Container from '../components/Container';
-import Post from '../components/Post';
+import PostPreView from '../components/PostPreView';
 import BackgroundImage from '../assets/Background.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, TextField } from '@material-ui/core';
@@ -180,7 +180,7 @@ const Blogs = (props) => {
           <Grid item md={8}>
             <Grid container spacing={3}>
               {DummyPosts.map((dataPost) => (
-                <Post
+                <PostPreView
                   background={`url(${dataPost.picUrl})`}
                   title={dataPost.title}
                   description={dataPost.description}
