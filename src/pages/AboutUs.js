@@ -4,8 +4,7 @@ import AvatarTeam from '../components/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import { fetchFromContentfulByContentType } from '../Contentful';
 import BackgroundImage from '../assets/Background.png';
-import { data as DummyData } from '../assets/DummyData';
-import { ReactComponent as OctoLogo } from '../assets/logo.svg';
+import Services from '../components/Services';
 import { Grid } from '@material-ui/core';
 
 const styles = makeStyles({
@@ -96,91 +95,25 @@ const styles = makeStyles({
 
 const AboutUs = (props) => {
   const classes = styles(props);
-  const [index, selectedIndex] = useState(0);
 
+  const [services, setServices] = useState([]);
   const [teamMembers, setTeamMemberss] = useState([]);
   const [partners, setPartners] = useState([]);
   useEffect(() => {
+    fetchFromContentfulByContentType('service', setServices);
     fetchFromContentfulByContentType('teamMember', setTeamMemberss);
     fetchFromContentfulByContentType('partner', setPartners);
   }, []);
 
   return (
     <Container background={`url(${BackgroundImage})`}>
-      <Grid container direction="column" alignItems="center">
-        <h1 className={classes.headTitle}>The Octosoft Team</h1>
-        <Grid
-          container
-          justify="center"
-          xs={10}
-          className={classes.headSubTitle}
-        >
-          Learn about our departaments and how they can help you and
-          your company.
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        justify="center"
-        md={10}
-        xs={12}
-        className={classes.keypad}
-      >
-        {DummyData.map((data, i) => (
-          <Grid
-            container
-            justify="center"
-            alignItems="center"
-            xs={6}
-            md={3}
-            onClick={() => {
-              selectedIndex(i);
-            }}
-          >
-            <Grid
-              container
-              justify="space-evenly"
-              alignItems="center"
-              className={`${classes.button} ${
-                i === index ? classes.highlightedButton : ''
-              }`}
-            >
-              <OctoLogo
-                className={classes.buttonIcon}
-                fill={data.color}
-              />
-              <div className={classes.buttonText}>
-                {`${data.title}`}
-              </div>
-            </Grid>
-          </Grid>
-        ))}
-      </Grid>
-      <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        className={classes.infoContainer}
-      >
-        <Grid container md={3} direction="column" alignItems="center">
-          <OctoLogo
-            fill={DummyData[index].color}
-            className={classes.iconsDescriptions}
-          />
-          <div className={classes.titleDescriptions}>
-            {DummyData[index].title}
-          </div>
-        </Grid>
-        <Grid
-          container
-          md={6}
-          className={classes.containerDescription}
-        >
-          {DummyData[index].description.map((item) => (
-            <li className={classes.descriptionItem}>{item}</li>
-          ))}
-        </Grid>
-      </Grid>
+      <Services
+        services={services}
+        title="The Octosoft Team"
+        subtitle="Learn about our departaments and how they can help you and
+        your company."
+      />
+
       <Grid container direction="column" alignItems="center">
         <h1 className={classes.headTitle}>Our Team</h1>
         <Grid
