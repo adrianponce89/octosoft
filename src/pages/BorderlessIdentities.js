@@ -53,6 +53,7 @@ const BorderlessIdentities = () => {
               <BorderlessItems
                 background={`url(${fields.photo.fields.file.url})`}
                 description={fields.description}
+                link={fields.link}
                 textAlign={i % 2 ? '' : 'left'}
                 flexDirection={i % 2 ? '' : 'row'}
               />

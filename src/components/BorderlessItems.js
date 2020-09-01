@@ -3,6 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
 const styles = makeStyles({
+  root: {
+    textDecoration: 'none',
+    color: 'black',
+  },
   picItems: {
     background: (props) => props.background,
     backgroundSize: (props) => props.backgroundSize || 'cover',
@@ -22,14 +26,18 @@ const styles = makeStyles({
 const BorderlessItems = (props) => {
   const classes = styles(props);
   return (
-    <Grid container className={classes.containerItems}>
-      <Grid item md={4} xs={6} className={classes.picItems}></Grid>
-      <Grid item md={4} xs={6}>
-        <h3 className={`${classes.titleItem} ${classes.justifyText}`}>
-          {props.description}
-        </h3>
+    <a className={classes.root} href={props.link}>
+      <Grid container className={classes.containerItems}>
+        <Grid item md={4} xs={6} className={classes.picItems}></Grid>
+        <Grid item md={4} xs={6}>
+          <h3
+            className={`${classes.titleItem} ${classes.justifyText}`}
+          >
+            {props.description}
+          </h3>
+        </Grid>
       </Grid>
-    </Grid>
+    </a>
   );
 };
 
