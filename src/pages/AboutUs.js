@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import AvatarTeam from '../components/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
+import { fetchFromContentfulByContentType } from '../Contentful';
 import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
 import { dataAbout as DummyDataAbout } from '../assets/DummyData';
@@ -92,6 +93,12 @@ const styles = makeStyles({
 const AboutUs = (props) => {
   const classes = styles(props);
   const [index, selectedIndex] = useState(0);
+
+  const [teamMembers, setTeamMemberss] = useState([]);
+  useEffect(() => {
+    fetchFromContentfulByContentType('teamMember', setTeamMemberss);
+  }, []);
+
   return (
     <Container background={`url(${BackgroundImage})`}>
       <Grid container direction="column" alignItems="center">
@@ -181,10 +188,10 @@ const AboutUs = (props) => {
         </Grid>
       </Grid>
       <Grid container direction="row" justify="center">
-        {DummyDataAbout.map((dataAbout) => (
+        {teamMembers.map(({ fields }) => (
           <AvatarTeam
-            name={dataAbout.name}
-            background={`url(${dataAbout.picUrl})`}
+            name={fields.name}
+            background={`url(${fields.photo.fields.file.url})`}
           />
         ))}
       </Grid>

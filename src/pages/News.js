@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import Container from '../components/Container';
-import PostPreView from '../components/PostPreView';
-import BackgroundImage from '../assets/Background.png';
+import React, { useState, useEffect } from 'react';
+import { Link, Router, useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -9,11 +7,17 @@ import SearchIcon from '@material-ui/icons/Search';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import { post as DummyPosts, post } from '../assets/DummyData';
+import PostPreView from '../components/PostPreView';
+import Container from '../components/Container';
+import BackgroundImage from '../assets/Background.png';
+import { fetchFromContentfulByContentType } from '../Contentful';
 
 const styles = makeStyles({
   root: {
     margin: 18,
+  },
+  link: {
+    textDecoration: 'none',
   },
   backgroundGlobal: {
     padding: 17,
@@ -68,6 +72,14 @@ const styles = makeStyles({
 const Blogs = (props) => {
   const classes = styles(props);
   const [search, setSearch] = useState();
+
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetchFromContentfulByContentType('post', setPosts);
+  }, []);
+
+  let history = useHistory();
+
   return (
     <Container
       background={`url(${BackgroundImage})`}
@@ -93,7 +105,11 @@ const Blogs = (props) => {
                   <Autocomplete
                     freeSolo
                     disableClearable
-                    options={DummyPosts.map((option) => option.title)}
+                    options={posts.map(({ fields }) => fields)}
+                    getOptionLabel={(option) => option.title}
+                    onChange={(event, option) => {
+                      history.push(`/posts/${option.slug}`);
+                    }}
                     renderInput={(params) => (
                       <TextField
                         {...params}
@@ -179,11 +195,12 @@ const Blogs = (props) => {
           </Grid>
           <Grid item md={8}>
             <Grid container spacing={3}>
-              {DummyPosts.map((dataPost) => (
+              {posts.map(({ fields }) => (
                 <PostPreView
-                  background={`url(${dataPost.picUrl})`}
-                  title={dataPost.title}
-                  description={dataPost.description}
+                  background={`url(${fields.photo.fields.file.url})`}
+                  title={fields.title}
+                  content={fields.content}
+                  slug={fields.slug}
                 />
               ))}
             </Grid>
@@ -200,16 +217,21 @@ const Blogs = (props) => {
                     Latest Posts
                   </h2>
                   <Grid container spacing={3}>
-                    {DummyPosts.map((dataPost) => (
+                    {posts.map(({ fields }) => (
                       <Grid item md={12}>
-                        <Paper
-                          elevation={0}
-                          className={classes.backgroundListPost}
+                        <Link
+                          className={classes.link}
+                          to={`posts/${fields.slug}`}
                         >
-                          <h4 className={classes.titleListPost}>
-                            {dataPost.title}
-                          </h4>
-                        </Paper>
+                          <Paper
+                            elevation={0}
+                            className={classes.backgroundListPost}
+                          >
+                            <h4 className={classes.titleListPost}>
+                              {fields.title}
+                            </h4>
+                          </Paper>
+                        </Link>
                       </Grid>
                     ))}
                   </Grid>
@@ -224,16 +246,21 @@ const Blogs = (props) => {
                     Recommended Posts
                   </h2>
                   <Grid container spacing={3}>
-                    {DummyPosts.map((dataPost) => (
+                    {posts.map(({ fields }) => (
                       <Grid item md={12}>
-                        <Paper
-                          elevation={0}
-                          className={classes.backgroundListPost}
+                        <Link
+                          className={classes.link}
+                          to={`posts/${fields.slug}`}
                         >
-                          <h4 className={classes.titleListPost}>
-                            {dataPost.title}
-                          </h4>
-                        </Paper>
+                          <Paper
+                            elevation={0}
+                            className={classes.backgroundListPost}
+                          >
+                            <h4 className={classes.titleListPost}>
+                              {fields.title}
+                            </h4>
+                          </Paper>
+                        </Link>
                       </Grid>
                     ))}
                   </Grid>
