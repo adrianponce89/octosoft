@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { fetchFromContentfulByContentType } from '../Contentful';
 import BackgroundImage from '../assets/Background.png';
 import { data as DummyData } from '../assets/DummyData';
-import { dataAbout as DummyDataAbout } from '../assets/DummyData';
 import { ReactComponent as OctoLogo } from '../assets/logo.svg';
 import { Grid } from '@material-ui/core';
 
@@ -87,6 +86,11 @@ const styles = makeStyles({
     margin: 24,
     padding: 25,
     background: '#5c5f5c',
+    textDecoration: 'none',
+  },
+  itemPartnersLink: {
+    textDecoration: 'none',
+    color: 'white',
   },
 });
 
@@ -95,8 +99,10 @@ const AboutUs = (props) => {
   const [index, selectedIndex] = useState(0);
 
   const [teamMembers, setTeamMemberss] = useState([]);
+  const [partners, setPartners] = useState([]);
   useEffect(() => {
     fetchFromContentfulByContentType('teamMember', setTeamMemberss);
+    fetchFromContentfulByContentType('partner', setPartners);
   }, []);
 
   return (
@@ -211,7 +217,7 @@ const AboutUs = (props) => {
           justify="center"
           className={classes.containerPartners}
         >
-          {DummyDataAbout.map((dataAbout) => (
+          {partners.map(({ fields }) => (
             <Grid container md={4} justify="center">
               <Grid
                 container
@@ -220,7 +226,12 @@ const AboutUs = (props) => {
                 wrap
                 className={classes.itemPartners}
               >
-                {dataAbout.name}
+                <a
+                  className={classes.itemPartnersLink}
+                  href={fields.link}
+                >
+                  {fields.title}
+                </a>
               </Grid>
             </Grid>
           ))}
