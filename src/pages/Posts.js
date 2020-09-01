@@ -1,19 +1,45 @@
 import React from 'react';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import PostView from '../components/PostView';
 import { article as DummyArticle } from '../assets/DummyData';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
-const ArticleViews = () => {
+const styles = makeStyles({
+  imageArticle: {
+    background: (props) => `url(${props.picUrl})`,
+    backgroundSize: (props) => props.backgroundSize || 'cover',
+    backgroundPosition: (props) =>
+      props.backgroundPosition || 'center',
+    paddingBottom: '50%',
+    margin: '15px 0',
+  },
+  titleArticle: {
+    fontSize: 40,
+    margin: '15px 0',
+    textAlign: 'center',
+  },
+  descriptionArticle: { margin: 15 },
+});
+const ArticleViews = (props) => {
+  const post = DummyArticle[0];
+  const classes = styles(post);
   return (
     <Container background={`url(${BackgroundImage})`}>
-      {DummyArticle.map((dataArticle) => (
-        <PostView
-          background={`url(${dataArticle.picUrl})`}
-          title={dataArticle.title}
-          descriotion={dataArticle.description}
-        />
-      ))}
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignContent="center"
+      >
+        <Grid item md={12} className={classes.imageArticle}></Grid>
+        <Grid item md={12} className={classes.titleArticle}>
+          {post.title}
+        </Grid>
+        <Grid item md={12} className={classes.descriptionArticle}>
+          {post.description}
+        </Grid>
+      </Grid>
     </Container>
   );
 };
