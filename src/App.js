@@ -18,6 +18,7 @@ import OurServices from './pages/OurServices';
 import AboutUs from './pages/AboutUs';
 import News from './pages/News';
 import BorderlessIdentities from './pages/BorderlessIdentities';
+import Posts from './pages/Posts';
 import './App.css';
 
 const theme = createMuiTheme({
@@ -87,6 +88,7 @@ export default function App() {
             path="/borderlessIdentities"
             component={BorderlessIdentities}
           />
+          <Route path="/posts" component={Posts} />
         </Switch>
       </ThemeProvider>
     </Router>
