@@ -27,6 +27,11 @@ export async function fetchFromContentfulByContentType(
   setData(items);
 }
 
+export async function fetchFromContentfulByQuery(query, setData) {
+  const { items } = await getClient().getEntries(query);
+  setData(items);
+}
+
 export function getLines(text) {
   return text.split('\n').map((line) => (
     <>

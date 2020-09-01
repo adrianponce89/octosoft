@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import { article as DummyArticle } from '../assets/DummyData';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { fetchFromContentfulByQuery } from '../Contentful';
 
 const styles = makeStyles({
   imageArticle: {
-    background: (props) => `url(${props.picUrl})`,
-    backgroundSize: (props) => props.backgroundSize || 'cover',
-    backgroundPosition: (props) =>
-      props.backgroundPosition || 'center',
+    backgroundImage: (props) =>
+      props.photo ? `url(${props.photo.fields.file.url})` : '',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
     paddingBottom: '50%',
     margin: '15px 0',
   },
@@ -22,8 +23,20 @@ const styles = makeStyles({
   descriptionArticle: { margin: 15 },
 });
 const ArticleViews = (props) => {
-  const post = DummyArticle[0];
-  const classes = styles(post);
+  const { slug } = props.match.params;
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    fetchFromContentfulByQuery(
+      {
+        content_type: 'post',
+        'fields.slug': slug,
+      },
+      setPosts,
+    );
+  }, []);
+
+  const classes = styles(posts.length > 0 ? posts[0].fields : {});
+
   return (
     <Container background={`url(${BackgroundImage})`}>
       <Grid
@@ -33,12 +46,24 @@ const ArticleViews = (props) => {
         alignContent="center"
       >
         <Grid item md={12} className={classes.imageArticle}></Grid>
-        <Grid item md={12} className={classes.titleArticle}>
-          {post.title}
-        </Grid>
-        <Grid item md={12} className={classes.descriptionArticle}>
-          {post.description}
-        </Grid>
+        {posts.length > 0 ? (
+          <>
+            <Grid item md={12} className={classes.titleArticle}>
+              {posts[0].fields.title}
+            </Grid>
+            <Grid item md={12} className={classes.descriptionArticle}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: documentToHtmlString(
+                    posts[0].fields.content,
+                  ),
+                }}
+              />
+            </Grid>
+          </>
+        ) : (
+          ''
+        )}
       </Grid>
     </Container>
   );

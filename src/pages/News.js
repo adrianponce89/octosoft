@@ -10,7 +10,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import PostPreView from '../components/PostPreView';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import Post from '../components/Post';
 import { fetchFromContentfulByContentType } from '../Contentful';
 
 const styles = makeStyles({
@@ -76,9 +75,7 @@ const Blogs = (props) => {
 
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetchFromContentfulByContentType('post', (data) => {
-      setPosts(data);
-    });
+    fetchFromContentfulByContentType('post', setPosts);
   }, []);
 
   let history = useHistory();
