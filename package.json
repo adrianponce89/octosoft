@@ -28,8 +28,6 @@
     "build": "gatsby build",
     "heroku-postbuild": "gatsby build",
     "serve": "gatsby serve",
-    "postinstall": "node ./bin/hello.js",
-    "setup": "node ./bin/setup.js",
     "netlify:login": "netlify login",
     "netlify:deploy": "netlify deploy -d public -p",
     "preload-fonts": "gatsby-preload-fonts"
