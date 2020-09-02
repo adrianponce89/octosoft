@@ -7,9 +7,9 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-import MailBox from '../../assets/mailbox.jpg';
-import Container from '../../components/Container';
-import BackgroundImage from '../../assets/Background.png';
+import MailBox from '../assets/mailbox.jpg';
+import Container from '../components/Container';
+import BackgroundImage from '../assets/Background.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {},

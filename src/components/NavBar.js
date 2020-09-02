@@ -88,7 +88,7 @@ const NavLinks = (props) => {
       <Link
         className={classes.link}
         margin={2}
-        to="/BorderlessIdentities"
+        to="/borderlessIdentities"
       >
         <div className={classes.linkText}>
           {'Borderless Identities'}
@@ -97,7 +97,7 @@ const NavLinks = (props) => {
       <Link className={classes.link} margin={2} to="/clientsupport">
         <div className={classes.linkText}>{'Client Support'}</div>
       </Link>
-      <Link className={classes.link} margin={2} to="contact">
+      <Link className={classes.link} margin={2} to="/contact">
         <div className={classes.linkText}>{'Contact Us'}</div>
       </Link>
     </React.Fragment>
