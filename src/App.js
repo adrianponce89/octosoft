@@ -7,18 +7,15 @@ import {
 import { Helmet } from 'react-helmet';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core';
-import Contact from './pages/contact/contact';
-import Testimonies from './pages/testimonies/testimonies';
-import { SERVICES } from './SERVICES';
-import Service from './pages/service/service';
-import Home from './pages/Home';
-import NavBar from './pages/NavBar';
-import ClientSupport from './pages/ClientSupport';
-import OurServices from './pages/OurServices';
-import AboutUs from './pages/AboutUs';
-import News from './pages/News';
-import BorderlessIdentities from './pages/BorderlessIdentities';
-import Posts from './pages/Posts';
+import Contact from './pages/contact';
+import Home from './pages';
+import NavBar from './components/NavBar';
+import ClientSupport from './pages/clientsupport';
+import OurServices from './pages/ourservices';
+import AboutUs from './pages/aboutus';
+import News from './pages/news';
+import BorderlessIdentities from './pages/borderlessIdentities';
+import Posts from './pages/posts/[slug]';
 import './App.css';
 
 const theme = createMuiTheme({
@@ -52,34 +49,7 @@ export default function App() {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
-
-          <Route path="/assistance">
-            <Service service={SERVICES.assistance} />
-          </Route>
-          <Route path="/design">
-            <Service service={SERVICES.design} />
-          </Route>
-          <Route path="/development">
-            <Service service={SERVICES.development} />
-          </Route>
-          <Route path="/education">
-            <Service service={SERVICES.education} />
-          </Route>
-          <Route path="/language">
-            <Service service={SERVICES.language} />
-          </Route>
-          <Route path="/marketing">
-            <Service service={SERVICES.marketing} />
-          </Route>
-          <Route path="/media">
-            <Service service={SERVICES.media} />
-          </Route>
-          <Route path="/productions">
-            <Service service={SERVICES.production} />
-          </Route>
-
           <Route path="/contact" component={Contact} />
-          <Route path="/testimonies" component={Testimonies} />
           <Route path="/clientsupport" component={ClientSupport} />
           <Route path="/ourservices" component={OurServices} />
           <Route path="/aboutus" component={AboutUs} />
