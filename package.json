@@ -24,9 +24,14 @@
     "react-scripts": "^3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
     "dev": "gatsby develop",
-    "build": "CI='' react-scripts build",
+    "build": "gatsby build",
+    "heroku-postbuild": "gatsby build",
+    "serve": "gatsby serve",
+    "postinstall": "node ./bin/hello.js",
+    "setup": "node ./bin/setup.js",
+    "netlify:login": "netlify login",
+    "netlify:deploy": "netlify deploy -d public -p",
     "preload-fonts": "gatsby-preload-fonts"
   },
   "eslintConfig": {
