@@ -99,7 +99,7 @@ const Blogs = (props) => {
                 alignItems="center"
                 xs={12}
               >
-                <Grid item md={10}>
+                <Grid item xs={10}>
                   <Autocomplete
                     freeSolo
                     disableClearable
@@ -206,7 +206,7 @@ const Blogs = (props) => {
 
           <Grid item md={4}>
             <Grid container spacing={3}>
-              <Grid item md={12}>
+              <Grid item xs={12}>
                 <Paper
                   elevation={3}
                   className={classes.backgroundGlobal}
@@ -216,7 +216,7 @@ const Blogs = (props) => {
                   </h2>
                   <Grid container spacing={3}>
                     {posts.map(({ node }) => (
-                      <Grid item md={12}>
+                      <Grid item xs={12}>
                         <Link
                           className={classes.link}
                           to={`/news/${node.slug}`}
@@ -235,7 +235,7 @@ const Blogs = (props) => {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid item md={12}>
+              <Grid item xs={12}>
                 <Paper
                   elevation={3}
                   className={classes.backgroundGlobal}
@@ -245,7 +245,7 @@ const Blogs = (props) => {
                   </h2>
                   <Grid container spacing={3}>
                     {posts.map(({ node }) => (
-                      <Grid item md={12}>
+                      <Grid item xs={12}>
                         <Link
                           className={classes.link}
                           to={`/news/${node.slug}`}

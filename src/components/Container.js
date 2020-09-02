@@ -25,7 +25,7 @@ const styles = makeStyles((theme) => ({
     background: props.background || 'none',
     backgroundColor: theme.palette.background.default,
     backgroundPosition: 'initial',
-    backgroundRepeat: 'no-repeat',
+    backgroundRepeat: 'repeat',
     backgroundSize: '100vw',
     zIndex: '-1',
   }),
