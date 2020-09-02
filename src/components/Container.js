@@ -26,7 +26,7 @@ const styles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     backgroundPosition: 'initial',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: '100vw',
     zIndex: '-1',
   }),
   innerBox: (props) => ({
