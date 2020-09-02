@@ -8,11 +8,11 @@ const styles = makeStyles({
     color: 'black',
   },
   picItems: {
-    background: (props) => props.background,
-    backgroundSize: (props) => props.backgroundSize || 'cover',
-    height: '50vh',
-    '@media (max-width: 576px)': {
-      height: '25vh',
+    backgroundImage: (props) => props.background,
+    backgroundSize: 'cover',
+    paddingBottom: '33.333%',
+    '@media (max-width: 956px)': {
+      paddingBottom: '50%',
     },
   },
   titleItem: { margin: '0 15px' },
