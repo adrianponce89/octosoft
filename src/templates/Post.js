@@ -6,7 +6,6 @@ import BackgroundImage from '../assets/Background.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { fetchFromContentfulByQuery } from '../Contentful';
 
 const styles = makeStyles({
   imageArticle: {

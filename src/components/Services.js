@@ -70,8 +70,6 @@ const styles = makeStyles({
 const Services = ({ services, title, subtitle }) => {
   const classes = styles();
   const [index, selectedIndex] = useState(0);
-  console.log('services: ', services);
-  console.log('services[0].node.color:', services[0].node.color);
   return (
     <>
       <Grid container direction="column" alignItems="center">
