@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
 import Container from '../components/Container';
 import AvatarTeam from '../components/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
-import { fetchFromContentfulByContentType } from '../Contentful';
 import BackgroundImage from '../assets/Background.png';
 import Services from '../components/Services';
 import { Grid } from '@material-ui/core';
@@ -96,14 +97,12 @@ const styles = makeStyles({
 const AboutUs = (props) => {
   const classes = styles(props);
 
-  const [services, setServices] = useState([]);
-  const [teamMembers, setTeamMemberss] = useState([]);
-  const [partners, setPartners] = useState([]);
-  useEffect(() => {
-    fetchFromContentfulByContentType('service', setServices);
-    fetchFromContentfulByContentType('teamMember', setTeamMemberss);
-    fetchFromContentfulByContentType('partner', setPartners);
-  }, []);
+  const services = get(props, 'data.allContentfulService.edges');
+  const partners = get(props, 'data.allContentfulPartner.edges');
+  const teamMembers = get(
+    props,
+    'data.allContentfulTeamMember.edges',
+  );
 
   return (
     <Container background={`url(${BackgroundImage})`}>
@@ -127,10 +126,10 @@ const AboutUs = (props) => {
         </Grid>
       </Grid>
       <Grid container direction="row" justify="center">
-        {teamMembers.map(({ fields }) => (
+        {teamMembers.map(({ node }) => (
           <AvatarTeam
-            name={fields.name}
-            background={`url(${fields.photo.fields.file.url})`}
+            name={node.name}
+            background={`url(${node.photo.file.url})`}
           />
         ))}
       </Grid>
@@ -150,7 +149,7 @@ const AboutUs = (props) => {
           justify="center"
           className={classes.containerPartners}
         >
-          {partners.map(({ fields }) => (
+          {partners.map(({ node }) => (
             <Grid container md={4} justify="center">
               <Grid
                 container
@@ -161,9 +160,9 @@ const AboutUs = (props) => {
               >
                 <a
                   className={classes.itemPartnersLink}
-                  href={fields.link}
+                  href={node.link}
                 >
-                  {fields.title}
+                  {node.title}
                 </a>
               </Grid>
             </Grid>
@@ -175,3 +174,43 @@ const AboutUs = (props) => {
 };
 
 export default AboutUs;
+
+export const pageQuery = graphql`
+  query AboutUsQuery {
+    allContentfulService {
+      edges {
+        node {
+          color
+          id
+          order
+          title
+          content {
+            json
+          }
+        }
+      }
+    }
+    allContentfulPartner {
+      edges {
+        node {
+          title
+          link
+          id
+        }
+      }
+    }
+    allContentfulTeamMember {
+      edges {
+        node {
+          name
+          id
+          photo {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+`;

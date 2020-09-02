@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import { fetchFromContentfulByContentType } from '../Contentful';
 import Services from '../components/Services';
 
 const OurServices = (props) => {
-  const [services, setServices] = useState([]);
-  useEffect(() => {
-    fetchFromContentfulByContentType('service', setServices);
-  }, []);
-
+  const services = get(props, 'data.allContentfulService.edges');
   return (
     <Container background={`url(${BackgroundImage})`}>
       <Services
@@ -23,3 +20,21 @@ const OurServices = (props) => {
 };
 
 export default OurServices;
+
+export const pageQuery = graphql`
+  query OurServicesQuery {
+    allContentfulService {
+      edges {
+        node {
+          color
+          id
+          order
+          title
+          content {
+            json
+          }
+        }
+      }
+    }
+  }
+`;

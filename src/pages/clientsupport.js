@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -12,7 +14,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Smartphone from '../assets/smartphone.jpg';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import { services } from '../SERVICES';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -50,13 +51,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ClientSupport = () => {
+const ClientSupport = (props) => {
   const [clientname, setClientName] = useState();
   const [problem, setProblem] = useState();
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
   const [content, setContent] = useState();
   const classes = useStyles();
+
+  const services = get(props, 'data.allContentfulService.edges');
+
   return (
     <Container
       className={classes.root}
@@ -93,10 +97,8 @@ const ClientSupport = () => {
                 onChange={({ target }) => setProblem(target.value)}
               >
                 <MenuItem value="General">General</MenuItem>
-                {services.map((service) => (
-                  <MenuItem value={service.title}>
-                    {service.title}
-                  </MenuItem>
+                {services.map(({ node }) => (
+                  <MenuItem value={node.title}>{node.title}</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -169,3 +171,15 @@ const ClientSupport = () => {
 };
 
 export default ClientSupport;
+
+export const pageQuery = graphql`
+  query ClientSupportQuery {
+    allContentfulService {
+      edges {
+        node {
+          title
+        }
+      }
+    }
+  }
+`;

@@ -14,6 +14,7 @@
 # misc
 .DS_Store
 .env.local
+.env.development
 .env.development.local
 .env.test.local
 .env.production.local
@@ -23,5 +24,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea/
+
+.cache/
+page-data/
 
 src/demo/

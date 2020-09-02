@@ -11,6 +11,11 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "contentful": "^7.14.6",
+    "gatsby": "^2.24.53",
+    "gatsby-plugin-preload-fonts": "^1.2.23",
+    "gatsby-plugin-react-svg": "^3.0.0",
+    "gatsby-source-contentful": "^2.3.41",
+    "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
@@ -19,10 +24,13 @@
     "react-scripts": "^3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "CI='' react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "heroku-postbuild": "gatsby build",
+    "serve": "gatsby serve",
+    "netlify:login": "netlify login",
+    "netlify:deploy": "netlify deploy -d public -p",
+    "preload-fonts": "gatsby-preload-fonts"
   },
   "eslintConfig": {
     "extends": "react-app"

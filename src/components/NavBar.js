@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'gatsby';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
-import { ReactComponent as OctoLogo } from '../assets/logo.svg';
+import OctoLogo from '../assets/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function HideOnScroll(props) {
+const HideOnScroll = (props) => {
   const { children } = props;
   const trigger = useScrollTrigger();
 
@@ -67,52 +67,44 @@ function HideOnScroll(props) {
       {children}
     </Slide>
   );
-}
+};
 
 const NavLinks = (props) => {
   const classes = useStyles(props);
   return (
     <React.Fragment>
-      <RouterLink className={classes.link} margin={2} to="/">
+      <Link className={classes.link} margin={2} to="/">
         <div className={classes.linkText}>{'Home'}</div>
-      </RouterLink>
-      <RouterLink className={classes.link} margin={2} to="/aboutus">
+      </Link>
+      <Link className={classes.link} margin={2} to="/aboutus">
         <div className={classes.linkText}>{'About Us'}</div>
-      </RouterLink>
-      <RouterLink className={classes.link} margin={2} to="/news">
+      </Link>
+      <Link className={classes.link} margin={2} to="/news">
         <div className={classes.linkText}>{'News'}</div>
-      </RouterLink>
-      <RouterLink
-        className={classes.link}
-        margin={2}
-        to="/ourservices"
-      >
+      </Link>
+      <Link className={classes.link} margin={2} to="/ourservices">
         <div className={classes.linkText}>{'Our Services'}</div>
-      </RouterLink>
-      <RouterLink
+      </Link>
+      <Link
         className={classes.link}
         margin={2}
-        to="/BorderlessIdentities"
+        to="/borderlessIdentities"
       >
         <div className={classes.linkText}>
           {'Borderless Identities'}
         </div>
-      </RouterLink>
-      <RouterLink
-        className={classes.link}
-        margin={2}
-        to="/clientsupport"
-      >
+      </Link>
+      <Link className={classes.link} margin={2} to="/clientsupport">
         <div className={classes.linkText}>{'Client Support'}</div>
-      </RouterLink>
-      <RouterLink className={classes.link} margin={2} to="contact">
+      </Link>
+      <Link className={classes.link} margin={2} to="/contact">
         <div className={classes.linkText}>{'Contact Us'}</div>
-      </RouterLink>
+      </Link>
     </React.Fragment>
   );
 };
 
-export default function NavBar(props) {
+const NavBar = (props) => {
   const classes = useStyles(props);
   const [showDrawer, setShowDrawer] = useState(false);
   return (
@@ -120,7 +112,7 @@ export default function NavBar(props) {
       <HideOnScroll {...props}>
         <AppBar className={classes.appbar}>
           <Toolbar className={classes.toolbar}>
-            <RouterLink to={'/'} className={classes.link}>
+            <Link to={'/'} className={classes.link}>
               <div className={classes.links}>
                 <div className={classes.logo}>
                   <OctoLogo className={classes.logo} />
@@ -129,7 +121,7 @@ export default function NavBar(props) {
                   {'Octosoft Professionals'}
                 </div>
               </div>
-            </RouterLink>
+            </Link>
             <Hidden mdUp>
               <IconButton
                 color="inherit"
@@ -160,4 +152,6 @@ export default function NavBar(props) {
       </Hidden>
     </React.Fragment>
   );
-}
+};
+
+export default NavBar;

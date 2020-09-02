@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { ReactComponent as OctoLogo } from '../assets/logo.svg';
+import OctoLogo from '../assets/logo.svg';
 
 const styles = makeStyles({
   headTitle: {
@@ -90,7 +90,7 @@ const Services = ({ services, title, subtitle }) => {
         xs={12}
         className={classes.keypad}
       >
-        {services.map(({ fields }, i) => (
+        {services.map(({ node }, i) => (
           <Grid
             container
             justify="center"
@@ -111,10 +111,10 @@ const Services = ({ services, title, subtitle }) => {
             >
               <OctoLogo
                 className={classes.buttonIcon}
-                fill={fields.color}
+                fill={node.color}
               />
               <div className={classes.buttonText}>
-                {`${fields.title}`}
+                {`${node.title}`}
               </div>
             </Grid>
           </Grid>
@@ -134,11 +134,11 @@ const Services = ({ services, title, subtitle }) => {
             alignItems="center"
           >
             <OctoLogo
-              fill={services[index].fields.color}
+              fill={services[index].node.color}
               className={classes.iconsDescriptions}
             />
             <div className={classes.titleDescriptions}>
-              {services[index].fields.title}
+              {services[index].node.title}
             </div>
           </Grid>
           <Grid
@@ -149,7 +149,7 @@ const Services = ({ services, title, subtitle }) => {
             <div
               dangerouslySetInnerHTML={{
                 __html: documentToHtmlString(
-                  services[index].fields.content,
+                  services[index].node.content.json,
                 ),
               }}
             />

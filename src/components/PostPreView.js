@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'gatsby';
 import { Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
@@ -48,7 +48,7 @@ const Post = (props) => {
   const classes = styles(props);
   return (
     <Grid item>
-      <Link className={classes.link} to={`posts/${props.slug}`}>
+      <Link className={classes.link} to={`/news/${props.slug}`}>
         <Paper elevation={3} className={classes.containerPost}>
           <div className={classes.containerPicPost}>
             <Paper className={classes.picPost}></Paper>
