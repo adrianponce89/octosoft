@@ -58,7 +58,7 @@ export default function App() {
             path="/borderlessIdentities"
             component={BorderlessIdentities}
           />
-          <Route path="/posts/:slug" component={Posts} />
+          <Route path="/news/:slug" component={Posts} />
         </Switch>
       </ThemeProvider>
     </Router>

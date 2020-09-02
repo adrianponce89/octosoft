@@ -106,7 +106,7 @@ const Blogs = (props) => {
                     options={posts.map(({ node }) => node)}
                     getOptionLabel={(option) => option.title}
                     onChange={(event, option) => {
-                      navigate(`/posts/${option.slug}`);
+                      navigate(`/news/${option.slug}`);
                     }}
                     renderInput={(params) => (
                       <TextField
@@ -219,7 +219,7 @@ const Blogs = (props) => {
                       <Grid item md={12}>
                         <Link
                           className={classes.link}
-                          to={`posts/${node.slug}`}
+                          to={`/news/${node.slug}`}
                         >
                           <Paper
                             elevation={0}
@@ -248,7 +248,7 @@ const Blogs = (props) => {
                       <Grid item md={12}>
                         <Link
                           className={classes.link}
-                          to={`posts/${node.slug}`}
+                          to={`/news/${node.slug}`}
                         >
                           <Paper
                             elevation={0}
