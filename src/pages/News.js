@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
+import React, { useState } from 'react';
+import { Link, graphql } from 'gatsby';
+import get from 'lodash/get';
 import { useNavigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, TextField } from '@material-ui/core';
@@ -11,7 +12,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import PostPreView from '../components/PostPreView';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import { fetchFromContentfulByContentType } from '../Contentful';
 
 const styles = makeStyles({
   root: {
@@ -74,10 +74,7 @@ const Blogs = (props) => {
   const classes = styles(props);
   const [search, setSearch] = useState();
 
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    fetchFromContentfulByContentType('post', setPosts);
-  }, []);
+  const posts = get(props, 'data.allContentfulPost.edges');
 
   const navigate = useNavigate();
 
@@ -106,7 +103,7 @@ const Blogs = (props) => {
                   <Autocomplete
                     freeSolo
                     disableClearable
-                    options={posts.map(({ fields }) => fields)}
+                    options={posts.map(({ node }) => node)}
                     getOptionLabel={(option) => option.title}
                     onChange={(event, option) => {
                       navigate(`/posts/${option.slug}`);
@@ -196,12 +193,12 @@ const Blogs = (props) => {
           </Grid>
           <Grid item md={8}>
             <Grid container spacing={3}>
-              {posts.map(({ fields }) => (
+              {posts.map(({ node }) => (
                 <PostPreView
-                  background={`url(${fields.photo.fields.file.url})`}
-                  title={fields.title}
-                  content={fields.content}
-                  slug={fields.slug}
+                  background={`url(${node.photo.file.url})`}
+                  title={node.title}
+                  content={node.content.json}
+                  slug={node.slug}
                 />
               ))}
             </Grid>
@@ -218,18 +215,18 @@ const Blogs = (props) => {
                     Latest Posts
                   </h2>
                   <Grid container spacing={3}>
-                    {posts.map(({ fields }) => (
+                    {posts.map(({ node }) => (
                       <Grid item md={12}>
                         <Link
                           className={classes.link}
-                          to={`posts/${fields.slug}`}
+                          to={`posts/${node.slug}`}
                         >
                           <Paper
                             elevation={0}
                             className={classes.backgroundListPost}
                           >
                             <h4 className={classes.titleListPost}>
-                              {fields.title}
+                              {node.title}
                             </h4>
                           </Paper>
                         </Link>
@@ -247,18 +244,18 @@ const Blogs = (props) => {
                     Recommended Posts
                   </h2>
                   <Grid container spacing={3}>
-                    {posts.map(({ fields }) => (
+                    {posts.map(({ node }) => (
                       <Grid item md={12}>
                         <Link
                           className={classes.link}
-                          to={`posts/${fields.slug}`}
+                          to={`posts/${node.slug}`}
                         >
                           <Paper
                             elevation={0}
                             className={classes.backgroundListPost}
                           >
                             <h4 className={classes.titleListPost}>
-                              {fields.title}
+                              {node.title}
                             </h4>
                           </Paper>
                         </Link>
@@ -276,3 +273,25 @@ const Blogs = (props) => {
 };
 
 export default Blogs;
+
+export const pageQuery = graphql`
+  query NewsQuery {
+    allContentfulPost {
+      edges {
+        node {
+          id
+          slug
+          title
+          photo {
+            file {
+              url
+            }
+          }
+          content {
+            json
+          }
+        }
+      }
+    }
+  }
+`;
