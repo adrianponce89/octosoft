@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
 import BackgroundBanner from '../assets/BackgroundBanner.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import BorderlessItems from '../components/BorderlessItems';
-import { fetchFromContentfulByContentType } from '../Contentful';
 
 const styles = makeStyles({
   root: {},
@@ -22,16 +23,13 @@ const styles = makeStyles({
   titleItems: { fontSize: '18px' },
 });
 
-const BorderlessIdentities = () => {
+const BorderlessIdentities = (props) => {
   const classes = styles();
 
-  const [borderlessItems, setBorderlessItems] = useState([]);
-  useEffect(() => {
-    fetchFromContentfulByContentType(
-      'borderlessItem',
-      setBorderlessItems,
-    );
-  }, []);
+  const borderlessItems = get(
+    props,
+    'data.allContentfulBorderlessIdentitiesItem.edges',
+  );
 
   return (
     <Container
@@ -49,11 +47,11 @@ const BorderlessIdentities = () => {
             </h1>
           </Grid>
           <Grid item>
-            {borderlessItems.map(({ fields }, i) => (
+            {borderlessItems.map(({ node }, i) => (
               <BorderlessItems
-                background={`url(${fields.photo.fields.file.url})`}
-                description={fields.description}
-                link={fields.link}
+                background={`url(${node.photo.file.url})`}
+                description={node.description.description}
+                link={node.link}
                 textAlign={i % 2 ? '' : 'left'}
                 flexDirection={i % 2 ? '' : 'row'}
               />
@@ -66,3 +64,24 @@ const BorderlessIdentities = () => {
 };
 
 export default BorderlessIdentities;
+
+export const pageQuery = graphql`
+  query BorderlessIdentitiesQuery {
+    allContentfulBorderlessIdentitiesItem {
+      edges {
+        node {
+          link
+          id
+          photo {
+            file {
+              url
+            }
+          }
+          description {
+            description
+          }
+        }
+      }
+    }
+  }
+`;
