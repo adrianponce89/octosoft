@@ -15,7 +15,7 @@ import OurServices from './pages/ourservices';
 import AboutUs from './pages/aboutus';
 import News from './pages/news';
 import BorderlessIdentities from './pages/borderlessIdentities';
-import Posts from './pages/posts/[slug]';
+import Posts from './pages/posts';
 import './App.css';
 
 const theme = createMuiTheme({

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Router, useHistory } from 'react-router-dom';
+import { Link } from 'gatsby';
+import { useNavigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -78,7 +79,7 @@ const Blogs = (props) => {
     fetchFromContentfulByContentType('post', setPosts);
   }, []);
 
-  let history = useHistory();
+  const navigate = useNavigate();
 
   return (
     <Container
@@ -108,7 +109,7 @@ const Blogs = (props) => {
                     options={posts.map(({ fields }) => fields)}
                     getOptionLabel={(option) => option.title}
                     onChange={(event, option) => {
-                      history.push(`/posts/${option.slug}`);
+                      navigate(`/posts/${option.slug}`);
                     }}
                     renderInput={(params) => (
                       <TextField

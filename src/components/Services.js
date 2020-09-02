@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { ReactComponent as OctoLogo } from '../assets/logo.svg';
+import OctoLogo from '../assets/logo.svg';
 
 const styles = makeStyles({
   headTitle: {
