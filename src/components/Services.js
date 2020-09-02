@@ -70,6 +70,8 @@ const styles = makeStyles({
 const Services = ({ services, title, subtitle }) => {
   const classes = styles();
   const [index, selectedIndex] = useState(0);
+  console.log('services: ', services);
+  console.log('services[0].node.color:', services[0].node.color);
   return (
     <>
       <Grid container direction="column" alignItems="center">
@@ -90,7 +92,7 @@ const Services = ({ services, title, subtitle }) => {
         xs={12}
         className={classes.keypad}
       >
-        {services.map(({ fields }, i) => (
+        {services.map(({ node }, i) => (
           <Grid
             container
             justify="center"
@@ -111,10 +113,10 @@ const Services = ({ services, title, subtitle }) => {
             >
               <OctoLogo
                 className={classes.buttonIcon}
-                fill={fields.color}
+                fill={node.color}
               />
               <div className={classes.buttonText}>
-                {`${fields.title}`}
+                {`${node.title}`}
               </div>
             </Grid>
           </Grid>
@@ -134,11 +136,11 @@ const Services = ({ services, title, subtitle }) => {
             alignItems="center"
           >
             <OctoLogo
-              fill={services[index].fields.color}
+              fill={services[index].node.color}
               className={classes.iconsDescriptions}
             />
             <div className={classes.titleDescriptions}>
-              {services[index].fields.title}
+              {services[index].node.title}
             </div>
           </Grid>
           <Grid
@@ -149,7 +151,7 @@ const Services = ({ services, title, subtitle }) => {
             <div
               dangerouslySetInnerHTML={{
                 __html: documentToHtmlString(
-                  services[index].fields.content,
+                  services[index].node.content.json,
                 ),
               }}
             />
