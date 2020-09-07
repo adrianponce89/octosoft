@@ -6,11 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, TextField } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import PostPreView from '../components/PostPreView';
 import Container from '../components/Container';
+import Event from '../components/Event';
 import BackgroundImage from '../assets/Background.png';
 
 const styles = makeStyles({
@@ -24,6 +22,7 @@ const styles = makeStyles({
     padding: 17,
     background: '#fff',
   },
+  stylesEvent: { paddingTop: 30 },
   headTitle: {
     margin: 0,
     fontSize: 35,
@@ -36,32 +35,6 @@ const styles = makeStyles({
   inputSearch: {
     fontFamily: 'Lato',
     background: '#ECECEC',
-  },
-  containerCarousel: {
-    paddingTop: 0,
-  },
-  titleCarousel: {
-    marginBottom: 10,
-    padding: 0,
-  },
-  cardCarousel: {
-    padding: 10,
-    background: '#ECECEC',
-    height: 80,
-  },
-  button: {
-    position: 'relative',
-    margin: 5,
-  },
-  arrowLeft: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-  arrowRigt: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
   },
   titleListPost: {
     margin: 0,
@@ -133,138 +106,82 @@ const Blogs = (props) => {
             </Paper>
           </Grid>
 
-          <Grid item xs={12}>
-            <Paper
-              elevation={3}
-              className={`${classes.backgroundGlobal} ${classes.containerCarousel}`}
-            >
-              <p className={classes.titleCarousel}>Upcoming Event</p>
-              <div>
-                <Grid
-                  container
-                  direction="row"
-                  alignItems="center"
-                  justify="space-around"
-                >
-                  <div className={classes.button}>
-                    <RadioButtonUncheckedIcon />
-                    <ChevronLeftIcon className={classes.arrowLeft} />
-                  </div>
-                  <Grid
-                    container
-                    spacing={4}
-                    direction="row"
-                    alignItems="center"
-                    justify="center"
-                    md={11}
-                  >
-                    <Grid item xs={12} md={4}>
-                      <Paper
-                        elevation={0}
-                        className={classes.cardCarousel}
-                      >
-                        DEC 9
-                      </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <Paper
-                        elevation={0}
-                        className={classes.cardCarousel}
-                      >
-                        JAN 5
-                      </Paper>
-                    </Grid>
-                    <Grid item xs={12} md={4}>
-                      <Paper
-                        elevation={0}
-                        className={classes.cardCarousel}
-                      >
-                        FEB 13
-                      </Paper>
-                    </Grid>
-                  </Grid>
-                  <div className={classes.button}>
-                    <RadioButtonUncheckedIcon />
-                    <ChevronRightIcon className={classes.arrowRigt} />
-                  </div>
-                </Grid>
-              </div>
-            </Paper>
+          <Event
+            stylesGlobal={`${classes.backgroundGlobal} ${classes.stylesEvent}`}
+          />
+
+          <Grid item md={8}>
+            <Grid container spacing={3}>
+              {posts.map(({ node }) => (
+                <PostPreView
+                  background={`url(${node.photo.file.url})`}
+                  title={node.title}
+                  content={node.content.json}
+                  slug={node.slug}
+                />
+              ))}
+            </Grid>
           </Grid>
 
-          <Grid container item spacing={3} direction="row-reverse">
-            <Grid item md={4}>
-              <Grid container spacing={3}>
-                <Grid item xs={12}>
-                  <Paper
-                    elevation={3}
-                    className={classes.backgroundGlobal}
-                  >
-                    <h2 className={`${classes.subTitle}`}>
-                      Latest Posts
-                    </h2>
-                    <Grid container spacing={3}>
-                      {posts.map(({ node }) => (
-                        <Grid item xs={12}>
-                          <Link
-                            className={classes.link}
-                            to={`/news/${node.slug}`}
+          <Grid item md={4}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper
+                  elevation={3}
+                  className={classes.backgroundGlobal}
+                >
+                  <h2 className={`${classes.subTitle}`}>
+                    Latest Posts
+                  </h2>
+                  <Grid container spacing={3}>
+                    {posts.map(({ node }) => (
+                      <Grid item xs={12}>
+                        <Link
+                          className={classes.link}
+                          to={`/news/${node.slug}`}
+                        >
+                          <Paper
+                            elevation={0}
+                            className={classes.backgroundListPost}
                           >
-                            <Paper
-                              elevation={0}
-                              className={classes.backgroundListPost}
-                            >
-                              <h4 className={classes.titleListPost}>
-                                {node.title}
-                              </h4>
-                            </Paper>
-                          </Link>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12}>
-                  <Paper
-                    elevation={3}
-                    className={classes.backgroundGlobal}
-                  >
-                    <h2 className={`${classes.subTitle}`}>
-                      Recommended Posts
-                    </h2>
-                    <Grid container spacing={3}>
-                      {posts.map(({ node }) => (
-                        <Grid item xs={12}>
-                          <Link
-                            className={classes.link}
-                            to={`/news/${node.slug}`}
-                          >
-                            <Paper
-                              elevation={0}
-                              className={classes.backgroundListPost}
-                            >
-                              <h4 className={classes.titleListPost}>
-                                {node.title}
-                              </h4>
-                            </Paper>
-                          </Link>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Paper>
-                </Grid>
+                            <h4 className={classes.titleListPost}>
+                              {node.title}
+                            </h4>
+                          </Paper>
+                        </Link>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Paper>
               </Grid>
-            </Grid>
-            <Grid item md={8}>
-              <Grid container spacing={3}>
-                {posts.map(({ node }) => (
-                  <PostPreView
-                    background={`url(${node.photo.file.url})`}
-                    title={node.title}
-                    content={node.content.json}
-                    slug={node.slug}
-                  />
-                ))}
+              <Grid item xs={12}>
+                <Paper
+                  elevation={3}
+                  className={classes.backgroundGlobal}
+                >
+                  <h2 className={`${classes.subTitle}`}>
+                    Recommended Posts
+                  </h2>
+                  <Grid container spacing={3}>
+                    {posts.map(({ node }) => (
+                      <Grid item xs={12}>
+                        <Link
+                          className={classes.link}
+                          to={`/news/${node.slug}`}
+                        >
+                          <Paper
+                            elevation={0}
+                            className={classes.backgroundListPost}
+                          >
+                            <h4 className={classes.titleListPost}>
+                              {node.title}
+                            </h4>
+                          </Paper>
+                        </Link>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Paper>
               </Grid>
             </Grid>
           </Grid>
