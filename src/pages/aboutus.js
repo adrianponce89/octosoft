@@ -11,9 +11,8 @@ import { Grid } from '@material-ui/core';
 const styles = makeStyles({
   headTitle: {
     fontSize: 40,
-    '@media (max-width: 576px)': {
-      fontSize: '10vw',
-    },
+    textAlign: 'center',
+    lineHeight: 38,
   },
   headSubTitle: {
     fontSize: 19,
