@@ -10,13 +10,23 @@ const styles = makeStyles({
   picItems: {
     backgroundImage: (props) => props.background,
     backgroundSize: 'cover',
+    backgroundPosition: 'center',
     paddingBottom: '33.333%',
-    '@media (max-width: 956px)': {
+    '@media (max-width: 976px)': {
       paddingBottom: '50%',
+    },
+    '@media (max-width: 606px)': {
+      paddingBottom: '100%',
+      margin: '15px 0',
     },
   },
   titleItem: { margin: '0 15px' },
-  justifyText: { textAlign: (props) => props.textAlign || 'right' },
+  justifyText: {
+    textAlign: (props) => props.textAlign || 'right',
+    '@media (max-width: 606px)': {
+      textAlign: (props) => props.textAlign || 'left',
+    },
+  },
   containerItems: {
     padding: 15,
     flexDirection: (props) => props.flexDirection || 'row-reverse',
@@ -28,8 +38,14 @@ const BorderlessItems = (props) => {
   return (
     <a className={classes.root} href={props.link}>
       <Grid container className={classes.containerItems}>
-        <Grid item md={4} xs={6} className={classes.picItems}></Grid>
-        <Grid item md={4} xs={6}>
+        <Grid
+          item
+          md={4}
+          sm={6}
+          xs={12}
+          className={classes.picItems}
+        ></Grid>
+        <Grid item md={4} sm={6} xs={12}>
           <h3
             className={`${classes.titleItem} ${classes.justifyText}`}
           >
