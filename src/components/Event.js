@@ -42,8 +42,6 @@ const Event = ({ stylesGlobal }) => {
   const classes = styles({ stylesGlobal });
   const [activeStep, setActiveStep] = useState(0);
 
-  const maxSteps = DummyData.length;
-
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
@@ -55,7 +53,10 @@ const Event = ({ stylesGlobal }) => {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
-
+  var aux = [];
+  for (let index = 0; index < DummyData.length / 3; index++) {
+    aux[index] = DummyData.slice(index * 3, index * 3 + 3);
+  }
   return (
     <Grid item xs={12} className={classes.root}>
       <Paper elevation={3} className={stylesGlobal}>
@@ -70,6 +71,7 @@ const Event = ({ stylesGlobal }) => {
             justify="space-around"
           >
             <IconButton
+              color="inherit"
               className={classes.button}
               onClick={handleBack}
               disabled={activeStep === 0}
@@ -77,27 +79,30 @@ const Event = ({ stylesGlobal }) => {
               <RadioButtonUncheckedIcon />
               <ChevronLeftIcon className={classes.arrowLeft} />
             </IconButton>
-            <Grid
-              container
-              spacing={4}
-              direction="row"
-              alignItems="center"
-              justify="center"
-              md={10}
-            >
+            <Grid md={10}>
               <SwipeableViews
                 index={activeStep}
                 onChangeIndex={handleStepChange}
                 enableMouseEvents
               >
-                {DummyData.map((step, i) => (
-                  <Grid item xs={12} md={4}>
-                    <Paper
-                      elevation={0}
-                      className={classes.cardCarousel}
-                    >
-                      {step.name}
-                    </Paper>
+                {aux.map((step) => (
+                  <Grid
+                    container
+                    direction="row"
+                    alignItems="center"
+                    justify="center"
+                    spacing={2}
+                  >
+                    {step.map((event) => (
+                      <Grid item xs={12} md={4}>
+                        <Paper
+                          elevation={0}
+                          className={classes.cardCarousel}
+                        >
+                          {event.name}
+                        </Paper>
+                      </Grid>
+                    ))}
                   </Grid>
                 ))}
               </SwipeableViews>
@@ -106,6 +111,7 @@ const Event = ({ stylesGlobal }) => {
               color="inherit"
               className={classes.button}
               onClick={handleNext}
+              disabled={activeStep === aux.length - 1}
             >
               <RadioButtonUncheckedIcon />
               <ChevronRightIcon className={classes.arrowRigt} />
