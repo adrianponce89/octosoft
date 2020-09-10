@@ -7,6 +7,8 @@ import OctoLogo from '../assets/logo.svg';
 const styles = makeStyles({
   headTitle: {
     fontSize: 40,
+    textAlign: 'center',
+    lineHeight: '38px',
   },
   headSubTitle: {
     fontSize: 19,

@@ -12,7 +12,6 @@ const styles = makeStyles({
   headTitle: {
     fontSize: 40,
     textAlign: 'center',
-    lineHeight: 38,
   },
   headSubTitle: {
     fontSize: 19,
