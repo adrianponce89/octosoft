@@ -16,10 +16,11 @@ const styles = makeStyles({
     padding: 0,
   },
   cardCarousel: {
-    padding: 10,
+    padding: 7,
     background: '#ECECEC',
     height: 80,
   },
+  containCards: { overflow: 'hidden' },
   button: {
     cursor: 'pointer',
     position: 'relative',
@@ -58,7 +59,7 @@ const Event = ({ stylesGlobal }) => {
     aux[index] = DummyData.slice(index * 3, index * 3 + 3);
   }
   return (
-    <Grid item xs={12} className={classes.root}>
+    <Grid item className={classes.root}>
       <Paper elevation={3} className={stylesGlobal}>
         <div className={classes.containTitle}>
           <p className={classes.titleCarousel}>Upcoming Event</p>
@@ -69,6 +70,7 @@ const Event = ({ stylesGlobal }) => {
             direction="row"
             alignItems="center"
             justify="space-around"
+            spacing="1"
           >
             <IconButton
               color="inherit"
@@ -79,7 +81,7 @@ const Event = ({ stylesGlobal }) => {
               <RadioButtonUncheckedIcon />
               <ChevronLeftIcon className={classes.arrowLeft} />
             </IconButton>
-            <Grid md={10}>
+            <Grid item md={10}>
               <SwipeableViews
                 index={activeStep}
                 onChangeIndex={handleStepChange}
@@ -87,11 +89,13 @@ const Event = ({ stylesGlobal }) => {
               >
                 {aux.map((step) => (
                   <Grid
+                    xs={12}
                     container
                     direction="row"
                     alignItems="center"
                     justify="center"
                     spacing={2}
+                    className={classes.containCards}
                   >
                     {step.map((event) => (
                       <Grid item xs={12} md={4}>
