@@ -228,5 +228,54 @@ const article = [
       'Nisi labore id aliquip elit culpa. Ad nulla id fugiat nulla in fugiat quis sit. Dolor sit commodo laborum magna. Cillum ut incididunt in velit nostrud Esse ad anim ipsum culpa do in in velit sunt qui eiusmod sunt ad reprehenderit. Commodo irure cupidatat consequat mollit fugiat duis veniam esse aute eu sint Lorem dolore. Duis nisi enim nulla quis aliquip id duis.In tempor esse irure et et quis. Commodo excepteur eiusmod nulla eiusmod velit exercitation veniam exercitation ut nostrud laborum eiusmod. Fugiat nulla veniam nostrud amet quis pariatur excepteur sit anim excepteur velit adipisicing esse. Ad nulla ut tempor velit incididunt nisi dolor aute pariatur do mollit. Cupidatat excepteur adipisicing consectetur eu sint anim veniam id non. Officia tempor aliqua proident duis voluptate. Quis veniam magna commodo exercitation quis.',
   },
 ];
+const dataEvent = [
+  {
+    link: 'wwww.google.com',
+    name: 'Conterence Room Setup Or Upgrade',
+    date: '21-12-1985',
+  },
+  {
+    link: 'wwww.google.com',
+    name: 'Conference Room Setups And Support',
+    date: '21-12-1985',
+  },
+  {
+    link: 'wwww.google.com',
+    name: 'iOS And Android Development',
+    date: '21-12-1985',
+  },
+  {
+    link: 'wwww.google.com',
+    name: 'Data Backup And Recovery',
+    date: '21-12-1985',
+  },
+  {
+    link: 'wwww.google.com',
+    name: 'Social Media Campaings',
+    date: '21-12-1985',
+  },
+  {
+    link: 'wwww.google.com',
+    name: 'VoIP And Unfied Communicarions Support',
+    date: '21-12-1985',
+  },
+  {
+    link: 'wwww.google.com',
+    name: 'Ads Creation & Solutions',
+    date: '21-12-1985',
+  },
+  {
+    link: 'wwww.google.com',
+    name: 'Content Creation',
+    date: '21-12-1985',
+  },
+];
 
-module.exports = { data, dataAbout, post, borderlessItem, article };
+module.exports = {
+  data,
+  dataAbout,
+  post,
+  borderlessItem,
+  article,
+  dataEvent,
+};
