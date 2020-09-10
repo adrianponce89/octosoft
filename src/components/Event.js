@@ -24,8 +24,9 @@ const styles = makeStyles({
   button: {
     cursor: 'pointer',
     position: 'relative',
-    margin: 0,
+    margin: 5,
     padding: 0,
+    '@media (max-width: 760px)': { order: '1' },
   },
   arrowLeft: {
     position: 'absolute',
@@ -36,6 +37,12 @@ const styles = makeStyles({
     position: 'absolute',
     top: 'auto',
     right: 'auto',
+  },
+  containEvent: {
+    '@media (max-width: 876px)': {
+      justifyContent: 'flex-end',
+      flexWrap: 'wrap-reverse',
+    },
   },
 });
 
@@ -71,6 +78,7 @@ const Event = ({ stylesGlobal }) => {
             alignItems="center"
             justify="space-around"
             spacing="1"
+            className={classes.containEvent}
           >
             <IconButton
               color="inherit"
@@ -81,7 +89,7 @@ const Event = ({ stylesGlobal }) => {
               <RadioButtonUncheckedIcon />
               <ChevronLeftIcon className={classes.arrowLeft} />
             </IconButton>
-            <Grid item md={10}>
+            <Grid item xs={12} sm={10}>
               <SwipeableViews
                 index={activeStep}
                 onChangeIndex={handleStepChange}
@@ -98,7 +106,7 @@ const Event = ({ stylesGlobal }) => {
                     className={classes.containCards}
                   >
                     {step.map((event) => (
-                      <Grid item xs={12} md={4}>
+                      <Grid item xs={12} sm={4}>
                         <Paper
                           elevation={0}
                           className={classes.cardCarousel}
