@@ -8,7 +8,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
 import PostPreView from '../components/PostPreView';
 import Container from '../components/Container';
-import Event from '../components/Event';
+import Events from '../components/Events';
 import BackgroundImage from '../assets/Background.png';
 
 const styles = makeStyles({
@@ -106,7 +106,7 @@ const Blogs = (props) => {
             </Paper>
           </Grid>
 
-          <Event
+          <Events
             stylesGlobal={`${classes.backgroundGlobal} ${classes.stylesEvent}`}
           />
 
