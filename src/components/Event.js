@@ -6,7 +6,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import SwipeableViews from 'react-swipeable-views';
 
-import { dataAbout as DummyData } from '../assets/DummyData';
+import { dataEvent as DummyData } from '../assets/DummyData';
 
 const styles = makeStyles({
   root: { position: 'relative' },
@@ -19,6 +19,7 @@ const styles = makeStyles({
     padding: 7,
     background: '#ECECEC',
     height: 80,
+    cursor: 'pointer',
   },
   containCards: { overflow: 'hidden' },
   button: {
@@ -44,6 +45,7 @@ const styles = makeStyles({
       flexWrap: 'wrap-reverse',
     },
   },
+  titleEvent: { textAlign: 'center' },
 });
 
 const Event = ({ stylesGlobal }) => {
@@ -111,7 +113,23 @@ const Event = ({ stylesGlobal }) => {
                           elevation={0}
                           className={classes.cardCarousel}
                         >
-                          {event.name}
+                          <Grid
+                            container
+                            direction="column"
+                            justify="center"
+                            spacing={2}
+                          >
+                            <Grid item sm={6}>
+                              {event.date}
+                            </Grid>
+                            <Grid
+                              item
+                              xs={12}
+                              className={classes.titleEvent}
+                            >
+                              {event.name}
+                            </Grid>
+                          </Grid>
                         </Paper>
                       </Grid>
                     ))}
