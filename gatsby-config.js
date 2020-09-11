@@ -24,11 +24,20 @@ module.exports = {
     title: 'Octosoft',
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-preload-fonts',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'Octosoft Professionals',
+        short_name: 'Octosoft',
+        icon: 'src/assets/favicon.ico',
+      },
     },
   ],
 };

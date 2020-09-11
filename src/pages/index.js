@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import useTheme from '@material-ui/core/styles/useTheme';
 import HeroImage from '../assets/header_cropped.png';
-import NavBar from '../components/NavBar';
 
 const useStyles = makeStyles((theme) => ({
   expander: {
@@ -38,7 +37,6 @@ export default () => {
 
   return (
     <div>
-      <NavBar />
       <div className={classes.container}>
         <div className={classes.expander}>
           <a href="#work">

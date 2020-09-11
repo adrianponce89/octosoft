@@ -1,6 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core';
+import { Helmet } from 'react-helmet';
 import NavBar from './NavBar';
 
 const theme = createMuiTheme({
@@ -28,6 +29,10 @@ const LocaleContext = React.createContext();
 
 const Layout = ({ children, pageContext: { locale } }) => (
   <LocaleContext.Provider value={{ locale }}>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Octosoft Professionals</title>
+    </Helmet>
     <ThemeProvider theme={theme}>
       <NavBar />
       <main>{children}</main>
