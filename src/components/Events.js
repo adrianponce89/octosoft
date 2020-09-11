@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, IconButton } from '@material-ui/core';
+import { Link } from 'gatsby';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import SwipeableViews from 'react-swipeable-views';
-
-import { dataEvent as DummyData } from '../assets/DummyData';
 
 const styles = makeStyles({
   root: { position: 'relative' },
@@ -46,9 +45,13 @@ const styles = makeStyles({
     },
   },
   titleEvent: { textAlign: 'center' },
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+  },
 });
 
-const Event = ({ stylesGlobal }) => {
+const Event = ({ stylesGlobal, events }) => {
   const classes = styles({ stylesGlobal });
   const [activeStep, setActiveStep] = useState(0);
 
@@ -63,10 +66,13 @@ const Event = ({ stylesGlobal }) => {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
-  var aux = [];
-  for (let index = 0; index < DummyData.length / 3; index++) {
-    aux[index] = DummyData.slice(index * 3, index * 3 + 3);
+
+  let aux = [];
+
+  for (let index = 0; index < events.length / 3; index++) {
+    aux[index] = events.slice(index * 3, index * 3 + 3);
   }
+
   return (
     <Grid item className={classes.root}>
       <Paper elevation={3} className={stylesGlobal}>
@@ -79,7 +85,7 @@ const Event = ({ stylesGlobal }) => {
             direction="row"
             alignItems="center"
             justify="space-around"
-            spacing="1"
+            spacing={1}
             className={classes.containEvent}
           >
             <IconButton
@@ -97,7 +103,7 @@ const Event = ({ stylesGlobal }) => {
                 onChangeIndex={handleStepChange}
                 enableMouseEvents
               >
-                {aux.map((step) => (
+                {aux.map((step, i) => (
                   <Grid
                     xs={12}
                     container
@@ -106,30 +112,36 @@ const Event = ({ stylesGlobal }) => {
                     justify="center"
                     spacing={2}
                     className={classes.containCards}
+                    key={i}
                   >
                     {step.map((event) => (
-                      <Grid item xs={12} sm={4}>
+                      <Grid item xs={12} sm={4} key={event.node.id}>
                         <Paper
                           elevation={0}
                           className={classes.cardCarousel}
                         >
-                          <Grid
-                            container
-                            direction="column"
-                            justify="center"
-                            spacing={2}
+                          <Link
+                            className={classes.link}
+                            to={event.node.link}
                           >
-                            <Grid item sm={6}>
-                              {event.date}
-                            </Grid>
                             <Grid
-                              item
-                              xs={12}
-                              className={classes.titleEvent}
+                              container
+                              direction="column"
+                              justify="center"
+                              spacing={2}
                             >
-                              {event.name}
+                              <Grid item sm={6}>
+                                {event.node.date}
+                              </Grid>
+                              <Grid
+                                item
+                                xs={12}
+                                className={classes.titleEvent}
+                              >
+                                {event.node.title}
+                              </Grid>
                             </Grid>
-                          </Grid>
+                          </Link>
                         </Paper>
                       </Grid>
                     ))}

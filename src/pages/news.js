@@ -48,6 +48,7 @@ const Blogs = (props) => {
   const [search, setSearch] = useState();
 
   const posts = get(props, 'data.allContentfulPost.edges');
+  const events = get(props, 'data.allContentfulEvents.edges');
 
   const navigate = useNavigate();
 
@@ -108,6 +109,7 @@ const Blogs = (props) => {
 
           <Events
             stylesGlobal={`${classes.backgroundGlobal} ${classes.stylesEvent}`}
+            events={events}
           />
 
           <Grid item md={8}>
@@ -209,6 +211,16 @@ export const pageQuery = graphql`
           content {
             json
           }
+        }
+      }
+    }
+    allContentfulEvents {
+      edges {
+        node {
+          id
+          link
+          title
+          date(formatString: "")
         }
       }
     }
