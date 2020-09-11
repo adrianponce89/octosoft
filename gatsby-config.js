@@ -24,6 +24,7 @@ module.exports = {
     title: 'Octosoft',
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-react-svg',
     'gatsby-plugin-preload-fonts',
     {
