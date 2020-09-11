@@ -31,5 +31,13 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'Octosoft Professionals',
+        short_name: 'Octosoft',
+        icon: 'src/assets/favicon.ico',
+      },
+    },
   ],
 };
