@@ -3,22 +3,29 @@ import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import BackgroundBanner from '../assets/BackgroundBanner.png';
+import BackgroundBanner from '../assets/BannerFinal.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import BorderlessItems from '../components/BorderlessItems';
 
 const styles = makeStyles({
-  root: {},
-  backgroundGlobal: {
-    background: '#fff',
-    height: '100%',
+  root: {
+    width: '100%',
+    background:
+      'linear-gradient(180deg, rgba(9,90,121,1) 0%, rgba(36,234,237,1) 48%, rgba(255,187,39,0.9688993395209646) 85%, rgba(255,187,39,1) 89%)',
   },
   backgroundBaner: {
     background: `url(${BackgroundBanner})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     paddingBottom: '30%',
+  },
+  containerBorderlessItems: {
+    overflow: 'hidden',
+  },
+  containerItems: {
+    margin: 25,
+    overflow: 'hidden',
   },
   titleItems: { fontSize: '18px' },
 });
@@ -30,36 +37,39 @@ const BorderlessIdentities = (props) => {
     props,
     'data.allContentfulBorderlessIdentitiesItem.edges',
   );
-
   return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      transparent={'none'}
+    <Grid
+      container
+      xs={12}
+      justify="center"
+      alignItems="center"
+      className={classes.root}
     >
-      <div className={classes.root}>
-        <Grid item md={12} className={classes.backgroundGlobal}>
-          <Grid item md={12}>
-            <div className={classes.backgroundBaner}></div>
-          </Grid>
-          <Grid container justify="center" md={12}>
-            <h1 className={classes.titleItems}>
-              What is Borderless Identities?
-            </h1>
-          </Grid>
-          <Grid item>
-            {borderlessItems.map(({ node }, i) => (
+      <Container transparent={'none'}>
+        <Grid
+          item
+          xs={12}
+          className={`${classes.backgroundBaner} ${classes.containerItems} `}
+        ></Grid>
+        <Grid
+          container
+          xs={12}
+          className={classes.containerBorderlessItems}
+        >
+          {borderlessItems.map(({ node }, i) => (
+            <Grid item className={classes.containerItems}>
               <BorderlessItems
                 background={`url(${node.photo.file.url})`}
+                title={node.title}
                 description={node.description.description}
                 link={node.link}
-                textAlign={i % 2 ? '' : 'left'}
                 flexDirection={i % 2 ? '' : 'row'}
               />
-            ))}
-          </Grid>
+            </Grid>
+          ))}
         </Grid>
-      </div>
-    </Container>
+      </Container>
+    </Grid>
   );
 };
 
@@ -70,6 +80,7 @@ export const pageQuery = graphql`
     allContentfulBorderlessIdentitiesItem {
       edges {
         node {
+          title
           link
           id
           photo {
