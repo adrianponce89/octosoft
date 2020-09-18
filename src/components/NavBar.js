@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     color: 'black',
-    background: (props) => props.background || '#fff',
+    background: (props) => props.background,
   },
   links: {
     display: 'flex',
@@ -49,18 +49,19 @@ const useStyles = makeStyles((theme) => ({
   linkText: {
     fontWeight: 'bold',
     fontSize: '14px',
-    color: (props) => props.color || 'black',
+    color: (props) => props.color,
+    textShadow: (props) => props.textShadow,
   },
   appbar: {
     height: 80,
     background: 'none',
-    boxShadow: (props) => props.boxShadow || '2',
+    boxShadow: (props) => props.boxShadow,
   },
 }));
 
 const HideOnScroll = (props) => {
-  const { children } = props;
-  const trigger = useScrollTrigger();
+  const { children, disableHysteresis } = props;
+  const trigger = useScrollTrigger({ disableHysteresis });
 
   return (
     <Slide appear={false} direction="down" in={!trigger}>
