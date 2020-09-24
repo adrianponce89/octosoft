@@ -8,6 +8,7 @@ import HeroImage from '../assets/header_cropped.png';
 import BannerImage from '../assets/BannerFinal.png';
 import BackgroundImage from '../assets/Background.png';
 import OctoLogo from '../assets/logoHome.svg';
+import HomeItems from '../components/HomeItems';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
@@ -54,22 +55,17 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 560px)': { width: '85vw' },
     paddingBottom: '15vh',
   },
-  textCard: {
+  textHeadCard: {
     color: '#fff',
     fontFamily: 'Lato',
     fontSize: 20,
     margin: 15,
   },
-  cardBody: {
-    paddingBottom: '10vh',
-    borderRadius: 'none',
-  },
   containerCard: {
-    padding: '5vh',
-    display: 'flex',
+    padding: '3vh',
     justifyContent: 'center',
+    width: '100%',
   },
-  titleCard: { fontFamily: 'Lato' },
   separatorBanner: {
     backgroundImage: `url(${BannerImage})`,
     backgroundPosition: 'center',
@@ -117,7 +113,7 @@ export default () => {
               <Grid item xs={9} className={classes.containerHeadCard}>
                 <Typography
                   variant="body1"
-                  className={classes.textCard}
+                  className={classes.textHeadCard}
                 >
                   {'Professional solutions in every field '}
                 </Typography>
@@ -146,38 +142,21 @@ export default () => {
             container
             direction="column"
             justify="center"
-            xs={9}
-            spacing={2}
+            alignItems="center"
+            spacing={8}
           >
-            <Grid item xs={12}>
-              <Paper
-                square
-                elevation={2}
-                className={classes.cardBody}
-              >
-                <Grid container xs={12}>
-                  <Grid item xs={4}>
-                    imagen
-                  </Grid>
-                  <Grid
-                    item
-                    container
-                    direction="column"
-                    xs={8}
-                    className={classes.containerCard}
-                  >
-                    <Grid item xs={12}>
-                      <Typography variant="h5">titulo</Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      {
-                        'Veniam nisi elit deserunt non incididunt cillum reprehenderit sit ullamco incididunt do dolor. Irure sint exercitation amet esse nisi velit deserunt aliquip ea eu. Fugiat mollit ex qui deserunt voluptate id incididunt fugiat duis sunt do laboris id. Enim amet ea adipisicing dolor in amet eiusmod. Aliqua ullamco occaecat consequat officia culpa velit minim laborum.'
-                      }
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </Grid>
+            <HomeItems
+              backgroundImage={`url(${BannerImage})`}
+              title={'hola'}
+              description={'h.'}
+            />
+
+            <HomeItems
+              backgroundImage={`url(${BannerImage})`}
+              title={'hola'}
+              description={'hehh.'}
+            />
+
             <div className={classes.separatorBanner}></div>
           </Grid>
         </Container>
