@@ -33,14 +33,16 @@ const HomeItems = (props) => {
           <Grid
             item
             container
-            xs={4}
+            xs={12}
+            sm={4}
             className={classes.backgroundCardImage}
           ></Grid>
           <Grid
             item
             container
             direction="column"
-            xs={8}
+            xs={12}
+            sm={8}
             className={classes.containerCard}
           >
             <Grid item xs={12}>
