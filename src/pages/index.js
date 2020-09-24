@@ -178,9 +178,9 @@ export default () => {
                 </Grid>
               </Paper>
             </Grid>
+            <div className={classes.separatorBanner}></div>
           </Grid>
         </Container>
-        <div className={classes.separatorBanner}></div>
       </section>
     </>
   );
