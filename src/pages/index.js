@@ -1,5 +1,7 @@
 import React from 'react';
-import { Typography, Grid, Paper } from '@material-ui/core';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
+import { Typography, Grid } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -72,14 +74,26 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     paddingBottom: '45vh',
-    width: '100%',
+    width: '100vw',
     filter: 'blur(4px)',
+    position: 'absolute',
+    left: 0,
+  },
+  containerBanner: {
+    height: '45vh',
+    width: '100%',
   },
 }));
 
-export default () => {
+export default (props) => {
   const classes = useStyles();
   const theme = useTheme();
+  const homeItems = get(props, 'data.allContentfulHomeItem.edges');
+  const homeBorderlessItems = get(
+    props,
+    'data.allContentfulHomeBorderlessIdentities.edges',
+  );
+
   return (
     <>
       <div className={classes.backgroundHead}>
@@ -145,22 +159,68 @@ export default () => {
             alignItems="center"
             spacing={8}
           >
-            <HomeItems
-              backgroundImage={`url(${BannerImage})`}
-              title={'hola'}
-              description={'h.'}
-            />
-
-            <HomeItems
-              backgroundImage={`url(${BannerImage})`}
-              title={'hola'}
-              description={'hehh.'}
-            />
-
-            <div className={classes.separatorBanner}></div>
+            {homeItems.map(({ node }) => (
+              <HomeItems
+                backgroundImage={`url(${node.image.file.url})`}
+                title={node.title}
+                description={node.description.description}
+              />
+            ))}
+            <div className={classes.containerBanner}>
+              <div className={classes.separatorBanner}></div>
+            </div>
+            {homeBorderlessItems.map(({ node }) => (
+              <HomeItems
+                backgroundImage={`url(${node.image.file.url})`}
+                title={node.title}
+                description={node.description.description}
+              />
+            ))}
+            <div className={classes.containerBanner}>
+              <div className={classes.separatorBanner}></div>
+            </div>
           </Grid>
         </Container>
       </section>
     </>
   );
 };
+
+export const pageQuery = graphql`
+  query HomeQuery {
+    allContentfulHomeItem {
+      edges {
+        node {
+          id
+          link
+          image {
+            file {
+              url
+            }
+          }
+          title
+          description {
+            description
+          }
+        }
+      }
+    }
+    allContentfulHomeBorderlessIdentities {
+      edges {
+        node {
+          id
+          title
+          description {
+            description
+          }
+          image {
+            file {
+              url
+            }
+          }
+          link
+        }
+      }
+    }
+  }
+`;
