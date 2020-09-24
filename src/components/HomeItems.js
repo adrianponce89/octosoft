@@ -3,9 +3,11 @@ import { Typography, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles({
+  root: { width: '100%' },
   cardBody: {
-    paddingBottom: '10vh',
     borderRadius: 'none',
+    margin: '5px 0',
+    width: '100%',
   },
   containerCard: {
     padding: '5vh',
@@ -13,17 +15,27 @@ const styles = makeStyles({
     justifyContent: 'center',
   },
   titleCard: { fontFamily: 'Lato' },
+  backgroundCardImage: {
+    backgroundImage: (props) => props.backgroundImage || '#ECEC',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    paddingBottom: '40vh',
+  },
 });
 
 const HomeItems = (props) => {
-  const classes = styles();
+  const classes = styles(props);
   return (
-    <Grid item xs={12}>
+    <Grid item className={classes.root} xs={10}>
       <Paper square elevation={2} className={classes.cardBody}>
-        <Grid container xs={12}>
-          <Grid item xs={4}>
-            imagen
-          </Grid>
+        <Grid container direction="row" alignItems="center" xs={12}>
+          <Grid
+            item
+            container
+            xs={4}
+            className={classes.backgroundCardImage}
+          ></Grid>
           <Grid
             item
             container
@@ -33,13 +45,11 @@ const HomeItems = (props) => {
           >
             <Grid item xs={12}>
               <Typography variant="h5" className={classes.titleCard}>
-                titulo
+                {props.title}
               </Typography>
             </Grid>
             <Grid item xs={12}>
-              {
-                'Veniam nisi elit deserunt non incididunt cillum reprehenderit sit ullamco incididunt do dolor. Irure sint exercitation amet esse nisi velit deserunt aliquip ea eu. Fugiat mollit ex qui deserunt voluptate id incididunt fugiat duis sunt do laboris id. Enim amet ea adipisicing dolor in amet eiusmod. Aliqua ullamco occaecat consequat officia culpa velit minim laborum.'
-              }
+              {props.description}
             </Grid>
           </Grid>
         </Grid>

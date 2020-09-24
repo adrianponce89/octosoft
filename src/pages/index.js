@@ -62,9 +62,9 @@ const useStyles = makeStyles((theme) => ({
     margin: 15,
   },
   containerCard: {
-    padding: '5vh',
-    display: 'flex',
+    padding: '3vh',
     justifyContent: 'center',
+    width: '100%',
   },
   separatorBanner: {
     backgroundImage: `url(${BannerImage})`,
@@ -142,10 +142,21 @@ export default () => {
             container
             direction="column"
             justify="center"
-            xs={9}
-            spacing={2}
+            alignItems="center"
+            spacing={8}
           >
-            <HomeItems />
+            <HomeItems
+              backgroundImage={`url(${BannerImage})`}
+              title={'hola'}
+              description={'h.'}
+            />
+
+            <HomeItems
+              backgroundImage={`url(${BannerImage})`}
+              title={'hola'}
+              description={'hehh.'}
+            />
+
             <div className={classes.separatorBanner}></div>
           </Grid>
         </Container>
