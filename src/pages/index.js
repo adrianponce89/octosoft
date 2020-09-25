@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid, Paper, Button } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -83,6 +83,41 @@ const useStyles = makeStyles((theme) => ({
     height: '45vh',
     width: '100%',
   },
+  relativContainer: { position: 'relative' },
+  sizeContainer: {
+    paddingBottom: '200%',
+    margin: 0,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  containerPlan: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  backgroundImagePlan: {
+    backgroundImage: `url(${BannerImage})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    paddingBottom: '65%',
+  },
+  titlePlan: { fontFamily: 'Lato', marginTop: '0.5em' },
+  descriptionPlan: {
+    flex: '1',
+    overflow: 'auto',
+  },
+  montoPlan: {
+    fontFamily: 'Lato',
+    backgroundColor: '#ececec',
+    padding: '10px 25px',
+    borderRadius: '45.705px',
+  },
+  buttonPlan: { fontSize: 20, fontFamily: 'Lato', margin: '20px 0' },
 }));
 
 export default (props) => {
@@ -179,6 +214,57 @@ export default (props) => {
             <div className={classes.containerBanner}>
               <div className={classes.separatorBanner}></div>
             </div>
+            <Grid item container xs={12} justify="center">
+              <Grid
+                item
+                xs={10}
+                sm={4}
+                className={classes.relativContainer}
+              >
+                <dir className={classes.sizeContainer} />
+                <Paper square className={classes.containerPlan}>
+                  <div className={classes.backgroundImagePlan}></div>
+                  <Grid
+                    container
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
+                    xs={12}
+                  >
+                    <Grid item>
+                      <Typography
+                        variant="h4"
+                        className={classes.titlePlan}
+                      >
+                        {'Plan 1'}
+                      </Typography>
+                    </Grid>
+                    <Grid item className={classes.descriptionPlan}>
+                      {'descripcion'}
+                    </Grid>
+                    <Grid item>
+                      <Typography
+                        variant="h5"
+                        className={classes.montoPlan}
+                      >
+                        {'-$1600 USD/mo'}
+                      </Typography>
+                    </Grid>
+                    <Grid item>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        disableElevation
+                        size="large"
+                        className={classes.buttonPlan}
+                      >
+                        {'Contact Us'}
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Grid>
           </Grid>
         </Container>
       </section>
