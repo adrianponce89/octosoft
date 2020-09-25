@@ -83,17 +83,34 @@ const useStyles = makeStyles((theme) => ({
     height: '45vh',
     width: '100%',
   },
-  containerPlan: { height: '85vh' },
+  relativContainer: { position: 'relative' },
+  sizeContainer: {
+    paddingBottom: '200%',
+    margin: 0,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  containerPlan: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0,
+    display: 'flex',
+    flexDirection: 'column',
+  },
   backgroundImagePlan: {
-    // backgroundImage: (props) => props.backgroundImage || '#ECEC',
     backgroundImage: `url(${BannerImage})`,
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    paddingBottom: '30vh',
+    paddingBottom: '65%',
   },
-  titlePlan: { fontFamily: 'Lato' },
-  descriptionPlan: { height: '25vh', overflow: 'auto' },
+  titlePlan: { fontFamily: 'Lato', marginTop: '0.5em' },
+  descriptionPlan: {
+    flex: '1',
+    overflow: 'auto',
+  },
   montoPlan: {
     fontFamily: 'Lato',
     backgroundColor: '#ececec',
@@ -197,13 +214,16 @@ export default (props) => {
             <div className={classes.containerBanner}>
               <div className={classes.separatorBanner}></div>
             </div>
-            <Grid item container xs={12}>
-              <Grid item xs={12} sm={4}>
+            <Grid item container xs={12} justify="center">
+              <Grid
+                item
+                xs={10}
+                sm={4}
+                className={classes.relativContainer}
+              >
+                <dir className={classes.sizeContainer} />
                 <Paper square className={classes.containerPlan}>
-                  <Grid
-                    item
-                    className={classes.backgroundImagePlan}
-                  ></Grid>
+                  <div className={classes.backgroundImagePlan}></div>
                   <Grid
                     container
                     direction="column"
@@ -222,7 +242,7 @@ export default (props) => {
                     <Grid item className={classes.descriptionPlan}>
                       {'descripcion'}
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item>
                       <Typography
                         variant="h5"
                         className={classes.montoPlan}
