@@ -11,6 +11,7 @@ import BannerImage from '../assets/BannerFinal.png';
 import BackgroundImage from '../assets/Background.png';
 import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
+import Plan from '../components/Plans';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
@@ -83,41 +84,7 @@ const useStyles = makeStyles((theme) => ({
     height: '45vh',
     width: '100%',
   },
-  relativContainer: { position: 'relative' },
-  sizeContainer: {
-    paddingBottom: '200%',
-    margin: 0,
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  containerPlan: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    top: 0,
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  backgroundImagePlan: {
-    backgroundImage: `url(${BannerImage})`,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    paddingBottom: '65%',
-  },
-  titlePlan: { fontFamily: 'Lato', marginTop: '0.5em' },
-  descriptionPlan: {
-    flex: '1',
-    overflow: 'auto',
-  },
-  montoPlan: {
-    fontFamily: 'Lato',
-    backgroundColor: '#ececec',
-    padding: '10px 25px',
-    borderRadius: '45.705px',
-  },
-  buttonPlan: { fontSize: 20, fontFamily: 'Lato', margin: '20px 0' },
+  containerPlans: { paddingTop: '2em' },
 }));
 
 export default (props) => {
@@ -128,6 +95,7 @@ export default (props) => {
     props,
     'data.allContentfulHomeBorderlessIdentities.edges',
   );
+  const plans = get(props, 'data.allContentfulPlan.edges');
 
   return (
     <>
@@ -199,6 +167,7 @@ export default (props) => {
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
+                link={node.link}
               />
             ))}
             <div className={classes.containerBanner}>
@@ -209,61 +178,29 @@ export default (props) => {
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
+                link={node.link}
               />
             ))}
             <div className={classes.containerBanner}>
               <div className={classes.separatorBanner}></div>
             </div>
-            <Grid item container xs={12} justify="center">
-              <Grid
-                item
-                xs={10}
-                sm={4}
-                className={classes.relativContainer}
-              >
-                <dir className={classes.sizeContainer} />
-                <Paper square className={classes.containerPlan}>
-                  <div className={classes.backgroundImagePlan}></div>
-                  <Grid
-                    container
-                    direction="column"
-                    alignItems="center"
-                    justify="center"
-                    xs={12}
-                  >
-                    <Grid item>
-                      <Typography
-                        variant="h4"
-                        className={classes.titlePlan}
-                      >
-                        {'Plan 1'}
-                      </Typography>
-                    </Grid>
-                    <Grid item className={classes.descriptionPlan}>
-                      {'descripcion'}
-                    </Grid>
-                    <Grid item>
-                      <Typography
-                        variant="h5"
-                        className={classes.montoPlan}
-                      >
-                        {'-$1600 USD/mo'}
-                      </Typography>
-                    </Grid>
-                    <Grid item>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        disableElevation
-                        size="large"
-                        className={classes.buttonPlan}
-                      >
-                        {'Contact Us'}
-                      </Button>
-                    </Grid>
-                  </Grid>
-                </Paper>
-              </Grid>
+            <Grid
+              container
+              sm={12}
+              spacing={7}
+              justify="space-around"
+              direction="row"
+              className={classes.containerPlans}
+            >
+              {plans.map(({ node }) => (
+                <Plan
+                  imagePlan={`url(${node.image.file.url})`}
+                  title={node.title}
+                  description={node.description}
+                  amount={node.amount}
+                  link={node.link}
+                />
+              ))}
             </Grid>
           </Grid>
         </Container>
@@ -305,6 +242,25 @@ export const pageQuery = graphql`
             }
           }
           link
+        }
+      }
+    }
+    allContentfulPlan(sort: { fields: order }) {
+      edges {
+        node {
+          id
+          amount
+          order
+          link
+          description {
+            json
+          }
+          title
+          image {
+            file {
+              url
+            }
+          }
         }
       }
     }

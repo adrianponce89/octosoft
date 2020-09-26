@@ -57,6 +57,10 @@ const useStyles = makeStyles((theme) => ({
     background: 'none',
     boxShadow: (props) => props.boxShadow,
   },
+  iconDrawer: {
+    color: (props) => props.color,
+    textShadow: (props) => props.textShadow,
+  },
 }));
 
 const HideOnScroll = (props) => {
@@ -129,6 +133,7 @@ const NavBar = (props) => {
                 aria-label="open drawer"
                 onClick={() => setShowDrawer(true)}
                 edge="start"
+                className={classes.iconDrawer}
               >
                 <MenuIcon />
               </IconButton>
@@ -148,7 +153,7 @@ const NavBar = (props) => {
           onClose={() => setShowDrawer(false)}
           onOpen={() => setShowDrawer(true)}
         >
-          <NavLinks {...props} />
+          <NavLinks {...props} color="black" textShadow="none" />
         </SwipeableDrawer>
       </Hidden>
     </React.Fragment>

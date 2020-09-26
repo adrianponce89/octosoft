@@ -48,6 +48,7 @@ const Blogs = (props) => {
   const [search, setSearch] = useState();
 
   const posts = get(props, 'data.allContentfulPost.edges');
+  const postsRecommended = posts.filter((p) => p.node.recommended);
   const events = get(props, 'data.allContentfulEvents.edges');
 
   const navigate = useNavigate();
@@ -165,7 +166,7 @@ const Blogs = (props) => {
                     Recommended Posts
                   </h2>
                   <Grid container spacing={3}>
-                    {posts.map(({ node }) => (
+                    {postsRecommended.map(({ node }) => (
                       <Grid item xs={12}>
                         <Link
                           className={classes.link}
@@ -203,6 +204,7 @@ export const pageQuery = graphql`
           id
           slug
           title
+          recommended
           photo {
             file {
               url
@@ -214,7 +216,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulEvents {
+    allContentfulEvents(sort: { fields: date }) {
       edges {
         node {
           id
