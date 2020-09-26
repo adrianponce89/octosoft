@@ -167,6 +167,7 @@ export default (props) => {
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
+                link={node.link}
               />
             ))}
             <div className={classes.containerBanner}>
@@ -177,6 +178,7 @@ export default (props) => {
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
+                link={node.link}
               />
             ))}
             <div className={classes.containerBanner}>
@@ -243,11 +245,12 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPlan {
+    allContentfulPlan(sort: { fields: order }) {
       edges {
         node {
           id
           amount
+          order
           link
           description {
             json

@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Grid, Paper, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { Link } from 'gatsby';
 
 const styles = makeStyles({
   relativContainer: { position: 'relative' },
@@ -46,6 +47,9 @@ const styles = makeStyles({
     display: (props) => (props.amount !== null ? 'block' : 'none'),
   },
   buttonPlan: { fontSize: 20, fontFamily: 'Lato', margin: '15px 0' },
+  link: {
+    textDecoration: 'none',
+  },
 });
 
 const Plans = (props) => {
@@ -88,15 +92,20 @@ const Plans = (props) => {
               <Typography variant="h5" className={classes.amountPlan}>
                 {props.amount}
               </Typography>
-              <Button
-                variant="contained"
-                color="primary"
-                disableElevation
-                size="large"
-                className={classes.buttonPlan}
+              <Link
+                className={classes.link}
+                to={props.link !== null ? props.link : '/contact'}
               >
-                {props.link !== null ? 'Learn More' : 'Contact Us'}
-              </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disableElevation
+                  size="large"
+                  className={classes.buttonPlan}
+                >
+                  {props.link !== null ? 'Learn More' : 'Contact Us'}
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Paper>
