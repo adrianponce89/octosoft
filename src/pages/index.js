@@ -1,15 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import { Typography, Grid, Paper, Button } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import HeroImage from '../assets/header_cropped.png';
-import BannerImage from '../assets/BannerFinal.png';
 import BackgroundImage from '../assets/Background.png';
+import BannerImage from '../assets/BannerFinal.png';
 import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
+import Banners from '../components/Banners';
 import Plan from '../components/Plans';
 
 const useStyles = makeStyles((theme) => ({
@@ -68,21 +69,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
   },
-  separatorBanner: {
-    backgroundImage: `url(${BannerImage})`,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    paddingBottom: '45vh',
-    width: '100vw',
-    filter: 'blur(4px)',
-    position: 'absolute',
-    left: 0,
-  },
-  containerBanner: {
-    height: '45vh',
-    width: '100%',
-  },
   containerPlans: { paddingTop: '2em' },
   titleType: {
     fontFamily: 'Lato',
@@ -111,6 +97,11 @@ const SortPlans = (plans) => {
 
 export default (props) => {
   const classes = useStyles();
+  const descriptionLanding = get(
+    props,
+    'data.contentfulLandingDescription',
+  );
+  const banners = get(props, 'data.allContentfulBanners.edges');
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const homeBorderlessItems = get(
     props,
@@ -123,15 +114,9 @@ export default (props) => {
       <div className={classes.backgroundHead}>
         <Container transparent={'none'}>
           <Grid contantain justify="center">
-            <Grid
-              container
-              direction="column"
-              alignItems="center"
-              xs={12}
-            >
+            <Grid container direction="column" alignItems="center">
               <Grid
                 container
-                xs={12}
                 alignItems="center"
                 justify="center"
                 className={classes.containerHead}
@@ -139,7 +124,7 @@ export default (props) => {
                 <Grid item sm={3}>
                   <OctoLogo className={classes.logo} />
                 </Grid>
-                <Grid item xs={11} sm={4}>
+                <Grid item container xs={11} sm={4}>
                   <Typography
                     variant="h1"
                     className={classes.textLogo}
@@ -153,7 +138,7 @@ export default (props) => {
                   variant="body1"
                   className={classes.textHeadCard}
                 >
-                  {'Professional solutions in every field '}
+                  {`${descriptionLanding.description}`}
                 </Typography>
               </Grid>
             </Grid>
@@ -161,7 +146,6 @@ export default (props) => {
         </Container>
         <Grid
           container
-          xs={12}
           justify="center"
           className={classes.containerArrow}
         >
@@ -182,6 +166,7 @@ export default (props) => {
             justify="center"
             alignItems="center"
             spacing={8}
+            xs={12}
           >
             {homeItems.map(({ node }) => (
               <HomeItems
@@ -191,9 +176,12 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <div className={classes.containerBanner}>
-              <div className={classes.separatorBanner}></div>
-            </div>
+            <Banners
+              backgroundImage={`url(${
+                banners.find(({ node }) => node.type === 'Borderless')
+                  .node.image.file.url
+              })`}
+            />
             {homeBorderlessItems.map(({ node }) => (
               <HomeItems
                 backgroundImage={`url(${node.image.file.url})`}
@@ -202,9 +190,12 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <div className={classes.containerBanner}>
-              <div className={classes.separatorBanner}></div>
-            </div>
+            <Banners
+              backgroundImage={`url(${
+                banners.find(({ node }) => node.type === 'Plans').node
+                  .image.file.url
+              })`}
+            />
             <Grid item container justify="center" xs={12}>
               {plansSort.map(({ type, plans }) => (
                 <>
@@ -216,7 +207,6 @@ export default (props) => {
                   </Typography>
                   <Grid
                     container
-                    sm={12}
                     spacing={7}
                     justify="space-around"
                     direction="row"
@@ -295,6 +285,21 @@ export const pageQuery = graphql`
               url
             }
           }
+        }
+      }
+    }
+    contentfulLandingDescription {
+      description
+    }
+    allContentfulBanners {
+      edges {
+        node {
+          image {
+            file {
+              url
+            }
+          }
+          type
         }
       }
     }
