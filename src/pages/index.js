@@ -1,15 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import { Typography, Grid, Paper, Button } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import HeroImage from '../assets/header_cropped.png';
-import BannerImage from '../assets/BannerFinal.png';
 import BackgroundImage from '../assets/Background.png';
+import BannerImage from '../assets/BannerFinal.png';
 import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
+import Banners from '../components/Banners';
 import Plan from '../components/Plans';
 
 const useStyles = makeStyles((theme) => ({
@@ -68,21 +69,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
   },
-  separatorBanner: {
-    backgroundImage: `url(${BannerImage})`,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    paddingBottom: '45vh',
-    width: '100vw',
-    filter: 'blur(4px)',
-    position: 'absolute',
-    left: 0,
-  },
-  containerBanner: {
-    height: '45vh',
-    width: '100%',
-  },
   containerPlans: { paddingTop: '2em' },
   titleType: {
     fontFamily: 'Lato',
@@ -111,6 +97,10 @@ const SortPlans = (plans) => {
 
 export default (props) => {
   const classes = useStyles();
+  const descriptionLanding = get(
+    props,
+    'data.contentfulLandingDescription',
+  );
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const homeBorderlessItems = get(
     props,
@@ -153,7 +143,7 @@ export default (props) => {
                   variant="body1"
                   className={classes.textHeadCard}
                 >
-                  {'Professional solutions in every field '}
+                  {`${descriptionLanding.description}`}
                 </Typography>
               </Grid>
             </Grid>
@@ -191,9 +181,7 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <div className={classes.containerBanner}>
-              <div className={classes.separatorBanner}></div>
-            </div>
+            <Banners backgroundImage={`url(${BannerImage})`} />
             {homeBorderlessItems.map(({ node }) => (
               <HomeItems
                 backgroundImage={`url(${node.image.file.url})`}
@@ -202,9 +190,7 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <div className={classes.containerBanner}>
-              <div className={classes.separatorBanner}></div>
-            </div>
+            <Banners backgroundImage={`url(${BannerImage})`} />
             <Grid item container justify="center" xs={12}>
               {plansSort.map(({ type, plans }) => (
                 <>
@@ -297,6 +283,9 @@ export const pageQuery = graphql`
           }
         }
       }
+    }
+    contentfulLandingDescription {
+      description
     }
   }
 `;
