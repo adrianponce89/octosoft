@@ -29,10 +29,11 @@ const useStyles = makeStyles((theme) => ({
   imgContainer: {
     display: 'flex',
     justifyContent: 'center',
+    padding: '20px',
   },
   smartphoneImg: {
-    width: '35vh',
-    height: '75vh',
+    width: '100%',
+    paddingBottom: '215%',
     backgroundImage: `url(${Smartphone})`,
     backgroundColor: '#cccccc',
     backgroundPosition: 'center',
@@ -52,120 +53,158 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClientSupport = (props) => {
-  const [clientname, setClientName] = useState();
-  const [problem, setProblem] = useState();
-  const [email, setEmail] = useState();
-  const [phone, setPhone] = useState();
-  const [content, setContent] = useState();
+  const [clientname, setClientName] = useState('');
+  const [clientID, setClientID] = useState('');
+  const [problem, setProblem] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [content, setContent] = useState('');
   const classes = useStyles();
 
   const services = get(props, 'data.allContentfulService.edges');
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      clientname,
+      clientID,
+      problem,
+      email,
+      phone,
+      content,
+    };
+    console.log('data:', data);
+  };
 
   return (
     <Container
       className={classes.root}
       background={`url(${BackgroundImage})`}
     >
-      <h1>Client Support</h1>
-      <div className={classes.formContainer}>
-        <Grid
-          className={classes.gridContainer}
-          container
-          md={8}
-          spacing={3}
-        >
-          <Grid className={classes.gridItem} item xs={12} sm={6}>
-            <FormControl variant="outlined" size="small" fullWidth>
-              <InputLabel htmlFor="NameInput">Client Name</InputLabel>
-              <OutlinedInput
-                id="NameInput"
-                value={clientname}
-                onChange={({ target }) => setClientName(target.value)}
-                label="Client Name"
-              />
-            </FormControl>
-          </Grid>
-          <Grid className={classes.gridItem} item xs={12}>
-            <FormControl variant="outlined" size="small" fullWidth>
-              <InputLabel htmlFor="ServiceInput">
-                Name your problem
-              </InputLabel>
-              <Select
-                label="Name your problem"
-                id="ServiceInput"
-                value={problem}
-                onChange={({ target }) => setProblem(target.value)}
-              >
-                <MenuItem value="General">General</MenuItem>
-                {services.map(({ node }) => (
-                  <MenuItem value={node.title}>{node.title}</MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid className={classes.gridItem} item xs={12} sm={6}>
-            <FormControl variant="outlined" size="small" fullWidth>
-              <InputLabel htmlFor="EmailInput">
-                Your E-Mail
-              </InputLabel>
-              <OutlinedInput
-                id="EmailInput"
-                value={email}
-                onChange={({ target }) => setEmail(target.value)}
-                label="Your E-Mail"
-              />
-            </FormControl>
-          </Grid>
-          <Grid className={classes.gridItem} item xs={12} sm={6}>
-            <FormControl variant="outlined" size="small" fullWidth>
-              <InputLabel htmlFor="PhoneInput">
-                Your Phone Number
-              </InputLabel>
-              <OutlinedInput
-                id="PhoneInput"
-                value={phone}
-                onChange={({ target }) => setPhone(target.value)}
-                label="Your Phone Number"
-              />
-            </FormControl>
-          </Grid>
+      <form onSubmit={onSubmit}>
+        <h1>Client Support</h1>
+        <div className={classes.formContainer}>
           <Grid
-            className={classes.gridItem}
-            item
-            xs={12}
-            sm={6}
-            lg={4}
-          ></Grid>
-          <Grid className={classes.gridItem} item xs={12}>
-            <FormControl variant="outlined" fullWidth>
-              <TextField
-                variant="outlined"
-                id="ContentInput"
-                value={content}
-                onChange={({ target }) => setContent(target.value)}
-                multiline
-                rows={12}
-                size="small"
-              />
-            </FormControl>
+            className={classes.gridContainer}
+            container
+            md={8}
+            spacing={3}
+          >
+            <Grid className={classes.gridItem} item xs={12} sm={6}>
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel htmlFor="NameInput">
+                  Client Name
+                </InputLabel>
+                <OutlinedInput
+                  id="NameInput"
+                  value={clientname}
+                  onChange={({ target }) =>
+                    setClientName(target.value)
+                  }
+                  label="Client Name"
+                  required
+                />
+              </FormControl>
+            </Grid>
+            <Grid className={classes.gridItem} item xs={12} sm={6}>
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel htmlFor="IDInput">Client ID</InputLabel>
+                <OutlinedInput
+                  id="IDInput"
+                  value={clientID}
+                  onChange={({ target }) => setClientID(target.value)}
+                  label="Client ID"
+                  required
+                />
+              </FormControl>
+            </Grid>
+            <Grid className={classes.gridItem} item xs={12}>
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel htmlFor="ServiceInput">
+                  Name your problem
+                </InputLabel>
+                <Select
+                  label="Name your problem"
+                  id="ServiceInput"
+                  value={problem}
+                  onChange={({ target }) => setProblem(target.value)}
+                  required
+                >
+                  <MenuItem value="General">General</MenuItem>
+                  {services.map(({ node }) => (
+                    <MenuItem value={node.title}>
+                      {node.title}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid className={classes.gridItem} item xs={12} sm={6}>
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel htmlFor="EmailInput">
+                  Your E-Mail
+                </InputLabel>
+                <OutlinedInput
+                  id="EmailInput"
+                  value={email}
+                  onChange={({ target }) => setEmail(target.value)}
+                  label="Your E-Mail"
+                  required
+                />
+              </FormControl>
+            </Grid>
+            <Grid className={classes.gridItem} item xs={12} sm={6}>
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel htmlFor="PhoneInput">
+                  Your Phone Number
+                </InputLabel>
+                <OutlinedInput
+                  id="PhoneInput"
+                  value={phone}
+                  onChange={({ target }) => setPhone(target.value)}
+                  label="Your Phone Number"
+                  required
+                />
+              </FormControl>
+            </Grid>
+            <Grid
+              className={classes.gridItem}
+              item
+              xs={12}
+              sm={6}
+              lg={4}
+            ></Grid>
+            <Grid className={classes.gridItem} item xs={12}>
+              <FormControl variant="outlined" fullWidth>
+                <TextField
+                  variant="outlined"
+                  id="ContentInput"
+                  value={content}
+                  onChange={({ target }) => setContent(target.value)}
+                  multiline
+                  rows={12}
+                  size="small"
+                />
+              </FormControl>
+            </Grid>
+            <div className={classes.buttonContainer}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                className={classes.button}
+              >
+                Send
+              </Button>
+            </div>
           </Grid>
-          <div className={classes.buttonContainer}>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              className={classes.button}
-            >
-              Send
-            </Button>
-          </div>
-        </Grid>
-        <Hidden smDown>
-          <Grid item className={classes.imgContainer} md={4}>
-            <div className={classes.smartphoneImg} />
-          </Grid>
-        </Hidden>
-      </div>
+          <Hidden smDown>
+            <Grid item className={classes.imgContainer} md={3}>
+              <div className={classes.smartphoneImg} />
+            </Grid>
+          </Hidden>
+        </div>
+      </form>
     </Container>
   );
 };
