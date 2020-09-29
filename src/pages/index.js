@@ -5,7 +5,6 @@ import { Typography, Grid, Paper, Button } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import useTheme from '@material-ui/core/styles/useTheme';
 import HeroImage from '../assets/header_cropped.png';
 import BannerImage from '../assets/BannerFinal.png';
 import BackgroundImage from '../assets/Background.png';
@@ -85,18 +84,40 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   containerPlans: { paddingTop: '2em' },
+  titleType: {
+    fontFamily: 'Lato',
+    fontSize: '38px',
+    marginTop: '38px',
+  },
 }));
+
+const SortPlans = (plans) => {
+  let sortPlans = [];
+  const titleTypeSet = new Set();
+
+  plans.forEach((plan) => {
+    titleTypeSet.add(plan.node.type);
+  });
+
+  titleTypeSet.forEach((value) => {
+    sortPlans.push({
+      type: value,
+      plans: plans.filter((p) => p.node.type === value),
+    });
+  });
+
+  return sortPlans;
+};
 
 export default (props) => {
   const classes = useStyles();
-  const theme = useTheme();
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const homeBorderlessItems = get(
     props,
     'data.allContentfulHomeBorderlessIdentities.edges',
   );
   const plans = get(props, 'data.allContentfulPlan.edges');
-
+  const plansSort = SortPlans(plans);
   return (
     <>
       <div className={classes.backgroundHead}>
@@ -184,22 +205,34 @@ export default (props) => {
             <div className={classes.containerBanner}>
               <div className={classes.separatorBanner}></div>
             </div>
-            <Grid
-              container
-              sm={12}
-              spacing={7}
-              justify="space-around"
-              direction="row"
-              className={classes.containerPlans}
-            >
-              {plans.map(({ node }) => (
-                <Plan
-                  imagePlan={`url(${node.image.file.url})`}
-                  title={node.title}
-                  description={node.description}
-                  amount={node.amount}
-                  link={node.link}
-                />
+            <Grid item container justify="center" xs={12}>
+              {plansSort.map(({ type, plans }) => (
+                <>
+                  <Typography
+                    variant="h1"
+                    className={classes.titleType}
+                  >
+                    {type}
+                  </Typography>
+                  <Grid
+                    container
+                    sm={12}
+                    spacing={7}
+                    justify="space-around"
+                    direction="row"
+                    className={classes.containerPlans}
+                  >
+                    {plans.map(({ node }) => (
+                      <Plan
+                        imagePlan={`url(${node.image.file.url})`}
+                        title={node.title}
+                        description={node.description}
+                        amount={node.amount}
+                        link={node.link}
+                      />
+                    ))}
+                  </Grid>
+                </>
               ))}
             </Grid>
           </Grid>
@@ -250,6 +283,7 @@ export const pageQuery = graphql`
         node {
           id
           amount
+          type
           order
           link
           description {
