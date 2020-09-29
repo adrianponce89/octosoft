@@ -101,6 +101,7 @@ export default (props) => {
     props,
     'data.contentfulLandingDescription',
   );
+  const banners = get(props, 'data.allContentfulBanners.edges');
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const homeBorderlessItems = get(
     props,
@@ -113,15 +114,9 @@ export default (props) => {
       <div className={classes.backgroundHead}>
         <Container transparent={'none'}>
           <Grid contantain justify="center">
-            <Grid
-              container
-              direction="column"
-              alignItems="center"
-              xs={12}
-            >
+            <Grid container direction="column" alignItems="center">
               <Grid
                 container
-                xs={12}
                 alignItems="center"
                 justify="center"
                 className={classes.containerHead}
@@ -129,7 +124,7 @@ export default (props) => {
                 <Grid item sm={3}>
                   <OctoLogo className={classes.logo} />
                 </Grid>
-                <Grid item xs={11} sm={4}>
+                <Grid item container xs={11} sm={4}>
                   <Typography
                     variant="h1"
                     className={classes.textLogo}
@@ -151,7 +146,6 @@ export default (props) => {
         </Container>
         <Grid
           container
-          xs={12}
           justify="center"
           className={classes.containerArrow}
         >
@@ -172,6 +166,7 @@ export default (props) => {
             justify="center"
             alignItems="center"
             spacing={8}
+            xs={12}
           >
             {homeItems.map(({ node }) => (
               <HomeItems
@@ -181,7 +176,12 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <Banners backgroundImage={`url(${BannerImage})`} />
+            <Banners
+              backgroundImage={`url(${
+                banners.find(({ node }) => node.type === 'Borderless')
+                  .node.image.file.url
+              })`}
+            />
             {homeBorderlessItems.map(({ node }) => (
               <HomeItems
                 backgroundImage={`url(${node.image.file.url})`}
@@ -190,7 +190,12 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <Banners backgroundImage={`url(${BannerImage})`} />
+            <Banners
+              backgroundImage={`url(${
+                banners.find(({ node }) => node.type === 'Plans').node
+                  .image.file.url
+              })`}
+            />
             <Grid item container justify="center" xs={12}>
               {plansSort.map(({ type, plans }) => (
                 <>
@@ -202,7 +207,6 @@ export default (props) => {
                   </Typography>
                   <Grid
                     container
-                    sm={12}
                     spacing={7}
                     justify="space-around"
                     direction="row"
@@ -286,6 +290,18 @@ export const pageQuery = graphql`
     }
     contentfulLandingDescription {
       description
+    }
+    allContentfulBanners {
+      edges {
+        node {
+          image {
+            file {
+              url
+            }
+          }
+          type
+        }
+      }
     }
   }
 `;
