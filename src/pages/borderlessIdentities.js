@@ -7,18 +7,27 @@ import BackgroundBanner from '../assets/BannerFinal.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import BorderlessItems from '../components/BorderlessItems';
+import LogoBorderlessIdentities from '../assets/logoBI.svg';
 
 const styles = makeStyles({
   root: {
     width: '100%',
     background:
-      'linear-gradient(180deg, rgba(9,90,121,1) 0%, rgba(36,234,237,1) 48%, rgba(255,187,39,0.9688993395209646) 85%, rgba(255,187,39,1) 89%)',
+      'linear-gradient(180deg, rgba(9,90,121,1) 0%, rgba(36,234,237,1) 48%, rgba(255,187,39,0.97) 85%, rgba(255,187,39,1) 89%)',
   },
   backgroundBaner: {
     background: `url(${BackgroundBanner})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     paddingBottom: '30%',
+    position: 'relative',
+  },
+  LogoBorderlessIdentities: {
+    position: 'absolute',
+    right: 20,
+    top: 20,
+    width: '19.31%',
+    height: '26.1%',
   },
   containerBorderlessItems: {
     overflow: 'hidden',
@@ -50,7 +59,11 @@ const BorderlessIdentities = (props) => {
           item
           xs={12}
           className={`${classes.backgroundBaner} ${classes.containerItems} `}
-        ></Grid>
+        >
+          <LogoBorderlessIdentities
+            className={classes.LogoBorderlessIdentities}
+          />
+        </Grid>
         <Grid
           container
           xs={12}
