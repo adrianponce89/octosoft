@@ -116,6 +116,7 @@ const ClientSupport = (props) => {
                 <OutlinedInput
                   id="NameInput"
                   value={clientName}
+                  name="clientName"
                   onChange={({ target }) =>
                     setClientName(target.value)
                   }
@@ -130,6 +131,7 @@ const ClientSupport = (props) => {
                 <OutlinedInput
                   id="IDInput"
                   value={clientID}
+                  name="clientID"
                   onChange={({ target }) => setClientID(target.value)}
                   label="Client ID"
                   required
@@ -145,6 +147,7 @@ const ClientSupport = (props) => {
                   label="Name your problem"
                   id="ServiceInput"
                   value={problem}
+                  name="problem"
                   onChange={({ target }) => setProblem(target.value)}
                   required
                 >
@@ -165,6 +168,7 @@ const ClientSupport = (props) => {
                 <OutlinedInput
                   id="EmailInput"
                   value={email}
+                  name="email"
                   onChange={({ target }) => setEmail(target.value)}
                   label="Your E-Mail"
                   required
@@ -179,6 +183,7 @@ const ClientSupport = (props) => {
                 <OutlinedInput
                   id="PhoneInput"
                   value={phone}
+                  name="phone"
                   onChange={({ target }) => setPhone(target.value)}
                   label="Your Phone Number"
                   required
@@ -198,6 +203,7 @@ const ClientSupport = (props) => {
                   variant="outlined"
                   id="ContentInput"
                   value={content}
+                  name="content"
                   onChange={({ target }) => setContent(target.value)}
                   multiline
                   rows={12}

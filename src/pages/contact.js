@@ -111,6 +111,7 @@ const Contact = () => {
                 <OutlinedInput
                   id="NameInput"
                   value={name}
+                  name="name"
                   onChange={({ target }) => setName(target.value)}
                   label="Name"
                   required
@@ -125,6 +126,7 @@ const Contact = () => {
                 <OutlinedInput
                   id="LastNameInput"
                   value={lastName}
+                  name="lastName"
                   onChange={({ target }) => setLastName(target.value)}
                   label="LastName"
                   required
@@ -139,6 +141,7 @@ const Contact = () => {
                 <OutlinedInput
                   id="SubjectInput"
                   value={subject}
+                  name="subject"
                   onChange={({ target }) => setSubject(target.value)}
                   label="Subject (Optional)"
                 />
@@ -152,6 +155,7 @@ const Contact = () => {
                 <OutlinedInput
                   id="BudgetInput"
                   value={budget}
+                  name="budget"
                   onChange={({ target }) => setBudget(target.value)}
                   label="Budget (Optional)"
                 />
@@ -165,6 +169,7 @@ const Contact = () => {
                 <OutlinedInput
                   id="EmailInput"
                   value={email}
+                  name="email"
                   onChange={({ target }) => setEmail(target.value)}
                   label="Your Email"
                   required
@@ -179,6 +184,7 @@ const Contact = () => {
                 <OutlinedInput
                   id="PhoneInput"
                   value={phone}
+                  name="phone"
                   onChange={({ target }) => setPhone(target.value)}
                   label="Your Phone Number"
                   required
@@ -191,6 +197,7 @@ const Contact = () => {
                   variant="outlined"
                   id="ContentInput"
                   value={content}
+                  name="content"
                   onChange={({ target }) => setContent(target.value)}
                   multiline
                   rows={12}
