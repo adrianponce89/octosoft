@@ -94,7 +94,12 @@ const ClientSupport = (props) => {
       className={classes.root}
       background={`url(${BackgroundImage})`}
     >
-      <form onSubmit={handleSubmit}>
+      <form
+        name="clientsupport"
+        onSubmit={handleSubmit}
+        data-netlify="true"
+      >
+        <input type="hidden" name="form-name" value="clientsupport" />
         <h1>Client Support</h1>
         <div className={classes.formContainer}>
           <Grid

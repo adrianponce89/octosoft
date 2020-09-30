@@ -91,7 +91,12 @@ const Contact = () => {
       className={classes.root}
       background={`url(${BackgroundImage})`}
     >
-      <form name="contact" onSubmit={handleSubmit}>
+      <form
+        name="contact"
+        onSubmit={handleSubmit}
+        data-netlify="true"
+      >
+        <input type="hidden" name="form-name" value="contact" />
         <h1>Contact Us</h1>
         <div className={classes.formContainer}>
           <Grid
