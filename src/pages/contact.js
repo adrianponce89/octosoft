@@ -10,6 +10,7 @@ import Hidden from '@material-ui/core/Hidden';
 import MailBox from '../assets/mailbox.jpg';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
+import { submitForm } from '../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -58,9 +59,9 @@ const Contact = () => {
   const [content, setContent] = useState('');
   const classes = useStyles();
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const data = {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    submitForm('contact', {
       name,
       lastName,
       subject,
@@ -68,8 +69,21 @@ const Contact = () => {
       email,
       phone,
       content,
-    };
-    console.log('data:', data);
+    })
+      .then(() =>
+        alert(
+          'Your message was received. We will contact you shortly.',
+        ),
+      )
+      .catch((error) => alert(error));
+
+    setName('');
+    setLastName('');
+    setSubject('');
+    setBudget('');
+    setEmail('');
+    setPhone('');
+    setContent('');
   };
 
   return (
@@ -77,7 +91,7 @@ const Contact = () => {
       className={classes.root}
       background={`url(${BackgroundImage})`}
     >
-      <form onSubmit={onSubmit}>
+      <form name="contact" onSubmit={handleSubmit}>
         <h1>Contact Us</h1>
         <div className={classes.formContainer}>
           <Grid

@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Smartphone from '../assets/smartphone.jpg';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
+import { submitForm } from '../utils';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -53,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ClientSupport = (props) => {
-  const [clientname, setClientName] = useState('');
+  const [clientName, setClientName] = useState('');
   const [clientID, setClientID] = useState('');
   const [problem, setProblem] = useState('');
   const [email, setEmail] = useState('');
@@ -63,17 +64,29 @@ const ClientSupport = (props) => {
 
   const services = get(props, 'data.allContentfulService.edges');
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const data = {
-      clientname,
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    submitForm('clientsupport', {
+      clientName,
       clientID,
       problem,
       email,
       phone,
       content,
-    };
-    console.log('data:', data);
+    })
+      .then(() =>
+        alert(
+          'Your message was received. We will contact you shortly.',
+        ),
+      )
+      .catch((error) => alert(error));
+
+    setClientName('');
+    setClientID('');
+    setProblem('');
+    setEmail('');
+    setPhone('');
+    setContent('');
   };
 
   return (
@@ -81,7 +94,7 @@ const ClientSupport = (props) => {
       className={classes.root}
       background={`url(${BackgroundImage})`}
     >
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <h1>Client Support</h1>
         <div className={classes.formContainer}>
           <Grid
@@ -97,7 +110,7 @@ const ClientSupport = (props) => {
                 </InputLabel>
                 <OutlinedInput
                   id="NameInput"
-                  value={clientname}
+                  value={clientName}
                   onChange={({ target }) =>
                     setClientName(target.value)
                   }
