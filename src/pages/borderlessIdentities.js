@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
-import BackgroundImage from '../assets/Background.png';
+import BorderlessBackground from '../assets/BorderlessBackground.jpg';
 import BackgroundBanner from '../assets/BannerFinal.png';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
@@ -12,8 +12,14 @@ import LogoBorderlessIdentities from '../assets/logoBI.svg';
 const styles = makeStyles({
   root: {
     width: '100%',
-    background:
+    height: '100%',
+    minHeight: '100vh',
+    background: `url(${BorderlessBackground})`,
+    backgroundColor:
       'linear-gradient(180deg, rgba(9,90,121,1) 0%, rgba(36,234,237,1) 48%, rgba(255,187,39,0.97) 85%, rgba(255,187,39,1) 89%)',
+    backgroundPosition: 'initial',
+    backgroundRepeat: 'repeat',
+    backgroundSize: 'cover',
   },
   backgroundBaner: {
     background: `url(${BackgroundBanner})`,
