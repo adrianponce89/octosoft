@@ -105,7 +105,7 @@ const Contact = () => {
             md={8}
             spacing={3}
           >
-            <Grid className={classes.gridItem} item xs={6} sm={5}>
+            <Grid className={classes.gridItem} item xs={6}>
               <FormControl variant="outlined" size="small" fullWidth>
                 <InputLabel htmlFor="NameInput">Name</InputLabel>
                 <OutlinedInput
@@ -118,7 +118,7 @@ const Contact = () => {
                 />
               </FormControl>
             </Grid>
-            <Grid className={classes.gridItem} item xs={6} sm={5}>
+            <Grid className={classes.gridItem} item xs={6}>
               <FormControl variant="outlined" size="small" fullWidth>
                 <InputLabel htmlFor="LastNameInput">
                   Last Name
@@ -161,7 +161,7 @@ const Contact = () => {
                 />
               </FormControl>
             </Grid>
-            <Grid className={classes.gridItem} item xs={12} sm={7}>
+            <Grid className={classes.gridItem} item xs={12} sm={6}>
               <FormControl variant="outlined" size="small" fullWidth>
                 <InputLabel htmlFor="EmailInput">
                   Your Email
@@ -176,7 +176,7 @@ const Contact = () => {
                 />
               </FormControl>
             </Grid>
-            <Grid className={classes.gridItem} item xs={12} sm={5}>
+            <Grid className={classes.gridItem} item xs={12} sm={6}>
               <FormControl variant="outlined" size="small" fullWidth>
                 <InputLabel htmlFor="PhoneInput">
                   Your Phone Number
