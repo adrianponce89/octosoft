@@ -47,7 +47,7 @@ const styles = makeStyles({
 const Post = (props) => {
   const classes = styles(props);
   return (
-    <Grid item>
+    <Grid item xs={12}>
       <Link className={classes.link} to={`/news/${props.slug}`}>
         <Paper elevation={3} className={classes.containerPost}>
           <div className={classes.containerPicPost}>
