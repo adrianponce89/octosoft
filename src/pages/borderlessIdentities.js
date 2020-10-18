@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
 import BorderlessBackground from '../assets/BorderlessBackground.jpg';
-import BackgroundBanner from '../assets/BannerFinal.png';
+import BackgroundBanner from '../assets/BannerFinal.jpg';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import BorderlessItems from '../components/BorderlessItems';
@@ -27,6 +27,9 @@ const styles = makeStyles({
     backgroundPosition: 'center',
     paddingBottom: '30%',
     position: 'relative',
+    boxShadow:
+      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+    borderRadius: '0 0 5px 5px',
   },
   LogoBorderlessIdentities: {
     position: 'absolute',
@@ -41,6 +44,9 @@ const styles = makeStyles({
   containerItems: {
     margin: 25,
     overflow: 'hidden',
+    boxShadow:
+      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+    borderRadius: 5,
   },
   titleItems: { fontSize: '18px' },
 });
@@ -60,12 +66,8 @@ const BorderlessIdentities = (props) => {
       alignItems="center"
       className={classes.root}
     >
-      <Container transparent={'none'}>
-        <Grid
-          item
-          xs={12}
-          className={`${classes.backgroundBaner} ${classes.containerItems} `}
-        >
+      <Container innerBackground={'rgba(255,255,255,0.75)'}>
+        <Grid item xs={12} className={`${classes.backgroundBaner}`}>
           <LogoBorderlessIdentities
             className={classes.LogoBorderlessIdentities}
           />

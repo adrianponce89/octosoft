@@ -25,6 +25,7 @@ const styles = makeStyles({
     height: 50,
     boxShadow:
       '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+    borderRadius: 5,
   },
   highlightedButton: {
     boxShadow:
@@ -47,6 +48,7 @@ const styles = makeStyles({
     padding: '20px 0 20px 0',
     boxShadow:
       '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+    borderRadius: 5,
   },
   iconsDescriptions: {
     width: 250,
@@ -67,6 +69,9 @@ const styles = makeStyles({
     flexDirection: 'column',
     flexWrap: 'wrap',
     overflow: 'auto',
+    '& p': {
+      margin: 15,
+    },
   },
 });
 

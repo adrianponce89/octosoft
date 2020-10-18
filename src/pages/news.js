@@ -56,7 +56,7 @@ const Blogs = (props) => {
   return (
     <Container
       background={`url(${BackgroundImage})`}
-      transparent={'none'}
+      innerBackground={'none'}
     >
       <div className={classes.root}>
         <Grid container spacing={3}>

@@ -7,7 +7,7 @@ import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import HeroImage from '../assets/header_cropped.png';
 import BackgroundImage from '../assets/Background.png';
-import BannerImage from '../assets/BannerFinal.png';
+import BannerImage from '../assets/BannerFinal.jpg';
 import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Lato',
     fontSize: '38px',
     marginTop: '38px',
+    textAlign: 'center',
   },
 }));
 
@@ -112,8 +113,8 @@ export default (props) => {
   return (
     <>
       <div className={classes.backgroundHead}>
-        <Container transparent={'none'}>
-          <Grid contantain justify="center">
+        <Container innerBackground={'none'}>
+          <Grid justify="center">
             <Grid container direction="column" alignItems="center">
               <Grid
                 container
@@ -157,7 +158,7 @@ export default (props) => {
       <section id="work">
         <Container
           background={`url(${BackgroundImage})`}
-          transparent={'none'}
+          innerBackground={'none'}
           className={classes.containerCard}
         >
           <Grid
@@ -165,7 +166,6 @@ export default (props) => {
             direction="column"
             justify="center"
             alignItems="center"
-            spacing={8}
             xs={12}
           >
             {homeItems.map(({ node }) => (

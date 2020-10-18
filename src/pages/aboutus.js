@@ -103,7 +103,10 @@ const AboutUs = (props) => {
   );
 
   return (
-    <Container background={`url(${BackgroundImage})`}>
+    <Container
+      background={`url(${BackgroundImage})`}
+      innerPadding="80px 25px 25px 25px"
+    >
       <Services
         services={services}
         selected={'Octosoft'}
