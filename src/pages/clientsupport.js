@@ -190,13 +190,6 @@ const ClientSupport = (props) => {
                 />
               </FormControl>
             </Grid>
-            <Grid
-              className={classes.gridItem}
-              item
-              xs={12}
-              sm={6}
-              lg={4}
-            ></Grid>
             <Grid className={classes.gridItem} item xs={12}>
               <FormControl variant="outlined" fullWidth>
                 <TextField
