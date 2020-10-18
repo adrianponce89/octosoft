@@ -96,7 +96,8 @@ const Plans = (props) => {
               </Typography>
               <Link
                 className={classes.link}
-                to={props.link !== null ? props.link : '/contact'}
+                encodeURIComponent
+                to={`/contact#${props.title}`}
               >
                 <Button
                   variant="contained"
