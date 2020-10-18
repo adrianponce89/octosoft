@@ -56,7 +56,14 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(0, 0, 0, 0.50)',
     width: '65vw',
     '@media (max-width: 560px)': { width: '85vw' },
-    paddingBottom: '15vh',
+  },
+  textHeadCardTitle: {
+    color: '#fff',
+    fontFamily: 'Lato',
+    fontSize: 26,
+    fontWeight: 'bold',
+    margin: 15,
+    textAlign: 'center',
   },
   textHeadCard: {
     color: '#fff',
@@ -64,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     margin: 15,
   },
+
   containerCard: {
     padding: '3vh',
     justifyContent: 'center',
@@ -135,6 +143,12 @@ export default (props) => {
                 </Grid>
               </Grid>
               <Grid item xs={9} className={classes.containerHeadCard}>
+                <Typography
+                  variant="body1"
+                  className={classes.textHeadCardTitle}
+                >
+                  {descriptionLanding.title}
+                </Typography>
                 <Typography
                   variant="body1"
                   className={classes.textHeadCard}
@@ -290,6 +304,7 @@ export const pageQuery = graphql`
     }
     contentfulLandingDescription {
       description
+      title
     }
     allContentfulBanners {
       edges {
