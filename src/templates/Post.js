@@ -8,6 +8,9 @@ import Grid from '@material-ui/core/Grid';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const styles = makeStyles({
+  container: {
+    display: 'flow-root',
+  },
   imageArticle: {
     backgroundImage: (props) =>
       props.photo ? `url(${props.photo.file.url})` : '',
@@ -33,13 +36,15 @@ const ArticleViews = (props) => {
         direction="column"
         justify="center"
         alignContent="center"
+        className={classes.container}
+        xs={12}
       >
-        <Grid item md={12} className={classes.imageArticle}></Grid>
+        <Grid item xs={12} className={classes.imageArticle}></Grid>
 
-        <Grid item md={12} className={classes.titleArticle}>
+        <Grid item xs={12} className={classes.titleArticle}>
           {post.title}
         </Grid>
-        <Grid item md={12} className={classes.descriptionArticle}>
+        <Grid item xs={12} className={classes.descriptionArticle}>
           <div
             dangerouslySetInnerHTML={{
               __html: documentToHtmlString(post.content.json),
