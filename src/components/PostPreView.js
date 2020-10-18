@@ -49,7 +49,11 @@ const Post = (props) => {
   return (
     <Grid item xs={12}>
       <Link className={classes.link} to={`/news/${props.slug}`}>
-        <Paper elevation={3} className={classes.containerPost}>
+        <Paper
+          xs={12}
+          elevation={3}
+          className={classes.containerPost}
+        >
           <div className={classes.containerPicPost}>
             <Paper className={classes.picPost}></Paper>
           </div>

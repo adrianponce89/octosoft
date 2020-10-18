@@ -20,6 +20,8 @@ const styles = makeStyles({
     top: 0,
     display: 'flex',
     flexDirection: 'column',
+    borderRadius: 8,
+    overflow: 'hidden',
   },
   backgroundImagePlan: {
     backgroundImage: (props) => props.imagePlan,
@@ -58,7 +60,7 @@ const Plans = (props) => {
     <Grid item xs={10} sm={6} md={4}>
       <Grid item className={classes.relativContainer}>
         <dir className={classes.sizeContainer} />
-        <Paper square className={classes.containerPlan}>
+        <Paper square className={classes.containerPlan} elevation={2}>
           <div className={classes.backgroundImagePlan}></div>
           <Grid
             container

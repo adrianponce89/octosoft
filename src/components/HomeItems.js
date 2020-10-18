@@ -4,9 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 
 const styles = makeStyles({
-  root: { width: '100%' },
+  root: {
+    width: '100%',
+    margin: '10px 0',
+  },
   cardBody: {
-    borderRadius: 'none',
+    borderRadius: 8,
     margin: '5px 0',
     width: '100%',
   },
@@ -31,7 +34,7 @@ const styles = makeStyles({
 const HomeItems = (props) => {
   const classes = styles(props);
   return (
-    <Grid item className={classes.root} xs={10}>
+    <Grid item className={classes.root} xs={12}>
       <Link className={classes.link} to={props.link}>
         <Paper square elevation={2} className={classes.cardBody}>
           <Grid container direction="row" alignItems="center" xs={12}>

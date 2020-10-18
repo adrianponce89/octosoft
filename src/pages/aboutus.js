@@ -103,9 +103,13 @@ const AboutUs = (props) => {
   );
 
   return (
-    <Container background={`url(${BackgroundImage})`}>
+    <Container
+      background={`url(${BackgroundImage})`}
+      innerPadding="80px 25px 25px 25px"
+    >
       <Services
         services={services}
+        selected={'Octosoft'}
         title="The Octosoft Team"
         subtitle="Learn about our departaments and how they can help you and
         your company."
@@ -175,7 +179,7 @@ export default AboutUs;
 
 export const pageQuery = graphql`
   query AboutUsQuery {
-    allContentfulService {
+    allContentfulService(sort: { fields: order }) {
       edges {
         node {
           color
