@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Contact = () => {
+const Contact = (props) => {
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
   const [subject, setSubject] = useState('');
@@ -58,6 +58,16 @@ const Contact = () => {
   const [phone, setPhone] = useState('');
   const [content, setContent] = useState('');
   const classes = useStyles();
+
+  const {
+    location: { hash },
+  } = props;
+
+  useEffect(() => {
+    if (hash) {
+      setSubject(decodeURI(hash.slice(1)));
+    }
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
