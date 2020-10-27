@@ -5,27 +5,27 @@ import { Typography, Grid } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import HeroImage from '../assets/header_cropped.png';
 import BackgroundImage from '../assets/Background.png';
-import BannerImage from '../assets/BannerFinal.jpg';
 import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
 import Plan from '../components/Plans';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   backgroundHead: {
-    backgroundImage: `url(${HeroImage})`,
+    backgroundImage: (props) => `url(${props.backgroundImage})`,
     backgroundPosition: 'bottom',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingTop: '15vh',
+    paddingTop: '10vh',
     height: '85vh',
     position: 'relative',
+    '@media (max-width: 560px)': { height: '100%' },
   },
   containerHead: {
     marginBottom: '8vh',
@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   containerHeadCard: {
     backgroundColor: 'rgba(0, 0, 0, 0.50)',
     width: '65vw',
-    '@media (max-width: 560px)': { width: '85vw' },
+    '@media (max-width: 560px)': { width: '85vw', marginBottom: 25 },
   },
   textHeadCardTitle: {
     color: '#fff',
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '38px',
     textAlign: 'center',
   },
-}));
+});
 
 const SortPlans = (plans) => {
   let sortPlans = [];
@@ -105,7 +105,6 @@ const SortPlans = (plans) => {
 };
 
 export default (props) => {
-  const classes = useStyles();
   const descriptionLanding = get(
     props,
     'data.contentfulLandingDescription',
@@ -118,6 +117,10 @@ export default (props) => {
   );
   const plans = get(props, 'data.allContentfulPlan.edges');
   const plansSort = SortPlans(plans);
+  const classes = useStyles({
+    backgroundImage: descriptionLanding.backgroundImage.file.url,
+  });
+  console.log('des :>> ', descriptionLanding);
   return (
     <>
       <div className={classes.backgroundHead}>
@@ -305,6 +308,11 @@ export const pageQuery = graphql`
     contentfulLandingDescription {
       description
       title
+      backgroundImage {
+        file {
+          url
+        }
+      }
     }
     allContentfulBanners {
       edges {
