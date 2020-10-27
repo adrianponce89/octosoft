@@ -7,7 +7,6 @@ import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import HeroImage from '../assets/header_cropped.png';
 import BackgroundImage from '../assets/Background.png';
-import BannerImage from '../assets/BannerFinal.jpg';
 import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
@@ -19,13 +18,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'bottom',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingTop: '15vh',
+    paddingTop: '10vh',
     height: '85vh',
     position: 'relative',
+    '@media (max-width: 560px)': { height: '100%' },
   },
   containerHead: {
     marginBottom: '8vh',
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   containerHeadCard: {
     backgroundColor: 'rgba(0, 0, 0, 0.50)',
     width: '65vw',
-    '@media (max-width: 560px)': { width: '85vw' },
+    '@media (max-width: 560px)': { width: '85vw', marginBottom: 25 },
   },
   textHeadCardTitle: {
     color: '#fff',
