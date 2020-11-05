@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
   container: {
     display: 'flow-root',
   },
@@ -17,7 +17,10 @@ const styles = makeStyles({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     paddingBottom: '50%',
-    margin: '15px 0',
+    marginBottom: '15px',
+    position: 'relative',
+    boxShadow: theme.boxShadow,
+    borderRadius: `0 0 ${theme.borderRadius} ${theme.borderRadius}`,
   },
   titleArticle: {
     fontSize: 40,
@@ -25,7 +28,8 @@ const styles = makeStyles({
     textAlign: 'center',
   },
   descriptionArticle: { margin: 15 },
-});
+}));
+
 const ArticleViews = (props) => {
   const post = get(props, 'data.contentfulPost');
   const classes = styles(post);

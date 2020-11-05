@@ -3,20 +3,22 @@ import { Typography, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
   root: {
     width: '100%',
     margin: '10px 0',
   },
   cardBody: {
-    borderRadius: 8,
+    borderRadius: theme.borderRadius,
     margin: '5px 0',
     width: '100%',
+    overflow: 'hidden',
   },
   containerCard: {
     padding: '5vh',
     display: 'flex',
     justifyContent: 'center',
+    whiteSpace: 'pre-wrap',
   },
   titleCard: { fontFamily: 'Lato' },
   backgroundCardImage: {
@@ -24,12 +26,14 @@ const styles = makeStyles({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    paddingBottom: '40vh',
+    height: '100%',
+    minHeight: '40vh',
+    height: 'inherit',
   },
   link: {
     textDecoration: 'none',
   },
-});
+}));
 
 const HomeItems = (props) => {
   const classes = styles(props);
@@ -37,7 +41,12 @@ const HomeItems = (props) => {
     <Grid item className={classes.root} xs={12}>
       <Link className={classes.link} to={props.link}>
         <Paper square elevation={2} className={classes.cardBody}>
-          <Grid container direction="row" alignItems="center" xs={12}>
+          <Grid
+            container
+            direction="row"
+            alignItems="stretch"
+            xs={12}
+          >
             <Grid
               item
               container

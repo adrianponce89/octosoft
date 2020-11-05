@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Link } from 'gatsby';
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
   relativContainer: { position: 'relative' },
   sizeContainer: {
     paddingBottom: '210%',
@@ -20,7 +20,7 @@ const styles = makeStyles({
     top: 0,
     display: 'flex',
     flexDirection: 'column',
-    borderRadius: 8,
+    borderRadius: theme.borderRadius,
     overflow: 'hidden',
   },
   backgroundImagePlan: {
@@ -37,8 +37,8 @@ const styles = makeStyles({
     flex: '1',
     overflow: 'auto',
     '& p': {
-      lineHeight: '12px',
-      margin: 0,
+      lineHeight: '1em',
+      margin: 4,
     },
   },
   amountPlan: {
@@ -52,7 +52,7 @@ const styles = makeStyles({
   link: {
     textDecoration: 'none',
   },
-});
+}));
 
 const Plans = (props) => {
   const classes = styles(props);

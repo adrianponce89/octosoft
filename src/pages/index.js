@@ -11,7 +11,7 @@ import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
 import Plan from '../components/Plans';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   backgroundHead: {
     backgroundImage: (props) => `url(${props.backgroundImage})`,
     backgroundPosition: 'bottom',
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '10vh',
-    height: '85vh',
+    minHeight: '85vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
   },
@@ -45,17 +45,17 @@ const useStyles = makeStyles({
   textLogo: {
     cursor: 'default',
     color: '#fff',
-    fontFamily: 'Lato',
     fontSize: 50,
     letterSpacing: 2,
     fontWeight: 'bold',
-    textShadow: '0px 5px 4px rgba(0, 0, 0, 0.50)',
+    textShadow: theme.textShadow,
     '@media (max-width: 560px)': { textAlign: 'center' },
   },
   containerHeadCard: {
     backgroundColor: 'rgba(0, 0, 0, 0.50)',
     width: '65vw',
     '@media (max-width: 560px)': { width: '85vw', marginBottom: 25 },
+    borderRadius: theme.borderRadius,
   },
   textHeadCardTitle: {
     color: '#fff',
@@ -64,6 +64,7 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
     margin: 15,
     textAlign: 'center',
+    whiteSpace: 'pre-wrap',
   },
   textHeadCard: {
     color: '#fff',
@@ -84,7 +85,7 @@ const useStyles = makeStyles({
     marginTop: '38px',
     textAlign: 'center',
   },
-});
+}));
 
 const SortPlans = (plans) => {
   let sortPlans = [];
@@ -133,7 +134,7 @@ export default (props) => {
                 justify="center"
                 className={classes.containerHead}
               >
-                <Grid item sm={3}>
+                <Grid item sm={2}>
                   <OctoLogo className={classes.logo} />
                 </Grid>
                 <Grid item container xs={11} sm={4}>

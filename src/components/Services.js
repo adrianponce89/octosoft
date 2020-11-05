@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import OctoLogo from '../assets/logo.svg';
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
   headTitle: {
     fontSize: 40,
     textAlign: 'center',
@@ -23,13 +23,11 @@ const styles = makeStyles({
     margin: 10,
     cursor: 'pointer',
     height: 50,
-    boxShadow:
-      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
-    borderRadius: 5,
+    boxShadow: theme.boxShadow,
+    borderRadius: theme.borderRadius,
   },
   highlightedButton: {
-    boxShadow:
-      'inset 0 0 0 2px #007bff, 0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
+    boxShadow: `inset 0 0 0 2px #007bff, ${theme.boxShadow}`,
   },
   buttonIcon: {
     width: 32,
@@ -46,9 +44,8 @@ const styles = makeStyles({
   infoContainer: {
     margin: '40px auto 40px auto',
     padding: '20px 0 20px 0',
-    boxShadow:
-      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
-    borderRadius: 5,
+    boxShadow: theme.boxShadow,
+    borderRadius: theme.borderRadius,
   },
   iconsDescriptions: {
     width: 250,
@@ -73,7 +70,7 @@ const styles = makeStyles({
       margin: 15,
     },
   },
-});
+}));
 
 const Services = ({ services, selected, title, subtitle }) => {
   const classes = styles();

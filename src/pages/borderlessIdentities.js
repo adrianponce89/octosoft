@@ -9,7 +9,7 @@ import { Grid } from '@material-ui/core';
 import BorderlessItems from '../components/BorderlessItems';
 import LogoBorderlessIdentities from '../assets/logoBI.svg';
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
   root: {
     width: '100%',
     height: '100%',
@@ -27,9 +27,8 @@ const styles = makeStyles({
     backgroundPosition: 'center',
     paddingBottom: '30%',
     position: 'relative',
-    boxShadow:
-      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
-    borderRadius: '0 0 5px 5px',
+    boxShadow: theme.boxShadow,
+    borderRadius: `0 0 ${theme.borderRadius} ${theme.borderRadius}`,
   },
   LogoBorderlessIdentities: {
     position: 'absolute',
@@ -44,12 +43,11 @@ const styles = makeStyles({
   containerItems: {
     margin: 25,
     overflow: 'hidden',
-    boxShadow:
-      '0px 3px 1px 2px rgba(0 0 0 / 2%), 0px 0px 2px 1px rgb(0 0 0 / 6%), 0px 5px 5px 0px rgb(0 0 0 / 2%), 0px 5px 5px 0px rgb(0 0 0 / 9%)',
-    borderRadius: 5,
+    boxShadow: theme.boxShadow,
+    borderRadius: theme.borderRadius,
   },
   titleItems: { fontSize: '18px' },
-});
+}));
 
 const BorderlessIdentities = (props) => {
   const classes = styles();
