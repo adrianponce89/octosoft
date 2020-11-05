@@ -64,6 +64,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     margin: 15,
     textAlign: 'center',
+    whiteSpace: 'pre-wrap',
   },
   textHeadCard: {
     color: '#fff',

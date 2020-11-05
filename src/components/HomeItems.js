@@ -17,6 +17,7 @@ const styles = makeStyles((theme) => ({
     padding: '5vh',
     display: 'flex',
     justifyContent: 'center',
+    whiteSpace: 'pre-wrap',
   },
   titleCard: { fontFamily: 'Lato' },
   backgroundCardImage: {

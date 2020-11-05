@@ -27,14 +27,17 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     padding: '0 5px',
   },
+  title: {
+    margin: '10px 50px',
+  },
   imgContainer: {
     display: 'flex',
     justifyContent: 'center',
-    padding: '20px',
+    padding: '0 20px',
   },
   smartphoneImg: {
     width: '100%',
-    paddingBottom: '215%',
+    paddingBottom: '225%',
     backgroundImage: `url(${Smartphone})`,
     backgroundColor: '#cccccc',
     backgroundPosition: 'center',
@@ -100,7 +103,7 @@ const ClientSupport = (props) => {
         data-netlify="true"
       >
         <input type="hidden" name="form-name" value="clientsupport" />
-        <h1>Client Support</h1>
+        <h1 className={classes.title}>Client Support</h1>
         <div className={classes.formContainer}>
           <Grid
             className={classes.gridContainer}

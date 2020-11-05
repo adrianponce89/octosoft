@@ -37,8 +37,8 @@ const styles = makeStyles((theme) => ({
     flex: '1',
     overflow: 'auto',
     '& p': {
-      lineHeight: '12px',
-      margin: 0,
+      lineHeight: '1em',
+      margin: 4,
     },
   },
   amountPlan: {
