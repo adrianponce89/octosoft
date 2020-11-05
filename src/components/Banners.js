@@ -9,9 +9,9 @@ const styles = makeStyles({
     backgroundRepeat: 'no-repeat',
     paddingBottom: '45vh',
     width: '100vw',
-    filter: 'blur(4px)',
     position: 'absolute',
     left: 0,
+    backgroundAttachment: 'fixed',
   },
   containerBanner: {
     height: '45vh',

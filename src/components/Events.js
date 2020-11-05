@@ -75,7 +75,7 @@ const Event = ({ stylesGlobal, events }) => {
 
   return (
     <Grid item className={classes.root}>
-      <Paper elevation={3} className={stylesGlobal}>
+      <Paper elevation={2} className={stylesGlobal}>
         <div className={classes.containTitle}>
           <p className={classes.titleCarousel}>Upcoming Event</p>
         </div>

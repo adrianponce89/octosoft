@@ -51,7 +51,7 @@ const Post = (props) => {
       <Link className={classes.link} to={`/news/${props.slug}`}>
         <Paper
           xs={12}
-          elevation={3}
+          elevation={2}
           className={classes.containerPost}
         >
           <div className={classes.containerPicPost}>

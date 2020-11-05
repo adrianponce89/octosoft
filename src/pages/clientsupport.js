@@ -40,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
-    borderRadius: '5px',
-    boxShadow: '1px 1px 2px gray',
+    borderRadius: theme.borderRadius,
+    boxShadow: theme.boxShadow,
   },
   buttonContainer: {
     flex: 1,

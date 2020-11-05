@@ -3,13 +3,13 @@ import { Typography, Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
   root: {
     width: '100%',
     margin: '10px 0',
   },
   cardBody: {
-    borderRadius: 8,
+    borderRadius: theme.borderRadius,
     margin: '5px 0',
     width: '100%',
   },
@@ -29,7 +29,7 @@ const styles = makeStyles({
   link: {
     textDecoration: 'none',
   },
-});
+}));
 
 const HomeItems = (props) => {
   const classes = styles(props);

@@ -61,12 +61,12 @@ const Blogs = (props) => {
       <div className={classes.root}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
-            <Paper elevation={3} className={classes.backgroundGlobal}>
+            <Paper elevation={2} className={classes.backgroundGlobal}>
               <h1 className={`${classes.headTitle}`}>News</h1>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Paper elevation={3} className={classes.backgroundGlobal}>
+            <Paper elevation={2} className={classes.backgroundGlobal}>
               <Grid
                 container
                 direction="row"
@@ -130,7 +130,7 @@ const Blogs = (props) => {
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper
-                  elevation={3}
+                  elevation={2}
                   className={classes.backgroundGlobal}
                 >
                   <h2 className={`${classes.subTitle}`}>
@@ -159,7 +159,7 @@ const Blogs = (props) => {
               </Grid>
               <Grid item xs={12}>
                 <Paper
-                  elevation={3}
+                  elevation={2}
                   className={classes.backgroundGlobal}
                 >
                   <h2 className={`${classes.subTitle}`}>
