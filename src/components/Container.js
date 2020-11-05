@@ -5,7 +5,7 @@ const styles = makeStyles((theme) => ({
   outsideBox: (props) => ({
     width: '100%',
     height: '100%',
-    minHeight: '100vh',
+    minHeight: !!props.partial ? '50vh' : '100vh',
     margin: 0,
     padding: 0,
     display: 'flex',
@@ -15,7 +15,7 @@ const styles = makeStyles((theme) => ({
   background: (props) => ({
     width: '100%',
     height: '100%',
-    minHeight: '100vh',
+    minHeight: !!props.partial ? '50vh' : '100vh',
     opacity: 0.2,
     top: 0,
     left: 0,

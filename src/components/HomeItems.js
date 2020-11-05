@@ -62,7 +62,7 @@ const HomeItems = (props) => {
               sm={8}
               className={classes.containerCard}
             >
-              <Grid item xs={12}>
+              <Grid item>
                 <Typography
                   variant="h5"
                   className={classes.titleCard}
@@ -70,9 +70,7 @@ const HomeItems = (props) => {
                   {props.title}
                 </Typography>
               </Grid>
-              <Grid item xs={12}>
-                {props.description}
-              </Grid>
+              <Grid item>{props.description}</Grid>
             </Grid>
           </Grid>
         </Paper>
