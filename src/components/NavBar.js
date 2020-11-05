@@ -20,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     color: 'black',
-    background: (props) => props.background,
+    background: ({ transparent }) =>
+      !!transparent ? 'transparent' : '#fff',
+    transition: '0.2s',
   },
   links: {
     display: 'flex',
@@ -37,36 +39,38 @@ const useStyles = makeStyles((theme) => ({
     width: 40,
     fontSize: 20,
     fontWeight: 800,
-    opacity: (props) => props.opacity,
+    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
   },
   logo: {
     width: 46,
     height: 46,
     marginRight: 10,
-    opacity: (props) => props.opacity,
+    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
     fill: '#33adff',
   },
   linkText: {
     fontWeight: 'bold',
     fontSize: '14px',
-    color: (props) => props.color,
-    textShadow: (props) => props.textShadow,
+    color: ({ transparent }) => (!!transparent ? '#fff' : 'black'),
+    textShadow: ({ transparent }) =>
+      !!transparent ? '0 0 6px black' : 'none',
   },
   appbar: {
     height: 80,
     background: 'none',
-    boxShadow: (props) => props.boxShadow,
+    boxShadow: ({ transparent }) =>
+      !!transparent ? 'none' : '0 0 4px gray',
   },
   iconDrawer: {
-    color: (props) => props.color,
-    textShadow: (props) => props.textShadow,
+    color: ({ transparent }) => (!!transparent ? '#fff' : 'black'),
+    textShadow: ({ transparent }) =>
+      !!transparent ? '0 0 6px black' : 'none',
   },
 }));
 
 const HideOnScroll = (props) => {
-  const { children, disableHysteresis } = props;
-  const trigger = useScrollTrigger({ disableHysteresis });
-
+  const { children } = props;
+  const trigger = useScrollTrigger({});
   return (
     <Slide appear={false} direction="down" in={!trigger}>
       {children}
@@ -110,7 +114,13 @@ const NavLinks = (props) => {
 };
 
 const NavBar = (props) => {
-  const classes = useStyles(props);
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 20,
+  });
+  const transparent = !trigger && props.home;
+
+  const classes = useStyles({ transparent });
   const [showDrawer, setShowDrawer] = useState(false);
   return (
     <React.Fragment>
@@ -140,7 +150,7 @@ const NavBar = (props) => {
             </Hidden>
             <Hidden smDown>
               <Box className={classes.links}>
-                <NavLinks {...props} />
+                <NavLinks transparent={transparent} />
               </Box>
             </Hidden>
           </Toolbar>
@@ -153,7 +163,7 @@ const NavBar = (props) => {
           onClose={() => setShowDrawer(false)}
           onOpen={() => setShowDrawer(true)}
         >
-          <NavLinks {...props} color="black" textShadow="none" />
+          <NavLinks color="black" textShadow="none" />
         </SwipeableDrawer>
       </Hidden>
     </React.Fragment>

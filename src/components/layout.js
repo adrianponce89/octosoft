@@ -38,25 +38,6 @@ const Layout = (props) => {
     location: { pathname },
   } = props;
 
-  const navProps =
-    pathname === '/'
-      ? {
-          boxShadow: 'none',
-          opacity: '0',
-          background: 'transparent',
-          color: '#fff',
-          textShadow: '0 0 6px black',
-          disableHysteresis: true,
-        }
-      : {
-          boxShadow: '0 0 4px gray',
-          opacity: '1',
-          background: '#fff',
-          color: 'black',
-          textShadow: 'none',
-          disableHysteresis: false,
-        };
-
   return (
     <LocaleContext.Provider value={{ locale }}>
       <Helmet>
@@ -64,7 +45,7 @@ const Layout = (props) => {
         <title>Octosoft Professionals</title>
       </Helmet>
       <ThemeProvider theme={theme}>
-        <NavBar {...navProps} />
+        <NavBar home={pathname === '/'} />
         <main>{children}</main>
       </ThemeProvider>
     </LocaleContext.Provider>
