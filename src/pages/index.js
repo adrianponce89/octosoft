@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '10vh',
-    minHeight: '85vh',
+    minHeight: '50vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
   },
@@ -40,8 +40,13 @@ const useStyles = makeStyles((theme) => ({
     height: 125,
     filter: 'drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.50))',
   },
-  arrowDown: { fontSize: '5em', color: '#fff' },
-  containerArrow: { position: 'absolute', bottom: 0 },
+  arrowDown: {
+    fontSize: '5em',
+    color: '#fff',
+    margin: 0,
+    padding: 0,
+  },
+  containerArrow: { position: 'absolute', bottom: -25 },
   textLogo: {
     cursor: 'default',
     color: '#fff',
@@ -54,8 +59,9 @@ const useStyles = makeStyles((theme) => ({
   containerHeadCard: {
     backgroundColor: 'rgba(0, 0, 0, 0.50)',
     width: '65vw',
-    '@media (max-width: 560px)': { width: '85vw', marginBottom: 25 },
+    '@media (max-width: 560px)': { width: '95vw', marginBottom: 45 },
     borderRadius: theme.borderRadius,
+    marginBottom: '15px',
   },
   textHeadCardTitle: {
     color: '#fff',
@@ -125,7 +131,11 @@ export default (props) => {
   return (
     <>
       <div className={classes.backgroundHead}>
-        <Container innerBackground={'none'}>
+        <Container
+          innerBackground={'none'}
+          innerPadding={'0'}
+          partial
+        >
           <Grid justify="center">
             <Grid container direction="column" alignItems="center">
               <Grid
