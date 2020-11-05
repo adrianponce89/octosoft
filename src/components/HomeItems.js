@@ -12,6 +12,7 @@ const styles = makeStyles((theme) => ({
     borderRadius: theme.borderRadius,
     margin: '5px 0',
     width: '100%',
+    overflow: 'hidden',
   },
   containerCard: {
     padding: '5vh',
@@ -25,7 +26,9 @@ const styles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    paddingBottom: '40vh',
+    height: '100%',
+    minHeight: '40vh',
+    height: 'inherit',
   },
   link: {
     textDecoration: 'none',
@@ -38,7 +41,12 @@ const HomeItems = (props) => {
     <Grid item className={classes.root} xs={12}>
       <Link className={classes.link} to={props.link}>
         <Paper square elevation={2} className={classes.cardBody}>
-          <Grid container direction="row" alignItems="center" xs={12}>
+          <Grid
+            container
+            direction="row"
+            alignItems="stretch"
+            xs={12}
+          >
             <Grid
               item
               container

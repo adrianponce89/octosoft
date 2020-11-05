@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '10vh',
-    height: '85vh',
+    minHeight: '85vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
   },
