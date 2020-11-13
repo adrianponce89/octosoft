@@ -88,17 +88,15 @@ const Services = ({ services, selected, title, subtitle }) => {
   };
 
   useEffect(() => {
-    console.log('selected:', selected);
     selectService(selected);
   }, []);
-
-  console.log('index =', index);
 
   return (
     <>
       <Grid container direction="column" alignItems="center">
         <h1 className={classes.headTitle}>{title}</h1>
         <Grid
+          item
           container
           justify="center"
           xs={10}
@@ -108,6 +106,7 @@ const Services = ({ services, selected, title, subtitle }) => {
         </Grid>
       </Grid>
       <Grid
+        item
         container
         justify="center"
         md={10}
@@ -118,11 +117,13 @@ const Services = ({ services, selected, title, subtitle }) => {
           .filter(({ node }) => node.order >= 0)
           .map(({ node }, i) => (
             <Grid
+              item
               container
               justify="center"
               alignItems="center"
               xs={6}
               md={3}
+              key={i}
               onClick={() => {
                 selectService(node.title.toLowerCase());
                 navigate(`/ourservices#${node.title.toLowerCase()}`);
@@ -157,6 +158,7 @@ const Services = ({ services, selected, title, subtitle }) => {
           className={classes.infoContainer}
         >
           <Grid
+            item
             container
             md={3}
             direction="column"
@@ -170,11 +172,7 @@ const Services = ({ services, selected, title, subtitle }) => {
               {services[index].node.title}
             </div>
           </Grid>
-          <Grid
-            container
-            md={6}
-            className={classes.containerDescription}
-          >
+          <Grid item md={6} className={classes.containerDescription}>
             <div
               dangerouslySetInnerHTML={{
                 __html: documentToHtmlString(

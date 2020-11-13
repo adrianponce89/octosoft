@@ -42,6 +42,7 @@ const HomeItems = (props) => {
       <Link className={classes.link} to={props.link}>
         <Paper square elevation={2} className={classes.cardBody}>
           <Grid
+            item
             container
             direction="row"
             alignItems="stretch"

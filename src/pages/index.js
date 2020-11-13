@@ -210,8 +210,9 @@ export default (props) => {
                   .node.image.file.url
               })`}
             />
-            {homeBorderlessItems.map(({ node }) => (
+            {homeBorderlessItems.map(({ node }, i) => (
               <HomeItems
+                key={i}
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
