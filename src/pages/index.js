@@ -9,7 +9,7 @@ import BackgroundImage from '../assets/Background.png';
 import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
-import Plan from '../components/Plans';
+import OurPlans from '../components/OurPlans';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
@@ -78,7 +78,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     margin: 15,
   },
-
   containerCard: {
     padding: '3vh',
     justifyContent: 'center',
@@ -93,24 +92,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SortPlans = (plans) => {
-  let sortPlans = [];
-  const titleTypeSet = new Set();
-
-  plans.forEach((plan) => {
-    titleTypeSet.add(plan.node.type);
-  });
-
-  titleTypeSet.forEach((value) => {
-    sortPlans.push({
-      type: value,
-      plans: plans.filter((p) => p.node.type === value),
-    });
-  });
-
-  return sortPlans;
-};
-
 export default (props) => {
   const descriptionLanding = get(
     props,
@@ -123,11 +104,9 @@ export default (props) => {
     'data.allContentfulHomeBorderlessIdentities.edges',
   );
   const plans = get(props, 'data.allContentfulPlan.edges');
-  const plansSort = SortPlans(plans);
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
-  console.log('des :>> ', descriptionLanding);
   return (
     <>
       <div className={classes.backgroundHead}>
@@ -136,7 +115,7 @@ export default (props) => {
           innerPadding={'0'}
           partial
         >
-          <Grid justify="center">
+          <Grid container justify="center">
             <Grid container direction="column" alignItems="center">
               <Grid
                 container
@@ -194,10 +173,10 @@ export default (props) => {
             direction="column"
             justify="center"
             alignItems="center"
-            xs={12}
           >
-            {homeItems.map(({ node }) => (
+            {homeItems.map(({ node }, i) => (
               <HomeItems
+                key={i}
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
@@ -225,35 +204,7 @@ export default (props) => {
                   .image.file.url
               })`}
             />
-            <Grid item container justify="center" xs={12}>
-              {plansSort.map(({ type, plans }) => (
-                <>
-                  <Typography
-                    variant="h1"
-                    className={classes.titleType}
-                  >
-                    {type}
-                  </Typography>
-                  <Grid
-                    container
-                    spacing={7}
-                    justify="space-around"
-                    direction="row"
-                    className={classes.containerPlans}
-                  >
-                    {plans.map(({ node }) => (
-                      <Plan
-                        imagePlan={`url(${node.image.file.url})`}
-                        title={node.title}
-                        description={node.description}
-                        amount={node.amount}
-                        link={node.link}
-                      />
-                    ))}
-                  </Grid>
-                </>
-              ))}
-            </Grid>
+            <OurPlans plans={plans} title={'Our Plans'} />
           </Grid>
         </Container>
       </section>
