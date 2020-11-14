@@ -14,10 +14,11 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import SwipeableViews from 'react-swipeable-views';
+import FondoSF1 from '../assets/FondoSF1.png';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
-    backgroundImage: (props) => `url(${props.backgroundImage})`,
+    backgroundImage: `url(${FondoSF1})`,
     backgroundPosition: 'bottom',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
@@ -42,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: 125,
     height: 125,
-    filter: 'drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.50))',
   },
   arrowDown: {
     fontSize: '5em',
@@ -53,12 +53,18 @@ const useStyles = makeStyles((theme) => ({
   containerArrow: { position: 'absolute', bottom: -25 },
   textLogo: {
     cursor: 'default',
-    color: '#fff',
     fontSize: 50,
+    lineHeight: 0.75,
     letterSpacing: 2,
     fontWeight: 'bold',
-    textShadow: theme.textShadow,
-    '@media (max-width: 560px)': { textAlign: 'center' },
+    fontFamily: 'Montserrat',
+  },
+  textLogoSub: {
+    cursor: 'default',
+    fontSize: 31,
+    letterSpacing: 2,
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
   },
   containerHeadCard: {
     backgroundColor: 'rgba(0, 0, 0, 0.50)',
@@ -185,12 +191,24 @@ export default (props) => {
                 <Grid item sm={2}>
                   <OctoLogo className={classes.logo} />
                 </Grid>
-                <Grid item container xs={11} sm={4}>
+                <Grid
+                  item
+                  container
+                  xs={11}
+                  sm={4}
+                  justifyContent="center"
+                >
                   <Typography
                     variant="h1"
                     className={classes.textLogo}
                   >
-                    {'Octosoft Professionals'}
+                    {'Octosoft'}
+                  </Typography>
+                  <Typography
+                    variant="h2"
+                    className={classes.textLogoSub}
+                  >
+                    {'Professionals'}
                   </Typography>
                 </Grid>
               </Grid>

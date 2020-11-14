@@ -35,10 +35,23 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     textDecoration: 'none',
   },
+  textLogoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
   textLogo: {
-    width: 40,
     fontSize: 20,
+    margin: 0,
     fontWeight: 800,
+    fontFamily: 'Montserrat',
+    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
+  },
+  textLogoSub: {
+    fontSize: 13,
+    margin: 0,
+    fontWeight: 800,
+    fontFamily: 'Montserrat',
     opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
   },
   logo: {
@@ -51,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
   linkText: {
     fontWeight: 'bold',
     fontSize: '14px',
-    color: ({ transparent }) => (!!transparent ? '#fff' : 'black'),
+    color: 'black',
     textShadow: ({ transparent }) =>
-      !!transparent ? '0 0 6px black' : 'none',
+      !!transparent ? '0 0 4px #FFF' : 'none',
   },
   appbar: {
     height: 80,
@@ -132,8 +145,11 @@ const NavBar = (props) => {
                 <div className={classes.logo}>
                   <OctoLogo className={classes.logo} />
                 </div>
-                <div className={classes.textLogo}>
-                  {'Octosoft Professionals'}
+                <div className={classes.textLogoContainer}>
+                  <p className={classes.textLogo}>{'Octosoft'}</p>
+                  <p className={classes.textLogoSub}>
+                    {'Professionals'}
+                  </p>
                 </div>
               </div>
             </Link>
