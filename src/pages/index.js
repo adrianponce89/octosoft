@@ -204,7 +204,7 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <Banners
+            {/* <Banners
               backgroundImage={`url(${
                 banners.find(({ node }) => node.type === 'Borderless')
                   .node.image.file.url
@@ -217,7 +217,7 @@ export default (props) => {
                 description={node.description.description}
                 link={node.link}
               />
-            ))}
+            ))} */}
             <Banners
               backgroundImage={`url(${
                 banners.find(({ node }) => node.type === 'Plans').node
