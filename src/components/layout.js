@@ -43,6 +43,10 @@ const Layout = (props) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Octosoft Professionals</title>
+        <link
+          href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700"
+          rel="stylesheet"
+        ></link>
       </Helmet>
       <ThemeProvider theme={theme}>
         <NavBar home={pathname === '/'} />
