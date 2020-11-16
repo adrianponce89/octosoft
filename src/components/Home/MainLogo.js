@@ -7,18 +7,16 @@ const useStyles = makeStyles((theme) => ({
   containerHead: {
     marginBottom: '8vh',
     display: 'flex',
-    '@media (max-width: 560px)': {
-      flexDirection: 'column',
-      justifyContent: 'center',
-    },
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   logo: {
-    width: 125,
-    height: 125,
+    width: 100,
+    height: 100,
   },
   textLogo: {
     cursor: 'default',
-    fontSize: 50,
+    fontSize: 35,
     lineHeight: 0.75,
     letterSpacing: 2,
     fontWeight: 'bold',
@@ -26,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textLogoSub: {
     cursor: 'default',
-    fontSize: 31,
+    fontSize: 21,
     letterSpacing: 2,
     fontWeight: 'bold',
     fontFamily: 'Montserrat',
@@ -36,15 +34,8 @@ const useStyles = makeStyles((theme) => ({
 export default ({ className }) => {
   const classes = useStyles();
   return (
-    <Grid
-      container
-      alignItems="center"
-      justify="center"
-      className={`${classes.containerHead} ${className}`}
-    >
-      <Grid item sm={2}>
-        <OctoLogo className={classes.logo} />
-      </Grid>
+    <Grid className={`${classes.containerHead} ${className}`}>
+      <OctoLogo className={classes.logo} />
       <Grid item container xs={11} sm={4} justifyContent="center">
         <Typography variant="h1" className={classes.textLogo}>
           {'Octosoft'}

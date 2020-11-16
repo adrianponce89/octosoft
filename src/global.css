@@ -68,6 +68,7 @@ pre {
 
 .Typist .Cursor {
   display: inline-block;
+  color: #37add4;
 }
 
 .Typist .Cursor.Cursor--blinking {

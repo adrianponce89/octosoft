@@ -17,9 +17,19 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '10vh',
-    minHeight: '60vh',
+    minHeight: '50vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
+  },
+  mainLogo: {
+    position: 'absolute',
+    left: '5vw',
+    top: '5vh',
+  },
+  typingContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   arrowDown: {
     fontSize: '5em',
@@ -38,13 +48,14 @@ export default ({ descriptionLanding }) => {
   });
   return (
     <div className={classes.backgroundHead}>
-      <Container innerBackground={'none'} innerPadding={'0'} partial>
-        <Grid justify="center">
-          <Grid container direction="column" alignItems="center">
-            <MainLogo />
-            <TypingAnimation words={words} />
-          </Grid>
-        </Grid>
+      <MainLogo className={classes.mainLogo} />
+      <Container
+        innerBackground={'none'}
+        innerPadding={'0'}
+        partial
+        className={classes.typingContainer}
+      >
+        <TypingAnimation words={words} />
       </Container>
       <Grid
         container

@@ -8,11 +8,13 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
   },
   elegantTypewriterTextWrap: {
+    fontWeight: '500',
     fontSize: 40,
+    color: 'gray',
   },
 }));
 
-export default ({ words }) => {
+export default ({ words, className }) => {
   const typistRef = useRef();
   const classes = useStyles();
   const handleTypingDone = () => {
@@ -20,7 +22,7 @@ export default ({ words }) => {
     typistRef.current.typeAllLines();
   };
   return (
-    <span className={classes.tiContainer}>
+    <span className={`${classes.tiContainer} ${className}`}>
       <span className={classes.elegantTypewriterTextWrap}>
         <Typist
           className={classes.elegantTypewriterTextWrap}
