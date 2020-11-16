@@ -10,6 +10,7 @@ import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
 import Plan from '../components/Plans';
+import TypingAnimation from '../components/TypingAnimation';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -66,29 +67,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontFamily: 'Montserrat',
   },
-  containerHeadCard: {
-    backgroundColor: 'rgba(0, 0, 0, 0.50)',
-    width: '65vw',
-    '@media (max-width: 560px)': { width: '95vw', marginBottom: 45 },
-    borderRadius: theme.borderRadius,
-    marginBottom: '15px',
-  },
-  textHeadCardTitle: {
-    color: '#fff',
-    fontFamily: 'Lato',
-    fontSize: 26,
-    fontWeight: 'bold',
-    margin: 15,
-    textAlign: 'center',
-    whiteSpace: 'pre-wrap',
-  },
-  textHeadCard: {
-    color: '#fff',
-    fontFamily: 'Lato',
-    fontSize: 20,
-    margin: 15,
-  },
-
   containerCard: {
     padding: '3vh',
     justifyContent: 'center',
@@ -140,6 +118,8 @@ const SortPlans = (plans) => {
 
   return sortPlans;
 };
+
+const words = ['Diverse', 'Other stuff', 'Way cooler'];
 
 export default (props) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -212,20 +192,7 @@ export default (props) => {
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid item xs={9} className={classes.containerHeadCard}>
-                <Typography
-                  variant="body1"
-                  className={classes.textHeadCardTitle}
-                >
-                  {descriptionLanding.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  className={classes.textHeadCard}
-                >
-                  {`${descriptionLanding.description}`}
-                </Typography>
-              </Grid>
+              <TypingAnimation words={words} />
             </Grid>
           </Grid>
         </Container>
