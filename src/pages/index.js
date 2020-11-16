@@ -1,115 +1,22 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import { Typography, Grid } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Grid } from '@material-ui/core';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Background.png';
-import OctoLogo from '../assets/logoHome.svg';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
-import Plan from '../components/Plans';
+import HomeBanner from '../components/Home/Banner';
+import PlansSlider from '../components/Home/PlansSlider';
 
 const useStyles = makeStyles((theme) => ({
-  backgroundHead: {
-    backgroundImage: (props) => `url(${props.backgroundImage})`,
-    backgroundPosition: 'bottom',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    paddingTop: '10vh',
-    minHeight: '50vh',
-    position: 'relative',
-    '@media (max-width: 560px)': { height: '100%' },
-  },
-  containerHead: {
-    marginBottom: '8vh',
-    display: 'flex',
-    '@media (max-width: 560px)': {
-      flexDirection: 'column',
-      justifyContent: 'center',
-    },
-  },
-  logo: {
-    width: 125,
-    height: 125,
-    filter: 'drop-shadow(0px 5px 3px rgba(0, 0, 0, 0.50))',
-  },
-  arrowDown: {
-    fontSize: '5em',
-    color: '#fff',
-    margin: 0,
-    padding: 0,
-  },
-  containerArrow: { position: 'absolute', bottom: -25 },
-  textLogo: {
-    cursor: 'default',
-    color: '#fff',
-    fontSize: 50,
-    letterSpacing: 2,
-    fontWeight: 'bold',
-    textShadow: theme.textShadow,
-    '@media (max-width: 560px)': { textAlign: 'center' },
-  },
-  containerHeadCard: {
-    backgroundColor: 'rgba(0, 0, 0, 0.50)',
-    width: '65vw',
-    '@media (max-width: 560px)': { width: '95vw', marginBottom: 45 },
-    borderRadius: theme.borderRadius,
-    marginBottom: '15px',
-  },
-  textHeadCardTitle: {
-    color: '#fff',
-    fontFamily: 'Lato',
-    fontSize: 26,
-    fontWeight: 'bold',
-    margin: 15,
-    textAlign: 'center',
-    whiteSpace: 'pre-wrap',
-  },
-  textHeadCard: {
-    color: '#fff',
-    fontFamily: 'Lato',
-    fontSize: 20,
-    margin: 15,
-  },
-
   containerCard: {
     padding: '3vh',
     justifyContent: 'center',
     width: '100%',
   },
-  containerPlans: { paddingTop: '2em' },
-  titleType: {
-    fontFamily: 'Lato',
-    fontSize: '38px',
-    marginTop: '38px',
-    textAlign: 'center',
-  },
 }));
-
-const SortPlans = (plans) => {
-  let sortPlans = [];
-  const titleTypeSet = new Set();
-
-  plans.forEach((plan) => {
-    titleTypeSet.add(plan.node.type);
-  });
-
-  titleTypeSet.forEach((value) => {
-    sortPlans.push({
-      type: value,
-      plans: plans.filter((p) => p.node.type === value),
-    });
-  });
-
-  return sortPlans;
-};
 
 export default (props) => {
   const descriptionLanding = get(
@@ -118,71 +25,13 @@ export default (props) => {
   );
   const banners = get(props, 'data.allContentfulBanners.edges');
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
-  const homeBorderlessItems = get(
-    props,
-    'data.allContentfulHomeBorderlessIdentities.edges',
-  );
   const plans = get(props, 'data.allContentfulPlan.edges');
-  const plansSort = SortPlans(plans);
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
-  console.log('des :>> ', descriptionLanding);
   return (
     <>
-      <div className={classes.backgroundHead}>
-        <Container
-          innerBackground={'none'}
-          innerPadding={'0'}
-          partial
-        >
-          <Grid justify="center">
-            <Grid container direction="column" alignItems="center">
-              <Grid
-                container
-                alignItems="center"
-                justify="center"
-                className={classes.containerHead}
-              >
-                <Grid item sm={2}>
-                  <OctoLogo className={classes.logo} />
-                </Grid>
-                <Grid item container xs={11} sm={4}>
-                  <Typography
-                    variant="h1"
-                    className={classes.textLogo}
-                  >
-                    {'Octosoft Professionals'}
-                  </Typography>
-                </Grid>
-              </Grid>
-              <Grid item xs={9} className={classes.containerHeadCard}>
-                <Typography
-                  variant="body1"
-                  className={classes.textHeadCardTitle}
-                >
-                  {descriptionLanding.title}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  className={classes.textHeadCard}
-                >
-                  {`${descriptionLanding.description}`}
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Container>
-        <Grid
-          container
-          justify="center"
-          className={classes.containerArrow}
-        >
-          <a href="#work">
-            <ExpandMoreIcon className={classes.arrowDown} />
-          </a>
-        </Grid>
-      </div>
+      <HomeBanner descriptionLanding={descriptionLanding} />
       <section id="work">
         <Container
           background={`url(${BackgroundImage})`}
@@ -206,53 +55,12 @@ export default (props) => {
             ))}
             <Banners
               backgroundImage={`url(${
-                banners.find(({ node }) => node.type === 'Borderless')
-                  .node.image.file.url
-              })`}
-            />
-            {homeBorderlessItems.map(({ node }) => (
-              <HomeItems
-                backgroundImage={`url(${node.image.file.url})`}
-                title={node.title}
-                description={node.description.description}
-                link={node.link}
-              />
-            ))}
-            <Banners
-              backgroundImage={`url(${
                 banners.find(({ node }) => node.type === 'Plans').node
                   .image.file.url
               })`}
             />
-            <Grid item container justify="center" xs={12}>
-              {plansSort.map(({ type, plans }) => (
-                <>
-                  <Typography
-                    variant="h1"
-                    className={classes.titleType}
-                  >
-                    {type}
-                  </Typography>
-                  <Grid
-                    container
-                    spacing={7}
-                    justify="space-around"
-                    direction="row"
-                    className={classes.containerPlans}
-                  >
-                    {plans.map(({ node }) => (
-                      <Plan
-                        imagePlan={`url(${node.image.file.url})`}
-                        title={node.title}
-                        description={node.description}
-                        amount={node.amount}
-                        link={node.link}
-                      />
-                    ))}
-                  </Grid>
-                </>
-              ))}
-            </Grid>
+
+            <PlansSlider plans={plans} />
           </Grid>
         </Container>
       </section>

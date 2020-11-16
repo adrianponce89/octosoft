@@ -35,10 +35,23 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary,
     textDecoration: 'none',
   },
+  textLogoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
   textLogo: {
-    width: 40,
     fontSize: 20,
+    margin: 0,
     fontWeight: 800,
+    fontFamily: 'Montserrat',
+    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
+  },
+  textLogoSub: {
+    fontSize: 13,
+    margin: 0,
+    fontWeight: 800,
+    fontFamily: 'Montserrat',
     opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
   },
   logo: {
@@ -51,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
   linkText: {
     fontWeight: 'bold',
     fontSize: '14px',
-    color: ({ transparent }) => (!!transparent ? '#fff' : 'black'),
+    color: 'black',
     textShadow: ({ transparent }) =>
-      !!transparent ? '0 0 6px black' : 'none',
+      !!transparent ? '0 0 4px #FFF' : 'none',
   },
   appbar: {
     height: 80,
@@ -62,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
       !!transparent ? 'none' : '0 0 4px gray',
   },
   iconDrawer: {
-    color: ({ transparent }) => (!!transparent ? '#fff' : 'black'),
+    color: 'black',
     textShadow: ({ transparent }) =>
       !!transparent ? '0 0 6px black' : 'none',
   },
@@ -78,37 +91,30 @@ const HideOnScroll = (props) => {
   );
 };
 
+const links = [
+  { url: '/aboutus', name: 'ABOUT US' },
+  { url: '/news', name: 'NEWS' },
+  { url: '/ourservices', name: 'OUR SERVICES' },
+  { url: '/borderlessIdentities', name: 'BORDERLESS IDENTITIES' },
+  { url: '/clientsupport', name: 'CLIENT SUPPORT' },
+  { url: '/contact', name: 'CONTACT US' },
+];
+
 const NavLinks = (props) => {
   const classes = useStyles(props);
   return (
     <React.Fragment>
       <Link className={classes.link} margin={2} to="/">
-        <div className={classes.linkText}>{'Home'}</div>
+        <div className={classes.linkText}>{'HOME'}</div>
       </Link>
-      <Link className={classes.link} margin={2} to="/aboutus">
-        <div className={classes.linkText}>{'About Us'}</div>
-      </Link>
-      <Link className={classes.link} margin={2} to="/news">
-        <div className={classes.linkText}>{'News'}</div>
-      </Link>
-      <Link className={classes.link} margin={2} to="/ourservices">
-        <div className={classes.linkText}>{'Our Services'}</div>
-      </Link>
-      <Link
-        className={classes.link}
-        margin={2}
-        to="/borderlessIdentities"
-      >
-        <div className={classes.linkText}>
-          {'Borderless Identities'}
-        </div>
-      </Link>
-      <Link className={classes.link} margin={2} to="/clientsupport">
-        <div className={classes.linkText}>{'Client Support'}</div>
-      </Link>
-      <Link className={classes.link} margin={2} to="/contact">
-        <div className={classes.linkText}>{'Contact Us'}</div>
-      </Link>
+      {links.map((link) => (
+        <>
+          <Hidden mdDown>|</Hidden>
+          <Link className={classes.link} margin={2} to={link.url}>
+            <div className={classes.linkText}>{link.name}</div>
+          </Link>
+        </>
+      ))}
     </React.Fragment>
   );
 };
@@ -132,12 +138,15 @@ const NavBar = (props) => {
                 <div className={classes.logo}>
                   <OctoLogo className={classes.logo} />
                 </div>
-                <div className={classes.textLogo}>
-                  {'Octosoft Professionals'}
+                <div className={classes.textLogoContainer}>
+                  <p className={classes.textLogo}>{'Octosoft'}</p>
+                  <p className={classes.textLogoSub}>
+                    {'Professionals'}
+                  </p>
                 </div>
               </div>
             </Link>
-            <Hidden mdUp>
+            <Hidden lgUp>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -148,7 +157,7 @@ const NavBar = (props) => {
                 <MenuIcon />
               </IconButton>
             </Hidden>
-            <Hidden smDown>
+            <Hidden mdDown>
               <Box className={classes.links}>
                 <NavLinks transparent={transparent} />
               </Box>
@@ -156,7 +165,7 @@ const NavBar = (props) => {
           </Toolbar>
         </AppBar>
       </HideOnScroll>
-      <Hidden mdUp>
+      <Hidden lgUp>
         <SwipeableDrawer
           anchor={'right'}
           open={showDrawer}

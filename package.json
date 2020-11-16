@@ -24,7 +24,8 @@
     "react-loadable": "^5.5.0",
     "react-router": "^5.2.0",
     "react-scripts": "^3.4.3",
-    "react-swipeable-views": "^0.13.9"
+    "react-swipeable-views": "^0.13.9",
+    "react-typist": "^2.0.5"
   },
   "scripts": {
     "dev": "gatsby develop",
