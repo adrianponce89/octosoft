@@ -15,21 +15,19 @@ import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import SwipeableViews from 'react-swipeable-views';
-import FondoSF1 from '../assets/FondoSF1.png';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
-    backgroundImage: `url(${FondoSF1})`,
-    backgroundPosition: 'bottom',
+    backgroundImage: (props) => `url(${props.backgroundImage})`,
+    backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundAttachment: 'fixed',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '10vh',
-    minHeight: '50vh',
+    minHeight: '60vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
   },
