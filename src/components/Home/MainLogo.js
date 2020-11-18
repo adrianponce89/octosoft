@@ -36,7 +36,7 @@ export default ({ className }) => {
   return (
     <Grid className={`${classes.containerHead} ${className}`}>
       <OctoLogo className={classes.logo} />
-      <Grid item container xs={11} sm={4} justifyContent="center">
+      <Grid item container xs={4} justifyContent="center">
         <Typography variant="h1" className={classes.textLogo}>
           {'Octosoft'}
         </Typography>
