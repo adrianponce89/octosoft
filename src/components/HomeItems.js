@@ -20,7 +20,7 @@ const styles = makeStyles((theme) => ({
     justifyContent: 'center',
     whiteSpace: 'pre-wrap',
   },
-  titleCard: { fontFamily: 'Lato' },
+  titleCard: { fontFamily: 'Montserrat' },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
     backgroundPosition: 'center',

@@ -31,7 +31,7 @@ const styles = makeStyles((theme) => ({
     paddingBottom: '60%',
   },
   descriptionContainer: { height: '-webkit-fill-available' },
-  titlePlan: { fontFamily: 'Lato', marginTop: '0.5em' },
+  titlePlan: { fontFamily: 'Montserrat', marginTop: '0.5em' },
   descriptionPlan: {
     width: '85%',
     flex: '1',
@@ -42,13 +42,17 @@ const styles = makeStyles((theme) => ({
     },
   },
   amountPlan: {
-    fontFamily: 'Lato',
+    fontFamily: 'Montserrat',
     backgroundColor: '#ececec',
     padding: '10px 25px',
     borderRadius: '45.705px',
     display: (props) => (props.amount !== null ? 'block' : 'none'),
   },
-  buttonPlan: { fontSize: 20, fontFamily: 'Lato', margin: '15px 0' },
+  buttonPlan: {
+    fontSize: 20,
+    fontFamily: 'Montserrat',
+    margin: '15px 0',
+  },
   link: {
     textDecoration: 'none',
   },

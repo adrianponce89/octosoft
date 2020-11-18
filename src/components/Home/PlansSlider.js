@@ -11,7 +11,7 @@ import SwipeableViews from 'react-swipeable-views';
 const useStyles = makeStyles((theme) => ({
   containerPlans: { paddingTop: '2em' },
   titleType: {
-    fontFamily: 'Lato',
+    fontFamily: 'Montserrat',
     fontSize: '38px',
     marginTop: '38px',
     textAlign: 'center',

@@ -33,7 +33,7 @@ const styles = makeStyles({
     marginBottom: 10,
   },
   inputSearch: {
-    fontFamily: 'Lato',
+    fontFamily: 'Montserrat',
     background: '#ECECEC',
   },
   titleListPost: {
