@@ -35,11 +35,14 @@ const useStyles = makeStyles((theme) => ({
   },
   arrowDown: {
     fontSize: '5em',
-    color: '#000',
+    color: '#37add4',
     margin: 0,
     padding: 0,
   },
-  containerArrow: { position: 'absolute', bottom: -25 },
+  containerArrow: {
+    position: 'absolute',
+    bottom: -25,
+  },
 }));
 
 const words = ['Diverse.', 'Secure.', 'Budget friendly.'];
@@ -57,7 +60,7 @@ export default ({ descriptionLanding }) => {
       <Grid
         container
         justify="center"
-        className={classes.containerArrow}
+        className={`Arrow ${classes.containerArrow}`}
       >
         <a href="#work">
           <ExpandMoreIcon className={classes.arrowDown} />
