@@ -27,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
     top: '5vh',
   },
   typingContainer: {
+    alignSelf: 'flex-start',
     display: 'flex',
+    marginLeft: '20vw',
     flexDirection: 'column',
     justifyContent: 'center',
   },
@@ -49,14 +51,9 @@ export default ({ descriptionLanding }) => {
   return (
     <div className={classes.backgroundHead}>
       <MainLogo className={classes.mainLogo} />
-      <Container
-        innerBackground={'none'}
-        innerPadding={'0'}
-        partial
-        className={classes.typingContainer}
-      >
+      <div className={classes.typingContainer}>
         <TypingAnimation words={words} />
-      </Container>
+      </div>
       <Grid
         container
         justify="center"
