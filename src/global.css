@@ -87,3 +87,20 @@ pre {
     opacity: 1;
   }
 }
+
+.Arrow {
+  bottom: -25;
+  animation: move 1s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    bottom: -25;
+  }
+  50% {
+    bottom: 0;
+  }
+  100% {
+    bottom: -25;
+  }
+}

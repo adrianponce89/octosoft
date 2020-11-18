@@ -27,17 +27,22 @@ const useStyles = makeStyles((theme) => ({
     top: '5vh',
   },
   typingContainer: {
+    alignSelf: 'flex-start',
     display: 'flex',
+    marginLeft: '20vw',
     flexDirection: 'column',
     justifyContent: 'center',
   },
   arrowDown: {
     fontSize: '5em',
-    color: '#000',
+    color: '#37add4',
     margin: 0,
     padding: 0,
   },
-  containerArrow: { position: 'absolute', bottom: -25 },
+  containerArrow: {
+    position: 'absolute',
+    bottom: -25,
+  },
 }));
 
 const words = ['Diverse.', 'Secure.', 'Budget friendly.'];
@@ -49,18 +54,13 @@ export default ({ descriptionLanding }) => {
   return (
     <div className={classes.backgroundHead}>
       <MainLogo className={classes.mainLogo} />
-      <Container
-        innerBackground={'none'}
-        innerPadding={'0'}
-        partial
-        className={classes.typingContainer}
-      >
+      <div className={classes.typingContainer}>
         <TypingAnimation words={words} />
-      </Container>
+      </div>
       <Grid
         container
         justify="center"
-        className={classes.containerArrow}
+        className={`Arrow ${classes.containerArrow}`}
       >
         <a href="#work">
           <ExpandMoreIcon className={classes.arrowDown} />

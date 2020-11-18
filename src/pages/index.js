@@ -8,7 +8,7 @@ import BackgroundImage from '../assets/Background.png';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
 import HomeBanner from '../components/Home/Banner';
-import PlansSlider from '../components/Home/PlansSlider';
+import OurPlans from '../components/Home/OurPlans';
 
 const useStyles = makeStyles((theme) => ({
   containerCard: {
@@ -58,9 +58,10 @@ export default (props) => {
                 banners.find(({ node }) => node.type === 'Plans').node
                   .image.file.url
               })`}
+              title="Our Plans"
             />
 
-            <PlansSlider plans={plans} />
+            <OurPlans plans={plans} title={'Our Plans'} />
           </Grid>
         </Container>
       </section>
