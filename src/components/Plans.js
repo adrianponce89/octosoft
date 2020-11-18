@@ -57,7 +57,7 @@ const styles = makeStyles((theme) => ({
 const Plans = (props) => {
   const classes = styles(props);
   return (
-    <Grid item xs={10} sm={6} md={4}>
+    <Grid item xs={12} sm={6} md={4}>
       <Grid item className={classes.relativContainer}>
         <dir className={classes.sizeContainer} />
         <Paper square className={classes.containerPlan} elevation={2}>
@@ -90,7 +90,14 @@ const Plans = (props) => {
                 />
               </Grid>
             </Grid>
-            <Grid item container justify="center">
+            <Grid
+              item
+              container
+              justify="center"
+              alignContent="center"
+              alignItems="center"
+              direction="column"
+            >
               <Typography variant="h5" className={classes.amountPlan}>
                 {props.amount}
               </Typography>

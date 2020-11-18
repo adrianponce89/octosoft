@@ -33,7 +33,7 @@ export default ({ words, className }) => {
             <span>
               <Typist.Delay ms={600} />
               <span>{word}</span>
-              <Typist.Backspace count={word.length} delay={800} />
+              <Typist.Backspace count={word.length} delay={2000} />
             </span>
           ))}
         </Typist>

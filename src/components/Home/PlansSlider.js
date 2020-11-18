@@ -21,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     margin: 5,
     padding: 0,
-    '@media (max-width: 760px)': { order: '1' },
   },
   arrowLeft: {
     position: 'absolute',
@@ -35,26 +34,9 @@ const useStyles = makeStyles((theme) => ({
   },
   containPlans: {
     display: 'flex',
+    flex: 1,
   },
 }));
-
-const SortPlans = (plans) => {
-  let sortPlans = [];
-  const titleTypeSet = new Set();
-
-  plans.forEach((plan) => {
-    titleTypeSet.add(plan.node.type);
-  });
-
-  titleTypeSet.forEach((value) => {
-    sortPlans.push({
-      type: value,
-      plans: plans.filter((p) => p.node.type === value),
-    });
-  });
-
-  return sortPlans;
-};
 
 export default ({ plans }) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -71,7 +53,6 @@ export default ({ plans }) => {
     setActiveStep(step);
   };
 
-  const plansSort = SortPlans(plans);
   const classes = useStyles();
   return (
     <div className={classes.containPlans}>
@@ -84,36 +65,42 @@ export default ({ plans }) => {
         <RadioButtonUncheckedIcon />
         <ChevronLeftIcon className={classes.arrowLeft} />
       </IconButton>
-      <div justify="center">
+      <div
+        style={{
+          flexDirection: 'column',
+          flex: 1,
+          width: '100%',
+          marginTop: 25,
+          marginBottom: 25,
+          justifyContent: 'center',
+          alignContent: 'center',
+          alignItems: 'stretch',
+          display: 'flex',
+        }}
+      >
         <SwipeableViews
           index={activeStep}
           onChangeIndex={handleStepChange}
           enableMouseEvents
         >
-          {plansSort.map(({ type, plans }) => (
-            <>
-              <Typography variant="h1" className={classes.titleType}>
-                {type}
-              </Typography>
-              <div
-                style={{
-                  flexDirection: 'row',
-                  display: 'flex',
-                  flex: 1,
-                }}
-                className={classes.containerPlans}
-              >
-                {plans.map(({ node }) => (
-                  <Plan
-                    imagePlan={`url(${node.image.file.url})`}
-                    title={node.title}
-                    description={node.description}
-                    amount={node.amount}
-                    link={node.link}
-                  />
-                ))}
-              </div>
-            </>
+          {plans.map(({ node }) => (
+            <div
+              style={{
+                margin: 'auto',
+                display: 'flex',
+                justifyContent: 'center',
+                alignContent: 'center',
+                margin: 3,
+              }}
+            >
+              <Plan
+                imagePlan={`url(${node.image.file.url})`}
+                title={node.title}
+                description={node.description}
+                amount={node.amount}
+                link={node.link}
+              />
+            </div>
           ))}
         </SwipeableViews>
       </div>
@@ -121,7 +108,7 @@ export default ({ plans }) => {
         color="inherit"
         className={classes.button}
         onClick={handleNext}
-        disabled={activeStep === plansSort.length - 1}
+        disabled={activeStep === plans.length - 1}
       >
         <RadioButtonUncheckedIcon />
         <ChevronRightIcon className={classes.arrowRigt} />
