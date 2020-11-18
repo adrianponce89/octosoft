@@ -104,3 +104,16 @@ pre {
     bottom: -25;
   }
 }
+
+#___loader img {
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
