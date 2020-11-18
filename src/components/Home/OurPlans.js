@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useNavigate } from '@reach/router';
-import { Grid } from '@material-ui/core';
+import { Grid, Hidden } from '@material-ui/core';
 import Plan from '../Plans';
+import PlansSlider from './PlansSlider';
 
 const styles = makeStyles((theme) => ({
   keypad: {
@@ -153,16 +154,21 @@ const Ourplans = ({ plans, title }) => {
             direction="row"
             className={classes.containerPlans}
           >
-            {sortPlans[index].plans.map(({ node }, i) => (
-              <Plan
-                key={i}
-                imagePlan={`url(${node.image.file.url})`}
-                title={node.title}
-                description={node.description}
-                amount={node.amount}
-                link={node.link}
-              />
-            ))}
+            <Hidden xsDown>
+              {sortPlans[index].plans.map(({ node }, i) => (
+                <Plan
+                  key={i}
+                  imagePlan={`url(${node.image.file.url})`}
+                  title={node.title}
+                  description={node.description}
+                  amount={node.amount}
+                  link={node.link}
+                />
+              ))}
+            </Hidden>
+            <Hidden smUp>
+              <PlansSlider plans={sortPlans[index].plans} />
+            </Hidden>
           </Grid>
         </Grid>
       }
