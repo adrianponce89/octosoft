@@ -16,6 +16,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
   },
+  headTitle: {
+    fontSize: 40,
+    textAlign: 'center',
+    lineHeight: '38px',
+    color: '#000',
+  },
 }));
 
 export default (props) => {
@@ -53,14 +59,14 @@ export default (props) => {
                 link={node.link}
               />
             ))}
-            <Banners
+            {/* <Banners
               backgroundImage={`url(${
                 banners.find(({ node }) => node.type === 'Plans').node
                   .image.file.url
               })`}
               title="Our Plans"
-            />
-
+            /> */}
+            <h1 className={classes.headTitle}>{'Our Plans'}</h1>
             <OurPlans plans={plans} title={'Our Plans'} />
           </Grid>
         </Container>

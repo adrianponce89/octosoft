@@ -70,7 +70,7 @@ const styles = makeStyles((theme) => ({
     borderBottomRightRadius: theme.borderRadius,
   },
   titleType: {
-    fontFamily: 'Lato',
+    fontFamily: 'Montserrat',
     fontSize: '38px',
     marginTop: '38px',
     textAlign: 'center',
