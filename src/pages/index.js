@@ -51,12 +51,14 @@ export default (props) => {
             alignItems="center"
             xs={12}
           >
-            {homeItems.map(({ node }) => (
+            {homeItems.map(({ node }, i) => (
               <HomeItems
+                right={i % 2 == 0}
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
                 link={node.link}
+                color={node.color}
               />
             ))}
             {/* <Banners
@@ -83,6 +85,7 @@ export const pageQuery = graphql`
           id
           link
           order
+          color
           image {
             file {
               url

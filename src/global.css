@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Montserrat', 'Lato', sans-serif;
+  font-family: 'Montserrat', 'Montserrat', sans-serif;
 }
 
 body {
   margin: 0;
-  font-family: 'Montserrat', 'Lato';
+  font-family: 'Montserrat', 'Montserrat';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -26,7 +26,7 @@ code {
   color: #61dafb;
 }
 h1 {
-  font-family: Lato;
+  font-family: Montserrat;
   font-size: 24px;
   font-style: normal;
   font-variant: normal;
@@ -34,7 +34,7 @@ h1 {
   line-height: 26.4px;
 }
 h3 {
-  font-family: Lato;
+  font-family: Montserrat;
   font-size: 14px;
   font-style: normal;
   font-variant: normal;
@@ -42,7 +42,7 @@ h3 {
   line-height: 15.4px;
 }
 p {
-  font-family: Lato;
+  font-family: Montserrat;
   font-size: 14px;
   font-style: normal;
   font-variant: normal;
@@ -50,7 +50,7 @@ p {
   line-height: 20px;
 }
 blockquote {
-  font-family: Lato;
+  font-family: Montserrat;
   font-size: 21px;
   font-style: normal;
   font-variant: normal;
@@ -58,7 +58,7 @@ blockquote {
   line-height: 30px;
 }
 pre {
-  font-family: Lato;
+  font-family: Montserrat;
   font-size: 13px;
   font-style: normal;
   font-variant: normal;
