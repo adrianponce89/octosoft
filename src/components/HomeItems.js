@@ -17,7 +17,11 @@ const styles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
-    '@media (max-width: 576px)': { flexDirection: 'column' },
+    '@media (max-width: 576px)': {
+      flexDirection: 'column',
+      paddingLeft: 0,
+      paddingRight: 0,
+    },
     color: ({ color }) => color,
   },
   containerCard: {
@@ -32,9 +36,11 @@ const styles = makeStyles((theme) => ({
   titleCard: {
     fontFamily: 'Montserrat',
     fontWeight: 900,
+    fontSize: 32,
   },
   descriptionCard: {
     fontFamily: 'Montserrat',
+    fontSize: 18,
   },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
