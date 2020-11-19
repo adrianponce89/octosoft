@@ -16,12 +16,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
   },
-  headTitle: {
-    fontSize: 40,
-    textAlign: 'center',
-    lineHeight: '38px',
-    color: '#000',
-  },
+  // headTitle: {
+  //   fontSize: 40,
+  //   textAlign: 'center',
+  //   lineHeight: '38px',
+  //   color: '#000',
+  // },
 }));
 
 export default (props) => {
@@ -35,6 +35,10 @@ export default (props) => {
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
+
+  const planBanner = banners.find(({ node }) => node.type === 'Plans')
+    .node;
+
   return (
     <>
       <HomeBanner descriptionLanding={descriptionLanding} />
@@ -51,22 +55,23 @@ export default (props) => {
             alignItems="center"
             xs={12}
           >
-            {homeItems.map(({ node }) => (
+            {homeItems.map(({ node }, i) => (
               <HomeItems
+                right={i % 2 == 0}
                 backgroundImage={`url(${node.image.file.url})`}
                 title={node.title}
                 description={node.description.description}
                 link={node.link}
+                color={node.color}
               />
             ))}
-            {/* <Banners
-              backgroundImage={`url(${
-                banners.find(({ node }) => node.type === 'Plans').node
-                  .image.file.url
-              })`}
-              title="Our Plans"
-            /> */}
-            <h1 className={classes.headTitle}>{'Our Plans'}</h1>
+            <Banners
+              backgroundImage={`url(${planBanner.image.file.url})`}
+              title={planBanner.title}
+              right={true}
+              color={planBanner.color}
+            />
+            {/* <h1 className={classes.headTitle}>{'Our Plans'}</h1> */}
             <OurPlans plans={plans} title={'Our Plans'} />
           </Grid>
         </Container>
@@ -83,6 +88,7 @@ export const pageQuery = graphql`
           id
           link
           order
+          color
           image {
             file {
               url
@@ -144,6 +150,8 @@ export const pageQuery = graphql`
     allContentfulBanners {
       edges {
         node {
+          title
+          color
           image {
             file {
               url

@@ -44,7 +44,7 @@ const Layout = (props) => {
         <meta charSet="utf-8" />
         <title>Octosoft Professionals</title>
         <link
-          href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700"
+          href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900"
           rel="stylesheet"
         ></link>
       </Helmet>
