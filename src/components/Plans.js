@@ -30,11 +30,17 @@ const styles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     paddingBottom: '60%',
   },
-  descriptionContainer: { height: '-webkit-fill-available' },
+  descriptionContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flex: 1,
+    overflow: 'auto',
+  },
   titlePlan: { fontFamily: 'Montserrat', marginTop: '0.5em' },
   descriptionPlan: {
     width: '85%',
-    flex: '1',
+    flex: 1,
     overflow: 'auto',
     '& p': {
       lineHeight: '1em',
@@ -66,14 +72,7 @@ const Plans = (props) => {
         <dir className={classes.sizeContainer} />
         <Paper square className={classes.containerPlan} elevation={2}>
           <div className={classes.backgroundImagePlan}></div>
-          <Grid
-            container
-            direction="column"
-            alignItems="center"
-            justify="space-between"
-            className={classes.descriptionContainer}
-            xs={12}
-          >
+          <div className={classes.descriptionContainer}>
             <Grid
               item
               container
@@ -84,7 +83,7 @@ const Plans = (props) => {
                 {props.title}
               </Typography>
 
-              <Grid item className={classes.descriptionPlan}>
+              <div className={classes.descriptionPlan}>
                 <div
                   dangerouslySetInnerHTML={{
                     __html: documentToHtmlString(
@@ -92,7 +91,7 @@ const Plans = (props) => {
                     ),
                   }}
                 />
-              </Grid>
+              </div>
             </Grid>
             <Grid
               item
@@ -121,7 +120,7 @@ const Plans = (props) => {
                 </Button>
               </Link>
             </Grid>
-          </Grid>
+          </div>
         </Paper>
       </Grid>
     </Grid>
