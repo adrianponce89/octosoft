@@ -12,14 +12,19 @@ const styles = makeStyles((theme) => ({
   },
   button: {
     cursor: 'pointer',
-    height: 50,
+    height: 70,
     background: '#eee',
-    boxShadow: theme.boxShadow,
-    borderTopLeftRadius: theme.borderRadius,
-    borderTopRightRadius: theme.borderRadius,
+    boxShadow: 'inset -9px -6px 8px 1px #00000061',
   },
+  buttonInside: {
+    cursor: 'pointer',
+    height: 70,
+    backgroundColor: '#007bff',
+    boxShadow: 'inset -9px -6px 8px 1px #00000061',
+  },
+  colorOne: { backgroundColor: '#0c3293' },
+  colorTwo: { backgroundColor: '#1d2178' },
   buttonText: {
-    width: '50%',
     fontWeight: 'bolder',
     '@media (max-width: 576px)': {
       fontSize: '2.3vw',
@@ -28,14 +33,30 @@ const styles = makeStyles((theme) => ({
 
     textAlign: 'center',
   },
+  buttonInsideText: {
+    width: '60%',
+    fontWeight: 'bolder',
+    fontSize: '20px',
+    color: '#eee',
+    '@media (max-width: 576px)': {
+      fontSize: '2.3vw',
+      padding: 0,
+    },
+
+    textAlign: 'center',
+  },
   highlightedButton: {
-    borderTop: '2px solid #007bff',
-    borderLeft: '2px solid #007bff',
-    borderRight: '2px solid #007bff',
-    boxShadow: 'none',
+    boxShadow: 'inset -9px -6px 8px 1px #00000061',
     background: '#fff',
     paddingBottom: 2,
     zIndex: 100,
+  },
+  highlightedInsideButton: {
+    zIndex: 100,
+    '& div': {
+      textShadow:
+        '1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black',
+    },
   },
   infoContainer: {
     margin: '40px auto 40px auto',
@@ -61,13 +82,9 @@ const styles = makeStyles((theme) => ({
     width: '100%',
   },
   containerPlans: {
-    // paddingTop: '2em',
-    padding: 0,
+    paddingTop: '2em',
     margin: 0,
     background: '#fff',
-    boxShadow: theme.boxShadow,
-    borderBottomLeftRadius: theme.borderRadius,
-    borderBottomRightRadius: theme.borderRadius,
   },
   titleType: {
     fontFamily: 'Montserrat',
@@ -80,6 +97,7 @@ const styles = makeStyles((theme) => ({
 const Ourplans = ({ plans, title }) => {
   const classes = styles();
   const [index, selectedIndex] = useState(0);
+  const [idPlan, selectedIdPlan] = useState(0);
 
   const navigate = useNavigate();
 
@@ -134,7 +152,7 @@ const Ourplans = ({ plans, title }) => {
           >
             <Grid
               container
-              justify="space-evenly"
+              justify="center"
               alignItems="center"
               className={`${classes.button} ${
                 i === index ? classes.highlightedButton : ''
@@ -150,21 +168,53 @@ const Ourplans = ({ plans, title }) => {
           <Grid
             container
             spacing={5}
-            justify="space-around"
+            justify="center"
             direction="row"
             className={classes.containerPlans}
           >
             <Hidden xsDown>
-              {sortPlans[index].plans.map(({ node }, i) => (
-                <Plan
-                  key={i}
-                  imagePlan={`url(${node.image.file.url})`}
-                  title={node.title}
-                  description={node.description}
-                  amount={node.amount}
-                  link={node.link}
-                />
-              ))}
+              <Grid
+                container
+                direction="row"
+                justify="center"
+                alignContent="center"
+              >
+                {sortPlans[index].plans.map(({ node }, i) => (
+                  <Grid
+                    item
+                    container
+                    xs={4}
+                    justify="center"
+                    alignItems="center"
+                    key={i}
+                    onClick={() => {
+                      selectedIdPlan(i);
+                    }}
+                    className={`${classes.buttonInside} ${
+                      i === 1
+                        ? classes.colorOne
+                        : i === 2
+                        ? classes.colorTwo
+                        : ''
+                    } ${
+                      i === idPlan
+                        ? classes.highlightedInsideButton
+                        : ''
+                    }`}
+                  >
+                    <div
+                      className={classes.buttonInsideText}
+                    >{`${node.title}`}</div>
+                  </Grid>
+                ))}
+              </Grid>
+              <Plan
+                description={
+                  sortPlans[index].plans[idPlan].node.description
+                }
+                amount={sortPlans[index].plans[idPlan].node.amount}
+                link={sortPlans[index].plans[idPlan].node.link}
+              />
             </Hidden>
             <Hidden smUp>
               <PlansSlider plans={sortPlans[index].plans} />
