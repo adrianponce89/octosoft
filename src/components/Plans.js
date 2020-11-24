@@ -7,7 +7,7 @@ import { Link } from 'gatsby';
 const styles = makeStyles((theme) => ({
   relativContainer: { position: 'relative' },
   sizeContainer: {
-    paddingBottom: '210%',
+    paddingBottom: '55%',
     margin: 0,
     display: 'flex',
     justifyContent: 'center',
@@ -23,18 +23,10 @@ const styles = makeStyles((theme) => ({
     borderRadius: theme.borderRadius,
     overflow: 'hidden',
   },
-  backgroundImagePlan: {
-    backgroundImage: (props) => props.imagePlan,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    paddingBottom: '60%',
-  },
   descriptionContainer: {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'space-between',
-    flex: 1,
     overflow: 'auto',
   },
   titlePlan: { fontFamily: 'Montserrat', marginTop: '0.5em' },
@@ -45,6 +37,9 @@ const styles = makeStyles((theme) => ({
     '& p': {
       lineHeight: '1em',
       margin: 4,
+    },
+    '& li:nth-child(odd)': {
+      background: '#ccc',
     },
   },
   amountPlan: {
@@ -67,11 +62,10 @@ const styles = makeStyles((theme) => ({
 const Plans = (props) => {
   const classes = styles(props);
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12}>
       <Grid item className={classes.relativContainer}>
         <dir className={classes.sizeContainer} />
-        <Paper square className={classes.containerPlan} elevation={2}>
-          <div className={classes.backgroundImagePlan}></div>
+        <div className={classes.containerPlan}>
           <div className={classes.descriptionContainer}>
             <Grid
               item
@@ -121,7 +115,7 @@ const Plans = (props) => {
               </Link>
             </Grid>
           </div>
-        </Paper>
+        </div>
       </Grid>
     </Grid>
   );
