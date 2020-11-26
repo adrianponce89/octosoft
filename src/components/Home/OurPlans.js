@@ -14,13 +14,13 @@ const styles = makeStyles((theme) => ({
     cursor: 'pointer',
     height: 70,
     background: '#eee',
-    boxShadow: 'inset -9px -6px 8px 1px #00000061',
+    boxShadow: 'inset -9px -6px 8px 1px rgba(0,0,0,0.15)',
   },
   buttonInside: {
     cursor: 'pointer',
     height: 70,
     backgroundColor: '#007bff',
-    boxShadow: 'inset -9px -6px 8px 1px #00000061',
+    boxShadow: 'inset -9px -6px 8px 1px rgba(0,0,0,0.15)',
   },
   colorOne: { backgroundColor: '#0c3293' },
   colorTwo: { backgroundColor: '#1d2178' },
@@ -34,7 +34,7 @@ const styles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   buttonInsideText: {
-    width: '60%',
+    width: '100%',
     fontWeight: 'bolder',
     fontSize: '20px',
     color: '#eee',
@@ -46,7 +46,7 @@ const styles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   highlightedButton: {
-    boxShadow: 'inset -9px -6px 8px 1px #00000061',
+    boxShadow: 'inset -9px -6px 8px 1px rgba(0,0,0,0.15)',
     background: '#fff',
     paddingBottom: 2,
     zIndex: 100,
@@ -172,53 +172,48 @@ const Ourplans = ({ plans, title }) => {
             direction="row"
             className={classes.containerPlans}
           >
-            <Hidden xsDown>
-              <Grid
-                container
-                direction="row"
-                justify="center"
-                alignContent="center"
-              >
-                {sortPlans[index].plans.map(({ node }, i) => (
-                  <Grid
-                    item
-                    container
-                    xs={4}
-                    justify="center"
-                    alignItems="center"
-                    key={i}
-                    onClick={() => {
-                      selectedIdPlan(i);
-                    }}
-                    className={`${classes.buttonInside} ${
-                      i === 1
-                        ? classes.colorOne
-                        : i === 2
-                        ? classes.colorTwo
-                        : ''
-                    } ${
-                      i === idPlan
-                        ? classes.highlightedInsideButton
-                        : ''
-                    }`}
-                  >
-                    <div
-                      className={classes.buttonInsideText}
-                    >{`${node.title}`}</div>
-                  </Grid>
-                ))}
-              </Grid>
-              <Plan
-                description={
-                  sortPlans[index].plans[idPlan].node.description
-                }
-                amount={sortPlans[index].plans[idPlan].node.amount}
-                link={sortPlans[index].plans[idPlan].node.link}
-              />
-            </Hidden>
-            <Hidden smUp>
-              <PlansSlider plans={sortPlans[index].plans} />
-            </Hidden>
+            <Grid
+              container
+              direction="row"
+              justify="center"
+              alignContent="center"
+            >
+              {sortPlans[index].plans.map(({ node }, i) => (
+                <Grid
+                  item
+                  container
+                  xs={4}
+                  justify="center"
+                  alignItems="center"
+                  key={i}
+                  onClick={() => {
+                    selectedIdPlan(i);
+                  }}
+                  className={`${classes.buttonInside} ${
+                    i === 1
+                      ? classes.colorOne
+                      : i === 2
+                      ? classes.colorTwo
+                      : ''
+                  } ${
+                    i === idPlan
+                      ? classes.highlightedInsideButton
+                      : ''
+                  }`}
+                >
+                  <div
+                    className={classes.buttonInsideText}
+                  >{`${node.title}`}</div>
+                </Grid>
+              ))}
+            </Grid>
+            <Plan
+              description={
+                sortPlans[index].plans[idPlan].node.description
+              }
+              amount={sortPlans[index].plans[idPlan].node.amount}
+              title={sortPlans[index].plans[idPlan].node.title}
+            />
           </Grid>
         </Grid>
       }
