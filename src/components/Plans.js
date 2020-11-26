@@ -31,7 +31,9 @@ const styles = makeStyles((theme) => ({
   },
   titlePlan: { fontFamily: 'Montserrat', marginTop: '0.5em' },
   descriptionPlan: {
-    width: '85%',
+    paddingBottom: 25,
+    borderBottom: '12px solid #1d2178',
+    width: '90%',
     flex: 1,
     overflow: 'auto',
     '& p': {
@@ -41,12 +43,25 @@ const styles = makeStyles((theme) => ({
     '& li:nth-child(odd)': {
       background: '#ccc',
     },
+    '& ul': {
+      display: 'flex',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      maxHeight: 400,
+    },
+  },
+  containerAmount: {
+    position: 'relative',
+    display: 'flex',
   },
   amountPlan: {
     fontFamily: 'Montserrat',
-    backgroundColor: '#ececec',
+    fontWeight: 'bold',
+    backgroundColor: '#1d2178',
+    color: 'white',
     padding: '10px 25px',
-    borderRadius: '45.705px',
+    position: 'relative',
+    top: -32,
     display: (props) => (props.amount !== null ? 'block' : 'none'),
   },
   buttonPlan: {
@@ -95,23 +110,19 @@ const Plans = (props) => {
               alignItems="center"
               direction="column"
             >
-              <Typography variant="h5" className={classes.amountPlan}>
-                {props.amount}
-              </Typography>
               <Link
                 className={classes.link}
                 encodeURIComponent
                 to={`/contact#${props.title}`}
               >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  disableElevation
-                  size="large"
-                  className={classes.buttonPlan}
-                >
-                  {props.link !== null ? 'Learn More' : 'Contact Us'}
-                </Button>
+                <div className={classes.containerAmount}>
+                  <Typography
+                    variant="h5"
+                    className={classes.amountPlan}
+                  >
+                    {props.amount}
+                  </Typography>
+                </div>
               </Link>
             </Grid>
           </div>
