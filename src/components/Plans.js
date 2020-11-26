@@ -1,57 +1,82 @@
 import React from 'react';
-import { Typography, Grid, Paper, Button } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Link } from 'gatsby';
 
-const styles = makeStyles((theme) => ({
-  relativContainer: { position: 'relative' },
-  sizeContainer: {
-    paddingBottom: '210%',
-    margin: 0,
-    display: 'flex',
-    justifyContent: 'center',
-  },
+const styles = makeStyles(() => ({
   containerPlan: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
-    top: 0,
     display: 'flex',
     flexDirection: 'column',
-    borderRadius: theme.borderRadius,
     overflow: 'hidden',
   },
-  backgroundImagePlan: {
-    backgroundImage: (props) => props.imagePlan,
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    paddingBottom: '60%',
-  },
   descriptionContainer: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flex: 1,
-    overflow: 'auto',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20,
+    background: '#ccc',
+    borderBottom: '12px solid #1d2178',
   },
   titlePlan: { fontFamily: 'Montserrat', marginTop: '0.5em' },
   descriptionPlan: {
-    width: '85%',
+    background: '#fff',
+    paddingBottom: 25,
+
+    width: '100%',
     flex: 1,
     overflow: 'auto',
     '& p': {
       lineHeight: '1em',
       margin: 4,
     },
+    '& li:nth-child(odd)': {
+      background: '#ddd',
+    },
+    '& ul': {
+      display: 'flex',
+      background: '#fff',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      height: 320,
+      listStyleType: 'none',
+      margin: 0,
+      padding: 0,
+      paddingTop: 10,
+      '@media (max-width: 760px)': {
+        flexWrap: 'nowrap',
+        // height: '100%',
+        minHeight: 400,
+      },
+    },
+    '@media (max-width: 760px)': {
+      '& ul::after': {
+        content: '" "',
+        display: 'block',
+        minHeight: 30,
+      },
+    },
+    '& li': {
+      paddingLeft: 10,
+      minWidth: '45%',
+    },
+    '& li p::before': {
+      content: '"· "',
+      display: 'inline',
+      fontWeight: 'bold',
+    },
+  },
+  containerAmount: {
+    position: 'relative',
+    display: 'flex',
   },
   amountPlan: {
     fontFamily: 'Montserrat',
-    backgroundColor: '#ececec',
+    fontWeight: 'bold',
+    backgroundColor: '#1d2178',
+    color: 'white',
     padding: '10px 25px',
-    borderRadius: '45.705px',
+    position: 'relative',
+    top: -32,
     display: (props) => (props.amount !== null ? 'block' : 'none'),
   },
   buttonPlan: {
@@ -67,61 +92,43 @@ const styles = makeStyles((theme) => ({
 const Plans = (props) => {
   const classes = styles(props);
   return (
-    <Grid item xs={12} sm={6} md={4}>
-      <Grid item className={classes.relativContainer}>
-        <dir className={classes.sizeContainer} />
-        <Paper square className={classes.containerPlan} elevation={2}>
-          <div className={classes.backgroundImagePlan}></div>
-          <div className={classes.descriptionContainer}>
-            <Grid
-              item
-              container
-              direction="column"
-              alignItems="center"
-            >
-              <Typography variant="h4" className={classes.titlePlan}>
-                {props.title}
-              </Typography>
-
-              <div className={classes.descriptionPlan}>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: documentToHtmlString(
-                      props.description.json,
-                    ),
-                  }}
-                />
-              </div>
-            </Grid>
-            <Grid
-              item
-              container
-              justify="center"
-              alignContent="center"
-              alignItems="center"
-              direction="column"
-            >
+    <Grid item xs={12} style={{ padding: 0 }}>
+      <Grid item className={classes.containerPlan}>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems="center"
+          className={classes.descriptionContainer}
+        >
+          <div className={classes.descriptionPlan}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: documentToHtmlString(props.description.json),
+              }}
+            />
+          </div>
+        </Grid>
+        <Grid
+          item
+          container
+          justify="center"
+          alignContent="center"
+          alignItems="center"
+          direction="column"
+        >
+          <Link
+            className={classes.link}
+            encodeURIComponent
+            to={`/contact#${props.title}`}
+          >
+            <div className={classes.containerAmount}>
               <Typography variant="h5" className={classes.amountPlan}>
                 {props.amount}
               </Typography>
-              <Link
-                className={classes.link}
-                encodeURIComponent
-                to={`/contact#${props.title}`}
-              >
-                <Button
-                  variant="contained"
-                  color="primary"
-                  disableElevation
-                  size="large"
-                  className={classes.buttonPlan}
-                >
-                  {props.link !== null ? 'Learn More' : 'Contact Us'}
-                </Button>
-              </Link>
-            </Grid>
-          </div>
-        </Paper>
+            </div>
+          </Link>
+        </Grid>
       </Grid>
     </Grid>
   );
