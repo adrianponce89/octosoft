@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Slide from '@material-ui/core/Slide';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
+import {
+  AppBar,
+  Toolbar,
+  SwipeableDrawer,
+  useScrollTrigger,
+  Slide,
+  Hidden,
+  IconButton,
+  Box,
+  Button,
+  Menu,
+  MenuItem,
+} from '@material-ui/core';
+
 import MenuIcon from '@material-ui/icons/Menu';
-import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 
@@ -34,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 20,
     color: theme.palette.text.primary,
     textDecoration: 'none',
+    cursor: 'pointer',
   },
   textLogoContainer: {
     display: 'flex',
@@ -65,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: '14px',
     color: 'black',
+    fontFamily: 'Montserrat',
     textShadow: ({ transparent }) =>
       !!transparent ? '0 0 4px #FFF' : 'none',
   },
@@ -91,30 +99,76 @@ const HideOnScroll = (props) => {
   );
 };
 
-const links = [
-  { url: '/aboutus', name: 'ABOUT US' },
-  { url: '/news', name: 'NEWS' },
-  { url: '/ourservices', name: 'OUR SERVICES' },
-  { url: '/borderlessIdentities', name: 'BORDERLESS IDENTITIES' },
-  { url: '/clientsupport', name: 'CLIENT SUPPORT' },
-  { url: '/contact', name: 'CONTACT US' },
-];
-
 const NavLinks = (props) => {
   const classes = useStyles(props);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <React.Fragment>
       <Link className={classes.link} margin={2} to="/">
         <div className={classes.linkText}>{'HOME'}</div>
       </Link>
-      {links.map((link) => (
-        <>
-          <Hidden mdDown>|</Hidden>
-          <Link className={classes.link} margin={2} to={link.url}>
-            <div className={classes.linkText}>{link.name}</div>
-          </Link>
-        </>
-      ))}
+
+      <Hidden mdDown>|</Hidden>
+
+      <Link className={classes.link} margin={2} to="/aboutus">
+        <div className={classes.linkText}>ABOUT US</div>
+      </Link>
+
+      <Hidden mdDown>|</Hidden>
+
+      <Link className={classes.link} margin={2} to="/ourservices">
+        <div className={classes.linkText}>OUR SERVICES</div>
+      </Link>
+
+      <Hidden mdDown>|</Hidden>
+      <a
+        aria-controls="simple-menu"
+        aria-haspopup="true"
+        onClick={handleClick}
+        className={classes.link}
+        margin={2}
+      >
+        <div className={classes.linkText}>COMMUNITY</div>
+      </a>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem component={Link} to="/news" onClick={handleClose}>
+          NEWS
+        </MenuItem>
+        <MenuItem
+          component={Link}
+          to="/borderlessIdentities"
+          onClick={handleClose}
+        >
+          BORDERLESS IDENTITIES
+        </MenuItem>
+      </Menu>
+
+      <Hidden mdDown>|</Hidden>
+
+      <Link className={classes.link} margin={2} to="/clientsupport">
+        <div className={classes.linkText}>CLIENT SUPPORT</div>
+      </Link>
+
+      <Hidden mdDown>|</Hidden>
+
+      <Link className={classes.link} margin={2} to="/contact">
+        <div className={classes.linkText}>CONTACT US</div>
+      </Link>
     </React.Fragment>
   );
 };
