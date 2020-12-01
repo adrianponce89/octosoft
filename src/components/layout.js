@@ -51,8 +51,10 @@ const Layout = (props) => {
       </Helmet>
       <ThemeProvider theme={theme}>
         <NavBar home={pathname === '/'} />
-        <main>{children}</main>
-        <Footer />
+        <main>
+          {children}
+          <Footer />
+        </main>
       </ThemeProvider>
     </LocaleContext.Provider>
   );
