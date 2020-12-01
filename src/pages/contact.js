@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
@@ -11,6 +8,7 @@ import MailBox from '../assets/mailbox.jpg';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
 import { submitForm } from '../utils';
+import PrimaryInput from '../components/PrimaryInput';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -119,104 +117,74 @@ const Contact = (props) => {
             spacing={3}
           >
             <Grid className={classes.gridItem} item xs={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="NameInput">Name</InputLabel>
-                <OutlinedInput
-                  id="NameInput"
-                  value={name}
-                  name="name"
-                  onChange={({ target }) => setName(target.value)}
-                  label="Name"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="NameInput"
+                value={name}
+                name="name"
+                onChange={({ target }) => setName(target.value)}
+                label="Name"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="LastNameInput">
-                  Last Name
-                </InputLabel>
-                <OutlinedInput
-                  id="LastNameInput"
-                  value={lastName}
-                  name="lastName"
-                  onChange={({ target }) => setLastName(target.value)}
-                  label="LastName"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="LastNameInput"
+                value={lastName}
+                name="lastName"
+                onChange={({ target }) => setLastName(target.value)}
+                label="LastName"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="SubjectInput">
-                  Subject (Optional)
-                </InputLabel>
-                <OutlinedInput
-                  id="SubjectInput"
-                  value={subject}
-                  name="subject"
-                  onChange={({ target }) => setSubject(target.value)}
-                  label="Subject (Optional)"
-                />
-              </FormControl>
+              <PrimaryInput
+                id="SubjectInput"
+                value={subject}
+                name="subject"
+                onChange={({ target }) => setSubject(target.value)}
+                label="Subject (Optional)"
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="BudgetInput">
-                  Budget (Optional)
-                </InputLabel>
-                <OutlinedInput
-                  id="BudgetInput"
-                  value={budget}
-                  name="budget"
-                  onChange={({ target }) => setBudget(target.value)}
-                  label="Budget (Optional)"
-                />
-              </FormControl>
+              <PrimaryInput
+                id="BudgetInput"
+                value={budget}
+                name="budget"
+                onChange={({ target }) => setBudget(target.value)}
+                label="Budget (Optional)"
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="EmailInput">
-                  Your Email
-                </InputLabel>
-                <OutlinedInput
-                  id="EmailInput"
-                  value={email}
-                  name="email"
-                  onChange={({ target }) => setEmail(target.value)}
-                  label="Your Email"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="EmailInput"
+                value={email}
+                name="email"
+                type="email"
+                onChange={({ target }) => setEmail(target.value)}
+                label="Your Email"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="PhoneInput">
-                  Your Phone Number
-                </InputLabel>
-                <OutlinedInput
-                  id="PhoneInput"
-                  value={phone}
-                  name="phone"
-                  onChange={({ target }) => setPhone(target.value)}
-                  label="Your Phone Number"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="PhoneInput"
+                value={phone}
+                name="phone"
+                onChange={({ target }) => setPhone(target.value)}
+                label="Your Phone Number"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={12}>
-              <FormControl variant="outlined" fullWidth>
-                <TextField
-                  variant="outlined"
-                  id="ContentInput"
-                  value={content}
-                  name="content"
-                  onChange={({ target }) => setContent(target.value)}
-                  multiline
-                  rows={12}
-                  size="small"
-                />
-              </FormControl>
+              <PrimaryInput
+                id="ContentInput"
+                value={content}
+                name="content"
+                onChange={({ target }) => setContent(target.value)}
+                multiline
+                rows={12}
+                size="small"
+              />
             </Grid>
             <div className={classes.buttonContainer}>
               <Button
