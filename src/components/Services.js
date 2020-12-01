@@ -6,15 +6,30 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import OctoLogo from '../assets/logo.svg';
 
 const styles = makeStyles((theme) => ({
+  contanerHead: {
+    marginTop: 20,
+  },
+  containerImga: {
+    borderRight: `7px solid`,
+    borderColor: (props) => props.colorTitle,
+  },
+  image: {
+    backgroundImage: (props) => props.image,
+    backgroundPosition: 'center',
+    width: '23vw',
+    paddingBottom: '64%',
+  },
   headTitle: {
-    fontSize: 40,
-    textAlign: 'center',
-    lineHeight: '38px',
+    margin: 0,
+    fontSize: 70,
+    fontWeight: '900',
+    textAlign: 'start',
+    color: (props) => props.colorTitle,
   },
   headSubTitle: {
-    fontSize: 19,
-    fontWeight: 'bold',
-    marginBottom: 25,
+    fontSize: 20,
+    lineHeight: '170%',
+    textAlign: 'start',
   },
   keypad: {
     margin: 'auto',
@@ -22,12 +37,12 @@ const styles = makeStyles((theme) => ({
   button: {
     margin: 10,
     cursor: 'pointer',
-    height: 50,
-    boxShadow: theme.boxShadow,
-    borderRadius: theme.borderRadius,
+    height: 70,
+    backgroundColor: (props) => props.color,
   },
   highlightedButton: {
-    boxShadow: `inset 0 0 0 2px #007bff, ${theme.boxShadow}`,
+    backgroundColor: '#ECECEC',
+    color: '#000',
   },
   buttonIcon: {
     width: 32,
@@ -37,6 +52,7 @@ const styles = makeStyles((theme) => ({
   buttonText: {
     width: '50%',
     fontWeight: 'bolder',
+    color: '#FFFF',
     '@media (max-width: 576px)': {
       fontSize: '3.3vw',
     },
@@ -72,8 +88,15 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const Services = ({ services, selected, title, subtitle }) => {
-  const classes = styles();
+const Services = ({
+  services,
+  selected,
+  title,
+  subtitle,
+  image,
+  colorTitle,
+}) => {
+  const classes = styles({ colorTitle, image });
   const [index, selectedIndex] = useState(0);
 
   const navigate = useNavigate();
@@ -92,19 +115,36 @@ const Services = ({ services, selected, title, subtitle }) => {
     selectService(selected);
   }, []);
 
-  console.log('index =', index);
-
   return (
     <>
-      <Grid container direction="column" alignItems="center">
-        <h1 className={classes.headTitle}>{title}</h1>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        justify="space-between"
+        className={classes.contanerHead}
+      >
         <Grid
+          item
           container
           justify="center"
           xs={10}
-          className={classes.headSubTitle}
+          md={5}
+          className={classes.containerImga}
         >
-          {subtitle}
+          <div className={classes.image}></div>
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          alignItems="start"
+          justify="flex-start"
+          xs={10}
+          md={6}
+        >
+          <h1 className={classes.headTitle}>{title}</h1>
+          <p className={classes.headSubTitle}>{subtitle}</p>
         </Grid>
       </Grid>
       <Grid
@@ -118,6 +158,7 @@ const Services = ({ services, selected, title, subtitle }) => {
           .filter(({ node }) => node.order >= 0)
           .map(({ node }, i) => (
             <Grid
+              item
               container
               justify="center"
               alignItems="center"
@@ -132,6 +173,7 @@ const Services = ({ services, selected, title, subtitle }) => {
                 container
                 justify="space-evenly"
                 alignItems="center"
+                style={{ backgroundColor: node.color }}
                 className={`${classes.button} ${
                   node.order === index
                     ? classes.highlightedButton
