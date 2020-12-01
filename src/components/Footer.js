@@ -121,7 +121,7 @@ const Footer = (props) => {
   };
 
   return (
-    <React.Fragment className={classes.container}>
+    <div className={classes.container}>
       <Box className={classes.toolbar}>
         <div className={classes.section}>
           <Typography className={classes.sectionTitle}>
@@ -290,7 +290,7 @@ const Footer = (props) => {
           </Link>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
