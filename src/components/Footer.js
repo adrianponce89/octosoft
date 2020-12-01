@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import { Box, Typography } from '@material-ui/core';
-
+import {
+  Box,
+  Typography,
+  FormControl,
+  InputLabel,
+  OutlinedInput,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import { submitForm } from '../utils';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     boxShadow: 'inset 0 2px 3px #ccc',
-    padding: theme.spacing(8),
+    padding: theme.spacing(4),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     color: 'black',
     background: '#fff',
+    flexWrap: 'wrap',
   },
   section: {
     flex: 1,
+    margin: theme.spacing(4),
+    minWidth: 200,
   },
   sectionTitle: {
     color: '#37add4',
@@ -43,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '14px',
     color: 'gray',
     fontFamily: 'Montserrat',
+  },
+  formContainer: {
+    paddingTop: 10,
   },
   bottomBar: {
     background: '#1d2178',
@@ -81,9 +92,6 @@ const useStyles = makeStyles((theme) => ({
     '&:hover svg': {
       width: 30,
       height: 30,
-
-      // background: '#1d2178',
-      // color: 'white',
     },
   },
 }));
@@ -98,7 +106,20 @@ const ItemSocial = ({ children }) => {
 };
 
 const Footer = (props) => {
+  const [email, setEmail] = useState('');
   const classes = useStyles();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    submitForm('subscribe', {
+      email,
+    })
+      .then(() =>
+        alert('Your email was received. We will keep you updated.'),
+      )
+      .catch((error) => alert(error));
+    setEmail('');
+  };
+
   return (
     <React.Fragment className={classes.container}>
       <Box className={classes.toolbar}>
@@ -191,11 +212,35 @@ const Footer = (props) => {
           <Typography className={classes.sectionTitle}>
             SUBSCRIBE
           </Typography>
-          <div className={classes.links}>
-            <div className={classes.linkText}>
-              Don't miss out our news
-            </div>
-            <div className={classes.linkText}>Your Email</div>
+          <div className={classes.linkText}>
+            Don't miss out our news
+          </div>
+          <div className={classes.formContainer}>
+            <form
+              name="subscribe"
+              onSubmit={handleSubmit}
+              data-netlify="true"
+            >
+              <input
+                type="hidden"
+                name="form-name"
+                value="subscribe"
+              />
+              <FormControl variant="outlined" size="small" fullWidth>
+                <InputLabel htmlFor="EmailInput">
+                  Your E-Mail
+                </InputLabel>
+                <OutlinedInput
+                  id="EmailInput"
+                  value={email}
+                  name="email"
+                  onChange={({ target }) => setEmail(target.value)}
+                  label="Your E-Mail"
+                  type="email"
+                  required
+                />
+              </FormControl>
+            </form>
           </div>
         </div>
       </Box>
