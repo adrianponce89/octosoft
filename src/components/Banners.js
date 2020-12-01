@@ -75,7 +75,7 @@ const styles = makeStyles((theme) => ({
 const Banners = (props) => {
   const classes = styles(props);
   return (
-    <Grid item className={classes.root} xs={12}>
+    <Grid item className={classes.root} xs={12} id={props.id}>
       <Link className={classes.link} to={props.link}>
         <div className={classes.cardBody}>
           <Grid

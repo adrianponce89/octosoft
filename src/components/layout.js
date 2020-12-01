@@ -3,6 +3,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import { createMuiTheme } from '@material-ui/core';
 import { Helmet } from 'react-helmet';
 import NavBar from './NavBar';
+import Footer from './Footer';
 
 const theme = createMuiTheme({
   spacing: 4,
@@ -51,6 +52,7 @@ const Layout = (props) => {
       <ThemeProvider theme={theme}>
         <NavBar home={pathname === '/'} />
         <main>{children}</main>
+        <Footer />
       </ThemeProvider>
     </LocaleContext.Provider>
   );

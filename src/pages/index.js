@@ -70,6 +70,7 @@ export default (props) => {
               title={planBanner.title}
               right={true}
               color={planBanner.color}
+              id="ourplans"
             />
             {/* <h1 className={classes.headTitle}>{'Our Plans'}</h1> */}
             <OurPlans plans={plans} title={'Our Plans'} />
