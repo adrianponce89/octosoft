@@ -2,57 +2,73 @@ import React, { useState } from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import Smartphone from '../assets/smartphone.jpg';
 import Container from '../components/Container';
-import BackgroundImage from '../assets/Background.png';
-import { submitForm } from '../utils';
+import BackgroundImage from '../assets/Trama.png';
+import { submitForm, darkenColor } from '../utils';
+import PrimaryInput from '../components/PrimaryInput';
+import PrimarySelect from '../components/PrimarySelect';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   formContainer: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
-  gridContainer: {},
+  gridContainer: {
+    flex: 1,
+    margin: 40,
+  },
   gridItem: {
     padding: '0 5px',
   },
   title: {
-    margin: '10px 50px',
+    margin: '20px 10px 40px 0',
+    fontFamily: 'Montserrat',
+    fontWeight: 900,
+    fontSize: 48,
+    color: (props) => props.clientSupportBanner.color,
+  },
+  division: {
+    width: 0,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: (props) => props.clientSupportBanner.color,
+    marginTop: 60,
+    marginBottom: 60,
   },
   imgContainer: {
+    flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    padding: '0 20px',
   },
   smartphoneImg: {
     width: '100%',
-    paddingBottom: '225%',
-    backgroundImage: `url(${Smartphone})`,
-    backgroundColor: '#cccccc',
+    height: '100%',
+    backgroundImage: (props) =>
+      `url(${props.clientSupportBanner.image.file.url})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    borderRadius: theme.borderRadius,
-    boxShadow: theme.boxShadow,
+    backgroundSize: 'contain',
   },
   buttonContainer: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   button: {
     margin: 5,
+    width: 200,
+    borderRadius: 0,
+    background: (props) => props.clientSupportBanner.color,
+    '&:hover': {
+      background: (props) =>
+        darkenColor(props.clientSupportBanner.color, 0.8),
+    },
   },
 }));
 
@@ -63,9 +79,15 @@ const ClientSupport = (props) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [content, setContent] = useState('');
-  const classes = useStyles();
 
   const services = get(props, 'data.allContentfulService.edges');
+
+  const banners = get(props, 'data.allContentfulBanners.edges');
+  const clientSupportBanner = banners.find(
+    ({ node }) => node.type === 'ClientSupport',
+  ).node;
+
+  const classes = useStyles({ clientSupportBanner });
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -96,6 +118,7 @@ const ClientSupport = (props) => {
     <Container
       className={classes.root}
       background={`url(${BackgroundImage})`}
+      innerBackground={'none'}
     >
       <form
         name="clientsupport"
@@ -103,109 +126,81 @@ const ClientSupport = (props) => {
         data-netlify="true"
       >
         <input type="hidden" name="form-name" value="clientsupport" />
-        <h1 className={classes.title}>Client Support</h1>
         <div className={classes.formContainer}>
           <Grid
             className={classes.gridContainer}
             container
-            md={8}
+            md={6}
             spacing={3}
           >
+            <h1 className={classes.title}>
+              {clientSupportBanner.title}
+            </h1>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="NameInput">
-                  Client Name
-                </InputLabel>
-                <OutlinedInput
-                  id="NameInput"
-                  value={clientName}
-                  name="clientName"
-                  onChange={({ target }) =>
-                    setClientName(target.value)
-                  }
-                  label="Client Name"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="NameInput"
+                value={clientName}
+                name="clientName"
+                onChange={({ target }) => setClientName(target.value)}
+                label="Client Name"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="IDInput">Client ID</InputLabel>
-                <OutlinedInput
-                  id="IDInput"
-                  value={clientID}
-                  name="clientID"
-                  onChange={({ target }) => setClientID(target.value)}
-                  label="Client ID"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="IDInput"
+                value={clientID}
+                name="clientID"
+                onChange={({ target }) => setClientID(target.value)}
+                label="Client ID"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={12}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="ServiceInput">
-                  Name your problem
-                </InputLabel>
-                <Select
-                  label="Name your problem"
-                  id="ServiceInput"
-                  value={problem}
-                  name="problem"
-                  onChange={({ target }) => setProblem(target.value)}
-                  required
-                >
-                  <MenuItem value="General">General</MenuItem>
-                  {services.map(({ node }) => (
-                    <MenuItem value={node.title}>
-                      {node.title}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
+              <PrimarySelect
+                label="Name your problem"
+                id="ServiceInput"
+                value={problem}
+                name="problem"
+                onChange={({ target }) => setProblem(target.value)}
+                required
+              >
+                <MenuItem value="General">General</MenuItem>
+                {services.map(({ node }) => (
+                  <MenuItem value={node.title}>{node.title}</MenuItem>
+                ))}
+              </PrimarySelect>
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="EmailInput">
-                  Your E-Mail
-                </InputLabel>
-                <OutlinedInput
-                  id="EmailInput"
-                  value={email}
-                  name="email"
-                  onChange={({ target }) => setEmail(target.value)}
-                  label="Your E-Mail"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="EmailInput"
+                value={email}
+                name="email"
+                onChange={({ target }) => setEmail(target.value)}
+                label="Your Email"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="PhoneInput">
-                  Your Phone Number
-                </InputLabel>
-                <OutlinedInput
-                  id="PhoneInput"
-                  value={phone}
-                  name="phone"
-                  onChange={({ target }) => setPhone(target.value)}
-                  label="Your Phone Number"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="PhoneInput"
+                value={phone}
+                name="phone"
+                onChange={({ target }) => setPhone(target.value)}
+                label="Your Phone Number"
+                required
+              />
             </Grid>
             <Grid className={classes.gridItem} item xs={12}>
-              <FormControl variant="outlined" fullWidth>
-                <TextField
-                  variant="outlined"
-                  id="ContentInput"
-                  value={content}
-                  name="content"
-                  onChange={({ target }) => setContent(target.value)}
-                  multiline
-                  rows={12}
-                  size="small"
-                />
-              </FormControl>
+              <PrimaryInput
+                id="ContentInput"
+                value={content}
+                name="content"
+                onChange={({ target }) => setContent(target.value)}
+                multiline
+                rows={12}
+                size="small"
+              />
             </Grid>
             <div className={classes.buttonContainer}>
               <Button
@@ -219,7 +214,8 @@ const ClientSupport = (props) => {
             </div>
           </Grid>
           <Hidden smDown>
-            <Grid item className={classes.imgContainer} md={3}>
+            <div className={classes.division} />
+            <Grid item className={classes.imgContainer} md={5}>
               <div className={classes.smartphoneImg} />
             </Grid>
           </Hidden>
@@ -237,6 +233,20 @@ export const pageQuery = graphql`
       edges {
         node {
           title
+        }
+      }
+    }
+    allContentfulBanners {
+      edges {
+        node {
+          title
+          color
+          image {
+            file {
+              url
+            }
+          }
+          type
         }
       }
     }
