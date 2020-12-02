@@ -76,6 +76,10 @@ pre {
   animation: blink 1s linear infinite;
 }
 
+.MuiPaper-root.MuiMenu-paper.MuiPopover-paper {
+  transform: translate(0, 45px) !important;
+}
+
 @keyframes blink {
   0% {
     opacity: 1;
