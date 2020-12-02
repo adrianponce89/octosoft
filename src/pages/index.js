@@ -4,7 +4,7 @@ import get from 'lodash/get';
 import { Grid } from '@material-ui/core';
 import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import BackgroundImage from '../assets/Background.png';
+import BackgroundImage from '../assets/Trama.png';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
 import HomeBanner from '../components/Home/Banner';
@@ -16,12 +16,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
   },
-  // headTitle: {
-  //   fontSize: 40,
-  //   textAlign: 'center',
-  //   lineHeight: '38px',
-  //   color: '#000',
-  // },
 }));
 
 export default (props) => {
@@ -72,7 +66,6 @@ export default (props) => {
               color={planBanner.color}
               id="ourplans"
             />
-            {/* <h1 className={classes.headTitle}>{'Our Plans'}</h1> */}
             <OurPlans plans={plans} title={'Our Plans'} />
           </Grid>
         </Container>

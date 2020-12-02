@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
-import {
-  Box,
-  Typography,
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-} from '@material-ui/core';
+import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import { submitForm } from '../utils';
+import PrimaryInput from './PrimaryInput';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -213,7 +208,7 @@ const Footer = (props) => {
             SUBSCRIBE
           </Typography>
           <div className={classes.linkText}>
-            Don't miss out our news
+            Don't miss out on our latest news
           </div>
           <div className={classes.formContainer}>
             <form
@@ -226,20 +221,16 @@ const Footer = (props) => {
                 name="form-name"
                 value="subscribe"
               />
-              <FormControl variant="outlined" size="small" fullWidth>
-                <InputLabel htmlFor="EmailInput">
-                  Your E-Mail
-                </InputLabel>
-                <OutlinedInput
-                  id="EmailInput"
-                  value={email}
-                  name="email"
-                  onChange={({ target }) => setEmail(target.value)}
-                  label="Your E-Mail"
-                  type="email"
-                  required
-                />
-              </FormControl>
+              <PrimaryInput
+                id="EmailInput"
+                value={email}
+                name="email"
+                onChange={({ target }) => setEmail(target.value)}
+                label="Your Email"
+                variant="filled"
+                type="email"
+                required
+              />
             </form>
           </div>
         </div>
@@ -252,7 +243,7 @@ const Footer = (props) => {
         </div>
         <div className={classes.sectionSocial}>
           <Typography className={classes.bottomText}>
-            E-mail: info@octosoftprofessionals.com
+            Email: info@octosoftprofessionals.com
           </Typography>
         </div>
         <div className={classes.sectionSocial}>
