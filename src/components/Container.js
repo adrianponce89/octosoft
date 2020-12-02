@@ -31,7 +31,7 @@ const styles = makeStyles((theme) => ({
   }),
   innerBox: (props) => ({
     width: '100%',
-    maxWidth: 1080,
+    maxWidth: 1366,
     background: props.innerBackground || 'white',
     padding: props.innerPadding || '80px 0 0 0',
   }),
