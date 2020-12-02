@@ -9,7 +9,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import PostPreView from '../components/PostPreView';
 import Container from '../components/Container';
 import Events from '../components/Events';
-import BackgroundImage from '../assets/Background.png';
+import BackgroundImage from '../assets/Trama.png';
 
 const styles = makeStyles({
   root: {
