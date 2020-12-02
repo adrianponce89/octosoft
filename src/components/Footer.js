@@ -226,7 +226,7 @@ const Footer = (props) => {
                 value={email}
                 name="email"
                 onChange={({ target }) => setEmail(target.value)}
-                label="Your E-Mail"
+                label="Your Email"
                 variant="filled"
                 type="email"
                 required
@@ -243,7 +243,7 @@ const Footer = (props) => {
         </div>
         <div className={classes.sectionSocial}>
           <Typography className={classes.bottomText}>
-            E-mail: info@octosoftprofessionals.com
+            Email: info@octosoftprofessionals.com
           </Typography>
         </div>
         <div className={classes.sectionSocial}>

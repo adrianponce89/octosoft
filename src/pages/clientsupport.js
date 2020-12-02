@@ -178,7 +178,7 @@ const ClientSupport = (props) => {
                 value={email}
                 name="email"
                 onChange={({ target }) => setEmail(target.value)}
-                label="Your E-Mail"
+                label="Your Email"
                 required
               />
             </Grid>
