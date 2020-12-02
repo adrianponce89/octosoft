@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 48,
     lineHeight: 1,
     color: (props) => props.clientSupportBanner.color,
+    width: '100%',
   },
   division: {
     width: 0,

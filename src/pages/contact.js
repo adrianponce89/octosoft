@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 48,
     lineHeight: 1,
     color: (props) => props.contactBanner.color,
+    width: '100%',
   },
   division: {
     width: 0,
