@@ -191,7 +191,7 @@ const Footer = (props) => {
               margin={2}
               to="/termsofuse"
             >
-              <div className={classes.linkText}>Terms of use</div>
+              <div className={classes.linkText}>Terms of Use</div>
             </Link>
 
             <Link
@@ -199,7 +199,7 @@ const Footer = (props) => {
               margin={2}
               to="/privacypolicy"
             >
-              <div className={classes.linkText}>Privacy policy</div>
+              <div className={classes.linkText}>Privacy Policy</div>
             </Link>
           </div>
         </div>
