@@ -19,17 +19,17 @@ const useStyles = makeStyles((theme) => ({
   },
   gridContainer: {
     flex: 1,
-    margin: 40,
+    margin: 30,
   },
   gridItem: {
     padding: '0 5px',
   },
   title: {
-    margin: '20px 10px 40px 0',
+    margin: '10px 10px 30px 0',
     fontFamily: 'Montserrat',
     fontWeight: 900,
     fontSize: 48,
-    minWidth: 600,
+    lineHeight: 1,
     color: (props) => props.contactBanner.color,
   },
   division: {
@@ -146,10 +146,10 @@ const Contact = (props) => {
           <Grid
             className={classes.gridContainer}
             container
-            md={8}
+            md={6}
             spacing={3}
           >
-            <h1 className={classes.title}>Contact Us</h1>
+            <h1 className={classes.title}>{contactBanner.title}</h1>
 
             <Grid className={classes.gridItem} item xs={6}>
               <PrimaryInput
