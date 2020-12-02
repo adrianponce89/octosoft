@@ -56,11 +56,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(8),
+    flexWrap: 'wrap',
   },
   bottomText: {
     fontSize: '14px',
     color: '#fff',
     fontFamily: 'Montserrat',
+    marginBottom: theme.spacing(4),
   },
   sectionSocial: {
     flex: 1,
