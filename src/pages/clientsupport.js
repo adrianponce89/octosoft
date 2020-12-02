@@ -27,10 +27,11 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 5px',
   },
   title: {
-    margin: '20px 10px 40px 0',
+    margin: '10px 10px 30px 0',
     fontFamily: 'Montserrat',
     fontWeight: 900,
     fontSize: 48,
+    lineHeight: 1,
     color: (props) => props.clientSupportBanner.color,
   },
   division: {
