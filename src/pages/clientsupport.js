@@ -6,7 +6,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import MenuItem from '@material-ui/core/MenuItem';
-import Smartphone from '../assets/smartphone.jpg';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Trama.png';
 import { submitForm, darkenColor } from '../utils';

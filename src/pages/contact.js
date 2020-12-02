@@ -1,52 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import FormControl from '@material-ui/core/FormControl';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
-import MailBox from '../assets/mailbox.jpg';
 import Container from '../components/Container';
-import BackgroundImage from '../assets/Background.png';
-import { submitForm } from '../utils';
+import BackgroundImage from '../assets/Trama.png';
+import { submitForm, darkenColor } from '../utils';
 import PrimaryInput from '../components/PrimaryInput';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
   formContainer: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
-  gridContainer: {},
+  gridContainer: {
+    flex: 1,
+    margin: 40,
+  },
   gridItem: {
     padding: '0 5px',
   },
   title: {
-    margin: '10px 50px',
+    margin: '20px 10px 40px 0',
+    fontFamily: 'Montserrat',
+    fontWeight: 900,
+    fontSize: 48,
+    minWidth: 600,
+    color: (props) => props.contactBanner.color,
+  },
+  division: {
+    width: 0,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: (props) => props.contactBanner.color,
+    marginTop: 60,
+    marginBottom: 60,
   },
   imgContainer: {
+    flex: 1,
     display: 'flex',
     justifyContent: 'center',
-    padding: '0 20px',
   },
-  mailBoxImg: {
+  smartphoneImg: {
     width: '100%',
-    paddingBottom: '225%',
-    backgroundImage: `url(${MailBox})`,
-    backgroundColor: '#cccccc',
+    height: '100%',
+    backgroundImage: (props) =>
+      `url(${props.contactBanner.image.file.url})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    borderRadius: theme.borderRadius,
-    boxShadow: theme.boxShadow,
+    backgroundSize: 'contain',
   },
   buttonContainer: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
   },
   button: {
     margin: 5,
+    width: 200,
+    borderRadius: 0,
+    background: (props) => props.contactBanner.color,
+    '&:hover': {
+      background: (props) =>
+        darkenColor(props.contactBanner.color, 0.8),
+    },
   },
 }));
 
@@ -58,7 +79,13 @@ const Contact = (props) => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [content, setContent] = useState('');
-  const classes = useStyles();
+
+  const banners = get(props, 'data.allContentfulBanners.edges');
+  const contactBanner = banners.find(
+    ({ node }) => node.type === 'ContactUs',
+  ).node;
+
+  const classes = useStyles({ contactBanner });
 
   const {
     location: { hash },
@@ -101,6 +128,7 @@ const Contact = (props) => {
     <Container
       className={classes.root}
       background={`url(${BackgroundImage})`}
+      innerBackground={'none'}
     >
       <form
         name="contact"
@@ -108,14 +136,21 @@ const Contact = (props) => {
         data-netlify="true"
       >
         <input type="hidden" name="form-name" value="contact" />
-        <h1 className={classes.title}>Contact Us</h1>
         <div className={classes.formContainer}>
+          <Hidden smDown>
+            <Grid item className={classes.imgContainer} md={5}>
+              <div className={classes.smartphoneImg} />
+            </Grid>
+            <div className={classes.division} />
+          </Hidden>
           <Grid
             className={classes.gridContainer}
             container
             md={8}
             spacing={3}
           >
+            <h1 className={classes.title}>Contact Us</h1>
+
             <Grid className={classes.gridItem} item xs={6}>
               <PrimaryInput
                 id="NameInput"
@@ -197,11 +232,6 @@ const Contact = (props) => {
               </Button>
             </div>
           </Grid>
-          <Hidden smDown>
-            <Grid item className={classes.imgContainer} md={3}>
-              <div className={classes.mailBoxImg} />
-            </Grid>
-          </Hidden>
         </div>
       </form>
     </Container>
@@ -209,3 +239,22 @@ const Contact = (props) => {
 };
 
 export default Contact;
+
+export const pageQuery = graphql`
+  query ContactQuery {
+    allContentfulBanners {
+      edges {
+        node {
+          title
+          color
+          image {
+            file {
+              url
+            }
+          }
+          type
+        }
+      }
+    }
+  }
+`;
