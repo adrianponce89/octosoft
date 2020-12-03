@@ -35,3 +35,24 @@ export const darkenColor = (color, ratio) => {
 
   return `#${R}${G}${B}`;
 };
+
+const plansColors = ['#204dc0', '#32cc64', '#ff992a', '#e72365'];
+
+export const sortPlans = (plans) => {
+  let sortPlans = [];
+  const titleTypeSet = new Set();
+
+  plans.forEach((plan) => {
+    titleTypeSet.add(plan.node.type);
+  });
+  let counter = 0;
+  titleTypeSet.forEach((value) => {
+    sortPlans.push({
+      type: value,
+      color: plansColors[counter++],
+      plans: plans.filter((p) => p.node.type === value),
+    });
+  });
+
+  return sortPlans;
+};

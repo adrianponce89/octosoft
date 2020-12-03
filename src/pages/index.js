@@ -8,7 +8,7 @@ import BackgroundImage from '../assets/Trama.png';
 import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
 import HomeBanner from '../components/Home/Banner';
-import OurPlans from '../components/Home/OurPlans';
+import PlansGrid from '../components/PlansGrid';
 
 const useStyles = makeStyles((theme) => ({
   containerCard: {
@@ -66,7 +66,7 @@ export default (props) => {
               color={planBanner.color}
               id="ourplans"
             />
-            <OurPlans plans={plans} title={'Our Plans'} />
+            <PlansGrid plans={plans} />
           </Grid>
         </Container>
       </section>

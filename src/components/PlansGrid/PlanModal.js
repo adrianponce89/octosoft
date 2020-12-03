@@ -9,19 +9,48 @@ const styles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
+    width: '80vw',
+  },
+  titlesContainer: {
+    display: 'flex',
+    alignSelf: 'stretch',
+    justifyContent: 'space-between',
+  },
+  planTitle: {
+    fontFamily: 'Montserrat',
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    background: ({ color }) => color,
+    padding: 10,
+    textAlign: 'center',
+    minWidth: 200,
+  },
+  planType: {
+    fontFamily: 'Montserrat',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: ({ color }) => color,
+    borderBottomWidth: 5,
+    borderBottomStyle: 'solid',
+    borderBottomColor: ({ color }) => color,
+    padding: 5,
+    alignSelf: 'flex-end',
+    marginRight: 40,
+    minWidth: 200,
+    textAlign: 'center',
   },
   descriptionContainer: {
     paddingLeft: 20,
     paddingRight: 20,
-    paddingTop: 20,
+    paddingTop: 10,
+    paddingBottom: 10,
+    marginBottom: '-24px',
     background: '#ccc',
-    borderBottom: '12px solid #1d2178',
   },
-  titlePlan: { fontFamily: 'Montserrat', marginTop: '0.5em' },
   descriptionPlan: {
     background: '#fff',
     paddingBottom: 25,
-
     width: '100%',
     flex: 1,
     overflow: 'auto',
@@ -29,22 +58,19 @@ const styles = makeStyles(() => ({
       lineHeight: '1em',
       margin: 4,
     },
-    '& li:nth-child(odd)': {
-      background: '#ddd',
-    },
     '& ul': {
       display: 'flex',
       background: '#fff',
       flexDirection: 'column',
+      alignItems: 'center',
       flexWrap: 'wrap',
       height: 320,
       listStyleType: 'none',
       margin: 0,
       padding: 0,
       paddingTop: 10,
-      '@media (max-width: 760px)': {
+      '@media (max-width: 1024px)': {
         flexWrap: 'nowrap',
-        // height: '100%',
         minHeight: 400,
       },
     },
@@ -68,15 +94,15 @@ const styles = makeStyles(() => ({
   containerAmount: {
     position: 'relative',
     display: 'flex',
+    top: '-28px',
   },
   amountPlan: {
     fontFamily: 'Montserrat',
     fontWeight: 'bold',
-    backgroundColor: '#1d2178',
+    backgroundColor: ({ color }) => color,
     color: 'white',
     padding: '10px 25px',
     position: 'relative',
-    top: -32,
     display: (props) => (props.amount !== null ? 'block' : 'none'),
   },
   buttonPlan: {
@@ -92,23 +118,29 @@ const styles = makeStyles(() => ({
 const Plans = (props) => {
   const classes = styles(props);
   return (
-    <Grid item xs={12} style={{ padding: 0 }}>
-      <Grid item className={classes.containerPlan}>
-        <Grid
-          item
-          container
-          direction="column"
-          alignItems="center"
-          className={classes.descriptionContainer}
-        >
-          <div className={classes.descriptionPlan}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: documentToHtmlString(props.description.json),
-              }}
-            />
-          </div>
-        </Grid>
+    <div className={classes.containerPlan}>
+      <Grid
+        item
+        container
+        direction="column"
+        alignItems="center"
+        className={classes.descriptionContainer}
+      >
+        <div className={classes.titlesContainer}>
+          <Typography className={classes.planTitle}>
+            {props.title}
+          </Typography>
+          <Typography className={classes.planType}>
+            {props.type}
+          </Typography>
+        </div>
+        <div className={classes.descriptionPlan}>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: documentToHtmlString(props.description.json),
+            }}
+          />
+        </div>
         <Grid
           item
           container
@@ -130,7 +162,7 @@ const Plans = (props) => {
           </Link>
         </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
