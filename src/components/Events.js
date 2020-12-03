@@ -15,12 +15,15 @@ const styles = makeStyles({
     padding: 0,
   },
   cardCarousel: {
+    margin: 5,
     padding: 7,
     background: '#ECECEC',
     height: 80,
     cursor: 'pointer',
   },
-  containCards: { overflow: 'hidden' },
+  containCards: {
+    overflow: 'hidden',
+  },
   button: {
     cursor: 'pointer',
     position: 'relative',
@@ -43,6 +46,7 @@ const styles = makeStyles({
       justifyContent: 'flex-end',
       flexWrap: 'wrap-reverse',
     },
+    flex: 1,
   },
   titleEvent: { textAlign: 'center' },
   link: {
@@ -74,92 +78,90 @@ const Event = ({ stylesGlobal, events }) => {
   }
 
   return (
-    <Grid item className={classes.root}>
+    <Grid item xs={12} className={classes.root}>
       <Paper elevation={2} className={stylesGlobal}>
         <div className={classes.containTitle}>
           <p className={classes.titleCarousel}>Upcoming Event</p>
         </div>
-        <div>
-          <Grid
-            container
-            direction="row"
-            alignItems="center"
-            justify="space-around"
-            spacing={1}
-            className={classes.containEvent}
+
+        <Grid
+          container
+          direction="row"
+          alignItems="center"
+          justify="space-around"
+          spacing={1}
+          className={classes.containEvent}
+        >
+          <IconButton
+            color="inherit"
+            className={classes.button}
+            onClick={handleBack}
+            disabled={activeStep === 0}
           >
-            <IconButton
-              color="inherit"
-              className={classes.button}
-              onClick={handleBack}
-              disabled={activeStep === 0}
+            <RadioButtonUncheckedIcon />
+            <ChevronLeftIcon className={classes.arrowLeft} />
+          </IconButton>
+          <Grid item xs={12} sm={10}>
+            <SwipeableViews
+              index={activeStep}
+              onChangeIndex={handleStepChange}
+              enableMouseEvents
             >
-              <RadioButtonUncheckedIcon />
-              <ChevronLeftIcon className={classes.arrowLeft} />
-            </IconButton>
-            <Grid item xs={12} sm={10}>
-              <SwipeableViews
-                index={activeStep}
-                onChangeIndex={handleStepChange}
-                enableMouseEvents
-              >
-                {aux.map((step, i) => (
-                  <Grid
-                    xs={12}
-                    container
-                    direction="row"
-                    alignItems="center"
-                    justify="center"
-                    spacing={2}
-                    className={classes.containCards}
-                    key={i}
-                  >
-                    {step.map((event) => (
-                      <Grid item xs={12} sm={4} key={event.node.id}>
-                        <Paper
-                          elevation={0}
-                          className={classes.cardCarousel}
+              {aux.map((step, i) => (
+                <Grid
+                  xs={12}
+                  container
+                  direction="row"
+                  alignItems="center"
+                  justify="center"
+                  className={classes.containCards}
+                  key={i}
+                >
+                  {step.map((event) => (
+                    <Grid item xs={12} sm={4} key={event.node.id}>
+                      <Paper
+                        elevation={0}
+                        className={classes.cardCarousel}
+                      >
+                        <Link
+                          className={classes.link}
+                          to={event.node.link}
                         >
-                          <Link
-                            className={classes.link}
-                            to={event.node.link}
+                          <Grid
+                            container
+                            direction="column"
+                            justify="center"
+                            spacing={2}
                           >
-                            <Grid
-                              container
-                              direction="column"
-                              justify="center"
-                              spacing={2}
-                            >
-                              <Grid item sm={6}>
-                                {event.node.date}
-                              </Grid>
-                              <Grid
-                                item
-                                xs={12}
-                                className={classes.titleEvent}
-                              >
-                                {event.node.title}
-                              </Grid>
+                            <Grid item sm={6}>
+                              {event.node.date}
                             </Grid>
-                          </Link>
-                        </Paper>
-                      </Grid>
-                    ))}
-                  </Grid>
-                ))}
-              </SwipeableViews>
-            </Grid>
-            <IconButton
-              color="inherit"
-              className={classes.button}
-              onClick={handleNext}
-              disabled={activeStep === aux.length - 1}
-            >
-              <RadioButtonUncheckedIcon />
-              <ChevronRightIcon className={classes.arrowRigt} />
-            </IconButton>
+                            <Grid
+                              item
+                              xs={12}
+                              className={classes.titleEvent}
+                            >
+                              {event.node.title}
+                            </Grid>
+                          </Grid>
+                        </Link>
+                      </Paper>
+                    </Grid>
+                  ))}
+                </Grid>
+              ))}
+            </SwipeableViews>
           </Grid>
-        </div>
+          <IconButton
+            color="inherit"
+            className={classes.button}
+            onClick={handleNext}
+            disabled={activeStep === aux.length - 1}
+          >
+            <RadioButtonUncheckedIcon />
+            <ChevronRightIcon className={classes.arrowRigt} />
+          </IconButton>
+        </Grid>
       </Paper>
     </Grid>
   );

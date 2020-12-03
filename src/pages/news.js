@@ -3,13 +3,14 @@ import { Link, graphql } from 'gatsby';
 import get from 'lodash/get';
 import { useNavigate } from '@reach/router';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, TextField } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
 import PostPreView from '../components/PostPreView';
 import Container from '../components/Container';
 import Events from '../components/Events';
 import BackgroundImage from '../assets/Trama.png';
+import PrimaryInput from '../components/PrimaryInput';
 
 const styles = makeStyles({
   root: {
@@ -26,11 +27,13 @@ const styles = makeStyles({
   headTitle: {
     margin: 0,
     fontSize: 35,
-    lineHeight: '39.9px',
+    lineHeight: '48px',
+    color: '#a96cb0',
   },
   subTitle: {
     margin: 0,
     marginBottom: 10,
+    color: '#a96cb0',
   },
   inputSearch: {
     fontFamily: 'Montserrat',
@@ -84,13 +87,12 @@ const Blogs = (props) => {
                       navigate(`/news/${option.slug}`);
                     }}
                     renderInput={(params) => (
-                      <TextField
+                      <PrimaryInput
                         {...params}
                         className={classes.inputSearch}
                         id="outlined-search"
                         label="Search..."
                         value={search}
-                        variant="outlined"
                         size="small"
                         InputProps={{
                           ...params.InputProps,

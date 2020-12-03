@@ -80,6 +80,10 @@ pre {
   transform: translate(0, 45px) !important;
 }
 
+.MuiPaper-rounded {
+  border-radius: 0 !important;
+}
+
 @keyframes blink {
   0% {
     opacity: 1;
