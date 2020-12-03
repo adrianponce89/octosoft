@@ -31,6 +31,7 @@ const styles = makeStyles({
     '@media (max-width: 576px)': {
       fontSize: '3.3vw',
     },
+    color: '#a96cb0',
   },
   contentPost: {
     height: '9vh',
