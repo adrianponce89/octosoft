@@ -37,7 +37,6 @@ const styles = makeStyles({
   },
   inputSearch: {
     fontFamily: 'Montserrat',
-    background: '#ECECEC',
   },
   titleListPost: {
     margin: 0,
