@@ -16,8 +16,6 @@ const OurServices = (props) => {
     ({ node }) => node.type === 'OurServices',
   ).node;
 
-  console.log('outServices::', outServices);
-
   return (
     <Container
       background={`url(${BackgroundImage})`}
@@ -46,6 +44,11 @@ export const pageQuery = graphql`
           id
           order
           title
+          images {
+            file {
+              url
+            }
+          }
           content {
             json
           }
