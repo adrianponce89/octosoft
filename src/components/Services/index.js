@@ -32,9 +32,7 @@ const styles = makeStyles((theme) => ({
     lineHeight: '170%',
     textAlign: 'start',
   },
-  keypad: {
-    margin: 'auto',
-  },
+  keypad: {},
 }));
 
 const Services = ({
@@ -77,7 +75,6 @@ const Services = ({
         item
         container
         justify="center"
-        md={10}
         xs={12}
         className={classes.keypad}
       >

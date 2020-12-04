@@ -2,12 +2,17 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import BackgroundImage from '../../assets/Trama.png';
 
 const styles = makeStyles({
   infoContainer: {
     margin: '40px auto 40px auto',
     padding: 20,
-    background: '#eee',
+    backgroundImage: `url(${BackgroundImage})`,
+    backgroundColor: '#eee',
+    backgroundPosition: 'initial',
+    backgroundRepeat: 'repeat',
+    backgroundSize: 'cover',
   },
   iconsDescriptions: {
     width: '100%',
@@ -17,7 +22,7 @@ const styles = makeStyles({
     backgroundRepeat: 'no-repeat',
     paddingBottom: '40vmin',
     '@media (max-width: 760px)': {
-      paddingBottom: '60vmin',
+      backgroundSize: 'contain',
     },
   },
   titleDescriptions: {
@@ -61,6 +66,7 @@ const styles = makeStyles({
       padding: 0,
       '@media (max-width: 760px)': {
         flexWrap: 'nowrap',
+        maxHeight: 'max-content',
       },
     },
   },
@@ -84,7 +90,8 @@ const ViewerService = ({ service }) => {
       <Grid
         container
         item
-        md={8}
+        xs={12}
+        sm={8}
         className={classes.containerDescription}
       >
         <div
