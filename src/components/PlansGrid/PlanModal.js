@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
 import { Link } from 'gatsby';
 import { darkenColor } from '../../utils';
 
@@ -12,13 +13,14 @@ const styles = makeStyles(() => ({
     overflow: 'hidden',
     width: '80vw',
     maxWidth: 1024,
+    background: '#ccc',
   },
   titlesContainer: {
     display: 'flex',
     alignSelf: 'stretch',
     justifyContent: 'space-between',
   },
-  planTitle: {
+  planType: {
     fontFamily: 'Montserrat',
     fontSize: 24,
     fontWeight: 'bold',
@@ -35,7 +37,7 @@ const styles = makeStyles(() => ({
       minWidth: 'auto',
     },
   },
-  planType: {
+  planTitle: {
     fontFamily: 'Montserrat',
     fontSize: 20,
     fontWeight: 'bold',
@@ -61,6 +63,9 @@ const styles = makeStyles(() => ({
     paddingBottom: 10,
     marginBottom: '-24px',
     background: '#ccc',
+    '@media (max-width: 760px)': {
+      marginBottom: 14,
+    },
   },
   descriptionPlan: {
     background: '#fff',
@@ -123,19 +128,21 @@ const styles = makeStyles(() => ({
   contactContainer: {
     position: 'absolute',
     display: 'flex',
-    bottom: 14,
-    right: 30,
+    alignItems: 'center',
+    bottom: 28,
+    right: 20,
+    color: '#091868',
+    padding: '10px 25px',
+    animation: 'moveR 1s linear infinite',
+    '&:hover': {},
+    '@media (max-width: 760px)': {
+      bottom: 0,
+    },
   },
   contactPlan: {
     fontFamily: 'Montserrat',
     fontWeight: 'bold',
-    backgroundColor: '#1d2178',
-    color: 'white',
-    padding: '10px 25px',
     position: 'relative',
-    '&:hover': {
-      backgroundColor: '#091868',
-    },
   },
   buttonPlan: {
     fontSize: 20,
@@ -144,6 +151,11 @@ const styles = makeStyles(() => ({
   },
   link: {
     textDecoration: 'none',
+    float: 'right',
+  },
+  arrow: {
+    width: 40,
+    height: 40,
   },
 }));
 
@@ -159,11 +171,11 @@ const Plans = (props) => {
         className={classes.descriptionContainer}
       >
         <div className={classes.titlesContainer}>
-          <Typography className={classes.planTitle}>
-            {props.title}
-          </Typography>
           <Typography className={classes.planType}>
             {props.type}
+          </Typography>
+          <Typography className={classes.planTitle}>
+            {props.title}
           </Typography>
         </div>
         <div className={classes.descriptionPlan}>
@@ -186,7 +198,6 @@ const Plans = (props) => {
               {props.amount}
             </Typography>
           </div>
-
           <Link
             className={classes.link}
             encodeURIComponent
@@ -199,6 +210,7 @@ const Plans = (props) => {
               >
                 Contact Us
               </Typography>
+              <DoubleArrowIcon className={classes.arrow} />
             </div>
           </Link>
         </Grid>

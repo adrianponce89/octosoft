@@ -113,6 +113,18 @@ pre {
   }
 }
 
+@keyframes moveR {
+  0% {
+    right: 40;
+  }
+  50% {
+    right: 0;
+  }
+  100% {
+    right: 40;
+  }
+}
+
 #___loader img {
   animation: rotation 1s linear infinite;
 }
