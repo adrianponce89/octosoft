@@ -6,10 +6,15 @@ import BackgroundImage from '../assets/Trama.png';
 import Services from '../components/Services';
 
 const OurServices = (props) => {
+  const banners = get(props, 'data.allContentfulBanners.edges');
   const services = get(props, 'data.allContentfulService.edges');
   const {
     location: { hash },
   } = props;
+
+  const outServices = banners.find(
+    ({ node }) => node.type === 'OurServices',
+  ).node;
 
   return (
     <Container
@@ -19,9 +24,10 @@ const OurServices = (props) => {
       <Services
         services={services}
         selected={(hash && decodeURI(hash.slice(1))) || 'productions'}
-        title="Our Services"
-        subtitle="Learn about our departaments and the services they can
-          provide to your business"
+        title={outServices.title}
+        subtitle={outServices.subTitle}
+        colorTitle={outServices.color}
+        image={`url(${outServices.image.file.url})`}
       />
     </Container>
   );
@@ -38,9 +44,29 @@ export const pageQuery = graphql`
           id
           order
           title
+          images {
+            file {
+              url
+            }
+          }
           content {
             json
           }
+        }
+      }
+    }
+    allContentfulBanners {
+      edges {
+        node {
+          color
+          image {
+            file {
+              url
+            }
+          }
+          subTitle
+          type
+          title
         }
       }
     }
