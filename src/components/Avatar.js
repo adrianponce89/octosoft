@@ -1,10 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 const styles = makeStyles({
   itemAvatar: {
     padding: 20,
+  },
+  name: {},
+  title: {
+    fontWeight: 'bold',
   },
   iconAvatar: {
     width: 160,
@@ -55,7 +59,12 @@ const Avatar = (props) => {
           alignContent="center"
           className={classes.descriptionAvatars}
         >
-          {props.name}
+          <Typography className={classes.title}>
+            {props.title}
+          </Typography>
+          <Typography className={classes.name}>
+            {props.name}
+          </Typography>
         </Grid>
       </Grid>
     </div>

@@ -128,45 +128,10 @@ const AboutUs = (props) => {
         {teamMembers.map(({ node }) => (
           <AvatarTeam
             name={node.name}
+            title={node.title}
             background={`url(${node.photo.file.url})`}
           />
         ))}
-      </Grid>
-      <Grid container direction="column" alignItems="center">
-        <h1 className={classes.headTitle}>Our Partners</h1>
-        <Grid
-          container
-          justify="center"
-          xs={10}
-          className={classes.headSubTitle}
-        >
-          Learn about our departaments and how they can help you and
-          your company.
-        </Grid>
-        <Grid
-          container
-          justify="center"
-          className={classes.containerPartners}
-        >
-          {partners.map(({ node }) => (
-            <Grid container md={4} justify="center">
-              <Grid
-                container
-                justify="center"
-                alignContent="center"
-                wrap
-                className={classes.itemPartners}
-              >
-                <a
-                  className={classes.itemPartnersLink}
-                  href={node.link}
-                >
-                  {node.title}
-                </a>
-              </Grid>
-            </Grid>
-          ))}
-        </Grid>
       </Grid>
     </Container>
   );
@@ -198,16 +163,17 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulTeamMember {
+    allContentfulTeamMember(sort: { fields: order }) {
       edges {
         node {
-          name
           id
+          title
           photo {
             file {
               url
             }
           }
+          name
         }
       }
     }
