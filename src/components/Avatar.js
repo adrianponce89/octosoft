@@ -6,18 +6,25 @@ const styles = makeStyles({
   itemAvatar: {
     padding: 20,
   },
-  name: {},
+  name: {
+    width: '100%',
+    fontSize: 20,
+    textTransform: 'uppercase',
+  },
   title: {
     fontWeight: 'bold',
+    color: '#1d2178',
+    width: '100%',
+    fontSize: 20,
   },
   iconAvatar: {
-    width: 160,
-    height: 160,
+    width: 260,
+    height: 260,
     clipPath:
       'polygon(50% 0, 85.5% 14.5%, 100% 50%, 85.5% 85.5%, 50% 100%, 14.5% 85.5%, 0 50%, 14.5% 14.5% )',
     '@media (max-width: 360px)': {
-      width: 110,
-      height: 110,
+      width: 210,
+      height: 210,
     },
     background: (props) => props.background || '#ECECEC',
     backgroundSize: (props) => props.backgroundSize || 'cover',
@@ -28,11 +35,11 @@ const styles = makeStyles({
     background: '#ECECEC',
     marginTop: 15,
     padding: 5,
-    width: 150,
-    height: 65,
+    width: 250,
+    height: 75,
     '@media (max-width: 360px)': {
       fontSize: '3vw',
-      width: 100,
+      width: 200,
       height: 55,
     },
     overflow: 'hidden',
@@ -59,11 +66,11 @@ const Avatar = (props) => {
           alignContent="center"
           className={classes.descriptionAvatars}
         >
-          <Typography className={classes.title}>
-            {props.title}
-          </Typography>
           <Typography className={classes.name}>
             {props.name}
+          </Typography>
+          <Typography className={classes.title}>
+            {props.title}
           </Typography>
         </Grid>
       </Grid>
