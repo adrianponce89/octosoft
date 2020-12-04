@@ -46,7 +46,7 @@ const Services = ({
   colorTitle,
 }) => {
   const classes = styles({ colorTitle, image });
-  const [index, selectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(1);
 
   const navigate = useNavigate();
 
@@ -55,7 +55,7 @@ const Services = ({
       (v) => v.node.title.toLowerCase() === s.toLowerCase(),
     );
     if (newIndex >= 0) {
-      selectedIndex(newIndex);
+      setSelectedIndex(newIndex);
     }
   };
 
@@ -66,36 +66,6 @@ const Services = ({
 
   return (
     <>
-      {/* <Grid
-        container
-        direction="row"
-        alignItems="center"
-        justify="space-between"
-        className={classes.contanerHead}
-      >
-        <Grid
-          item
-          container
-          justify="center"
-          xs={10}
-          md={5}
-          className={classes.containerImga}
-        >
-          <div className={classes.image}></div>
-        </Grid>
-        <Grid
-          item
-          container
-          direction="column"
-          alignContent="flex-start"
-          xs={10}
-          md={6}
-        >
-          <h1 className={classes.headTitle}>{title}</h1>
-          <p className={classes.headSubTitle}>{subtitle}</p>
-        </Grid>
-      </Grid> */}
-
       <Banners
         title={title}
         subtitle={subtitle}
@@ -127,12 +97,15 @@ const Services = ({
                 navigate(`/ourservices#${node.title.toLowerCase()}`);
               }}
             >
-              <ItemService node={node} index={index} />
+              <ItemService
+                node={node}
+                selectedIndex={selectedIndex}
+              />
             </Grid>
           ))}
       </Grid>
       {services.length > 0 ? (
-        <ViewerService service={services[index]} />
+        <ViewerService service={services[selectedIndex]} />
       ) : (
         ''
       )}

@@ -7,7 +7,8 @@ const styles = makeStyles({
     margin: 10,
     cursor: 'pointer',
     height: 70,
-    backgroundColor: (props) => props.color,
+    backgroundColor: (props) =>
+      props.selected ? '#ECECEC' : props.color,
   },
   buttonIcon: {
     width: '100%',
@@ -20,31 +21,22 @@ const styles = makeStyles({
   buttonText: {
     width: '50%',
     fontWeight: 'bolder',
-    color: '#FFFF',
+    color: (props) => (props.selected ? '#000' : '#FFF'),
     '@media (max-width: 576px)': {
       fontSize: '3.3vw',
     },
   },
-  highlightedButton: {
-    backgroundColor: '#ECECEC',
-    color: '#000',
-  },
 });
 
-const ItemService = ({ node, index }) => {
+const ItemService = ({ node, selectedIndex }) => {
   const classes = styles({
     color: node.color,
     image: node.images[0].file.url,
+    selected: node.order === selectedIndex,
   });
   return (
     <>
-      <Grid
-        container
-        alignItems="center"
-        className={`${classes.button} ${
-          node.order === index ? classes.highlightedButton : ''
-        }`}
-      >
+      <Grid container alignItems="center" className={classes.button}>
         <Grid
           item
           xs={4}
