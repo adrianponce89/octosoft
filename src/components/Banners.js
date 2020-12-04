@@ -71,7 +71,7 @@ const styles = makeStyles((theme) => ({
     },
   },
   descriptionContainer: {
-    background: '#ccc',
+    background: '#eee',
     padding: 10,
   },
   description: {
