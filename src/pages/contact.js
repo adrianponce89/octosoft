@@ -89,12 +89,14 @@ const Contact = (props) => {
   const classes = useStyles({ contactBanner });
 
   const {
-    location: { hash },
+    location: { hash, search },
   } = props;
 
   useEffect(() => {
     if (hash) {
       setSubject(decodeURI(hash.slice(1)));
+      const searchParams = new URLSearchParams(search);
+      setBudget(searchParams.get('budged'));
     }
   }, []);
 

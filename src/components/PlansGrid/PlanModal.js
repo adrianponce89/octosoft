@@ -3,6 +3,7 @@ import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Link } from 'gatsby';
+import { darkenColor } from '../../utils';
 
 const styles = makeStyles(() => ({
   containerPlan: {
@@ -10,6 +11,7 @@ const styles = makeStyles(() => ({
     flexDirection: 'column',
     overflow: 'hidden',
     width: '80vw',
+    maxWidth: 1024,
   },
   titlesContainer: {
     display: 'flex',
@@ -67,7 +69,8 @@ const styles = makeStyles(() => ({
     flex: 1,
     overflow: 'auto',
     '& p': {
-      lineHeight: '1em',
+      lineHeight: '1.2em',
+      fontSize: 18,
       margin: 4,
     },
     '& ul': {
@@ -117,6 +120,23 @@ const styles = makeStyles(() => ({
     position: 'relative',
     display: (props) => (props.amount !== null ? 'block' : 'none'),
   },
+  contactContainer: {
+    position: 'absolute',
+    display: 'flex',
+    bottom: 14,
+    right: 30,
+  },
+  contactPlan: {
+    fontFamily: 'Montserrat',
+    fontWeight: 'bold',
+    backgroundColor: '#1d2178',
+    color: 'white',
+    padding: '10px 25px',
+    position: 'relative',
+    '&:hover': {
+      backgroundColor: '#091868',
+    },
+  },
   buttonPlan: {
     fontSize: 20,
     fontFamily: 'Montserrat',
@@ -159,16 +179,25 @@ const Plans = (props) => {
           justify="center"
           alignContent="center"
           alignItems="center"
-          direction="column"
+          direction="row"
         >
+          <div className={classes.containerAmount}>
+            <Typography variant="h5" className={classes.amountPlan}>
+              {props.amount}
+            </Typography>
+          </div>
+
           <Link
             className={classes.link}
             encodeURIComponent
-            to={`/contact#${props.title}`}
+            to={`/contact?budged=${props.amount}#${props.title}`}
           >
-            <div className={classes.containerAmount}>
-              <Typography variant="h5" className={classes.amountPlan}>
-                {props.amount}
+            <div className={classes.contactContainer}>
+              <Typography
+                variant="h5"
+                className={classes.contactPlan}
+              >
+                Contact Us
               </Typography>
             </div>
           </Link>
