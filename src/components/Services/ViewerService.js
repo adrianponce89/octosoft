@@ -6,16 +6,19 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 const styles = makeStyles({
   infoContainer: {
     margin: '40px auto 40px auto',
-    padding: '20px 0 20px 0',
+    padding: 20,
+    background: '#eee',
   },
   iconsDescriptions: {
-    width: 250,
+    width: '100%',
     backgroundImage: (props) => `url(${props.image})`,
     backgroundPosition: 'center',
-    backgroundSize: 'contain',
+    backgroundSize: '150%',
     backgroundRepeat: 'no-repeat',
-    transition: '1.1s cubic-bezier(0.4, 0, 1, 1)',
-    paddingBottom: '40vh',
+    paddingBottom: '40vmin',
+    '@media (max-width: 760px)': {
+      paddingBottom: '60vmin',
+    },
   },
   titleDescriptions: {
     margin: '20px 0 20px 0',
@@ -24,27 +27,40 @@ const styles = makeStyles({
     textAlign: 'center',
   },
   containerDescription: {
-    height: '320px',
     display: 'flex',
     flexDirection: 'column',
-    flexWrap: 'wrap',
     overflow: 'auto',
-    '& p': {
+    padding: 0,
+    '& li p': {
       margin: 15,
     },
+    '& li p::before': {
+      content: '"· "',
+      display: 'inline',
+      fontWeight: 'bold',
+    },
+    '& div': {
+      background: 'red',
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'stretch',
+      flex: 1,
+      alignSelf: 'stretch',
+    },
     '& ul': {
+      flex: 1,
       display: 'flex',
       background: '#fff',
       flexDirection: 'column',
       flexWrap: 'wrap',
-      height: 320,
+      alignSelf: 'stretch',
+      height: '100%',
+      maxHeight: '60vh',
       listStyleType: 'none',
       margin: 0,
       padding: 0,
-      paddingTop: 10,
       '@media (max-width: 760px)': {
         flexWrap: 'nowrap',
-        minHeight: 400,
       },
     },
   },
@@ -59,16 +75,8 @@ const ViewerService = ({ service }) => {
       justify="space-evenly"
       className={classes.infoContainer}
     >
-      <Grid
-        item
-        container
-        md={3}
-        direction="column"
-        alignItems="center"
-      >
-        <Grid item ms={6}>
-          <div className={classes.iconsDescriptions} />
-        </Grid>
+      <Grid item xs={8} sm={3} direction="column" alignItems="center">
+        <div className={classes.iconsDescriptions} />
         <div className={classes.titleDescriptions}>
           {service.node.title}
         </div>
@@ -76,7 +84,7 @@ const ViewerService = ({ service }) => {
       <Grid
         container
         item
-        md={6}
+        md={8}
         className={classes.containerDescription}
       >
         <div

@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
+import { darkenColor } from '../../utils';
 
 const styles = makeStyles({
   button: {
@@ -9,6 +10,10 @@ const styles = makeStyles({
     height: 70,
     backgroundColor: (props) =>
       props.selected ? '#ECECEC' : props.color,
+    boxShadow: (props) => (props.selected ? '1px 1px 6px' : 'none'),
+    '&:hover': {
+      boxShadow: (props) => '1px 1px 6px',
+    },
   },
   buttonIcon: {
     width: '100%',
