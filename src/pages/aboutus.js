@@ -6,6 +6,7 @@ import AvatarTeam from '../components/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Trama.png';
 import Services from '../components/Services';
+import OurTeam from '../components/OurTeam';
 import { Grid } from '@material-ui/core';
 
 const styles = makeStyles((theme) => ({
@@ -112,27 +113,7 @@ const AboutUs = (props) => {
         your company."
       />
 
-      <Grid container direction="column" alignItems="center">
-        <h1 className={classes.headTitle}>Our Team</h1>
-        <Grid
-          container
-          justify="center"
-          xs={10}
-          className={classes.headSubTitle}
-        >
-          Learn about our departaments and how they can help you and
-          your company.
-        </Grid>
-      </Grid>
-      <Grid container direction="row" justify="center">
-        {teamMembers.map(({ node }) => (
-          <AvatarTeam
-            name={node.name}
-            title={node.title}
-            background={`url(${node.photo.file.url})`}
-          />
-        ))}
-      </Grid>
+      <OurTeam teamMembers={teamMembers} />
     </Container>
   );
 };
