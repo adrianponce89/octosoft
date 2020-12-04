@@ -22,9 +22,16 @@ const styles = makeStyles(() => ({
     fontWeight: 'bold',
     color: '#fff',
     background: ({ color }) => color,
-    padding: 10,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 5,
+    paddingRight: 5,
     textAlign: 'center',
     minWidth: 200,
+    '@media (max-width: 576px)': {
+      fontSize: '4vw',
+      minWidth: 'auto',
+    },
   },
   planType: {
     fontFamily: 'Montserrat',
@@ -38,6 +45,11 @@ const styles = makeStyles(() => ({
     alignSelf: 'flex-end',
     marginRight: 40,
     minWidth: 200,
+    '@media (max-width: 576px)': {
+      marginRight: 0,
+      fontSize: '3.5vw',
+      minWidth: 'auto',
+    },
     textAlign: 'center',
   },
   descriptionContainer: {
@@ -62,7 +74,7 @@ const styles = makeStyles(() => ({
       display: 'flex',
       background: '#fff',
       flexDirection: 'column',
-      alignItems: 'center',
+      alignItems: 'flex-start',
       flexWrap: 'wrap',
       height: 320,
       listStyleType: 'none',

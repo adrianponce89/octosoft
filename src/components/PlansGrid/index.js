@@ -11,7 +11,7 @@ const styles = makeStyles((theme) => ({
   root: {
     background: '#ccc',
     padding: 26,
-    width: '100%',
+    alignSelf: 'stretch',
   },
   container: {
     background: '#fff',
