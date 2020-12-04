@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useNavigate } from '@reach/router';
 import { Grid } from '@material-ui/core';
-
+import Banners from '../Banners';
 import ItemService from './ItemService';
 import ViewerService from './ViewerService';
 
@@ -66,7 +66,7 @@ const Services = ({
 
   return (
     <>
-      <Grid
+      {/* <Grid
         container
         direction="row"
         alignItems="center"
@@ -94,7 +94,15 @@ const Services = ({
           <h1 className={classes.headTitle}>{title}</h1>
           <p className={classes.headSubTitle}>{subtitle}</p>
         </Grid>
-      </Grid>
+      </Grid> */}
+
+      <Banners
+        title={title}
+        subtitle={subtitle}
+        backgroundImage={image}
+        color={colorTitle}
+        right
+      />
       <Grid
         item
         container

@@ -41,20 +41,34 @@ const styles = makeStyles((theme) => ({
       textAlign: 'center',
     },
   },
+  subtitleCard: {
+    fontSize: 20,
+    lineHeight: '170%',
+    textAlign: 'start',
+    paddingRight: 60,
+    color: '#222',
+  },
   descriptionCard: {
     fontFamily: 'Montserrat',
   },
+  imageContainer: {
+    display: 'flex',
+    justifyContent: (props) =>
+      props.right ? 'flex-end' : 'flex-start',
+  },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
-    backgroundPosition: 'center',
+    backgroundPosition: '100% 50%',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     height: '100%',
-    minHeight: '35vh',
+    minHeight: '45vmin',
+    width: '100%',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
     '@media (max-width: 576px)': {
       order: () => -1,
+      backgroundPosition: '50% 50%',
     },
   },
   link: {
@@ -90,8 +104,10 @@ const Banners = (props) => {
             container
             xs={12}
             sm={6}
-            className={classes.backgroundCardImage}
-          ></Grid>
+            className={classes.imageContainer}
+          >
+            <div className={classes.backgroundCardImage} />
+          </Grid>
           <div className={classes.separator}></div>
           <Grid
             item
@@ -104,6 +120,16 @@ const Banners = (props) => {
             <Typography variant="h5" className={classes.titleCard}>
               {props.title}
             </Typography>
+            {!!props.subtitle ? (
+              <Typography
+                variant="h5"
+                className={classes.subtitleCard}
+              >
+                {props.subtitle}
+              </Typography>
+            ) : (
+              ''
+            )}
             {!!props.description ? (
               <div className={classes.descriptionContainer}>
                 <Typography className={classes.description}>
