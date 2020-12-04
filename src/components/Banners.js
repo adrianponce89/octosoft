@@ -47,7 +47,7 @@ const styles = makeStyles((theme) => ({
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
     backgroundPosition: 'center',
-    backgroundSize: 'cover',
+    backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     height: '100%',
     minHeight: '35vh',

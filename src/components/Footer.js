@@ -108,6 +108,7 @@ const Footer = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     submitForm('subscribe', {
+      subject: 'Subscribe',
       email,
     })
       .then(() =>
@@ -214,15 +215,11 @@ const Footer = (props) => {
           </div>
           <div className={classes.formContainer}>
             <form
-              name="subscribe"
+              name="contact"
               onSubmit={handleSubmit}
               data-netlify="true"
             >
-              <input
-                type="hidden"
-                name="form-name"
-                value="subscribe"
-              />
+              <input type="hidden" name="form-name" value="contact" />
               <PrimaryInput
                 id="EmailInput"
                 value={email}
@@ -245,7 +242,7 @@ const Footer = (props) => {
         </div>
         <div className={classes.sectionSocial}>
           <Typography className={classes.bottomText}>
-            Email: info@octosoftprofessionals.com
+            Email: communications@octosoftprofessionals.com
           </Typography>
         </div>
         <div className={classes.sectionSocial}>

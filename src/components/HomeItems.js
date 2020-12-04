@@ -41,6 +41,15 @@ const styles = makeStyles((theme) => ({
   descriptionCard: {
     fontFamily: 'Montserrat',
     fontSize: 18,
+    textAlign: 'justify',
+  },
+  descriptionLink: {
+    fontFamily: 'Montserrat',
+    fontSize: 18,
+    textAlign: 'right',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
   },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
@@ -74,34 +83,37 @@ const HomeItems = (props) => {
   const classes = styles(props);
   return (
     <Grid item className={classes.root} xs={12}>
-      <Link className={classes.link} to={props.link}>
-        <div className={classes.cardBody}>
-          <Grid
-            item
-            container
-            xs={12}
-            sm={4}
-            className={classes.backgroundCardImage}
-          ></Grid>
-          <div className={classes.separator}></div>
-          <Grid
-            item
-            container
-            direction="column"
-            xs={12}
-            sm={8}
-            className={classes.containerCard}
-          >
-            <Typography variant="h5" className={classes.titleCard}>
-              {props.title}
-            </Typography>
+      <div className={classes.cardBody}>
+        <Grid
+          item
+          container
+          xs={12}
+          sm={4}
+          className={classes.backgroundCardImage}
+        ></Grid>
+        <div className={classes.separator}></div>
+        <Grid
+          item
+          container
+          direction="column"
+          xs={12}
+          sm={8}
+          className={classes.containerCard}
+        >
+          <Typography variant="h5" className={classes.titleCard}>
+            {props.title}
+          </Typography>
 
-            <Typography className={classes.descriptionCard}>
-              {props.description}
+          <Typography className={classes.descriptionCard}>
+            {props.description}
+          </Typography>
+          <Link className={classes.link} to={props.link}>
+            <Typography className={classes.descriptionLink}>
+              Learn more...
             </Typography>
-          </Grid>
-        </div>
-      </Link>
+          </Link>
+        </Grid>
+      </div>
     </Grid>
   );
 };
