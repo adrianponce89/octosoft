@@ -32,6 +32,7 @@ const styles = makeStyles({
 });
 
 const ItemService = ({ node, index }) => {
+  console.log('index::', index);
   const classes = styles({
     color: node.color,
     image: node.images[0].file.url,
