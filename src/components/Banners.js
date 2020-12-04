@@ -35,7 +35,7 @@ const styles = makeStyles((theme) => ({
   },
   titleCard: {
     fontFamily: 'Montserrat',
-    fontSize: 72,
+    fontSize: 64,
     fontWeight: 900,
     '@media (max-width: 576px)': {
       textAlign: 'center',
@@ -70,6 +70,13 @@ const styles = makeStyles((theme) => ({
       height: 0,
     },
   },
+  descriptionContainer: {
+    background: '#ccc',
+    padding: 10,
+  },
+  description: {
+    color: '#000',
+  },
 }));
 
 const Banners = (props) => {
@@ -97,6 +104,15 @@ const Banners = (props) => {
             <Typography variant="h5" className={classes.titleCard}>
               {props.title}
             </Typography>
+            {!!props.description ? (
+              <div className={classes.descriptionContainer}>
+                <Typography className={classes.description}>
+                  {props.description}
+                </Typography>
+              </div>
+            ) : (
+              ''
+            )}
           </Grid>
         </div>
       </Link>

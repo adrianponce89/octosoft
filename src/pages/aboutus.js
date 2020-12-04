@@ -2,12 +2,10 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
-import AvatarTeam from '../components/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Trama.png';
-import Services from '../components/Services';
+import Banners from '../components/Banners';
 import OurTeam from '../components/OurTeam';
-import { Grid } from '@material-ui/core';
 
 const styles = makeStyles((theme) => ({
   headTitle: {
@@ -93,26 +91,26 @@ const styles = makeStyles((theme) => ({
 const AboutUs = (props) => {
   const classes = styles(props);
 
-  const services = get(props, 'data.allContentfulService.edges');
-  const partners = get(props, 'data.allContentfulPartner.edges');
   const teamMembers = get(
     props,
     'data.allContentfulTeamMember.edges',
   );
+
+  const aboutUsBanner = get(props, 'data.contentfulBanners');
 
   return (
     <Container
       background={`url(${BackgroundImage})`}
       innerPadding="80px 25px 25px 25px"
     >
-      <Services
-        services={services}
-        selected={'Octosoft'}
-        title="The Octosoft Team"
-        subtitle="Learn about our departaments and how they can help you and
-        your company."
+      <Banners
+        backgroundImage={`url(${aboutUsBanner.image.file.url})`}
+        title={aboutUsBanner.title}
+        description={aboutUsBanner.description.internal.content}
+        right={true}
+        color={aboutUsBanner.color}
+        id="ourplans"
       />
-
       <OurTeam teamMembers={teamMembers} />
     </Container>
   );
@@ -122,25 +120,20 @@ export default AboutUs;
 
 export const pageQuery = graphql`
   query AboutUsQuery {
-    allContentfulService(sort: { fields: order }) {
-      edges {
-        node {
-          color
-          id
-          order
-          title
-          content {
-            json
-          }
+    contentfulBanners(type: { eq: "AboutUs" }) {
+      color
+      image {
+        file {
+          url
         }
       }
-    }
-    allContentfulPartner {
-      edges {
-        node {
-          title
-          link
-          id
+      subTitle
+      title
+      type
+      description {
+        id
+        internal {
+          content
         }
       }
     }
