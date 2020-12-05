@@ -181,27 +181,15 @@ const Footer = (props) => {
             LEGAL
           </Typography>
           <div className={classes.links}>
-            <Link
-              className={classes.link}
-              margin={2}
-              to="/termsofservice"
-            >
+            <Link className={classes.link} margin={2} to="/legal">
               <div className={classes.linkText}>Terms of Service</div>
             </Link>
 
-            <Link
-              className={classes.link}
-              margin={2}
-              to="/termsofuse"
-            >
+            <Link className={classes.link} margin={2} to="/legal">
               <div className={classes.linkText}>Terms of Use</div>
             </Link>
 
-            <Link
-              className={classes.link}
-              margin={2}
-              to="/privacypolicy"
-            >
+            <Link className={classes.link} margin={2} to="/legal">
               <div className={classes.linkText}>Privacy Policy</div>
             </Link>
           </div>
