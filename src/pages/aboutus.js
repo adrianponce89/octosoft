@@ -142,6 +142,7 @@ export const pageQuery = graphql`
         node {
           id
           title
+          section
           photo {
             file {
               url

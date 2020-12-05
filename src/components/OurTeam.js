@@ -30,6 +30,7 @@ const OurTeam = ({ teamMembers }) => {
           <AvatarTeam
             name={node.name}
             title={node.title}
+            section={node.section}
             background={`url(${node.photo.file.url})`}
           />
         ))}
