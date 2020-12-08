@@ -35,6 +35,7 @@ const styles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     overflow: 'auto',
+    background: 'white',
     padding: 0,
     '& li p': {
       margin: 15,
@@ -45,7 +46,6 @@ const styles = makeStyles({
       fontWeight: 'bold',
     },
     '& div': {
-      background: 'red',
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'stretch',
