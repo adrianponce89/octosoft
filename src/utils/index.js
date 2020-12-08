@@ -32,7 +32,7 @@ export const darkenColor = (color, ratio) => {
   const B = Math.floor(
     parseInt(color.slice(5, 7), 16) * ratio,
   ).toString(16);
-
+  console.log('darken color:', `#${R}${G}${B}`);
   return `#${R}${G}${B}`;
 };
 

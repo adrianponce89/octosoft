@@ -74,6 +74,7 @@ const PlansGrid = ({ plans }) => {
             type={selectedPlan.node.type}
             title={selectedPlan.node.title}
             color={selectedColor}
+            onClose={handleClose}
           />
         ) : (
           ''

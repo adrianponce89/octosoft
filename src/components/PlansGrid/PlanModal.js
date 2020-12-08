@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import DoubleArrowIcon from '@material-ui/icons/DoubleArrow';
+import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'gatsby';
 import { darkenColor } from '../../utils';
 
@@ -18,7 +18,7 @@ const styles = makeStyles(() => ({
   titlesContainer: {
     display: 'flex',
     alignSelf: 'stretch',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   planType: {
     fontFamily: 'Montserrat',
@@ -45,7 +45,9 @@ const styles = makeStyles(() => ({
     borderBottomWidth: 5,
     borderBottomStyle: 'solid',
     borderBottomColor: ({ color }) => color,
-    padding: 5,
+    paddingBottom: 5,
+    paddingLeft: 15,
+    paddingRight: 15,
     alignSelf: 'flex-end',
     marginRight: 40,
     minWidth: 200,
@@ -69,13 +71,14 @@ const styles = makeStyles(() => ({
   },
   descriptionPlan: {
     background: '#fff',
-    paddingBottom: 25,
+
     width: '100%',
     flex: 1,
     overflow: 'auto',
+
     '& p': {
       lineHeight: '1.2em',
-      fontSize: 18,
+      fontSize: '2.1vmin',
       margin: 4,
     },
     '& ul': {
@@ -84,14 +87,22 @@ const styles = makeStyles(() => ({
       flexDirection: 'column',
       alignItems: 'flex-start',
       flexWrap: 'wrap',
-      height: 320,
+      height: 345,
       listStyleType: 'none',
       margin: 0,
       padding: 0,
       paddingTop: 10,
       '@media (max-width: 1024px)': {
         flexWrap: 'nowrap',
-        minHeight: 400,
+        // minHeight: 400,
+      },
+      '@media (max-width: 760px)': {
+        marginBottom: 14,
+        '& li:last-child::after': {
+          content: '" "',
+          display: 'block',
+          minHeight: 30,
+        },
       },
     },
     '@media (max-width: 760px)': {
@@ -102,10 +113,13 @@ const styles = makeStyles(() => ({
       },
     },
     '& li': {
-      paddingLeft: 10,
-      minWidth: '45%',
+      width: '50%',
+      '@media (max-width: 760px)': {
+        width: '100%',
+      },
     },
     '& li p::before': {
+      marginLeft: 15,
       content: '"· "',
       display: 'inline',
       fontWeight: 'bold',
@@ -124,26 +138,11 @@ const styles = makeStyles(() => ({
     padding: '10px 25px',
     position: 'relative',
     display: (props) => (props.amount !== null ? 'block' : 'none'),
-  },
-  contactContainer: {
-    position: 'absolute',
-    display: 'flex',
-    alignItems: 'center',
-    bottom: 28,
-    right: 20,
-    color: '#091868',
-    padding: '10px 25px',
-    animation: 'moveR 1s linear infinite',
-    '&:hover': {},
-    '@media (max-width: 760px)': {
-      bottom: 0,
+    '&:hover': {
+      backgroundColor: ({ color }) => darkenColor(color, 0.8),
     },
   },
-  contactPlan: {
-    fontFamily: 'Montserrat',
-    fontWeight: 'bold',
-    position: 'relative',
-  },
+
   buttonPlan: {
     fontSize: 20,
     fontFamily: 'Montserrat',
@@ -153,9 +152,21 @@ const styles = makeStyles(() => ({
     textDecoration: 'none',
     float: 'right',
   },
-  arrow: {
-    width: 40,
-    height: 40,
+  closeContainer: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    background: 'transparent',
+    border: 'none',
+    color: '#888',
+    cursor: 'pointer',
+    '&:hover': {
+      color: '#444',
+    },
+  },
+  closeIcon: {
+    fontSize: 40,
+    padding: 10,
   },
 }));
 
@@ -177,6 +188,13 @@ const Plans = (props) => {
           <Typography className={classes.planTitle}>
             {props.title}
           </Typography>
+          <button
+            className={classes.closeContainer}
+            encodeURIComponent
+            onClick={props.onClose}
+          >
+            <CloseIcon className={classes.closeIcon} />
+          </button>
         </div>
         <div className={classes.descriptionPlan}>
           <div
@@ -194,25 +212,16 @@ const Plans = (props) => {
           direction="row"
         >
           <div className={classes.containerAmount}>
-            <Typography variant="h5" className={classes.amountPlan}>
-              {props.amount}
-            </Typography>
-          </div>
-          <Link
-            className={classes.link}
-            encodeURIComponent
-            to={`/contact?budged=${props.amount}#${props.title}`}
-          >
-            <div className={classes.contactContainer}>
-              <Typography
-                variant="h5"
-                className={classes.contactPlan}
-              >
-                Contact Us
+            <Link
+              className={classes.link}
+              encodeURIComponent
+              to={`/contact?budged=${props.amount}#${props.title}`}
+            >
+              <Typography variant="h5" className={classes.amountPlan}>
+                {props.amount}
               </Typography>
-              <DoubleArrowIcon className={classes.arrow} />
-            </div>
-          </Link>
+            </Link>
+          </div>
         </Grid>
       </Grid>
     </div>
