@@ -230,7 +230,7 @@ const Footer = (props) => {
         </div>
         <div className={classes.sectionSocial}>
           <Typography className={classes.bottomText}>
-            Email: communications@octosoftprofessionals.com
+            Email: info@octosoftprofessionals.com
           </Typography>
         </div>
         <div className={classes.sectionSocial}>
