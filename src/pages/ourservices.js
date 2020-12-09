@@ -24,7 +24,7 @@ const OurServices = (props) => {
       <Services
         services={services}
         selected={
-          (hash && decodeURI(hash.slice(1))) || 'design & media'
+          (hash && decodeURI(hash.slice(1)))
         }
         title={outServices.title}
         subtitle={outServices.subTitle}

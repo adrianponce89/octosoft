@@ -58,8 +58,9 @@ const Services = ({
   };
 
   useEffect(() => {
-    console.log('selected:', selected);
-    selectService(selected);
+    if (selected) {
+      selectService(selected);
+    }
   }, []);
 
   return (
