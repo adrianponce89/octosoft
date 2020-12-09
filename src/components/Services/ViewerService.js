@@ -38,12 +38,15 @@ const styles = makeStyles({
     background: 'white',
     padding: 0,
     '& li p': {
-      margin: 15,
+      fontSize: '2.1vmin',
+      lineHeight: '1.2em',
+      margin: 10,
     },
     '& li p::before': {
       content: '"· "',
       display: 'inline',
       fontWeight: 'bold',
+      marginLeft: 15,
     },
     '& div': {
       display: 'flex',
