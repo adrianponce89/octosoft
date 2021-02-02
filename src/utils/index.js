@@ -36,7 +36,7 @@ export const darkenColor = (color, ratio) => {
   return `#${R}${G}${B}`;
 };
 
-const plansColors = ['#204dc0', '#32cc64', '#ff992a', '#e72365'];
+const plansColors = ['#37add4', '#1d2178', '#542559', '#9b9b9b'];
 
 export const sortPlans = (plans) => {
   let sortPlans = [];

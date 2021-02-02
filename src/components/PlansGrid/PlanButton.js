@@ -21,11 +21,16 @@ const styles = makeStyles((theme) => ({
     },
   },
   planTitle: {
+    marginLeft: '1em',
+    marginRight: '1em',
     color: ({ color }) => color,
     fontWeight: 'bold',
     fontFamily: 'Montserrat',
     fontSize: 16,
     textAlign: 'center',
+    '@media (max-width: 576px)': {
+      fontSize: 12,
+    },
   },
 }));
 
