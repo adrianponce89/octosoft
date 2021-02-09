@@ -6,30 +6,22 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const styles = makeStyles({
   imageMember: {
-    width: '100%',
-    height: '100%',
-    clipPath:
-      'polygon(50% 0, 85.5% 14.5%, 100% 50%, 85.5% 85.5%, 50% 100%, 14.5% 85.5%, 0 50%, 14.5% 14.5% )',
-    '@media (max-width: 360px)': {
-      width: 210,
-      height: 210,
-    },
+    display: 'block',
+    width: '60vw',
+    height: '90vh',
     backgroundImage: ({ background }) => background || '#ECECEC',
-    backgroundSize: 'contain',
+    backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
+    '@media (max-width: 560px)': {
+      display: 'none',
+    },
   },
   container: {
-    display: 'flex',
-    width: '70vw',
-    height: '70vh',
+    width: '90vw',
+    height: '90vh',
     maxWidth: 1024,
     background: '#ccc',
-  },
-  titlesContainer: {
-    display: 'flex',
-    alignSelf: 'stretch',
-    justifyContent: 'flex-start',
   },
   closeContainer: {
     position: 'absolute',
@@ -46,22 +38,31 @@ const styles = makeStyles({
   closeIcon: {
     fontSize: 40,
     padding: 10,
+    '@media (max-width: 560px)': {
+      fontSize: '6vw',
+    },
   },
-  name: {
+  title: {
+    marginLeft: 4,
     fontSize: 30,
     fontWeight: 'bold',
     textTransform: 'uppercase',
-    '@media (max-width: 360px)': {
+    '@media (max-width: 560px)': {
       fontSize: '6vw',
     },
   },
   descriptionBiography: {
+    marginLeft: 4,
     background: 'transparent',
     width: '100%',
     '& p': {
-      lineHeight: '1.5em',
-      fontSize: '2.1vmin',
+      lineHeight: '1.6em',
+      fontSize: '2.67vmin',
       margin: 4,
+      '@media (max-width: 560px)': {
+        lineHeight: '1.5em',
+        fontSize: '1 em',
+      },
     },
   },
 });
@@ -69,25 +70,27 @@ const styles = makeStyles({
 const OurTeamModal = ({ name, onClose, background, biography }) => {
   const classes = styles({ background });
   return (
-    <div className={classes.container}>
+    <>
       <Grid
         container
         item
         xs={12}
-        direction="row"
         alignItems="center"
+        direction="row"
+        className={classes.container}
       >
-        <Grid item xs={5} className={classes.imageMember} />
+        <Grid item xs={4} className={classes.imageMember} />
 
         <Grid
           item
           container
-          xs={7}
+          xs={12}
+          md={8}
           direction="column"
           justify="flex-start"
         >
-          <Grid item xs={7}>
-            <Typography className={classes.name}>{name}</Typography>
+          <Grid item xs={12} md={6}>
+            <Typography className={classes.title}>{name}</Typography>
           </Grid>
           <Grid item xs={11} className={classes.descriptionBiography}>
             <div
@@ -105,7 +108,7 @@ const OurTeamModal = ({ name, onClose, background, biography }) => {
       >
         <CloseIcon className={classes.closeIcon} />
       </button>
-    </div>
+    </>
   );
 };
 
