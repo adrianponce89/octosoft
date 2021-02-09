@@ -64,6 +64,11 @@ export const pageQuery = graphql`
               url
             }
           }
+          fullPhoto {
+            file {
+              url
+            }
+          }
           name
           biography {
             json
