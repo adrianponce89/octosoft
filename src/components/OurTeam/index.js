@@ -15,7 +15,6 @@ const styles = makeStyles({
 
 const OurTeam = ({ teamMembers }) => {
   const classes = styles();
-  console.log('teamMembers :>> ', teamMembers);
 
   const [selectedMember, setSelectedMember] = useState(null);
 
@@ -52,7 +51,7 @@ const OurTeam = ({ teamMembers }) => {
           <OurTeamModal
             name={selectedMember.node.name}
             biography={selectedMember.node.biography}
-            background={`url(${selectedMember.node.photo.file.url})`}
+            background={`url(${selectedMember.node.fullPhoto.file.url})`}
             onClose={handleClose}
           />
         ) : (
