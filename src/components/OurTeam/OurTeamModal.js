@@ -8,7 +8,8 @@ const styles = makeStyles({
   imageMember: {
     display: 'block',
     width: '60vw',
-    height: '85vh',
+    height: '80vh',
+    maxHeight: 500,
     backgroundImage: ({ background }) => background || '#ECECEC',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -23,6 +24,7 @@ const styles = makeStyles({
     maxWidth: 1024,
     background: '#ccc',
     padding: '0.5em 1em 1em',
+    flexWrap: 'nowrap',
   },
   closeContainer: {
     position: 'absolute',
@@ -37,18 +39,21 @@ const styles = makeStyles({
     },
   },
   closeIcon: {
-    fontSize: 40,
+    fontSize: '2vmax',
     padding: 10,
     '@media (max-width: 560px)': {
-      fontSize: '6vw',
+      fontSize: '4vmin',
     },
   },
   title: {
-    fontSize: 30,
+    fontSize: '1.5em',
     fontWeight: 'bold',
     textTransform: 'uppercase',
+    '@media (max-width: 1024px)': {
+      fontSize: '2vmax',
+    },
     '@media (max-width: 560px)': {
-      fontSize: '6vw',
+      fontSize: '4.5vmin',
     },
   },
   descriptionBiography: {
@@ -56,11 +61,15 @@ const styles = makeStyles({
     width: '100%',
     '& p': {
       lineHeight: '1.6em',
-      fontSize: '2.67vmin',
+      fontSize: '1em',
       margin: 4,
+      '@media (max-width: 1256px)': {
+        lineHeight: '1.5em',
+        fontSize: '1.2vmax',
+      },
       '@media (max-width: 560px)': {
         lineHeight: '1.5em',
-        fontSize: '1 em',
+        fontSize: '2.6vmin',
       },
     },
   },
@@ -78,7 +87,7 @@ const OurTeamModal = ({ name, onClose, background, biography }) => {
         direction="row"
         className={classes.container}
       >
-        <Grid item xs={4} className={classes.imageMember} />
+        <Grid item md={4} className={classes.imageMember} />
 
         <Grid
           item
@@ -89,7 +98,9 @@ const OurTeamModal = ({ name, onClose, background, biography }) => {
           style={{ paddingLeft: '1em' }}
         >
           <Grid item xs={12} md={6}>
-            <Typography className={classes.title}>{name}</Typography>
+            <Typography variant="h1" className={classes.title}>
+              {name}
+            </Typography>
           </Grid>
           <Grid item xs={11} className={classes.descriptionBiography}>
             <div
