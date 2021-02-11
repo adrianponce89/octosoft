@@ -5,6 +5,7 @@ import { Grid, Typography } from '@material-ui/core';
 const styles = makeStyles({
   itemAvatar: {
     padding: 20,
+    cursor: 'pointer',
   },
   name: {
     width: '100%',

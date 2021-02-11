@@ -8,7 +8,7 @@ const styles = makeStyles({
   imageMember: {
     display: 'block',
     width: '60vw',
-    height: '90vh',
+    height: '85vh',
     backgroundImage: ({ background }) => background || '#ECECEC',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -22,6 +22,7 @@ const styles = makeStyles({
     height: '90vh',
     maxWidth: 1024,
     background: '#ccc',
+    padding: '0.5em 1em 1em',
   },
   closeContainer: {
     position: 'absolute',
@@ -43,7 +44,6 @@ const styles = makeStyles({
     },
   },
   title: {
-    marginLeft: 4,
     fontSize: 30,
     fontWeight: 'bold',
     textTransform: 'uppercase',
@@ -52,7 +52,6 @@ const styles = makeStyles({
     },
   },
   descriptionBiography: {
-    marginLeft: 4,
     background: 'transparent',
     width: '100%',
     '& p': {
@@ -87,7 +86,7 @@ const OurTeamModal = ({ name, onClose, background, biography }) => {
           xs={12}
           md={8}
           direction="column"
-          justify="flex-start"
+          style={{ paddingLeft: '1em' }}
         >
           <Grid item xs={12} md={6}>
             <Typography className={classes.title}>{name}</Typography>
