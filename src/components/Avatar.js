@@ -5,6 +5,7 @@ import { Grid, Typography } from '@material-ui/core';
 const styles = makeStyles({
   itemAvatar: {
     padding: 20,
+    cursor: 'pointer',
   },
   name: {
     width: '100%',
@@ -40,10 +41,10 @@ const styles = makeStyles({
       width: 210,
       height: 210,
     },
-    background: (props) => props.background || '#ECECEC',
-    backgroundSize: (props) => props.backgroundSize || 'cover',
-    backgroundPosition: (props) =>
-      props.backgroundPosition || 'center',
+    background: ({ background }) => background || '#ECECEC',
+    backgroundSize: ({ backgroundSize }) => backgroundSize || 'cover',
+    backgroundPosition: ({ backgroundPosition }) =>
+      backgroundPosition || 'center',
   },
   descriptionAvatars: {
     background: '#ECECEC',
@@ -60,12 +61,25 @@ const styles = makeStyles({
   },
 });
 
-const Avatar = (props) => {
-  const classes = styles(props);
+const Avatar = ({
+  background,
+  backgroundSize,
+  backgroundPosition,
+  onClick,
+  name,
+  title,
+  section,
+}) => {
+  const classes = styles({
+    background,
+    backgroundSize,
+    backgroundPosition,
+  });
   return (
-    <div>
+    <div onClick={onClick}>
       <Grid
         container
+        item
         md={3}
         xs={6}
         direction="column"
@@ -79,14 +93,10 @@ const Avatar = (props) => {
           alignContent="center"
           className={classes.descriptionAvatars}
         >
-          <Typography className={classes.name}>
-            {props.name}
-          </Typography>
-          <Typography className={classes.title}>
-            {props.title}
-          </Typography>
+          <Typography className={classes.name}>{name}</Typography>
+          <Typography className={classes.title}>{title}</Typography>
           <Typography className={classes.section}>
-            {props.section}
+            {section}
           </Typography>
         </Grid>
       </Grid>
