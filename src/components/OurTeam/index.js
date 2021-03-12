@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Dialog } from '@material-ui/core';
-import AvatarTeam from '../Avatar';
-import OurTeamModal from './OurTeamModal';
+import { Grid } from '@material-ui/core';
+import OurTeamCategory from './OurTeamCategory';
 
 const styles = makeStyles({
   headTitle: {
@@ -15,49 +14,35 @@ const styles = makeStyles({
 
 const OurTeam = ({ teamMembers }) => {
   const classes = styles();
+  const sortTeamMembersCategory = [];
+  const titleTypeCategorySet = new Set();
 
-  const [selectedMember, setSelectedMember] = useState(null);
+  teamMembers.forEach((member) => {
+    titleTypeCategorySet.add(member.node.category);
+  });
 
-  const handleClose = () => {
-    setSelectedMember(null);
-  };
+  titleTypeCategorySet.forEach((value) => {
+    sortTeamMembersCategory.push({
+      category: value,
+      teamMembers: teamMembers.filter(
+        (member) => member.node.category === value,
+      ),
+    });
+  });
 
   return (
     <>
       <Grid container direction="column" alignItems="center">
         <h1 className={classes.headTitle}>Our Team</h1>
       </Grid>
-      <Grid container direction="row" justify="center">
-        {teamMembers.map((member, i) => (
-          <AvatarTeam
-            key={i}
-            name={member.node.name}
-            title={member.node.title}
-            section={member.node.section}
-            background={`url(${member.node.photo.file.url})`}
-            onClick={() => {
-              setSelectedMember(member);
-            }}
+      <Grid>
+        {sortTeamMembersCategory.map((teamMembersCategory) => (
+          <OurTeamCategory
+            teamMembers={teamMembersCategory.teamMembers}
+            titleCategory={teamMembersCategory.category}
           />
         ))}
       </Grid>
-      <Dialog
-        onClose={handleClose}
-        aria-labelledby="customized-dialog-title"
-        open={selectedMember !== null}
-        maxWidth="lg"
-      >
-        {!!selectedMember ? (
-          <OurTeamModal
-            name={selectedMember.node.name}
-            biography={selectedMember.node.biography}
-            background={`url(${selectedMember.node.fullPhoto.file.url})`}
-            onClose={handleClose}
-          />
-        ) : (
-          ''
-        )}
-      </Dialog>
     </>
   );
 };
