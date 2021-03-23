@@ -87,6 +87,9 @@ const useStyles = makeStyles((theme) => ({
     textShadow: ({ transparent }) =>
       !!transparent ? '0 0 6px black' : 'none',
   },
+  button: {
+    backgroundColor: '#33adff',
+  },
 }));
 
 const HideOnScroll = (props) => {
@@ -112,7 +115,7 @@ const NavLinks = (props) => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Link className={classes.link} margin={2} to="/">
         <div className={classes.linkText}>{'HOME'}</div>
       </Link>
@@ -120,13 +123,13 @@ const NavLinks = (props) => {
       <Hidden mdDown>|</Hidden>
 
       <Link className={classes.link} margin={2} to="/aboutus">
-        <div className={classes.linkText}>ABOUT US</div>
+        <div className={classes.linkText}>{'ABOUT US'}</div>
       </Link>
 
       <Hidden mdDown>|</Hidden>
 
       <Link className={classes.link} margin={2} to="/ourservices">
-        <div className={classes.linkText}>OUR SERVICES</div>
+        <div className={classes.linkText}>{'OUR SERVICES'}</div>
       </Link>
 
       <Hidden mdDown>|</Hidden>
@@ -137,7 +140,7 @@ const NavLinks = (props) => {
         className={classes.link}
         margin={2}
       >
-        <div className={classes.linkText}>COMMUNITY</div>
+        <div className={classes.linkText}>{'COMMUNITY'}</div>
       </a>
       <Menu
         id="simple-menu"
@@ -147,29 +150,41 @@ const NavLinks = (props) => {
         onClose={handleClose}
       >
         <MenuItem component={Link} to="/news" onClick={handleClose}>
-          NEWS
+          {'NEWS'}
         </MenuItem>
         <MenuItem
           component={Link}
           to="/borderlessIdentities"
           onClick={handleClose}
         >
-          BORDERLESS IDENTITIES
+          {'BORDERLESS IDENTITIES'}
         </MenuItem>
       </Menu>
 
       <Hidden mdDown>|</Hidden>
 
       <Link className={classes.link} margin={2} to="/clientsupport">
-        <div className={classes.linkText}>CLIENT SUPPORT</div>
+        <div className={classes.linkText}>{'CLIENT SUPPORT'}</div>
       </Link>
 
       <Hidden mdDown>|</Hidden>
 
       <Link className={classes.link} margin={2} to="/contact">
-        <div className={classes.linkText}>CONTACT US</div>
+        <div className={classes.linkText}>{'CONTACT US'}</div>
       </Link>
-    </React.Fragment>
+
+      <Hidden mdDown>|</Hidden>
+
+      <Link
+        className={classes.link}
+        margin={2}
+        to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
+      >
+        <Button className={classes.button}>
+          <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
+        </Button>
+      </Link>
+    </>
   );
 };
 
