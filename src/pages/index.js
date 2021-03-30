@@ -59,14 +59,14 @@ export default (props) => {
                 color={node.color}
               />
             ))}
-            <Banners
+            {/* <Banners
               backgroundImage={`url(${planBanner.image.file.url})`}
               title={planBanner.title}
               right={true}
               color={planBanner.color}
               id="ourplans"
             />
-            <PlansGrid plans={plans} />
+            <PlansGrid plans={plans} /> */}
           </Grid>
         </Container>
       </section>
