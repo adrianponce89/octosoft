@@ -64,7 +64,7 @@ const Blogs = (props) => {
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
             <Paper elevation={2} className={classes.backgroundGlobal}>
-              <h1 className={`${classes.headTitle}`}>News</h1>
+              <h1 className={classes.headTitle}>News</h1>
             </Paper>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -122,6 +122,8 @@ const Blogs = (props) => {
                   title={node.title}
                   content={node.content.json}
                   slug={node.slug}
+                  firm={node.firm}
+                  linkFirm={node.linkFirm}
                 />
               ))}
             </Grid>
@@ -134,9 +136,7 @@ const Blogs = (props) => {
                   elevation={2}
                   className={classes.backgroundGlobal}
                 >
-                  <h2 className={`${classes.subTitle}`}>
-                    Latest Posts
-                  </h2>
+                  <h2 className={classes.subTitle}>Latest Posts</h2>
                   <Grid container spacing={3}>
                     {posts.map(({ node }) => (
                       <Grid item xs={12}>
@@ -205,6 +205,8 @@ export const pageQuery = graphql`
           id
           slug
           title
+          linkFirm
+          firm
           recommended
           photo {
             file {
