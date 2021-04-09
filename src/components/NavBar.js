@@ -42,6 +42,12 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     cursor: 'pointer',
   },
+  linkButton: {
+    padding: 12,
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+    cursor: 'pointer',
+  },
   textLogoContainer: {
     display: 'flex',
     flexDirection: 'column',
@@ -176,8 +182,7 @@ const NavLinks = (props) => {
       <Hidden mdDown>|</Hidden>
 
       <Link
-        className={classes.link}
-        margin={2}
+        className={classes.linkButton}
         to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
       >
         <Button className={classes.button}>
