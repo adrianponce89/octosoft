@@ -37,13 +37,13 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   link: {
-    padding: 20,
+    padding: 15,
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',
   },
   linkButton: {
-    padding: 12,
+    padding: 6,
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',
