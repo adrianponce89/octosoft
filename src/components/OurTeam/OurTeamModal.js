@@ -3,6 +3,7 @@ import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import SocialNetwork from '../SocialNetwork';
 
 const styles = makeStyles({
   imageMember: {
@@ -23,7 +24,7 @@ const styles = makeStyles({
     height: '90vh',
     maxWidth: 1024,
     background: '#ccc',
-    padding: '0.5em 1em 1em',
+    padding: '2em 1em 2em',
     flexWrap: 'nowrap',
   },
   closeContainer: {
@@ -75,7 +76,17 @@ const styles = makeStyles({
   },
 });
 
-const OurTeamModal = ({ name, onClose, background, biography }) => {
+const OurTeamModal = ({
+  name,
+  onClose,
+  background,
+  biography,
+  instagram,
+  facebook,
+  twitter,
+  github,
+  web,
+}) => {
   const classes = styles({ background });
   return (
     <>
@@ -101,6 +112,15 @@ const OurTeamModal = ({ name, onClose, background, biography }) => {
             <Typography variant="h1" className={classes.title}>
               {name}
             </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <SocialNetwork
+              instagram={instagram}
+              facebook={facebook}
+              twitter={twitter}
+              github={github}
+              web={web}
+            />
           </Grid>
           <Grid item xs={11} className={classes.descriptionBiography}>
             <div
