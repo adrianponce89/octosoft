@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainLogo: {
     position: 'absolute',
-    left: '5vw',
+    left: '2vw',
     top: '5vh',
   },
   typingContainer: {
