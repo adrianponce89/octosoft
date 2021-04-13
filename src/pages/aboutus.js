@@ -60,6 +60,15 @@ export const pageQuery = graphql`
           title
           category
           section
+          socialMedia {
+            github
+            facebook
+            behance
+            instagram
+            linkedin
+            twitter
+            web
+          }
           photo {
             file {
               url

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Dialog, Typography } from '@material-ui/core';
 import AvatarTeam from '../Avatar';
 import OurTeamModal from './OurTeamModal';
@@ -9,6 +8,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory }) => {
   const handleClose = () => {
     setSelectedMember(null);
   };
+
   return (
     <>
       <Grid container justify="center">
@@ -40,6 +40,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory }) => {
             biography={selectedMember.node.biography}
             background={`url(${selectedMember.node.fullPhoto.file.url})`}
             onClose={handleClose}
+            socialMedia={selectedMember.node.socialMedia}
           />
         ) : (
           ''
