@@ -1,18 +1,31 @@
 import React, { useState } from 'react';
 import { Grid, Dialog, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import AvatarTeam from '../Avatar';
 import OurTeamModal from './OurTeamModal';
+
+const useStyle = makeStyles({
+  titleCategory: {
+    fontFamily: 'Montserrat',
+    color: '#858',
+    fontSize: '2em',
+    fontWeight: 600,
+    margin: 12,
+  },
+});
 
 const OurTeamCategory = ({ teamMembers, titleCategory }) => {
   const [selectedMember, setSelectedMember] = useState(null);
   const handleClose = () => {
     setSelectedMember(null);
   };
-
+  const classes = useStyle();
   return (
     <>
       <Grid container justify="center">
-        <Typography variant="h2">{titleCategory}</Typography>
+        <Typography variant="h2" className={classes.titleCategory}>
+          {titleCategory}
+        </Typography>
       </Grid>
       <Grid container direction="row" justify="center">
         {teamMembers.map((member, i) => (
