@@ -1,10 +1,11 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
+import ReplyIcon from '@material-ui/icons/Reply';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import { Grid, Typography } from '@material-ui/core';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const styles = makeStyles((theme) => ({
@@ -28,6 +29,13 @@ const styles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   descriptionArticle: { margin: 15 },
+  firm: {
+    color: '#6e6e6e',
+    fontFamily: 'Montserrat',
+    fontWeight: 'bold',
+    fontSize: '1.1em',
+  },
+  link: { textDecoration: 'none' },
 }));
 
 const ArticleViews = (props) => {
@@ -41,9 +49,8 @@ const ArticleViews = (props) => {
         justify="center"
         alignContent="center"
         className={classes.container}
-        xs={12}
       >
-        <Grid item xs={12} className={classes.imageArticle}></Grid>
+        <Grid item xs={12} className={classes.imageArticle} />
 
         <Grid item xs={12} className={classes.titleArticle}>
           {post.title}
@@ -54,6 +61,18 @@ const ArticleViews = (props) => {
               __html: documentToHtmlString(post.content.json),
             }}
           />
+          <Grid item xs={3}>
+            <Link to={post.linkFirm} className={classes.link}>
+              <Typography
+                variant="subtitle2"
+                className={classes.firm}
+              >
+                {'More From '}
+                {post.firm}
+                <ReplyIcon fontSize="small" />
+              </Typography>
+            </Link>
+          </Grid>
         </Grid>
       </Grid>
     </Container>
@@ -68,6 +87,8 @@ export const pageQuery = graphql`
       id
       slug
       title
+      linkFirm
+      firm
       photo {
         file {
           url
