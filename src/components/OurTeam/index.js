@@ -5,10 +5,11 @@ import OurTeamCategory from './OurTeamCategory';
 
 const styles = makeStyles({
   headTitle: {
-    fontSize: 64,
+    fontSize: '4em',
     textAlign: 'center',
     color: '#888',
     fontWeight: 900,
+    lineHeight: '1em',
   },
 });
 
@@ -35,7 +36,7 @@ const OurTeam = ({ teamMembers }) => {
       <Grid container direction="column" alignItems="center">
         <h1 className={classes.headTitle}>Our Team</h1>
       </Grid>
-      <Grid>
+      <Grid container justify="center" alignItems="center">
         {sortTeamMembersCategory.map((teamMembersCategory) => (
           <OurTeamCategory
             teamMembers={teamMembersCategory.teamMembers}

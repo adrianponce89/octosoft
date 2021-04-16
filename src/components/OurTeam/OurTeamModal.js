@@ -81,11 +81,7 @@ const OurTeamModal = ({
   onClose,
   background,
   biography,
-  instagram,
-  facebook,
-  twitter,
-  github,
-  web,
+  socialMedia,
 }) => {
   const classes = styles({ background });
   return (
@@ -114,13 +110,7 @@ const OurTeamModal = ({
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <SocialNetwork
-              instagram={instagram}
-              facebook={facebook}
-              twitter={twitter}
-              github={github}
-              web={web}
-            />
+            <SocialNetwork socialMedia={socialMedia} />
           </Grid>
           <Grid item xs={11} className={classes.descriptionBiography}>
             <div

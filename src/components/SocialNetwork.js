@@ -47,15 +47,17 @@ const style = makeStyles((theme) => ({
   },
 }));
 
-const socialNetwork = ({
-  instagram,
-  facebook,
-  twitter,
-  github,
-  linkedin,
-  behance,
-  web,
-}) => {
+const socialNetwork = ({ socialMedia }) => {
+  console.log('socialMedia :>> ', socialMedia);
+  const {
+    instagram,
+    facebook,
+    twitter,
+    github,
+    linkedin,
+    behance,
+    web,
+  } = socialMedia;
   const classes = style({
     instagram,
     facebook,
