@@ -3,9 +3,11 @@ import { Link } from 'gatsby';
 import { Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import BehanceIcon from '../assets/behance.svg';
 import { submitForm } from '../utils';
 import PrimaryInput from './PrimaryInput';
 
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   linkText: {
     color: 'gray',
     paddingTop: 5,
-    fontSize: '14px',
+    fontSize: 14,
     color: 'gray',
     fontFamily: 'Montserrat',
   },
@@ -59,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
   },
   bottomText: {
-    fontSize: '14px',
+    fontSize: 13,
     color: '#fff',
     fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
@@ -90,6 +92,11 @@ const useStyles = makeStyles((theme) => ({
       width: 30,
       height: 30,
     },
+  },
+  iconBehance: {
+    width: 25,
+    height: 25,
+    fill: '#1d2178',
   },
 }));
 
@@ -225,7 +232,8 @@ const Footer = (props) => {
       <div className={classes.bottomBar}>
         <div className={classes.section}>
           <Typography className={classes.bottomText}>
-            Copyright 2020 Octosoft Professionals All Rights Reserved.
+            Copyright 2018-2020 Octosoft Professionals All Rights
+            Reserved.
           </Typography>
         </div>
         <div className={classes.sectionSocial}>
@@ -242,6 +250,11 @@ const Footer = (props) => {
               <FacebookIcon />
             </ItemSocial>
           </Link>
+          <Link className={classes.link} to="/">
+            <ItemSocial>
+              <YouTubeIcon />
+            </ItemSocial>
+          </Link>
           <Link
             className={classes.link}
             to="https://www.instagram.com/octosoftprofessionals/"
@@ -256,6 +269,14 @@ const Footer = (props) => {
           >
             <ItemSocial>
               <TwitterIcon />
+            </ItemSocial>
+          </Link>
+          <Link
+            className={classes.link}
+            to="https://www.behance.net/Octosoftprofessional"
+          >
+            <ItemSocial>
+              <BehanceIcon className={classes.iconBehance} />
             </ItemSocial>
           </Link>
           <Link
