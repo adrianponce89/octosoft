@@ -6,7 +6,7 @@ A working version of the project can be seen at:
 
 [https://octosoftprofessionals.com/](https://octosoftprofessionals.com/)
 
-![Example_Image_1](https://github.com/adrianponce89/octosoft/blob/master/public/images/Octo_Landing.png)
+![Captura de pantalla de 2021-05-12 12-35-52](https://user-images.githubusercontent.com/54718297/118004769-21a94980-b320-11eb-9f47-3d11cb495421.png)
 
 # How to run this project locally
 
