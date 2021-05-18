@@ -124,6 +124,7 @@ const Blogs = (props) => {
                   slug={node.slug}
                   firm={node.firm}
                   linkFirm={node.linkFirm}
+                  avatar={`${node.avatar.file.url}`}
                 />
               ))}
             </Grid>
@@ -207,6 +208,11 @@ export const pageQuery = graphql`
           title
           linkFirm
           firm
+          avatar {
+            file {
+              url
+            }
+          }
           recommended
           photo {
             file {
