@@ -29,3 +29,4 @@ yarn-error.log*
 page-data/
 
 src/demo/
+.vscode/settings.json
