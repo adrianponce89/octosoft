@@ -1,12 +1,13 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Background.png';
-import ReplyIcon from '@material-ui/icons/Reply';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
+import PostSignature from '../components/PostSignature';
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -61,17 +62,12 @@ const ArticleViews = (props) => {
               __html: documentToHtmlString(post.content.json),
             }}
           />
-          <Grid item xs={3}>
-            <Link to={post.linkFirm} className={classes.link}>
-              <Typography
-                variant="subtitle2"
-                className={classes.firm}
-              >
-                {'More From '}
-                {post.firm}
-                <ReplyIcon fontSize="small" />
-              </Typography>
-            </Link>
+          <Grid item xs={4}>
+            <PostSignature
+              linkFirm={post.linkFirm}
+              firm={post.firm}
+              imgAvatarUrl={post.avatar.file.url}
+            />
           </Grid>
         </Grid>
       </Grid>
@@ -89,6 +85,11 @@ export const pageQuery = graphql`
       title
       linkFirm
       firm
+      avatar {
+        file {
+          url
+        }
+      }
       photo {
         file {
           url

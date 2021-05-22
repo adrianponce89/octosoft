@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { Grid, Paper, Typography } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import ReplyIcon from '@material-ui/icons/Reply';
+
+import PostSignature from './PostSignature';
 
 const styles = makeStyles({
   link: {
@@ -44,13 +45,6 @@ const styles = makeStyles({
   textButton: {
     color: '#41a0ff',
   },
-  firm: {
-    color: '#6e6e6e',
-    fontFamily: 'Montserrat',
-    fontWeight: 'bold',
-    fontSize: '1.1em',
-    '@media(max-width: 335px)': { fontSize: '1em' },
-  },
   footerNews: { margin: '0 15px' },
 });
 
@@ -78,24 +72,19 @@ const Post = (props) => {
               />
             </Grid>
             <Grid
+              item
+              xs={12}
               container
               direction="row"
               alignItems="center"
               justify="space-between"
               className={classes.footerNews}
             >
-              <Grid item xs={6}>
-                <Link to={props.linkFirm} className={classes.link}>
-                  <Typography
-                    variant="subtitle2"
-                    className={classes.firm}
-                  >
-                    {'More From '}
-                    {props.firm}
-                    <ReplyIcon fontSize="small" />
-                  </Typography>
-                </Link>
-              </Grid>
+              <PostSignature
+                linkFirm={props.linkFirm}
+                firm={props.firm}
+                imgAvatarUrl={props.avatar}
+              />
               <Grid item xs={3} md={2}>
                 <p className={classes.textButton}>Read More...</p>
               </Grid>
