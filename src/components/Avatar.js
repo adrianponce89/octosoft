@@ -51,10 +51,8 @@ const styles = makeStyles({
     marginTop: 15,
     padding: 5,
     width: 250,
-    height: 100,
     '@media (max-width: 360px)': {
       width: 200,
-      height: 100,
     },
     overflow: 'hidden',
     textAlign: 'center',
