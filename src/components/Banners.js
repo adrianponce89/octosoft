@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Paper } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 
