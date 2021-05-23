@@ -3,7 +3,7 @@ import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CloseIcon from '@material-ui/icons/Close';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import SocialNetwork from '../SocialNetwork';
+import SocialNetwork from '../../SocialNetwork';
 
 const styles = makeStyles({
   imageMember: {
