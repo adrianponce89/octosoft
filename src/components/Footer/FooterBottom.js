@@ -88,7 +88,7 @@ const FooterBottom = () => {
         className={classes.section}
       >
         <Typography className={classes.bottomText}>
-          Copyright 2018-2020 Octosoft Professionals All Rights
+          Copyright 2018-2021 Octosoft Professionals All Rights
           Reserved.
         </Typography>
       </Grid>
