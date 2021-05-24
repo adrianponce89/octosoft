@@ -23,6 +23,7 @@ export const theme = createMuiTheme({
       },
     },
     MuiDialog: {
+      paper: { margin: 0 },
       paperWidthLg: {
         boxShadow: 'none',
         background: 'transparent',

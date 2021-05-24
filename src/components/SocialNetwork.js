@@ -45,7 +45,13 @@ const style = makeStyles((theme) => ({
     height: '1em',
     fill: '#26A1FF',
   },
-  icon: { fill: '#26A1FF', fontSize: '3em' },
+  icon: {
+    fill: '#26A1FF',
+    fontSize: '3em',
+    '@media (max-width: 565px)': {
+      fontSize: '2em',
+    },
+  },
 }));
 
 const socialNetwork = ({ socialMedia }) => {
@@ -68,7 +74,14 @@ const socialNetwork = ({ socialMedia }) => {
     web,
   });
   return (
-    <Grid item xs={8} container direction="row" alignItems="center">
+    <Grid
+      item
+      xs={8}
+      container
+      justify="space-around"
+      direction="row"
+      alignItems="center"
+    >
       <Grid item xs={1} className={classes.instagram}>
         <Link to={instagram}>
           <Tooltip title="Instagram" classes={classes}>

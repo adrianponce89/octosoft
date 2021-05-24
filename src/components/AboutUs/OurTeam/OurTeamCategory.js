@@ -12,7 +12,6 @@ const useStyle = makeStyles({
     fontWeight: 500,
     margin: 12,
   },
-  dialog: { borderRadius: 16 },
 });
 
 const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
@@ -80,9 +79,8 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
         aria-labelledby="customized-dialog-title"
         open={selectedMember !== null}
         maxWidth="lg"
-        className={classes.dialog}
       >
-        {!!selectedMember ? (
+        {selectedMember ? (
           <OurTeamModal
             name={selectedMember.node.name}
             biography={selectedMember.node.biography}
