@@ -31,16 +31,17 @@ const useStyle = makeStyles((theme) => ({
   },
   titleCard: {
     color: ({ color }) => (color ? color : null),
-    fontFamily: 'Montserrat',
-    fontSize: '2em',
-    fontWeight: 900,
+    fontSize: '2.5em',
+    fontWeight: 800,
+    fontFamily: 'Poppins',
     marginBottom: theme.spacing(4),
     '@media (max-width: 576px)': {
       textAlign: 'center',
     },
   },
   description: {
-    fontFamily: 'Montserrat',
+    fontFamily: 'Poppins',
+    fontWeight: 500,
     whiteSpace: 'break-spaces',
     fontSize: '1em',
   },

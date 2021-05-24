@@ -12,9 +12,9 @@ const useStyle = makeStyles((theme) => ({
   },
   headTitle: {
     color: ({ color }) => (color ? color : null),
-    fontFamily: 'Montserrat',
+    fontFamily: 'Poppins',
     fontSize: '3em',
-    fontWeight: 900,
+    fontWeight: 800,
     marginBottom: theme.spacing(4),
     '@media (max-width: 576px)': {
       textAlign: 'center',
@@ -22,6 +22,8 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   subtitle: {
+    fontFamily: 'Poppins',
+    fontWeight: 500,
     color: '#707070',
     marginBottom: theme.spacing(4),
     '@media (max-width: 576px)': {

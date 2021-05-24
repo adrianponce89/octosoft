@@ -13,14 +13,18 @@ const useStyle = makeStyles((theme) => ({
   },
   name: {
     width: '100%',
-    fontSize: 20,
-    textTransform: 'uppercase',
-    '@media (max-width: 360px)': {
-      fontSize: '6vw',
+    fontFamily: 'Poppins',
+    fontWeight: 800,
+    fontSize: '1.5em',
+    color: '#707070',
+    textTransform: 'capitalize',
+    '@media (max-width: 660px)': {
+      fontSize: '2em',
     },
   },
   title: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins',
+    fontWeight: 500,
     color: '#0024B5',
     width: '100%',
     fontSize: 20,
@@ -29,9 +33,11 @@ const useStyle = makeStyles((theme) => ({
     },
   },
   section: {
-    fontWeight: 'bold',
+    fontFamily: 'Poppins',
+    fontWeight: 500,
     width: '100%',
-    fontSize: 16,
+    fontSize: 15,
+    color: '#707070',
     '@media (max-width: 360px)': {
       fontSize: '4vw',
     },
@@ -48,7 +54,8 @@ const useStyle = makeStyles((theme) => ({
     paddingBottom: '100%',
   },
   descriptionAvatars: {
-    padding: 5,
+    fontFamily: 'Poppins',
+    fontWeight: 500,
     width: '100%',
     overflow: 'hidden',
     textAlign: 'center',
@@ -58,11 +65,13 @@ const useStyle = makeStyles((theme) => ({
     borderRadius: 8,
   },
   textButton: {
+    fontFamily: 'Poppins',
+    fontWeight: 500,
     color: '#fff',
     fontSize: 18,
     textTransform: 'capitalize',
   },
-  containerButton: { marginTop: theme.spacing(4) },
+  containerButton: { margin: theme.spacing(4, 0, 2) },
 }));
 
 const Avatar = ({

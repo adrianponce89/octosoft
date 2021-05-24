@@ -6,10 +6,10 @@ import OurTeamModal from './OurTeamModal';
 
 const useStyle = makeStyles({
   titleCategory: {
-    fontFamily: 'Montserrat',
+    fontFamily: 'Poppins',
     color: '#663777',
     fontSize: '2em',
-    fontWeight: 600,
+    fontWeight: 500,
     margin: 12,
   },
 });
