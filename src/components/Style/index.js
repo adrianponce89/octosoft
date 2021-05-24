@@ -22,5 +22,16 @@ export const theme = createMuiTheme({
         color: 'black',
       },
     },
+    MuiDialog: {
+      paperWidthLg: {
+        boxShadow: 'none',
+        background: 'transparent',
+      },
+    },
+    MuiBackdrop: {
+      root: {
+        backdropFilter: 'blur(8px)',
+      },
+    },
   },
 });

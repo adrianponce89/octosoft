@@ -43,8 +43,9 @@ const style = makeStyles((theme) => ({
   iconBehance: {
     width: '1em',
     height: '1em',
-    fill: 'rgba(0, 0, 0, 0.54)',
+    fill: '#26A1FF',
   },
+  icon: { fill: '#26A1FF', fontSize: '3em' },
 }));
 
 const socialNetwork = ({ socialMedia }) => {
@@ -67,80 +68,60 @@ const socialNetwork = ({ socialMedia }) => {
     web,
   });
   return (
-    <>
-      <Grid
-        container
-        item
-        xs={12}
-        sm={8}
-        direction="row"
-        alignItems="center"
-      >
-        <Grid item xs={1} className={classes.instagram}>
-          <Link to={instagram}>
-            <Tooltip title="Instagram" popper classes={classes}>
-              <IconButton>
-                <InstagramIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Grid>
-        <Grid item xs={1} className={classes.facebook}>
-          <Link to={facebook}>
-            <Tooltip title="Facebook" classes={classes}>
-              <IconButton>
-                <FacebookIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Grid>
-        <Grid item xs={1} className={classes.twitter}>
-          <Link to={twitter}>
-            <Tooltip title="Twitter" classes={classes}>
-              <IconButton>
-                <TwitterIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Grid>
-        <Grid item xs={1} className={classes.github}>
-          <Link to={github}>
-            <Tooltip title="GitHub" classes={classes}>
-              <IconButton>
-                <GitHubIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Grid>
-        <Grid item xs={1} className={classes.behance}>
-          <Link to={behance}>
-            <Tooltip title="Behance" classes={classes}>
-              <IconButton>
-                <BehanceIcon className={classes.iconBehance} />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Grid>
-        <Grid item xs={1} className={classes.linkedin}>
-          <Link to={linkedin}>
-            <Tooltip title="Linked In" classes={classes}>
-              <IconButton>
-                <LinkedInIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Grid>
-        <Grid item xs={1} className={classes.web}>
-          <Link to={web}>
-            <Tooltip title="Web" classes={classes}>
-              <IconButton>
-                <WebIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-          </Link>
-        </Grid>
+    <Grid item xs={8} container direction="row" alignItems="center">
+      <Grid item xs={1} className={classes.instagram}>
+        <Link to={instagram}>
+          <Tooltip title="Instagram" classes={classes}>
+            <InstagramIcon
+              fontSize="large"
+              className={classes.icon}
+            />
+          </Tooltip>
+        </Link>
       </Grid>
-    </>
+      <Grid item xs={1} className={classes.facebook}>
+        <Link to={facebook}>
+          <Tooltip title="Facebook" classes={classes}>
+            <FacebookIcon fontSize="large" className={classes.icon} />
+          </Tooltip>
+        </Link>
+      </Grid>
+      <Grid item xs={1} className={classes.twitter}>
+        <Link to={twitter}>
+          <Tooltip title="Twitter" classes={classes}>
+            <TwitterIcon fontSize="large" className={classes.icon} />
+          </Tooltip>
+        </Link>
+      </Grid>
+      <Grid item xs={1} className={classes.github}>
+        <Link to={github}>
+          <Tooltip title="GitHub" classes={classes}>
+            <GitHubIcon fontSize="large" className={classes.icon} />
+          </Tooltip>
+        </Link>
+      </Grid>
+      <Grid item xs={1} className={classes.behance}>
+        <Link to={behance}>
+          <Tooltip title="Behance" classes={classes}>
+            <BehanceIcon className={classes.iconBehance} />
+          </Tooltip>
+        </Link>
+      </Grid>
+      <Grid item xs={1} className={classes.linkedin}>
+        <Link to={linkedin}>
+          <Tooltip title="Linked In" classes={classes}>
+            <LinkedInIcon fontSize="large" className={classes.icon} />
+          </Tooltip>
+        </Link>
+      </Grid>
+      <Grid item xs={1} className={classes.web}>
+        <Link to={web}>
+          <Tooltip title="Web" classes={classes}>
+            <WebIcon fontSize="large" className={classes.icon} />
+          </Tooltip>
+        </Link>
+      </Grid>
+    </Grid>
   );
 };
 
