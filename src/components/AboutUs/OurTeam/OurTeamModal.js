@@ -171,7 +171,7 @@ const OurTeamModal = ({
           <Grid item sm={9} container alignItems="center">
             {Object.values(socialMedia).some(even) ? (
               <Typography variant="caption" className={classes.text}>
-                {`Follow ${name} on Social Mededia:`}
+                {`Follow ${name} on Social Media:`}
               </Typography>
             ) : null}
             <SocialNetwork socialMedia={socialMedia} />

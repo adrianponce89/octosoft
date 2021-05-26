@@ -7,7 +7,8 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import BehanceIcon from '../assets/behance.svg';
 import WebIcon from '@material-ui/icons/Web';
-import { Grid, IconButton, Tooltip } from '@material-ui/core';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import { Grid, Tooltip } from '@material-ui/core';
 
 import { Link } from 'gatsby';
 
@@ -40,10 +41,17 @@ const style = makeStyles((theme) => ({
   web: {
     display: ({ web }) => (!!web ? 'block' : 'none'),
   },
+  youtube: {
+    display: ({ youtube }) => (!!youtube ? 'block' : 'none'),
+  },
   iconBehance: {
-    width: '1em',
-    height: '1em',
+    width: '3em',
+    height: '3em',
     fill: '#26A1FF',
+    '@media (max-width: 565px)': {
+      width: '2em',
+      height: '2em',
+    },
   },
   icon: {
     fill: '#26A1FF',
@@ -63,6 +71,7 @@ const socialNetwork = ({ socialMedia }) => {
     linkedin,
     behance,
     web,
+    youtube,
   } = socialMedia;
   const classes = style({
     instagram,
@@ -72,6 +81,7 @@ const socialNetwork = ({ socialMedia }) => {
     linkedin,
     behance,
     web,
+    youtube,
   });
   return (
     <Grid
@@ -131,6 +141,13 @@ const socialNetwork = ({ socialMedia }) => {
         <Link to={web}>
           <Tooltip title="Web" classes={classes}>
             <WebIcon fontSize="large" className={classes.icon} />
+          </Tooltip>
+        </Link>
+      </Grid>
+      <Grid item xs={1} className={classes.youtube}>
+        <Link to={youtube}>
+          <Tooltip title="YouTube" classes={classes}>
+            <YouTubeIcon fontSize="large" className={classes.icon} />
           </Tooltip>
         </Link>
       </Grid>
