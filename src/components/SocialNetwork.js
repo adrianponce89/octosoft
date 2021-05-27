@@ -48,7 +48,6 @@ const style = makeStyles((theme) => ({
 }));
 
 const socialNetwork = ({ socialMedia }) => {
-  console.log('socialMedia :>> ', socialMedia);
   const {
     instagram,
     facebook,

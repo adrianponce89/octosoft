@@ -3,10 +3,9 @@ import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import Container from '../components/Container';
 import BackgroundImage from '../assets/Trama.png';
-import Banners from '../components/Banners';
-import OurTeam from '../components/OurTeam';
+import AboutUs from '../components/AboutUs';
 
-const AboutUs = (props) => {
+const AboutUsPage = (props) => {
   const teamMembers = get(
     props,
     'data.allContentfulTeamMember.edges',
@@ -18,21 +17,18 @@ const AboutUs = (props) => {
     <Container
       background={`url(${BackgroundImage})`}
       innerPadding="80px 25px 25px 25px"
+      innerBackground={'#5ebff4'}
     >
-      <Banners
-        backgroundImage={`url(${aboutUsBanner.image.file.url})`}
-        title={aboutUsBanner.title}
-        description={aboutUsBanner.description.internal.content}
-        right={true}
-        color={aboutUsBanner.color}
-        id="ourplans"
+      <AboutUs
+        teamMembers={teamMembers}
+        aboutUs={aboutUsBanner}
+        cla
       />
-      <OurTeam teamMembers={teamMembers} />
     </Container>
   );
 };
 
-export default AboutUs;
+export default AboutUsPage;
 
 export const pageQuery = graphql`
   query AboutUsQuery {
