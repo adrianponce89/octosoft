@@ -80,7 +80,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
         open={selectedMember !== null}
         maxWidth="lg"
       >
-        {!!selectedMember ? (
+        {selectedMember ? (
           <OurTeamModal
             name={selectedMember.node.name}
             biography={selectedMember.node.biography}
