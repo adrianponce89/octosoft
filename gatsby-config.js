@@ -39,5 +39,13 @@ module.exports = {
         icon: 'src/assets/favicon.ico',
       },
     },
+    {
+      resolve: 'gatsby-plugin-mailchimp',
+      options: {
+        endpoint:
+          'https://octosoftprofessionals.us1.list-manage.com/subscribe/post?u=81ad31ef8de1fda17fb10f392&amp;id=dcc733877d',
+        timeout: 3500,
+      },
+    },
   ],
 };
