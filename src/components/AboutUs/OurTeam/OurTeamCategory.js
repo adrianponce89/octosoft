@@ -31,7 +31,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
         <Grid
           container
           direction="row"
-          justify="space-between"
+          justify="space-around"
           alignItems="flex-start"
         >
           {teamMembers.map((member, i) => (

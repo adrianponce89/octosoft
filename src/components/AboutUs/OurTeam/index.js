@@ -76,25 +76,13 @@ const OurTeam = ({ teamMembers, color }) => {
         />
       </Grid>
       <Grid container justify="center" alignItems="stretch">
-        {sortTeamMembersCategory.map((teamMembersCategory, i) =>
-          i <= 0 ? (
-            <Grid item xs={12} sm={11}>
-              <OurTeamCategory
-                teamMembers={teamMembersCategory.teamMembers}
-                titleCategory={teamMembersCategory.category}
-                index={i}
-              />
-            </Grid>
-          ) : (
-            <Grid item xs={12} sm={6}>
-              <OurTeamCategory
-                teamMembers={teamMembersCategory.teamMembers}
-                titleCategory={teamMembersCategory.category}
-                index={i}
-              />
-            </Grid>
-          ),
-        )}
+        {sortTeamMembersCategory.map((teamMembersCategory) => (
+          <OurTeamCategory
+            teamMembers={teamMembersCategory.teamMembers}
+            titleCategory={teamMembersCategory.category}
+            index={0}
+          />
+        ))}
       </Grid>
     </Paper>
   );
