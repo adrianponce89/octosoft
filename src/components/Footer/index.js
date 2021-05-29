@@ -11,15 +11,12 @@ const Footer = () => {
     event.preventDefault();
     addToMailchimp(email)
       .then(({ msg, result }) => {
-        console.log('msg', `${result}: ${msg}`);
-
         if (result !== 'success') {
           throw msg;
         }
         alert(msg);
       })
       .catch((err) => {
-        console.log('err', err);
         alert(err);
       });
     setEmail('');
