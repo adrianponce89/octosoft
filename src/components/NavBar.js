@@ -83,7 +83,6 @@ const useStyles = makeStyles((theme) => ({
       !!transparent ? '0 0 4px #FFF' : 'none',
   },
   appbar: {
-    height: 80,
     background: 'none',
     boxShadow: ({ transparent }) =>
       !!transparent ? 'none' : '0 0 4px gray',
