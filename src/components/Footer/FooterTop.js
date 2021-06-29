@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { Box, Grid, Typography } from '@material-ui/core';
+import {
+  Box,
+  Grid,
+  Typography,
+  InputAdornment,
+  IconButton,
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Send } from '@material-ui/icons';
 
 import PrimaryInput from '../PrimaryInput';
 
@@ -39,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
   },
   formContainer: {
     paddingTop: 10,
+  },
+  IconSend: {
+    fontSize: 14,
+    fill: '#37add4',
   },
 }));
 
@@ -157,6 +168,15 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
               variant="filled"
               type="email"
               required
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton type="submit">
+                      <Send className={classes.IconSend} />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </form>
         </div>
