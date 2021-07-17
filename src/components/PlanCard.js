@@ -1,6 +1,8 @@
 import React from 'react'
-import { Grid, Typography, Divider } from '@material-ui/core';
+import { Grid, Typography, Divider} from '@material-ui/core';
+import { Link } from 'gatsby';
 import { makeStyles } from '@material-ui/core/styles';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -19,6 +21,9 @@ const styles = makeStyles((theme) => ({
     },
     width: 300,
     height: 500,
+    '@media (max-width: 760px)': {
+      marginBottom: 50,
+    },
   },
   content: {
     padding: 20,
@@ -41,20 +46,78 @@ const styles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontSize: 40,
     marginRight: 20,
+    '@media (max-width: 760px)': {
+      fontSize: 24,
+    },
   },
   month: {
     textAlign: 'left',
     color: 'grey',
     fontFamily: 'Montserrat',
     fontSize: 24,
+    '@media (max-width: 760px)': {
+      fontSize: 16,
+    },
   },
   descriptionContainer: {
-    height: 200,
+    height: 220,
+    width: 250,
+    overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingBottom:40,
+    paddingBottom: 40,
+    '& p': {
+      lineHeight: '1.2em',
+      fontSize: '1.5vmin',
+      color: 'grey',
+      margin: 4,
+      '@media (max-width: 1024px)': {
+        fontSize: '2.5vmin',
+      },
+    },
+    '& ul': {
+      display: 'flex',
+      background: '#fff',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      flexWrap: 'wrap',
+      listStyleType: 'none',
+      margin: 0,
+      padding: 0,
+      '@media (max-width: 1024px)': {
+        flexWrap: 'nowrap',
+        // minHeight: 400,
+      },
+      '@media (max-width: 760px)': {
+        marginBottom: 14,
+        '& li:last-child::after': {
+          content: '" "',
+          display: 'block',
+          minHeight: 30,
+        },
+      },
+    },
+    '@media (max-width: 760px)': {
+      '& ul::after': {
+        content: '" "',
+        display: 'block',
+        minHeight: 30,
+      },
+    },
+    '& li': {
+      width: '100%',
+      '@media (max-width: 760px)': {
+        width: '100%',
+      },
+    },
+    '& li p::before': {
+      marginLeft: 15,
+      content: '"· "',
+      display: 'inline',
+      fontWeight: 'bold',
+    },
   },
   description: {
     textAlign: 'left',
@@ -73,10 +136,18 @@ const styles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 600,
     fontSize: 30,
+    '@media (max-width: 760px)': {
+      fontSize: 25,
+    },
+  },
+  link: {
+    textDecoration: 'none',
+    float: 'right',
   },
 }));
 
 const PlanCard = ({plan, index}) => {
+    const {node:planNode} = plan 
     const classes = styles({index});
     return (
       <Grid item container className={classes.root}>
@@ -90,15 +161,15 @@ const PlanCard = ({plan, index}) => {
         >
           <div className={classes.descriptionTitle}>
             <Typography className={classes.price}>
-              {`$${plan.price}`}
+              {`${planNode.amount}`}
             </Typography>
             <Typography className={classes.month}>/month</Typography>
           </div>
           <Typography className={classes.type}>
-            {plan.type}
+            {planNode.type}
           </Typography>
-          <Divider/>
-          <div className={classes.descriptionContainer}>
+          <Divider />
+          {/* <div className={classes.descriptionContainer}>
             {plan.content.map((text) => {
               return (
                 <Typography className={classes.description}>
@@ -106,11 +177,26 @@ const PlanCard = ({plan, index}) => {
                 </Typography>
               );
             })}
+          </div> */}
+          <div className={classes.descriptionContainer}>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: documentToHtmlString(
+                  planNode.description.json,
+                ),
+              }}
+            />
           </div>
         </Grid>
-        <Typography className={classes.choose}>
-          CHOOSE PLAN
-        </Typography>
+        <Link
+          className={classes.link}
+          encodeURIComponent
+          to={`/contact?budged=${planNode.amount}#${planNode.title}`}
+        >
+          <Typography className={classes.choose}>
+            CHOOSE PLAN
+          </Typography>
+        </Link>
       </Grid>
     );
 }

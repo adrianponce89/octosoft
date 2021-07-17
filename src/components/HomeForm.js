@@ -11,11 +11,16 @@ const styles = makeStyles((theme) => ({
   input: {
     marginBottom: 20,
     fontFamily: 'Montserrat',
+    '@media (max-width: 760px)': {
+      width: '80%',
+    },
   },
   btn: {
-    backgroundColor: '#37add4',
+    '@media (max-width: 760px)': {
+      marginRight: 40,
+    },
   },
-  submit: { fontFamily: 'Montserrat', color:'#FFFF' },
+  submit: { fontFamily: 'Montserrat', color: '#FFFF' },
 }));
 
 const HomeForm = () => {
@@ -74,7 +79,7 @@ const HomeForm = () => {
           }}
           variant="outlined"
         />
-        <Grid container item justify="flex-end" alignItems="center">
+        <Grid container item justify="flex-end" alignItems="center" className={classes.btn}>
           <Button
             variant="contained"
             color="primary"

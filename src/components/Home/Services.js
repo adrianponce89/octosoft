@@ -7,15 +7,18 @@ import ServiceItem from '../serviceItem';
 
 const styles = makeStyles((theme) => ({
   root: {
-    width: 600,
-    marginBottom: 20,
-    marginTop: 20,
+    justifyContent: 'space-between',
+    '@media (max-width: 760px)': {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center'
+    },
   },
 }));
 
-const Services = ({ services }) => {
-    const { edges : servicesToShow } = services;
-    const classes = styles();
+const Services = ({ services}) => {
+  const { edges: servicesToShow, nodes: servicesDesc} = services;
+  const classes = styles();
   return (
     <Grid
       container
@@ -23,9 +26,12 @@ const Services = ({ services }) => {
       justify="center"
       alignItems="center"
     >
-      <Grid container justify="space-between" item md={8}>
-        {servicesToShow.slice(1, 9).map((service) => (
-          <ServiceItem service={service} />
+      <Grid container className={classes.root} item md={8} xs={12}>
+        {servicesToShow.slice(1, 9).map((service, index) => (
+          <ServiceItem
+            service={service}
+            description={servicesDesc}
+          />
         ))}
       </Grid>
     </Grid>

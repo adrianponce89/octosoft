@@ -25,39 +25,41 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const ServiceItem = ({service}) => {
-    console.log('serviceItem:',service.node)
-    const classes = styles();
+const ServiceItem = ({ service, description }) => {
+  const classes = styles();
 
-    return (
-      <Grid
-        container
-        item
-        alignItems="center"
-        justify="center"
-        className={classes.root}
-      >
-        <Grid item>
-          <img src={service.node.images[0].file.url} />
-          <Typography className={classes.title}>
-            {service.node.title}
-          </Typography>
-        </Grid>
-        <Grid item>
-          <Typography variant="body1" className={classes.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore.
-          </Typography>
-          {/* <div
+  let descriptionText = description.filter(
+    (item) => Number(item.order) === service.node.order,
+  );
+
+  return (
+    <Grid
+      container
+      item
+      alignItems="center"
+      justify="center"
+      className={classes.root}
+    >
+      <Grid item>
+        <img src={service.node.images[0].file.url} />
+        <Typography className={classes.title}>
+          {service.node.title}
+        </Typography>
+      </Grid>
+      <Grid item>
+        <Typography variant="body1" className={classes.description}>
+          {descriptionText[0].description}
+        </Typography>
+        {/* <div
             dangerouslySetInnerHTML={{
               __html: documentToHtmlString(
                 service.node.content.json,
               ),
             }}
           /> */}
-        </Grid>
       </Grid>
-    );
-}
+    </Grid>
+  );
+};
 
 export default ServiceItem

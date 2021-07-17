@@ -12,6 +12,8 @@ import PlansGrid from '../components/PlansGrid';
 import DescriptionHome from '../components/DescriptionHome';
 import Services from '../components/Home/Services';
 import HomePlans from '../components/HomePlans';
+
+
 const useStyles = makeStyles((theme) => ({
   containerCard: {
     padding: '3vh',
@@ -28,7 +30,6 @@ export default (props) => {
   const banners = get(props, 'data.allContentfulBanners.edges');
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const servicesHome = get(props, 'data.allContentfulService');
-
   const plans = get(props, 'data.allContentfulPlan.edges');
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
@@ -41,17 +42,17 @@ export default (props) => {
     <>
       <HomeBanner descriptionLanding={descriptionLanding} />
       <section id="work">
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            xs={12}
-          >
-            <DescriptionHome />
-            <Services services={servicesHome} />
-            <HomePlans/>
-            {/* {homeItems.map(({ node }, i) => (
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          xs={12}
+        >
+          <DescriptionHome />
+          <Services services={servicesHome} />
+          <HomePlans plans={plans} />
+          {/* {homeItems.map(({ node }, i) => (
               <HomeItems
                 right={i % 2 == 0}
                 backgroundImage={`url(${node.image.file.url})`}
@@ -61,7 +62,7 @@ export default (props) => {
                 color={node.color}
               />
             ))} */}
-            {/* <Banners
+          {/* <Banners
               backgroundImage={`url(${planBanner.image.file.url})`}
               title={planBanner.title}
               right={true}
@@ -69,8 +70,7 @@ export default (props) => {
               id="ourplans"
             />
             <PlansGrid plans={plans} /> */}
-          </Grid>
-        
+        </Grid>
       </section>
     </>
   );
@@ -144,6 +144,10 @@ export const pageQuery = graphql`
              }
            }
            allContentfulService(sort: { fields: order }) {
+             nodes {
+               description
+               order
+             }
              edges {
                node {
                  color
