@@ -9,7 +9,9 @@ import HomeItems from '../components/HomeItems';
 import Banners from '../components/Banners';
 import HomeBanner from '../components/Home/Banner';
 import PlansGrid from '../components/PlansGrid';
-
+import DescriptionHome from '../components/DescriptionHome';
+import Services from '../components/Home/Services';
+import HomePlans from '../components/HomePlans';
 const useStyles = makeStyles((theme) => ({
   containerCard: {
     padding: '3vh',
@@ -25,6 +27,8 @@ export default (props) => {
   );
   const banners = get(props, 'data.allContentfulBanners.edges');
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
+  const servicesHome = get(props, 'data.allContentfulService');
+
   const plans = get(props, 'data.allContentfulPlan.edges');
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
@@ -37,11 +41,6 @@ export default (props) => {
     <>
       <HomeBanner descriptionLanding={descriptionLanding} />
       <section id="work">
-        <Container
-          background={`url(${BackgroundImage})`}
-          innerBackground={'none'}
-          className={classes.containerCard}
-        >
           <Grid
             container
             direction="column"
@@ -49,7 +48,10 @@ export default (props) => {
             alignItems="center"
             xs={12}
           >
-            {homeItems.map(({ node }, i) => (
+            <DescriptionHome />
+            <Services services={servicesHome} />
+            <HomePlans/>
+            {/* {homeItems.map(({ node }, i) => (
               <HomeItems
                 right={i % 2 == 0}
                 backgroundImage={`url(${node.image.file.url})`}
@@ -58,7 +60,7 @@ export default (props) => {
                 link={node.link}
                 color={node.color}
               />
-            ))}
+            ))} */}
             {/* <Banners
               backgroundImage={`url(${planBanner.image.file.url})`}
               title={planBanner.title}
@@ -68,92 +70,111 @@ export default (props) => {
             />
             <PlansGrid plans={plans} /> */}
           </Grid>
-        </Container>
+        
       </section>
     </>
   );
 };
 
 export const pageQuery = graphql`
-  query HomeQuery {
-    allContentfulHomeItem(sort: { fields: order }) {
-      edges {
-        node {
-          id
-          link
-          order
-          color
-          image {
-            file {
-              url
-            }
-          }
-          title
-          description {
-            description
-          }
-        }
-      }
-    }
-    allContentfulHomeBorderlessIdentities {
-      edges {
-        node {
-          id
-          title
-          description {
-            description
-          }
-          image {
-            file {
-              url
-            }
-          }
-          link
-        }
-      }
-    }
-    allContentfulPlan(sort: { fields: order }) {
-      edges {
-        node {
-          id
-          amount
-          type
-          order
-          link
-          description {
-            json
-          }
-          title
-          image {
-            file {
-              url
-            }
-          }
-        }
-      }
-    }
-    contentfulLandingDescription {
-      description
-      title
-      backgroundImage {
-        file {
-          url
-        }
-      }
-    }
-    allContentfulBanners {
-      edges {
-        node {
-          title
-          color
-          image {
-            file {
-              url
-            }
-          }
-          type
-        }
-      }
-    }
-  }
-`;
+         query HomeQuery {
+           allContentfulHomeItem(sort: { fields: order }) {
+             edges {
+               node {
+                 id
+                 link
+                 order
+                 color
+                 image {
+                   file {
+                     url
+                   }
+                 }
+                 title
+                 description {
+                   description
+                 }
+               }
+             }
+           }
+           allContentfulHomeBorderlessIdentities {
+             edges {
+               node {
+                 id
+                 title
+                 description {
+                   description
+                 }
+                 image {
+                   file {
+                     url
+                   }
+                 }
+                 link
+               }
+             }
+           }
+           allContentfulPlan(sort: { fields: order }) {
+             edges {
+               node {
+                 id
+                 amount
+                 type
+                 order
+                 link
+                 description {
+                   json
+                 }
+                 title
+                 image {
+                   file {
+                     url
+                   }
+                 }
+               }
+             }
+           }
+           contentfulLandingDescription {
+             description
+             title
+             backgroundImage {
+               file {
+                 url
+               }
+             }
+           }
+           allContentfulService(sort: { fields: order }) {
+             edges {
+               node {
+                 color
+                 id
+                 order
+                 title
+                 images {
+                   file {
+                     url
+                   }
+                 }
+                 content {
+                   json
+                 }
+               }
+             }
+           }
+           allContentfulBanners {
+             edges {
+               node {
+                 title
+                 color
+                 image {
+                   file {
+                     url
+                   }
+                 }
+                 type
+               }
+             }
+           }
+         }
+       `;
+
