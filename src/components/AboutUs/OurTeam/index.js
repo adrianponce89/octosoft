@@ -65,11 +65,11 @@ const OurTeam = ({ teamMembers, color }) => {
         direction="column"
       >
         <Typography variant="h1" className={classes.headTitle}>
-          The Octosoft Team
+          Get to know us!
         </Typography>
-        <Typography variant="h4" className={classes.subtitle}>
-          This is Us!
-        </Typography>
+        {/* <Typography variant="h4" className={classes.subtitle}>
+          Get to know us!
+        </Typography> */}
         <Divider
           orientation="horizontal"
           className={classes.divider}
