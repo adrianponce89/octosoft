@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, Divider } from '@material-ui/core';
 import OurTeamCategory from './OurTeamCategory';
 
-const useStyle = makeStyles((theme) => ({
+const Style = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(8),
     padding: theme.spacing(4),
@@ -40,7 +40,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const OurTeam = ({ teamMembers, color }) => {
-  const classes = useStyle({ color });
+  const classes = Style({ color });
   const sortTeamMembersCategory = [];
   const titleTypeCategorySet = new Set();
 

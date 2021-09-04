@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AvatarTeam from '../../Avatar';
 import OurTeamModal from './OurTeamModal';
 
-const useStyle = makeStyles({
+const Style = makeStyles({
   titleCategory: {
     fontFamily: 'Poppins',
     color: '#663777',
@@ -19,7 +19,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
   const handleClose = () => {
     setSelectedMember(null);
   };
-  const classes = useStyle();
+  const classes = Style();
   return (
     <>
       <Grid container justify="center" alignItems="center">

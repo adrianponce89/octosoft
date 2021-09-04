@@ -10,7 +10,7 @@ import {
   Hidden,
 } from '@material-ui/core';
 
-const useStyle = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(8),
     padding: theme.spacing(8),
@@ -48,7 +48,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const index = ({ aboutUs }) => {
-  const classes = useStyle({ color: aboutUs.color });
+  const classes = Styles({ color: aboutUs.color });
   return (
     <Paper square elevation={1} className={classes.root}>
       <Grid

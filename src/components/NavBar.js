@@ -18,7 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   toolbar: {
     paddingLeft: theme.spacing(5),
     paddingRight: theme.spacing(5),
@@ -108,7 +108,7 @@ const HideOnScroll = (props) => {
 };
 
 const NavLinks = (props) => {
-  const classes = useStyles(props);
+  const classes = Styles(props);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -199,7 +199,7 @@ const NavBar = (props) => {
   });
   const transparent = !trigger && props.home;
 
-  const classes = useStyles({ transparent });
+  const classes = Styles({ transparent });
   const [showDrawer, setShowDrawer] = useState(false);
   return (
     <React.Fragment>

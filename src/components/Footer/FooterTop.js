@@ -13,7 +13,7 @@ import { Send } from '@material-ui/icons';
 
 import PrimaryInput from '../PrimaryInput';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   toolbar: {
     boxShadow: 'inset 0 2px 3px #ccc',
     padding: theme.spacing(4),
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FooterTop = ({ handleSubmit, email, setEmail }) => {
-  const classes = useStyles();
+  const classes = Styles();
   return (
     <Box className={classes.toolbar}>
       <Grid item xs={12} sm={2} className={classes.section}>

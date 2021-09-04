@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TypingAnimation from '../TypingAnimation';
 import MainLogo from './MainLogo';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   backgroundHead: {
     backgroundImage: (props) => `url(${props.backgroundImage})`,
     backgroundPosition: 'center',
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 const words = ['Diverse.', 'Secure.', 'Budget friendly.'];
 
 export default ({ descriptionLanding }) => {
-  const classes = useStyles({
+  const classes = Styles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
   return (

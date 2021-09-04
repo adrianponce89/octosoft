@@ -2,7 +2,7 @@ import React from 'react';
 import { FormControl, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   input: {
     fontFamily: 'Montserrat',
     '& div': {
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PrimaryInput = ({ className, ...otherProps }) => {
-  const classes = useStyles();
+  const classes = Styles();
   return (
     <FormControl variant="filled" size="small" fullWidth>
       <TextField

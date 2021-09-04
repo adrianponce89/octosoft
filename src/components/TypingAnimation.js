@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typist from 'react-typist';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   tiContainer: {
     display: 'inline',
     position: 'relative',
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default ({ words, className }) => {
   const typistRef = useRef();
-  const classes = useStyles();
+  const classes = Styles();
   const handleTypingDone = () => {
     typistRef.current.setState({ isDone: false });
     typistRef.current.typeAllLines();

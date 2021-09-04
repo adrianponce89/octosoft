@@ -10,7 +10,7 @@ import Banners from '../components/Banners';
 import HomeBanner from '../components/Home/Banner';
 import PlansGrid from '../components/PlansGrid';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   containerCard: {
     padding: '3vh',
     justifyContent: 'center',
@@ -26,7 +26,7 @@ export default (props) => {
   const banners = get(props, 'data.allContentfulBanners.edges');
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const plans = get(props, 'data.allContentfulPlan.edges');
-  const classes = useStyles({
+  const classes = Styles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
 

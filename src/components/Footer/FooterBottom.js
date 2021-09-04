@@ -10,7 +10,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import BehanceIcon from '../../assets/behance.svg';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   section: {
     flex: 1,
     margin: theme.spacing(4),
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ItemSocial = ({ children }) => {
-  const classes = useStyles();
+  const classes = Styles();
   return (
     <div className={classes.itemSocial}>
       <div className={classes.iconSocial}>{children}</div>
@@ -71,7 +71,7 @@ const ItemSocial = ({ children }) => {
   );
 };
 const FooterBottom = () => {
-  const classes = useStyles();
+  const classes = Styles();
   return (
     <Grid
       container

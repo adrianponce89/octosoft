@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, Button } from '@material-ui/core';
 
-const useStyle = makeStyles((theme) => ({
+const Style = makeStyles((theme) => ({
   root: {
     borderRadius: 16,
     margin: theme.spacing(4),
@@ -83,7 +83,7 @@ const Avatar = ({
   title,
   section,
 }) => {
-  const classes = useStyle({
+  const classes = Style({
     background,
     backgroundSize,
     backgroundPosition,

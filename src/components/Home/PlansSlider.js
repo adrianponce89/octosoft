@@ -8,7 +8,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import SwipeableViews from 'react-swipeable-views';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   containerPlans: { paddingTop: '2em' },
   titleType: {
     fontFamily: 'Montserrat',
@@ -53,7 +53,7 @@ export default ({ plans }) => {
     setActiveStep(step);
   };
 
-  const classes = useStyles();
+  const classes = Styles();
   return (
     <div className={classes.containPlans}>
       <IconButton

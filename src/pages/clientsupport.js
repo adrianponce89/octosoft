@@ -12,7 +12,7 @@ import { submitForm, darkenColor } from '../utils';
 import PrimaryInput from '../components/PrimaryInput';
 import PrimarySelect from '../components/PrimarySelect';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   root: {},
   formContainer: {
     display: 'flex',
@@ -89,7 +89,7 @@ const ClientSupport = (props) => {
     ({ node }) => node.type === 'ClientSupport',
   ).node;
 
-  const classes = useStyles({ clientSupportBanner });
+  const classes = Styles({ clientSupportBanner });
 
   const handleSubmit = (event) => {
     event.preventDefault();

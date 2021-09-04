@@ -3,7 +3,7 @@ import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../../assets/logoHome.svg';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   containerHead: {
     marginBottom: '8vh',
     display: 'flex',
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default ({ className }) => {
-  const classes = useStyles();
+  const classes = Styles();
   return (
     <Grid className={`${classes.containerHead} ${className}`}>
       <OctoLogo className={classes.logo} />

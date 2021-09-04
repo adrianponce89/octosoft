@@ -10,7 +10,7 @@ import BackgroundImage from '../assets/Trama.png';
 import { submitForm, darkenColor } from '../utils';
 import PrimaryInput from '../components/PrimaryInput';
 
-const useStyles = makeStyles((theme) => ({
+const Styles = makeStyles((theme) => ({
   root: {},
   formContainer: {
     display: 'flex',
@@ -86,7 +86,7 @@ const Contact = (props) => {
     ({ node }) => node.type === 'ContactUs',
   ).node;
 
-  const classes = useStyles({ contactBanner });
+  const classes = Styles({ contactBanner });
 
   const {
     location: { hash, search },
