@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+
 import { Grid, Dialog, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+
 import AvatarTeam from '../../Avatar';
+import Logo from '../../../assets/logo.svg';
 import OurTeamModal from './OurTeamModal';
 
 const useStyle = makeStyles({
@@ -11,6 +14,17 @@ const useStyle = makeStyles({
     fontSize: '2em',
     fontWeight: 500,
     margin: 12,
+    zIndex: 2,
+  },
+  boxTitleCategory: {
+    position: 'relative',
+  },
+  logo: {
+    position: 'absolute',
+    fill: '#FFBB99',
+    width: 'fit-content',
+    height: '120%',
+    zIndex: 2,
   },
 });
 
@@ -22,7 +36,13 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
   const classes = useStyle();
   return (
     <>
-      <Grid container justify="center" alignItems="center">
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.boxTitleCategory}
+      >
+        <Logo className={classes.logo} />
         <Typography variant="h2" className={classes.titleCategory}>
           {titleCategory}
         </Typography>
