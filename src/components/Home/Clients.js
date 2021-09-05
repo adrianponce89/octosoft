@@ -43,7 +43,6 @@ const styles = makeStyles((theme) => ({
 
 export default function Clients({ title, dataClients }) {
       const classes = styles();
-    console.log('media', dataClients)
     return (
       <Grid container md={12} className={classes.plans}>
         <Grid

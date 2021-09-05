@@ -20,6 +20,7 @@ export const theme = createMuiTheme({
            MuiInputBase: {
              root: {
                fontFamily: 'Montserrat !important',
+               
                fontSize: 20,
                '@media (max-width: 760px)': {
                  fontSize: 14,

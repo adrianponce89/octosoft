@@ -43,9 +43,7 @@ const styles = makeStyles((theme) => ({
 }));
 
 const DescriptionHome = ({ content }) => {
-  console.log('hola', content);
-  const {description} = content.description;
-  const { file } = content.image;
+  const {description} = content;
   const classes = styles();
   return (
     <Grid

@@ -32,23 +32,13 @@ export default (props) => {
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const servicesHome = get(props, 'data.allContentfulService');
   const plans = get(props, 'data.allContentfulPlan.edges');
+  const aboutUs = get(props, 'data.allContentfulAboutUs.nodes');
   const clients = get(props, 'data.allContentfulHomeClients');
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
 
-  
-
-  const description = homeItems.find(({ node }) => node.order === 3)
-    .node;
-
   const clientHome = clients.edges[0].node
-
-  console.log('home clients:', clientHome);
-
-  // const planBanner = banners.find(
-  //   ({ node }) => node.type === 'Plans',
-  // ).node;
 
   return (
     <>
@@ -61,13 +51,16 @@ export default (props) => {
           alignItems="center"
           xs={12}
         >
-          <DescriptionHome content={description} />
+          <DescriptionHome content={aboutUs[0]} />
           <Services services={servicesHome} />
           <HomePlans plans={plans} />
-          <Clients
-            title={clientHome.title}
-            dataClients={clientHome.media}
-          />
+          {clientHome && (
+            <Clients
+              title={clientHome.title}
+              dataClients={clientHome.media}
+            />
+          )}
+
           {/* {homeItems.map(({ node }, i) => (
               <HomeItems
                 right={i % 2 == 0}
@@ -192,6 +185,16 @@ export const pageQuery = graphql`
                    }
                  }
                }
+             }
+           }
+           allContentfulAboutUs {
+             nodes {
+               image {
+                 file {
+                   url
+                 }
+               }
+               description
              }
            }
            allContentfulBanners {
