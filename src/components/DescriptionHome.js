@@ -42,43 +42,38 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const DescriptionHome = () => {
-    const classes = styles()
-    return (
+const DescriptionHome = ({ content }) => {
+  console.log('hola', content);
+  const {description} = content.description;
+  const { file } = content.image;
+  const classes = styles();
+  return (
+    <Grid
+      container
+      className={classes.container}
+      flexDirection="column"
+      justify="center"
+      alignItems="center"
+      md={12}
+    >
+      <video className={classes.video} autoPlay loop muted>
+        <source src={videoTest} type="video/mp4"></source>
+      </video>
       <Grid
         container
         className={classes.container}
-        flexDirection="column"
+        flexDirection="row"
         justify="center"
         alignItems="center"
         md={12}
       >
-        <video
-          className={classes.video}
-          autoPlay
-          loop
-          muted
-        >
-          <source src={videoTest} type="video/mp4"></source>
-        </video>
-        <Grid
-          container
-          className={classes.container}
-          flexDirection="row"
-          justify="center"
-          alignItems="center"
-          md={12}
-        >
-          <OctoLogo className={classes.logo} />
-          <Typography variant="h2" className={classes.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Praesent sed luctus erat. Mauris vehicula gravida tempus.
-            Phasellus nisi sem, condimentum ut dui ac, consequat
-            finibus dolor.
-          </Typography>
-        </Grid>
+        <OctoLogo className={classes.logo} />
+        <Typography variant="h2" className={classes.description}>
+          {description}
+        </Typography>
       </Grid>
-    );
-}
+    </Grid>
+  );
+};
 
 export default DescriptionHome

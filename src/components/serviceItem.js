@@ -8,20 +8,19 @@ const styles = makeStyles((theme) => ({
     width: 230,
     paddingBottom: 20,
     paddingTop: 20,
-    marginLeft:10,
-    marginRight:10,
+    marginLeft: 10,
+    marginRight: 10,
   },
   title: {
     textTransform: 'uppercase',
     fontFamily: 'Montserrat',
     fontWeight: 700,
-     fontSize: 22,
+    fontSize: 22,
     textAlign: 'center',
   },
   description: {
     textAlign: 'justify',
     fontFamily: 'Montserrat',
-   
   },
 }));
 
@@ -41,7 +40,10 @@ const ServiceItem = ({ service, description }) => {
       className={classes.root}
     >
       <Grid item>
-        <img src={service.node.images[0].file.url} />
+        <div className={classes.imgContainer}>
+          <img src={service.node.images[1].file.url} />
+        </div>
+
         <Typography className={classes.title}>
           {service.node.title}
         </Typography>
@@ -50,13 +52,6 @@ const ServiceItem = ({ service, description }) => {
         <Typography variant="body1" className={classes.description}>
           {descriptionText[0].description}
         </Typography>
-        {/* <div
-            dangerouslySetInnerHTML={{
-              __html: documentToHtmlString(
-                service.node.content.json,
-              ),
-            }}
-          /> */}
       </Grid>
     </Grid>
   );

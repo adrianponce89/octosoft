@@ -12,6 +12,7 @@ import PlansGrid from '../components/PlansGrid';
 import DescriptionHome from '../components/DescriptionHome';
 import Services from '../components/Home/Services';
 import HomePlans from '../components/HomePlans';
+import Clients from '../components/Home/Clients'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,12 +32,23 @@ export default (props) => {
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const servicesHome = get(props, 'data.allContentfulService');
   const plans = get(props, 'data.allContentfulPlan.edges');
+  const clients = get(props, 'data.allContentfulHomeClients');
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
 
-  const planBanner = banners.find(({ node }) => node.type === 'Plans')
+  
+
+  const description = homeItems.find(({ node }) => node.order === 3)
     .node;
+
+  const clientHome = clients.edges[0].node
+
+  console.log('home clients:', clientHome);
+
+  // const planBanner = banners.find(
+  //   ({ node }) => node.type === 'Plans',
+  // ).node;
 
   return (
     <>
@@ -49,9 +61,13 @@ export default (props) => {
           alignItems="center"
           xs={12}
         >
-          <DescriptionHome />
+          <DescriptionHome content={description} />
           <Services services={servicesHome} />
           <HomePlans plans={plans} />
+          <Clients
+            title={clientHome.title}
+            dataClients={clientHome.media}
+          />
           {/* {homeItems.map(({ node }, i) => (
               <HomeItems
                 right={i % 2 == 0}
@@ -161,6 +177,19 @@ export const pageQuery = graphql`
                  }
                  content {
                    json
+                 }
+               }
+             }
+           }
+           allContentfulHomeClients {
+             edges {
+               node {
+                 title
+                 media {
+                   title
+                   file {
+                     url
+                   }
                  }
                }
              }
