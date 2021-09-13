@@ -1,39 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
 import { useNavigate } from '@reach/router';
 import { Grid } from '@material-ui/core';
-import Banners from '../Banners';
+import HeadOurServices from './HeadOurServices';
 import ItemService from './ItemService';
 import ViewerService from './ViewerService';
-
-const styles = makeStyles((theme) => ({
-  contanerHead: {
-    marginTop: 20,
-  },
-  containerImga: {
-    borderRight: `7px solid`,
-    borderColor: (props) => props.colorTitle,
-  },
-  image: {
-    backgroundImage: (props) => props.image,
-    backgroundPosition: 'center',
-    width: '23vw',
-    paddingBottom: '64%',
-  },
-  headTitle: {
-    margin: 0,
-    fontSize: 70,
-    fontWeight: '900',
-    textAlign: 'start',
-    color: (props) => props.colorTitle,
-  },
-  headSubTitle: {
-    fontSize: 20,
-    lineHeight: '170%',
-    textAlign: 'start',
-  },
-  keypad: {},
-}));
 
 const Services = ({
   services,
@@ -43,7 +14,6 @@ const Services = ({
   image,
   colorTitle,
 }) => {
-  const classes = styles({ colorTitle, image });
   const [selectedIndex, setSelectedIndex] = useState(1);
 
   const navigate = useNavigate();
@@ -61,35 +31,29 @@ const Services = ({
     if (selected) {
       selectService(selected);
     }
-  }, []);
+  });
 
   return (
     <>
-      <Banners
+      <HeadOurServices
         title={title}
         subtitle={subtitle}
         backgroundImage={image}
         color={colorTitle}
         right
       />
-      <Grid
-        item
-        container
-        justify="center"
-        xs={12}
-        className={classes.keypad}
-      >
+      <Grid item xs={12} container justify="center">
         {services
           .filter(({ node }) => node.order >= 0)
           .map(({ node }, i) => (
             <Grid
               item
+              xs={6}
+              md={3}
               container
               justify="center"
               alignItems="center"
               key={i}
-              xs={6}
-              md={3}
               onClick={() => {
                 selectService(node.title.toLowerCase());
                 navigate(`/ourservices#${node.title.toLowerCase()}`);
@@ -104,9 +68,7 @@ const Services = ({
       </Grid>
       {services.length > 0 ? (
         <ViewerService service={services[selectedIndex]} />
-      ) : (
-        ''
-      )}
+      ) : null}
     </>
   );
 };
