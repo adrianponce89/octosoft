@@ -4,7 +4,6 @@ import { Grid, Dialog, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import AvatarTeam from '../../Avatar';
-import Logo from '../../../assets/logo.svg';
 import OurTeamModal from './OurTeamModal';
 
 const useStyle = makeStyles({
@@ -42,7 +41,6 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
         alignItems="center"
         className={classes.boxTitleCategory}
       >
-        <Logo className={classes.logo} />
         <Typography variant="h2" className={classes.titleCategory}>
           {titleCategory}
         </Typography>
