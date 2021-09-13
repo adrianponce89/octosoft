@@ -1,19 +1,16 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-import { darkenColor } from '../../utils';
+import { Grid, Typography } from '@material-ui/core';
 
 const styles = makeStyles({
   button: {
     margin: 10,
     cursor: 'pointer',
     height: 70,
+    borderRadius: 8,
     backgroundColor: (props) =>
-      props.selected ? '#ECECEC' : props.color,
-    boxShadow: (props) => (props.selected ? '1px 1px 6px' : 'none'),
-    '&:hover': {
-      boxShadow: (props) => '1px 1px 6px',
-    },
+      props.selected ? 'rgb(236,236,236)' : 'rgb(194,193,191)',
+    boxShadow: '0px 5px 0px rgb(130 127 132)',
   },
   buttonIcon: {
     width: '100%',
@@ -26,7 +23,7 @@ const styles = makeStyles({
   buttonText: {
     width: '50%',
     fontWeight: 'bolder',
-    color: (props) => (props.selected ? '#000' : '#FFF'),
+    color: (props) => (props.selected ? 'rgb(113,126,238)' : '#FFF'),
     '@media (max-width: 576px)': {
       fontSize: '3.3vw',
     },
@@ -40,22 +37,16 @@ const ItemService = ({ node, selectedIndex }) => {
     selected: node.order === selectedIndex,
   });
   return (
-    <>
-      <Grid container alignItems="center" className={classes.button}>
-        <Grid
-          item
-          xs={4}
-          ms={5}
-          className={classes.buttonIcon}
-        ></Grid>
-        <Grid
-          item
-          xs={8}
-          ms={6}
+    <Grid container alignItems="center" className={classes.button}>
+      <Grid item xs={4} ms={5} className={classes.buttonIcon} />
+      <div className={classes.separator} />
+      <Grid item xs={8} ms={6}>
+        <Typography
+          variant="text"
           className={classes.buttonText}
-        >{`${node.title}`}</Grid>
+        >{`${node.title}`}</Typography>
       </Grid>
-    </>
+    </Grid>
   );
 };
 

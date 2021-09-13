@@ -14,7 +14,7 @@ const Services = ({
   image,
   colorTitle,
 }) => {
-  const [selectedIndex, setSelectedIndex] = useState(1);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ const Services = ({
   });
 
   return (
-    <>
+    <Grid item container justify="center">
       <HeadOurServices
         title={title}
         subtitle={subtitle}
@@ -42,7 +42,7 @@ const Services = ({
         color={colorTitle}
         right
       />
-      <Grid item xs={12} container justify="center">
+      <Grid item container justify="center">
         {services
           .filter(({ node }) => node.order >= 0)
           .map(({ node }, i) => (
@@ -69,7 +69,7 @@ const Services = ({
       {services.length > 0 ? (
         <ViewerService service={services[selectedIndex]} />
       ) : null}
-    </>
+    </Grid>
   );
 };
 

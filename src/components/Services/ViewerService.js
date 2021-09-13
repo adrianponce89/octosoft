@@ -3,16 +3,23 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import BackgroundImage from '../../assets/Trama.png';
+import TypingAnimation from '../TypingAnimation';
 
 const styles = makeStyles({
-  infoContainer: {
+  root: {
+    border: '5px solid #c2c1bf',
+    width: '100%',
     margin: '40px auto 40px auto',
-    padding: 20,
+  },
+  infoContainer: {
+    width: '100%',
+    transform: 'scaleX(-1)',
     backgroundImage: `url(${BackgroundImage})`,
-    backgroundColor: '#eee',
+    backgroundColor: 'transparent',
     backgroundPosition: 'initial',
     backgroundRepeat: 'repeat',
     backgroundSize: 'cover',
+    minHeight: '65vh',
   },
   iconsDescriptions: {
     width: '100%',
@@ -73,35 +80,77 @@ const styles = makeStyles({
       },
     },
   },
+  rotate: { transform: 'scaleX(-1)' },
+  internal: { height: '100%' },
 });
 
 const ViewerService = ({ service }) => {
   const classes = styles({ image: service.node.images[1].file.url });
+  const {
+    node: { order },
+  } = service;
+  const words = [
+    'Software Engineering.',
+    'Web Development.',
+    'Social Media.',
+    'Data Science.',
+    'IT.',
+    'Design.',
+    'Marketing.',
+    'Productions.',
+  ];
+
   return (
-    <Grid
-      container
-      direction="row"
-      justify="space-evenly"
-      className={classes.infoContainer}
-    >
-      <Grid item xs={8} sm={3} direction="column" alignItems="center">
-        <div className={classes.iconsDescriptions} />
-        <div className={classes.titleDescriptions}>
-          {service.node.title}
-        </div>
-      </Grid>
-      <Grid
-        container
-        item
-        xs={12}
-        sm={8}
-        className={classes.containerDescription}
-      >
-        <div
-          dangerouslySetInnerHTML={{
-            __html: documentToHtmlString(service.node.content.json),
-          }}
-        />
+    <Grid justify="center" className={classes.root}>
+      <Grid item container className={classes.infoContainer}>
+        {order >= 0 ? (
+          <Grid
+            item
+            container
+            direction="row"
+            justify="space-evenly"
+            className={classes.rotate}
+          >
+            <Grid
+              item
+              xs={8}
+              sm={3}
+              direction="column"
+              alignItems="center"
+            >
+              <div className={classes.iconsDescriptions} />
+              <div className={classes.titleDescriptions}>
+                {service.node.title}
+              </div>
+            </Grid>
+            <Grid
+              container
+              item
+              xs={12}
+              sm={8}
+              className={classes.containerDescription}
+            >
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: documentToHtmlString(
+                    service.node.content.json,
+                  ),
+                }}
+              />
+            </Grid>
+          </Grid>
+        ) : (
+          <Grid item xs={12} className={classes.rotate}>
+            <Grid
+              container
+              justify="center"
+              alignItems="center"
+              className={classes.internal}
+            >
+              <TypingAnimation words={words} />
+            </Grid>
+          </Grid>
+        )}
       </Grid>
     </Grid>
   );
