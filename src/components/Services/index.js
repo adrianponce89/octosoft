@@ -34,7 +34,7 @@ const Services = ({
   });
 
   return (
-    <Grid item container justify="center">
+    <Grid item xs={12} container justify="center">
       <HeadOurServices
         title={title}
         subtitle={subtitle}
