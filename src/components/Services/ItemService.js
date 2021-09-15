@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
+import { Divider, Grid, Typography } from '@material-ui/core';
 
 const styles = makeStyles({
   button: {
@@ -20,12 +20,23 @@ const styles = makeStyles({
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
   },
+  divider: {
+    backgroundColor: (props) =>
+      props.selected ? 'rgb(113,126,238)' : '#FFF',
+    height: '70%',
+    width: 2,
+  },
+  boxBtnText: {
+    maxWidth: '60%',
+    flexBasis: '60%',
+  },
   buttonText: {
-    width: '50%',
+    width: '60%',
     fontWeight: 'bolder',
     color: (props) => (props.selected ? 'rgb(113,126,238)' : '#FFF'),
-    '@media (max-width: 576px)': {
-      fontSize: '3.3vw',
+    '@media (max-width: 776px)': {
+      width: '50%',
+      fontSize: '1rem',
     },
   },
 });
@@ -37,10 +48,26 @@ const ItemService = ({ node, selectedIndex }) => {
     selected: node.order === selectedIndex,
   });
   return (
-    <Grid container alignItems="center" className={classes.button}>
-      <Grid item xs={4} ms={5} className={classes.buttonIcon} />
-      <div className={classes.separator} />
-      <Grid item xs={8} ms={6}>
+    <Grid
+      item
+      xs={12}
+      container
+      justify="space-around"
+      alignItems="center"
+      className={classes.button}
+    >
+      <Grid item xs={4} sm={3} className={classes.buttonIcon} />
+
+      <Divider orientation="vertical" className={classes.divider} />
+
+      <Grid
+        item
+        xs={8}
+        sm={4}
+        container
+        justify="center"
+        className={classes.boxBtnText}
+      >
         <Typography
           variant="text"
           className={classes.buttonText}
