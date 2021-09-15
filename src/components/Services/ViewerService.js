@@ -22,48 +22,40 @@ const styles = makeStyles({
     minHeight: '65vh',
   },
   iconsDescriptions: {
+    position: 'absolute',
+    left: '-5vw',
     width: '100%',
     backgroundImage: (props) => `url(${props.image})`,
     backgroundPosition: 'center',
     backgroundSize: '150%',
     backgroundRepeat: 'no-repeat',
-    paddingBottom: '40vmin',
-    '@media (max-width: 760px)': {
-      backgroundSize: 'contain',
-    },
+    paddingBottom: '150%',
+    // '@media (max-width: 760px)': {
+    //   backgroundSize: 'contain',
+    // },
   },
   titleDescriptions: {
     margin: '20px 0 20px 0',
-    fontSize: 27,
+    fontSize: 45,
     fontWeight: 'bolder',
-    textAlign: 'center',
   },
   containerDescription: {
     display: 'flex',
     flexDirection: 'column',
     overflow: 'auto',
-    background: 'white',
+    background: 'transparent',
     padding: 0,
     '& li p': {
       fontSize: '2.1vmin',
       lineHeight: '1.2em',
-      margin: 10,
+      margin: '0 10px 10px 0',
     },
     '& li p::before': {
       content: '"· "',
       display: 'inline',
       fontWeight: 'bold',
-      marginLeft: 15,
-    },
-    '& div': {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'stretch',
-      flex: 1,
-      alignSelf: 'stretch',
     },
     '& ul': {
-      flex: 1,
       display: 'flex',
       background: '#fff',
       flexDirection: 'column',
@@ -81,6 +73,7 @@ const styles = makeStyles({
     },
   },
   rotate: { transform: 'scaleX(-1)' },
+  boxIcon: { position: 'relative', overflow: 'hidden' },
   internal: { height: '100%' },
 });
 
@@ -108,29 +101,30 @@ const ViewerService = ({ service }) => {
             item
             container
             direction="row"
-            justify="space-evenly"
+            justify="space-between"
             className={classes.rotate}
           >
             <Grid
               item
               xs={8}
-              sm={3}
-              direction="column"
+              sm={4}
+              container
               alignItems="center"
+              className={classes.boxIcon}
             >
-              <div className={classes.iconsDescriptions} />
-              <div className={classes.titleDescriptions}>
-                {service.node.title}
-              </div>
+              <Grid item className={classes.iconsDescriptions} />
             </Grid>
             <Grid
-              container
               item
               xs={12}
-              sm={8}
+              sm={7}
               className={classes.containerDescription}
             >
-              <div
+              <Grid container className={classes.titleDescriptions}>
+                {service.node.title}
+              </Grid>
+              <Grid
+                container
                 dangerouslySetInnerHTML={{
                   __html: documentToHtmlString(
                     service.node.content.json,
@@ -147,7 +141,7 @@ const ViewerService = ({ service }) => {
               alignItems="center"
               className={classes.internal}
             >
-              <TypingAnimation words={words} />
+              <TypingAnimation words={words} fontSize="70px" />
             </Grid>
           </Grid>
         )}
