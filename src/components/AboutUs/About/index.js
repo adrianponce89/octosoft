@@ -1,21 +1,23 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  CardMedia,
-  Grid,
-  Typography,
-  Divider,
-  Paper,
-  Hidden,
-} from '@material-ui/core';
+import { Grid, Typography, Paper } from '@material-ui/core';
+import TramaAboutUs from '../../../assets/TramaAboutUs.png';
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(8),
     padding: theme.spacing(8),
+    marginTop: theme.spacing(8),
     borderRadius: 16,
+    backgroundImage: `url(${TramaAboutUs})`,
+    backgroundPosition: '0 33%',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundColor: '#FFF',
+    backgroundOrigin: 'padding-box',
+    zIndex: 1,
   },
+  box: { zIndex: 3 },
   media: {
     height: '100%',
     width: '100%',
@@ -24,26 +26,20 @@ const useStyle = makeStyles((theme) => ({
     height: '35vh',
     minHeight: '40vmin',
   },
-  divider: {
-    backgroundColor: ({ color }) => (color ? color : null),
-    width: 6,
-    borderRadius: 50,
-  },
+
   titleCard: {
-    color: ({ color }) => (color ? color : null),
-    fontSize: '2.5em',
+    color: ({ color }) => color ?? null,
+    fontSize: '2.5rem',
     fontWeight: 800,
     fontFamily: 'Poppins',
     marginBottom: theme.spacing(4),
-    '@media (max-width: 576px)': {
-      textAlign: 'center',
-    },
   },
   description: {
     fontFamily: 'Poppins',
     fontWeight: 500,
     whiteSpace: 'break-spaces',
-    fontSize: '1em',
+    fontSize: '1rem',
+    textAlign: 'center',
   },
 }));
 
@@ -52,42 +48,25 @@ const index = ({ aboutUs }) => {
   return (
     <Paper square elevation={1} className={classes.root}>
       <Grid
+        item
+        xs={12}
         container
-        direction="row"
-        justify="space-around"
-        alignItems="center"
-        className={classes.containerItem}
+        justify="center"
+        className={classes.box}
       >
-        <Grid item xs={12} sm={3} className={classes.imageContainer}>
-          <CardMedia
-            image={aboutUs.image.file.url}
-            className={classes.media}
-          />
-        </Grid>
-
-        <Hidden xsDown>
-          <Divider
-            orientation="vertical"
-            flexItem
-            className={classes.divider}
-          />
-        </Hidden>
-
-        <Grid item container direction="column" xs={12} sm={8}>
-          <Typography variant="h5" className={classes.titleCard}>
-            {aboutUs.title}
-          </Typography>
-          {aboutUs.description.internal.content ? (
+        <Typography variant="h5" className={classes.titleCard}>
+          The Octosoft Team
+        </Typography>
+        {aboutUs.description.internal.content ? (
+          <Grid item xs={10}>
             <Typography
               variant="body1"
               className={classes.description}
             >
               {aboutUs.description.internal.content}
             </Typography>
-          ) : (
-            ''
-          )}
-        </Grid>
+          </Grid>
+        ) : null}
       </Grid>
     </Paper>
   );
