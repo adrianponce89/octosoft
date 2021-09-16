@@ -24,10 +24,10 @@ const styles = makeStyles((theme) => ({
       paddingBottom: 20,
     },
   },
-  imgClient:{
-      width: 120,
-      height: 120,
-      margin: 30,
+  imgClient: {
+    width: 120,
+    height: 120,
+    margin: 30,
   },
   root: {
     marginBottom: 60,
@@ -38,6 +38,9 @@ const styles = makeStyles((theme) => ({
       justifyContent: 'center',
       alignItems: 'space-between',
     },
+    '@media (min-width: 1800px)': {
+      maxWidth: '60%',
+    },
   },
 }));
 
@@ -45,26 +48,28 @@ export default function Clients({ title, dataClients }) {
       const classes = styles();
     return (
       <Grid container md={12} className={classes.plans}>
-        <Grid
-            container
-            item
-            md={8}
-            className={classes.root}
-        >
-            <Typography className={classes.title}>
-            Select your plan
-            </Typography>
+        <Grid container item md={8} className={classes.root}>
+          <Typography className={classes.title}>
+            Clients who trust us
+          </Typography>
         </Grid>
         <Grid
-            container
-            item
-            justify="center"
-            md={8}
-            className={classes.root}
+          container
+          item
+          justify="center"
+          md={10}
+          className={classes.root}
         >
-            {dataClients.map((media, index) =>{
-                return( <img key={index} alt={media.title} src={media.file.url} className={classes.imgClient}/> )
-            })}
+          {dataClients.map((media, index) => {
+            return (
+              <img
+                key={index}
+                alt={media.title}
+                src={media.file.url}
+                className={classes.imgClient}
+              />
+            );
+          })}
         </Grid>
       </Grid>
     );

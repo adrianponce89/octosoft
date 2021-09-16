@@ -11,7 +11,10 @@ const styles = makeStyles((theme) => ({
     '@media (max-width: 760px)': {
       flexDirection: 'column',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
+    },
+    '@media (min-width: 1800px)': {
+      maxWidth: '60%',
     },
   },
 }));
@@ -26,9 +29,17 @@ const Services = ({ services}) => {
       justify="center"
       alignItems="center"
     >
-      <Grid container className={classes.root} item md={8} xs={12}>
+      <Grid
+        container
+        className={classes.root}
+        item
+        xl={8}
+        lg={10}
+        xs={12}
+      >
         {servicesToShow.slice(1, 9).map((service, index) => (
           <ServiceItem
+            key={index}
             service={service}
             description={servicesDesc}
           />

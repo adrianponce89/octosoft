@@ -3,6 +3,9 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logoHome.svg';
 import videoTest from '../assets/videotest.mp4';
+import OctoLogoName from '../assets/Logoocto2.svg'
+import Fade from 'react-reveal/Fade';
+
 const styles = makeStyles((theme) => ({
   container: {
     backgroundColor: '#F7F8FA',
@@ -37,9 +40,18 @@ const styles = makeStyles((theme) => ({
   video: {
     width: 650,
     '@media (max-width: 760px)': {
-      width: 350
+      width: 350,
     },
   },
+  logoName: {
+    width: 450,
+  },
+  imgContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    height: 200,
+    overflow: 'hidden',
+  }
 }));
 
 const DescriptionHome = ({ content }) => {
@@ -54,9 +66,24 @@ const DescriptionHome = ({ content }) => {
       alignItems="center"
       md={12}
     >
-      <video className={classes.video} autoPlay loop muted>
-        <source src={videoTest} type="video/mp4"></source>
-      </video>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+      >
+        <Fade bottom>
+          <div className={classes.imgContainer}>
+            <OctoLogoName className={classes.logoName} />
+          </div>
+        </Fade>
+        <Fade bottom>
+          <video className={classes.video} autoPlay loop muted>
+            <source src={videoTest} type="video/mp4"></source>
+          </video>
+        </Fade>
+      </Grid>
+
       <Grid
         container
         className={classes.container}

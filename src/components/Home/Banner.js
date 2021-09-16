@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '10vh',
-    minHeight: '60vh',
+    minHeight: '90vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
   },
