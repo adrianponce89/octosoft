@@ -8,6 +8,7 @@ import Services from '../components/Services';
 const OurServices = (props) => {
   const banners = get(props, 'data.allContentfulBanners.edges');
   const services = get(props, 'data.allContentfulService.edges');
+  const category = get(props, 'data.allContentfulCategory.edges');
   const {
     location: { hash },
   } = props;
@@ -23,13 +24,12 @@ const OurServices = (props) => {
     >
       <Services
         services={services}
-        selected={
-          (hash && decodeURI(hash.slice(1)))
-        }
+        selected={hash && decodeURI(hash.slice(1))}
         title={outServices.title}
         subtitle={outServices.subTitle}
         colorTitle={outServices.color}
         image={`url(${outServices.image.file.url})`}
+        category={category}
       />
     </Container>
   );
@@ -42,6 +42,7 @@ export const pageQuery = graphql`
     allContentfulService(sort: { fields: order }) {
       edges {
         node {
+          categories
           color
           id
           order
@@ -69,6 +70,27 @@ export const pageQuery = graphql`
           subTitle
           type
           title
+        }
+      }
+    }
+    allContentfulCategory {
+      edges {
+        node {
+          title
+          iconLarge {
+            file {
+              url
+            }
+          }
+          description {
+            description
+          }
+          icon {
+            file {
+              url
+            }
+          }
+          idcategory
         }
       }
     }

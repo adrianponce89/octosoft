@@ -56,3 +56,22 @@ export const sortPlans = (plans) => {
 
   return sortPlans;
 };
+
+export const ListOfWords = (arr) => {
+  const result = arr.map(({ node }) => node.title + '.');
+  result.shift();
+  return result;
+};
+
+export const selectedCategory = (services, category) => {
+  if (Array.isArray(services.node.categories)) {
+    const resp = services.node.categories.map((id) =>
+      category.filter(
+        ({ node }) =>
+          node.idcategory.toLowerCase() === id.toLowerCase(),
+      ),
+    );
+    return resp.flat(2);
+  }
+  return [];
+};

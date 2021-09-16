@@ -47,6 +47,7 @@ const ItemService = ({ node, selectedIndex }) => {
     image: node.images[0].file.url,
     selected: node.order === selectedIndex,
   });
+
   return (
     <Grid
       item
