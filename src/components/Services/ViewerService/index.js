@@ -85,7 +85,8 @@ const ViewerService = ({ service, words, categories }) => {
             {categories.length > 0 ? (
               categories.map(({ node }, i) => (
                 <ItemCategory
-                  key={i}
+                  index={i}
+                  key={node.title}
                   title={node.title}
                   icon={node.icon.file.url}
                 />
