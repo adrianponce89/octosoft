@@ -11,14 +11,11 @@ const styles = makeStyles({
   },
 
   iconsDescriptions: {
-    position: 'absolute',
-    left: '-5vw',
     width: '100%',
     backgroundImage: (props) => `url(${props.image})`,
-    backgroundPosition: 'center',
-    backgroundSize: '150%',
+    backgroundSize: '100%',
     backgroundRepeat: 'no-repeat',
-    paddingBottom: '150%',
+    paddingBottom: '100%',
   },
   titleDescriptions: {
     margin: '20px 0 20px 0',
@@ -26,8 +23,6 @@ const styles = makeStyles({
     fontWeight: 'bolder',
   },
   containerDescription: {
-    display: 'flex',
-    flexDirection: 'column',
     overflow: 'auto',
     background: 'transparent',
     padding: 0,
@@ -58,27 +53,21 @@ const styles = makeStyles({
       },
     },
   },
-  boxIcon: { position: 'relative', overflow: 'hidden' },
 });
 
 const ShowCategory = ({ title, json, image, description }) => {
   const classes = styles({ image });
   return (
     <>
-      <Grid
-        item
-        xs={8}
-        sm={4}
-        container
-        alignItems="center"
-        className={classes.boxIcon}
-      >
+      <Grid item xs={8} sm={4} container alignItems="center">
         <Grid item className={classes.iconsDescriptions} />
       </Grid>
       <Grid
         item
         xs={12}
-        sm={7}
+        sm={6}
+        container
+        direction="column"
         className={classes.containerDescription}
       >
         <Grid container className={classes.titleDescriptions}>

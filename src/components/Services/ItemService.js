@@ -17,7 +17,7 @@ const styles = makeStyles({
     height: '100%',
     backgroundImage: (props) => `url(${props.image})`,
     backgroundPosition: 'center',
-    backgroundSize: 'contain',
+    backgroundSize: '75%',
     backgroundRepeat: 'no-repeat',
   },
   divider: {

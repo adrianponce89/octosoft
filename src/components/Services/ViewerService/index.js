@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
@@ -65,43 +65,49 @@ const styles = makeStyles({
   rotate: { transform: 'scaleX(-1)' },
 });
 
-const ViewerService = ({ service, words, categories }) => {
+const ViewerService = ({
+  order,
+  words,
+  categories,
+  categoryShow,
+  setCategoryShow,
+}) => {
   const classes = styles();
-  const {
-    node: { order },
-  } = service;
+  const [category, setCategory] = useState({});
+  const selectedCategory = (node) => {
+    setCategoryShow(!categoryShow);
+    setCategory(node);
+  };
 
   return (
     <Grid justify="center" className={classes.root}>
       <Grid item container className={classes.infoContainer}>
-        {order >= 0 ? (
+        {categories.length > 0 ? (
           <Grid
             item
             container
-            justify="center"
+            justify="flex-start"
             alignItems="center"
             className={classes.rotate}
           >
-            {categories.length > 0 ? (
-              categories.map(({ node }, i) => (
-                <ItemCategory
-                  index={i}
-                  key={node.title}
-                  title={node.title}
-                  icon={node.icon.file.url}
-                />
-              ))
+            {categoryShow ? (
+              <ShowCategory
+                title={category.title}
+                image={category.iconLarge.file.url}
+                description={category.description.description}
+              />
             ) : (
-              <Grid item xs={12}>
-                <AnimationWords words={words} />
-              </Grid>
+              <>
+                {categories.map(({ node }, i) => (
+                  <ItemCategory
+                    index={i}
+                    key={node.title}
+                    icon={node.icon.file.url}
+                    onClick={() => selectedCategory(node)}
+                  />
+                ))}
+              </>
             )}
-
-            {/* <ShowCategory
-              title={service.node.title}
-              json={service.node.content.json}
-              image={service.node.images[1].file.url}
-            /> */}
           </Grid>
         ) : (
           <Grid item xs={12} className={classes.rotate}>

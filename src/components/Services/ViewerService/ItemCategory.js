@@ -20,10 +20,17 @@ const styles = makeStyles({
   },
 });
 
-const ItemCategory = ({ title, icon, index }) => {
+const ItemCategory = ({ icon, index, ...props }) => {
   const classes = styles({ icon, index });
   return (
-    <Grid item xs={12} sm={3} container className={classes.root}>
+    <Grid
+      {...props}
+      item
+      xs={12}
+      sm={3}
+      container
+      className={classes.root}
+    >
       <Grid item xs={12} className={classes.icon} />
     </Grid>
   );

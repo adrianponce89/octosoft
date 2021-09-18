@@ -20,14 +20,13 @@ const Services = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState([]);
-
-  const navigate = useNavigate();
+  const [categoryShow, setCategoryShow] = useState(false);
 
   const selectService = (s) => {
+    setCategoryShow(false);
     const newIndex = services.findIndex(
       (v) => v.node.title.toLowerCase() === s.toLowerCase(),
     );
-
     setSelectedCategories(
       selectedCategory(services[newIndex], category),
     );
@@ -59,7 +58,6 @@ const Services = ({
               key={i}
               onClick={() => {
                 selectService(node.title.toLowerCase());
-                navigate(`/ourservices#${node.title.toLowerCase()}`);
               }}
             >
               <ItemService
@@ -69,13 +67,12 @@ const Services = ({
             </Grid>
           ))}
       </Grid>
-      {services.length > 0 ? (
-        <ViewerService
-          service={services[selectedIndex]}
-          words={ListOfWords(services)}
-          categories={selectedCategories}
-        />
-      ) : null}
+      <ViewerService
+        words={ListOfWords(services)}
+        categories={selectedCategories}
+        categoryShow={categoryShow}
+        setCategoryShow={setCategoryShow}
+      />
     </Grid>
   );
 };
