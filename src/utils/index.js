@@ -75,3 +75,10 @@ export const selectedCategory = (services, category) => {
   }
   return [];
 };
+
+export const FindIndex = (services, search) => {
+  const newIndex = services.findIndex(
+    (v) => v.node.title.toLowerCase() === search.toLowerCase(),
+  );
+  return newIndex;
+};

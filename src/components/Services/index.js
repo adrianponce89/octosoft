@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 
-import { useNavigate } from '@reach/router';
 import { Grid } from '@material-ui/core';
 
-import { ListOfWords, selectedCategory } from '../../utils';
+import {
+  ListOfWords,
+  selectedCategory,
+  FindIndex,
+} from '../../utils';
 
 import HeadOurServices from './HeadOurServices';
-import ItemService from './ItemService';
+import ButtonPanelServices from './ButtonPanel';
 import ViewerService from './ViewerService';
 
 const Services = ({
   services,
   category,
-  selected,
   title,
   subtitle,
   image,
@@ -24,14 +26,11 @@ const Services = ({
 
   const selectService = (s) => {
     setCategoryShow(false);
-    const newIndex = services.findIndex(
-      (v) => v.node.title.toLowerCase() === s.toLowerCase(),
-    );
     setSelectedCategories(
-      selectedCategory(services[newIndex], category),
+      selectedCategory(services[FindIndex(services, s)], category),
     );
-    if (newIndex >= 0) {
-      setSelectedIndex(newIndex);
+    if (FindIndex(services, s) >= 0) {
+      setSelectedIndex(FindIndex(services, s));
     }
   };
 
@@ -44,33 +43,15 @@ const Services = ({
         color={colorTitle}
         right
       />
-      <Grid item container justify="center">
-        {services
-          .filter(({ node }) => node.order >= 0)
-          .map(({ node }, i) => (
-            <Grid
-              item
-              xs={6}
-              md={3}
-              container
-              justify="center"
-              alignItems="center"
-              key={i}
-              onClick={() => {
-                selectService(node.title.toLowerCase());
-              }}
-            >
-              <ItemService
-                node={node}
-                selectedIndex={selectedIndex}
-              />
-            </Grid>
-          ))}
-      </Grid>
+      <ButtonPanelServices
+        services={services}
+        selectedIndex={selectedIndex}
+        selectService={selectService}
+      />
       <ViewerService
         words={ListOfWords(services)}
         categories={selectedCategories}
-        categoryShow={categoryShow}
+        categoryShow={false} //categoryShow
         setCategoryShow={setCategoryShow}
       />
     </Grid>

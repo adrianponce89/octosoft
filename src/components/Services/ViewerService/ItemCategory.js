@@ -5,7 +5,7 @@ import { Grid } from '@material-ui/core';
 const styles = makeStyles({
   root: { position: 'relative' },
   icon: {
-    animation: '$slidein 3000ms forwards',
+    animation: '$sliding 3000ms forwards',
     backgroundImage: ({ icon }) => `url(${icon})`,
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -13,7 +13,7 @@ const styles = makeStyles({
     minHeight: '35vh',
     transform: ({ index }) => `translateX(-${index * 100}%)`,
   },
-  '@keyframes slidein': {
+  '@keyframes sliding': {
     '100%': {
       transform: 'translateX(0px)',
     },
