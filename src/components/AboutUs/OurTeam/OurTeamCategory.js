@@ -56,6 +56,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
             <Grid item xs={12} sm={6} md={4}>
               <AvatarTeam
                 key={i}
+                backgroundSize="contain"
                 name={member.node.name}
                 title={member.node.title}
                 section={member.node.section}
