@@ -66,7 +66,6 @@ const styles = makeStyles({
 });
 
 const ViewerService = ({
-  order,
   words,
   categories,
   categoryShow,
