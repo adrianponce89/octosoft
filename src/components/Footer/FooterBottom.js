@@ -129,7 +129,7 @@ const FooterBottom = () => {
         </Link>
         <Link
           className={classes.link}
-          to="https://www.behance.net/Octosoftprofessional"
+          to="https://www.behance.net/Octosoft"
         >
           <ItemSocial>
             <BehanceIcon className={classes.iconBehance} />
