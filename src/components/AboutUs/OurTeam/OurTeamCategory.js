@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import AvatarTeam from '../../Avatar';
 import OurTeamModal from './OurTeamModal';
 
-const useStyle = makeStyles({
+const useStyle = makeStyles((theme) => ({
   titleCategory: {
     fontFamily: 'Poppins',
     color: '#663777',
@@ -14,6 +14,9 @@ const useStyle = makeStyles({
     fontWeight: 500,
     margin: 12,
     zIndex: 2,
+    backgroundColor: '#F3F3F1',
+    padding: theme.spacing(1, 3),
+    borderRadius: 50,
   },
   boxTitleCategory: {
     position: 'relative',
@@ -25,7 +28,7 @@ const useStyle = makeStyles({
     height: '120%',
     zIndex: 2,
   },
-});
+}));
 
 const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
   const [selectedMember, setSelectedMember] = useState(null);

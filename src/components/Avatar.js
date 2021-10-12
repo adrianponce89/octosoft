@@ -45,8 +45,6 @@ const useStyle = makeStyles((theme) => ({
   iconAvatar: {
     width: '100%',
     height: '100%',
-    // clipPath:
-    //   'polygon(50% 0, 85.5% 14.5%, 100% 50%, 85.5% 85.5%, 50% 100%, 14.5% 85.5%, 0 50%, 14.5% 14.5% )',
     backgroundImage: ({ background }) => background || '#ECECEC',
     backgroundSize: ({ backgroundSize }) => backgroundSize || 'cover',
     backgroundPosition: ({ backgroundPosition }) =>
@@ -68,7 +66,7 @@ const useStyle = makeStyles((theme) => ({
   textButton: {
     fontFamily: 'Poppins',
     fontWeight: 500,
-    color: '#fff',
+    color: theme.palette.common.white,
     fontSize: 18,
     textTransform: 'capitalize',
   },

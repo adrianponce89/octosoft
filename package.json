@@ -1,7 +1,8 @@
 {
   "name": "octosoft",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "author": "Adrian Ponce <adrian.ponce.89@gmail.com> & Roger Bogado <roger.bogado.coverzola@gmail.com>",
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.1",
     "@contentful/rich-text-react-renderer": "^14.1.1",
