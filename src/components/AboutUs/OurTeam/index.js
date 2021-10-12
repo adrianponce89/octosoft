@@ -14,7 +14,7 @@ const useStyle = makeStyles((theme) => ({
     color: ({ color }) => color ?? null,
     fontFamily: 'Poppins',
     fontSize: '3rem',
-    textShadow: '3px 3px 0px #707070',
+    textShadow: '3px 3px 0px #cac6c7',
     fontWeight: 500,
     marginBottom: theme.spacing(4),
     '@media (max-width: 576px)': {
