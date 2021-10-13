@@ -6,7 +6,7 @@ import HomeForm from './HomeForm';
 
 const styles = makeStyles((theme) => ({
   plans: {
-    backgroundColor: '#F7F8FA',
+    // backgroundColor: '#F7F8FA',
     paddingTop: 60,
     paddingBottom: 60,
     flexDirection: 'column',
@@ -44,20 +44,27 @@ const styles = makeStyles((theme) => ({
     fontSize: 42,
     '@media (max-width: 760px)': {
       fontSize: 32,
-      paddingBottom:20,
+      paddingBottom: 20,
     },
   },
   buttonSelected: {
     borderRadius: '50px !important',
-
-    backgroundColor: '#1d2178',
+    backgroundColor: '#BB6DC7',
     padding: '15px',
     '&:hover': {
-      backgroundColor: '#1d2178',
+      backgroundColor: '#BB6DC7',
+    },
+  },
+  btnPackageSelected: {
+    borderRadius: '50px !important',
+    backgroundColor: '#0C3294',
+    padding: '15px',
+    '&:hover': {
+      backgroundColor: '#0C3294',
     },
   },
   textBtnSelected: {
-    color: '#37add4',
+    color: '#FFFF',
     fontFamily: 'Montserrat',
     fontSize: 12,
   },
@@ -94,17 +101,8 @@ const HomePlans = ({ plans }) => {
   };
 
   return (
-    <Grid
-      container
-      md={12}
-      className={classes.plans}
-    >
-      <Grid
-        container
-        item
-        md={8}
-        className={classes.root}
-      >
+    <Grid container md={12} className={classes.plans}>
+      <Grid container item md={8} className={classes.root}>
         <Typography className={classes.title}>
           Select your plan
         </Typography>
@@ -115,7 +113,9 @@ const HomePlans = ({ plans }) => {
         >
           <Button
             className={
-              showPackages ? classes.buttonSelected : classes.button
+              showPackages
+                ? classes.btnPackageSelected
+                : classes.button
             }
             onClick={() => {
               changeView('PACKAGE_VIEW');
@@ -152,13 +152,8 @@ const HomePlans = ({ plans }) => {
         </ButtonGroup>
       </Grid>
       {view === 'PACKAGE_VIEW' ? (
-        <Grid
-          container
-          item
-          md={8}
-          className={classes.package}
-        >
-          {plans.slice(6,9).map((plan, i) => {
+        <Grid container item md={8} className={classes.package}>
+          {plans.slice(6, 9).map((plan, i) => {
             return <PlanCard plan={plan} index={i} />;
           })}
         </Grid>

@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles((theme) => ({
   plans: {
-    backgroundColor: '#F7F8FA',
+    // backgroundColor: '#F7F8FA',
     paddingTop: 60,
     paddingBottom: 60,
     flexDirection: 'column',

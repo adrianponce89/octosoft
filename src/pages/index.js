@@ -12,7 +12,9 @@ import PlansGrid from '../components/PlansGrid';
 import DescriptionHome from '../components/DescriptionHome';
 import Services from '../components/Home/Services';
 import HomePlans from '../components/HomePlans';
-import Clients from '../components/Home/Clients'
+import Clients from '../components/Home/Clients';
+import CalendarButton from '../components/CalendarButton'
+import { Link } from 'gatsby';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +23,28 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
   },
+  backgroundHome: {
+    width: '100%',
+    height: '310vh',
+    // minHeight: ({ BackgroundImage }) =>
+    //   '100vh',
+    opacity: 0.2,
+    top: '100vh',
+    left: 0,
+    bottom: 0,
+    right: 0,
+    position: 'absolute',
+    backgroundImage: ({ BackgroundImage }) =>
+      `url(${BackgroundImage})`,
+    backgroundColor: '#FFF',
+    backgroundPosition: 'initial',
+    backgroundRepeat: 'repeat',
+    backgroundSize: '100vw',
+    zIndex: 0,
+  },
+  home: {
+    zIndex: 99,
+  },
 }));
 
 export default (props) => {
@@ -28,14 +52,13 @@ export default (props) => {
     props,
     'data.contentfulLandingDescription',
   );
-  const banners = get(props, 'data.allContentfulBanners.edges');
-  const homeItems = get(props, 'data.allContentfulHomeItem.edges');
   const servicesHome = get(props, 'data.allContentfulService');
   const plans = get(props, 'data.allContentfulPlan.edges');
   const aboutUs = get(props, 'data.allContentfulAboutUs.nodes');
   const clients = get(props, 'data.allContentfulHomeClients');
+
   const classes = useStyles({
-    backgroundImage: descriptionLanding.backgroundImage.file.url,
+    BackgroundImage: BackgroundImage,
   });
 
   const clientHome = clients.edges[0].node
@@ -43,13 +66,18 @@ export default (props) => {
   return (
     <>
       <HomeBanner descriptionLanding={descriptionLanding} />
+      <Link to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03">
+        <CalendarButton />
+      </Link>
       <section id="work">
+        <div className={classes.backgroundHome} />
         <Grid
           container
           direction="column"
           justify="center"
           alignItems="center"
           xs={12}
+          className={classes.home}
         >
           <DescriptionHome content={aboutUs[0]} />
           <Services services={servicesHome} />
@@ -60,25 +88,6 @@ export default (props) => {
               dataClients={clientHome.media}
             />
           )}
-
-          {/* {homeItems.map(({ node }, i) => (
-              <HomeItems
-                right={i % 2 == 0}
-                backgroundImage={`url(${node.image.file.url})`}
-                title={node.title}
-                description={node.description.description}
-                link={node.link}
-                color={node.color}
-              />
-            ))} */}
-          {/* <Banners
-              backgroundImage={`url(${planBanner.image.file.url})`}
-              title={planBanner.title}
-              right={true}
-              color={planBanner.color}
-              id="ourplans"
-            />
-            <PlansGrid plans={plans} /> */}
         </Grid>
       </section>
     </>

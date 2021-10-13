@@ -1,14 +1,14 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import OctoLogo from '../assets/logoHome.svg';
+import OctoLogo from '../assets/octoLogoNew.svg';
 import videoTest from '../assets/videotest.mp4';
 import OctoLogoName from '../assets/Logoocto2.svg'
 import Fade from 'react-reveal/Fade';
 
 const styles = makeStyles((theme) => ({
   container: {
-    backgroundColor: '#F7F8FA',
+    // backgroundColor: '#F7F8FA',
     paddingTop: 60,
     paddingBottom: 60,
     '@media (max-width: 760px)': {

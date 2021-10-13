@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Container from '../Container';
+import BridgeOcto from '../../assets/brige-octo.mp4';
 import { makeStyles } from '@material-ui/core/styles';
 import TypingAnimation from '../TypingAnimation';
 import MainLogo from './MainLogo';
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     left: '2vw',
     top: '5vh',
+    zIndex:11,
   },
   typingContainer: {
     alignSelf: 'flex-start',
@@ -43,6 +45,20 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     bottom: -25,
   },
+  video: {
+    width: '130vw',
+    marginLeft:'-280px', 
+    '@media (max-width: 760px)': {
+      width: 350,
+    },
+    zIndex: '1',
+  },
+  videoContainer: {
+    // position:'relative',
+    overflow: 'hidden',
+    width: '100%',
+    zIndex: 10,
+  },
 }));
 
 const words = ['Diverse.', 'Secure.', 'Budget friendly.'];
@@ -57,6 +73,12 @@ export default ({ descriptionLanding }) => {
       <div className={classes.typingContainer}>
         <TypingAnimation words={words} />
       </div>
+      {/* <div className={classes.videoContainer}>
+        <video className={classes.video} autoPlay loop muted>
+          <source src={BridgeOcto} type="video/mp4"></source>
+        </video>
+      </div> */}
+
       <Grid
         container
         justify="center"
