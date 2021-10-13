@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'initial',
     backgroundRepeat: 'repeat',
     backgroundSize: '100vw',
-    zIndex: 0,
+    zIndex: '-1',
   },
   home: {
     zIndex: 99,
