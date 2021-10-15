@@ -154,7 +154,11 @@ const NavLinks = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem component={Link} to="/news" onClick={handleClose}>
+        <MenuItem
+          component={Link}
+          to="/underConstruction"
+          onClick={handleClose}
+        >
           {'NEWS'}
         </MenuItem>
         <MenuItem
