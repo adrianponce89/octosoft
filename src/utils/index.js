@@ -82,3 +82,23 @@ export const FindIndex = (services, search) => {
   );
   return newIndex;
 };
+
+export const sortGroupTeamMembersCategories = (teamMembers) => {
+  const sortTeamMembersCategory = [];
+  const titleTypeCategorySet = new Set();
+
+  teamMembers.forEach((member) => {
+    titleTypeCategorySet.add(member.node.category);
+  });
+
+  titleTypeCategorySet.forEach((value) => {
+    sortTeamMembersCategory.push({
+      category: value,
+      teamMembers: teamMembers.filter(
+        (member) => member.node.category === value,
+      ),
+    });
+  });
+
+  return sortTeamMembersCategory;
+};
