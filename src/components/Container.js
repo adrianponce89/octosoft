@@ -1,7 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-const styles = makeStyles((theme) => ({
+const Container = (props) => {
+  const classes = useStyles(props);
+  return (
+    <div className={classes.outsideBox}>
+      <div className={classes.background} />
+      <div className={`${classes.innerBox} ${props.className}`}>
+        {props.children}
+      </div>
+    </div>
+  );
+};
+
+const useStyles = makeStyles((theme) => ({
   outsideBox: (props) => ({
     width: '100%',
     height: '100%',
@@ -35,21 +47,9 @@ const styles = makeStyles((theme) => ({
     '@media (min-width: 1362px)': {
       maxWidth: '80%',
     },
-    background: props.innerBackground || 'white',
+    background: props.innerBackground || theme.palette.common.white,
     padding: props.innerPadding || '80px 0 0 0',
   }),
 }));
-
-const Container = (props) => {
-  const classes = styles(props);
-  return (
-    <div className={classes.outsideBox}>
-      <div className={classes.background} />
-      <div className={`${classes.innerBox} ${props.className}`}>
-        {props.children}
-      </div>
-    </div>
-  );
-};
 
 export default Container;
