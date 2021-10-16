@@ -143,9 +143,9 @@ const menuList = [
   {
     title: 'COMMUNITY',
     children: [
-      { title: 'News', link: '/news' },
-      { title: 'Events', link: '/news' },
-      { title: 'Blog', link: '/news' },
+      { title: 'News', link: '/underConstruction' },
+      { title: 'Events', link: '/underConstruction' },
+      { title: 'Blog', link: '/underConstruction' },
       {
         title: 'Bordeless Identities',
         link: '/borderlessIdentities',

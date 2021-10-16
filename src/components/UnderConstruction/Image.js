@@ -1,51 +1,33 @@
 import React from 'react';
 
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, makeStyles } from '@material-ui/core';
 
-import Polygon1 from '../assets/Polygon1.png';
-import Polygon2 from '../assets/Polygon2.png';
-import Polygon3 from '../assets/Polygon3.png';
+import Polygon1 from '../../assets/Polygon1.png';
+import Polygon2 from '../../assets/Polygon2.png';
+import Polygon3 from '../../assets/Polygon3.png';
 
-const UnderConstruction = ({ imgUrl }) => {
-  const classes = useStyles({
-    imgUrl,
-  });
+const Image = ({ imgUrl }) => {
+  const classes = useStyles({ imgUrl });
   return (
     <Grid
+      item
+      xs={12}
+      md={7}
       container
-      justify="space-between"
-      alignItems="center"
-      className={classes.backgroundRoot}
+      justify="center"
+      className={classes.root}
     >
-      <Grid item xs={3}></Grid>
-
-      <Grid
-        item
-        xs={7}
-        container
-        justify="center"
-        className={classes.boxImg}
-      >
-        <Grid item xs={8} className={classes.imgContainer}>
-          <div className={classes.backgroundImg1} />
-          <div className={classes.backgroundImg} />
-        </Grid>
-        <div className={classes.backgroundImg2} />
-        <div className={classes.backgroundImg3} />
+      <Grid item xs={8} className={classes.imgContainer}>
+        <div className={classes.backgroundImg1} />
+        <div className={classes.backgroundImg} />
       </Grid>
+      <div className={classes.backgroundImg2} />
+      <div className={classes.backgroundImg3} />
     </Grid>
   );
 };
-
 const useStyles = makeStyles((theme) => ({
-  backgroundRoot: {
-    marginTop: theme.spacing(5),
-    backgroundColor: 'rgba(187, 109, 199, 0.13)',
-    background: 'transparent',
-    borderRadius: 15,
-  },
-  boxImg: { position: 'relative', height: '100vh' },
+  root: { position: 'relative', height: '80vh' },
   imgContainer: {
     zIndex: 3,
     position: 'relative',
@@ -98,5 +80,4 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
   },
 }));
-
-export default UnderConstruction;
+export default Image;
