@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
@@ -78,36 +78,67 @@ const ViewerService = ({
     setCategory(node);
   };
 
+  const [imgsLoaded, setImgsLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadImage = (image) => {
+      return new Promise((resolve, reject) => {
+        const loadImg = new Image();
+        loadImg.src = image.url;
+        loadImg.onload = () =>
+          setTimeout(() => {
+            resolve(image.url);
+          }, 1500);
+
+        loadImg.onerror = (err) => reject(err);
+      });
+    };
+
+    Promise.all(
+      categories
+        .map(({ node }) => node.icon.file.url)
+        .map((image) => loadImage(image)),
+    )
+      .then(() => setImgsLoaded(true))
+      .catch((err) => console.log('Failed to load images', err));
+  }, []);
+
   return (
     <Grid justify="center" className={classes.root}>
       <Grid item container className={classes.infoContainer}>
         {categories.length > 0 ? (
-          <Grid
-            item
-            container
-            justify="flex-start"
-            alignItems="center"
-            className={classes.rotate}
-          >
-            {categoryShow ? (
-              <ShowCategory
-                title={category.title}
-                image={category.iconLarge.file.url}
-                description={category.description.description}
-              />
-            ) : (
-              <>
-                {categories.map(({ node }, i) => (
-                  <ItemCategory
-                    index={i}
-                    key={node.title}
-                    icon={node.icon.file.url}
-                    onClick={() => selectedCategory(node)}
-                  />
-                ))}
-              </>
-            )}
-          </Grid>
+          imgsLoaded ? (
+            <Grid
+              item
+              container
+              justify="flex-start"
+              alignItems="center"
+              className={classes.rotate}
+            >
+              {categoryShow ? (
+                <ShowCategory
+                  title={category.title}
+                  image={category.iconLarge.file.url}
+                  description={category.description.description}
+                />
+              ) : (
+                <>
+                  {categories.map(({ node }, i) => (
+                    <ItemCategory
+                      index={i}
+                      key={node.title}
+                      icon={node.icon.file.url}
+                      onClick={() => selectedCategory(node)}
+                    />
+                  ))}
+                </>
+              )}
+            </Grid>
+          ) : (
+            <Grid item xs={12} className={classes.rotate}>
+              <AnimationWords words={[node.title]} />
+            </Grid>
+          )
         ) : (
           <Grid item xs={12} className={classes.rotate}>
             <AnimationWords words={words} />

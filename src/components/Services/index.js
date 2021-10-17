@@ -51,7 +51,7 @@ const Services = ({
       <ViewerService
         words={ListOfWords(services)}
         categories={selectedCategories}
-        categoryShow={false} //categoryShow
+        categoryShow={categoryShow}
         setCategoryShow={setCategoryShow}
       />
     </Grid>

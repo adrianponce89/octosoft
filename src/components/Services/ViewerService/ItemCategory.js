@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 
 const styles = makeStyles({
-  root: { position: 'relative' },
+  root: { position: 'relative', cursor: 'pointer' },
   icon: {
     animation: '$sliding 3000ms forwards',
     backgroundImage: ({ icon }) => `url(${icon})`,
