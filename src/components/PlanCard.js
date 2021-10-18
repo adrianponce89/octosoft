@@ -19,7 +19,7 @@ const styles = makeStyles((theme) => ({
           break;
       }
     },
-    width: 300,
+    width: 350,
     height: 500,
     '@media (max-width: 760px)': {
       marginBottom: 50,
@@ -61,8 +61,8 @@ const styles = makeStyles((theme) => ({
   },
   descriptionContainer: {
     height: 220,
-    width: 250,
-    overflow: 'hidden',
+    width: 300,
+    overflow: 'auto',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',

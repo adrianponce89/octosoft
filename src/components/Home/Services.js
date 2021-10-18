@@ -37,7 +37,23 @@ const Services = ({ services}) => {
         lg={10}
         xs={12}
       >
-        {servicesToShow.slice(1, 9).map((service, index) => (
+        {servicesToShow.slice(1, 5).map((service, index) => (
+          <ServiceItem
+            key={index}
+            service={service}
+            description={servicesDesc}
+          />
+        ))}
+      </Grid>
+      <Grid
+        container
+        className={classes.root}
+        item
+        xl={8}
+        lg={10}
+        xs={12}
+      >
+        {servicesToShow.slice(5, 9).map((service, index) => (
           <ServiceItem
             key={index}
             service={service}

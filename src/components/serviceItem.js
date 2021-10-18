@@ -22,6 +22,12 @@ const styles = makeStyles((theme) => ({
     textAlign: 'justify',
     fontFamily: 'Montserrat',
   },
+  imgContainer:{
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingBottom: 15,
+  }
 }));
 
 const ServiceItem = ({ service, description }) => {
@@ -41,9 +47,8 @@ const ServiceItem = ({ service, description }) => {
     >
       <Grid item>
         <div className={classes.imgContainer}>
-          <img src={service.node.images[1].file.url} />
+          <img src={service.node.images[0].file.url} />
         </div>
-
         <Typography className={classes.title}>
           {service.node.title}
         </Typography>

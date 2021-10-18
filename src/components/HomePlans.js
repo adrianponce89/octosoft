@@ -85,17 +85,15 @@ const styles = makeStyles((theme) => ({
 
 const HomePlans = ({ plans }) => {
   const classes = styles();
-  const [showPackages, setShowPackages] = useState(false);
-  const [view, setView] = useState('PACKAGE_VIE');
+  const [showPackages, setShowPackages] = useState(true);
+  const [view, setView] = useState('PACKAGE_VIEW');
 
   const changeView = (text) => {
     switch (text) {
       case 'PACKAGE_VIEW':
         setView('PACKAGE_VIEW');
-        break;
       case 'CUSTOM_VIEW':
         setView('CUSTOM_VIEW');
-        break;
     }
     setShowPackages(!showPackages);
   };
@@ -153,7 +151,7 @@ const HomePlans = ({ plans }) => {
       </Grid>
       {view === 'PACKAGE_VIEW' ? (
         <Grid container item md={8} className={classes.package}>
-          {plans.slice(6, 9).map((plan, i) => {
+          {plans.slice(12, 15).map((plan, i) => {
             return <PlanCard plan={plan} index={i} />;
           })}
         </Grid>

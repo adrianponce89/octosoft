@@ -31,7 +31,7 @@ const styles = makeStyles((theme) => ({
   },
   root: {
     marginBottom: 60,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     '@media (max-width: 760px)': {
       flexDirection: 'column',
@@ -50,7 +50,7 @@ export default function Clients({ title, dataClients }) {
       <Grid container md={12} className={classes.plans}>
         <Grid container item md={8} className={classes.root}>
           <Typography className={classes.title}>
-            Clients who trust us
+            Some of our clients
           </Typography>
         </Grid>
         <Grid
@@ -60,7 +60,7 @@ export default function Clients({ title, dataClients }) {
           md={10}
           className={classes.root}
         >
-          {dataClients.map((media, index) => {
+          {dataClients.slice(0,4).map((media, index) => {
             return (
               <img
                 key={index}
