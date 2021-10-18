@@ -82,6 +82,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
           <OurTeamModal
             name={selectedMember.node.name}
             biography={selectedMember.node.biography}
+            expertise={selectedMember.node.expertise}
             background={`url(${selectedMember.node.fullPhoto.file.url})`}
             onClose={handleClose}
             socialMedia={selectedMember.node.socialMedia}

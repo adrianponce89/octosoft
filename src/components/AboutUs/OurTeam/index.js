@@ -10,7 +10,6 @@ const OurTeam = ({ teamMembers, color }) => {
   const classes = useStyle({ color });
   const sortTeamMembersCategory =
     sortGroupTeamMembersCategories(teamMembers) ?? [];
-
   return (
     <Paper square elevation={1} className={classes.root}>
       <Grid

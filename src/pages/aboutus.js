@@ -79,6 +79,9 @@ export const pageQuery = graphql`
           biography {
             json
           }
+          expertise {
+            json
+          }
         }
       }
     }
