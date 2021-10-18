@@ -102,3 +102,14 @@ export const sortGroupTeamMembersCategories = (teamMembers) => {
 
   return sortTeamMembersCategory;
 };
+
+const letterFirst = (str) => {
+  const res = [];
+  if (str.length != 0) {
+    const arrAux = str.split(' ');
+    arrAux.forEach((item) => {
+      res.push({ first: item.slice(0, 1), second: item.slice(1) });
+    });
+  }
+  return res;
+};

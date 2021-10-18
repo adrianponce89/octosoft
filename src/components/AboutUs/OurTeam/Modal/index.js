@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-import SocialNetwork from '../../../SocialNetwork';
+import SocialNetwork from '../SocialNetwork';
 import CornerTopRight from '../../../../assets/Trama2.png';
 import CornerBottomRight from '../../../../assets/octoOrang.png';
 
@@ -18,25 +18,13 @@ const OurTeamModal = ({
 }) => {
   const classes = useStyles({ background });
   const even = (even) => even !== '';
-  const letterFirst = (str) => {
-    const res = [];
-    if (str.length != 0) {
-      const arrAux = str.split(' ');
-      arrAux.forEach((item) => {
-        res.push({ first: item.slice(0, 1), second: item.slice(1) });
-      });
-    }
 
-    return res;
-  };
-  console.log('expertise :>> ', expertise.json);
   return (
     <Grid item container justify="flex-end" className={classes.root}>
       <Grid item xs={4} className={classes.boxImageMember}>
         <div className={classes.imageMember} />
       </Grid>
       <Grid item xs={4} className={classes.cornerTopRight} />
-
       <Grid
         item
         xs={9}
@@ -51,24 +39,15 @@ const OurTeamModal = ({
         </Grid>
 
         <Grid item xs={10}>
-          <Grid item xs={9}>
-            {letterFirst('Expertise').map(({ first, second }) => (
-              <Grid item xs={5} container alignItems="baseline">
-                <Typography
-                  variant="h4"
-                  className={[classes.subTitle, classes.first]}
-                >
-                  {first}
-                </Typography>
-                <Typography variant="h5" className={classes.subTitle}>
-                  {second}
-                </Typography>
-              </Grid>
-            ))}
+          <Grid item xs={10} container alignItems="center">
+            <Typography variant="h4" className={classes.subTitle}>
+              Expertise
+            </Typography>
           </Grid>
+
           <Grid
             item
-            xs={9}
+            xs={11}
             container
             direction="column"
             className={classes.containerDescription}
@@ -81,21 +60,12 @@ const OurTeamModal = ({
           </Grid>
         </Grid>
         <Grid item xs={10}>
-          <Grid item xs={9}>
-            {letterFirst('Bio').map(({ first, second }) => (
-              <Grid item xs={5} container alignItems="baseline">
-                <Typography
-                  variant="h4"
-                  className={[classes.subTitle, classes.first]}
-                >
-                  {first}
-                </Typography>
-                <Typography variant="h5" className={classes.subTitle}>
-                  {second}
-                </Typography>
-              </Grid>
-            ))}
+          <Grid item xs={10} container alignItems="center">
+            <Typography variant="h4" className={classes.subTitle}>
+              Bio
+            </Typography>
           </Grid>
+
           <Grid item xs={9} className={classes.description}>
             <div
               dangerouslySetInnerHTML={{
@@ -103,27 +73,17 @@ const OurTeamModal = ({
               }}
             />
           </Grid>
-          <Grid
-            item
-            xs={10}
-            container
-            justify="center"
-            alignItems="center"
-          >
-            <Grid item sm={9} container alignItems="center">
-              {Object.values(socialMedia).some(even) ? (
-                <Typography
-                  variant="caption"
-                  className={classes.text}
-                >
-                  {`Follow ${name} on Social Media:`}
-                </Typography>
-              ) : null}
-              <SocialNetwork socialMedia={socialMedia} />
-            </Grid>
-          </Grid>
         </Grid>
       </Grid>
+
+      <Grid item xs={10} container justify="flex-start">
+        <SocialNetwork
+          socialMedia={socialMedia}
+          className={classes.social}
+          container
+        />
+      </Grid>
+
       <Button
         variant="contained"
         className={classes.button}
@@ -147,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 16,
     background: '#F1F1F1',
     overflow: 'hidden',
-    height: '80vh',
+    height: '100%',
   },
   cornerTopRight: {
     position: 'absolute',
@@ -162,18 +122,18 @@ const useStyles = makeStyles((theme) => ({
   },
   cornerBottomRight: {
     position: 'absolute',
-    bottom: -158,
-    right: -112,
+    opacity: '0.7',
+    bottom: -160,
+    right: -148,
     width: '31%',
     paddingBottom: '31%',
     backgroundImage: `url(${CornerBottomRight})`,
-    backgroundSize: '95%',
+    backgroundSize: '88%',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
   },
   boxInfo: {
     zIndex: 3,
-    rowGap: `${theme.spacing(4)}px`,
   },
   boxImageMember: {
     position: 'absolute',
@@ -195,6 +155,7 @@ const useStyles = makeStyles((theme) => ({
   },
   boxName: { columnGap: `${theme.spacing(4)}px` },
   titleName: {
+    padding: theme.spacing(8, 0, 4, 0),
     textShadow: '3px 1px 1px rgb(130 127 132)',
     fontFamily: 'Poppins',
     fontWeight: 500,
@@ -208,10 +169,9 @@ const useStyles = makeStyles((theme) => ({
   },
   subTitle: {
     fontFamily: 'Poppins',
-    fontWeight: 500,
+    fontWeight: 700,
     color: '#f9a055',
   },
-  first: { fontWeight: 'bold' },
   text: {
     fontFamily: 'Poppins',
     fontSize: '1em',
@@ -219,6 +179,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#26A1FF',
   },
   description: {
+    overflow: 'auto',
     background: 'transparent',
     '& p': {
       fontFamily: 'Poppins',
@@ -238,7 +199,7 @@ const useStyles = makeStyles((theme) => ({
   containerDescription: {
     overflow: 'auto',
     background: 'transparent',
-    padding: 0,
+    paddingTop: theme.spacing(3.5),
     '& li p': {
       fontFamily: 'Poppins',
       fontWeight: 500,
@@ -258,7 +219,7 @@ const useStyles = makeStyles((theme) => ({
       flexWrap: 'wrap',
       alignSelf: 'stretch',
       height: '100%',
-      maxHeight: '30vh',
+      maxHeight: '24vh',
       listStyleType: 'none',
       margin: 0,
       padding: 0,
@@ -274,9 +235,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#26A1FF',
     boxShadow: '5px 0px 0px rgb(130 127 132)',
     borderRadius: 8,
-    padding: theme.spacing(4, 8),
+    padding: theme.spacing(3, 7.5),
     position: 'absolute',
-    right: 75,
+    right: 32,
     bottom: 40,
   },
   textButton: {
@@ -285,6 +246,14 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     textTransform: 'capitalize',
     fontSize: theme.spacing(4.5),
+  },
+  social: {
+    borderRadius: 10,
+    backgroundColor: theme.palette.common.white,
+    position: 'relative',
+    zIndex: 3,
+    margin: 30,
+    width: 'fit-content',
   },
 }));
 
