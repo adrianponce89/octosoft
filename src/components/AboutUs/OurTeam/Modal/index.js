@@ -20,16 +20,17 @@ const OurTeamModal = ({
   const even = (even) => even !== '';
 
   return (
-    <Grid item container justify="flex-end" className={classes.root}>
+    <Grid item container className={classes.root}>
       <Grid item xs={4} className={classes.boxImageMember}>
         <div className={classes.imageMember} />
       </Grid>
+
       <Grid item xs={4} className={classes.cornerTopRight} />
       <Grid
         item
         xs={9}
         container
-        justify="flex-end"
+        justify="flex-start"
         className={classes.boxInfo}
       >
         <Grid item xs={10} container alignItems="center">
@@ -38,7 +39,7 @@ const OurTeamModal = ({
           </Typography>
         </Grid>
 
-        <Grid item xs={10}>
+        <Grid item xs={11}>
           <Grid item xs={10} container alignItems="center">
             <Typography variant="h4" className={classes.subTitle}>
               Expertise
@@ -59,24 +60,32 @@ const OurTeamModal = ({
             />
           </Grid>
         </Grid>
-        <Grid item xs={10}>
+        <Grid item xs={9}>
           <Grid item xs={10} container alignItems="center">
             <Typography variant="h4" className={classes.subTitle}>
               Bio
             </Typography>
           </Grid>
 
-          <Grid item xs={9} className={classes.description}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: documentToHtmlString(biography.json),
-              }}
-            />
+          <Grid item className={classes.boxBio}>
+            <Grid item className={classes.description}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: documentToHtmlString(biography.json),
+                }}
+              />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
 
-      <Grid item xs={10} container justify="flex-start">
+      <Grid
+        item
+        xs={10}
+        container
+        justify="flex-start"
+        className={classes.boxSocialMedia}
+      >
         <SocialNetwork
           socialMedia={socialMedia}
           className={classes.social}
@@ -107,7 +116,6 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 16,
     background: '#F1F1F1',
     overflow: 'hidden',
-    height: '100%',
   },
   cornerTopRight: {
     position: 'absolute',
@@ -134,6 +142,7 @@ const useStyles = makeStyles((theme) => ({
   },
   boxInfo: {
     zIndex: 3,
+    marginLeft: '36%',
   },
   boxImageMember: {
     position: 'absolute',
@@ -168,6 +177,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subTitle: {
+    fontSize: '2.7vmin',
     fontFamily: 'Poppins',
     fontWeight: 700,
     color: '#f9a055',
@@ -179,12 +189,13 @@ const useStyles = makeStyles((theme) => ({
     color: '#26A1FF',
   },
   description: {
-    overflow: 'auto',
     background: 'transparent',
+    whiteSpace: 'pre-line',
+    height: 245,
     '& p': {
       fontFamily: 'Poppins',
       fontWeight: 500,
-      fontSize: '.90em',
+      fontSize: '1em',
       '@media (max-width: 1256px)': {
         fontSize: '1.2vmax',
       },
@@ -203,7 +214,7 @@ const useStyles = makeStyles((theme) => ({
     '& li p': {
       fontFamily: 'Poppins',
       fontWeight: 500,
-      fontSize: '2.1vmin',
+      fontSize: '1em',
       lineHeight: '1.2em',
       margin: '0 10px 10px 0',
     },
@@ -229,7 +240,13 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  boxBio: {
+    maxHeight: '30vh',
+    marginBottom: 40,
+    overflow: 'auto',
+  },
   boxButton: { position: 'relative' },
+  boxSocialMedia: { position: 'absolute', bottom: 10, left: 45 },
   button: {
     zIndex: 3,
     backgroundColor: '#26A1FF',
