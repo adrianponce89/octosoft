@@ -2,10 +2,9 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Paper } from '@material-ui/core';
-import TramaAboutUs from '../../../assets/TramaAboutUs.png';
 
-const index = ({ aboutUs }) => {
-  const classes = useStyle({ color: aboutUs.color });
+const OurPortfolio = ({ description, colorTitle, title }) => {
+  const classes = useStyles({ colorTitle });
   return (
     <Paper square elevation={1} className={classes.root}>
       <Grid
@@ -16,33 +15,27 @@ const index = ({ aboutUs }) => {
         className={classes.box}
       >
         <Typography variant="h5" className={classes.titleCard}>
-          The Octosoft Team
+          {title}
         </Typography>
-        {aboutUs.description.internal.content ? (
-          <Grid item xs={10}>
-            <Typography
-              variant="body1"
-              className={classes.description}
-            >
-              {aboutUs.description.internal.content}
-            </Typography>
-          </Grid>
-        ) : null}
+        <Grid item xs={10}>
+          <Typography variant="body1" className={classes.description}>
+            {description}
+          </Typography>
+        </Grid>
       </Grid>
     </Paper>
   );
 };
 
-const useStyle = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(8),
     marginTop: theme.spacing(8),
     borderRadius: 16,
-    backgroundImage: `url(${TramaAboutUs})`,
     backgroundPosition: '0 33%',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    backgroundColor: '#FFF',
+    backgroundColor: theme.palette.common.white,
     backgroundOrigin: 'padding-box',
     zIndex: 1,
   },
@@ -51,25 +44,20 @@ const useStyle = makeStyles((theme) => ({
     height: '100%',
     width: '100%',
   },
-  imageContainer: {
-    height: '35vh',
-    minHeight: '40vmin',
-  },
-
   titleCard: {
-    color: ({ color }) => color ?? null,
+    color: ({ colorTitle }) => colorTitle ?? '#DA2BBC',
     fontSize: '2.5rem',
-    fontWeight: 800,
-    fontFamily: 'Poppins',
+    fontWeight: 700,
+    fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
   },
   description: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Montserrat',
     fontWeight: 500,
     whiteSpace: 'break-spaces',
-    fontSize: '1rem',
+    fontSize: '1.625rem',
     textAlign: 'center',
   },
 }));
 
-export default index;
+export default OurPortfolio;
