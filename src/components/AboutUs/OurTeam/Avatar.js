@@ -2,6 +2,67 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, Typography, Button } from '@material-ui/core';
 
+const Avatar = ({
+  background,
+  backgroundSize,
+  backgroundPosition,
+  onClick,
+  name,
+  title,
+  section,
+}) => {
+  const classes = useStyle({
+    background,
+    backgroundSize,
+    backgroundPosition,
+  });
+  return (
+    <Paper elevation={3} square className={classes.root}>
+      <Grid
+        container
+        justify="center"
+        direction="column"
+        alignItems="center"
+        className={classes.itemAvatar}
+      >
+        <Grid item xs={12} className={classes.iconAvatar} />
+        <Grid
+          container
+          justify="center"
+          alignContent="center"
+          className={classes.descriptionAvatars}
+        >
+          <Typography className={classes.name}>{name}</Typography>
+          <Typography className={classes.title}>{title}</Typography>
+          <Typography className={classes.section}>
+            {section}
+          </Typography>
+          <Grid
+            item
+            xs={7}
+            sm={8}
+            className={classes.containerButton}
+          >
+            <Button
+              variant="contained"
+              fullWidth
+              className={classes.button}
+              onClick={onClick}
+            >
+              <Typography
+                variant="caption"
+                className={classes.textButton}
+              >
+                Profile
+              </Typography>
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Paper>
+  );
+};
+
 const useStyle = makeStyles((theme) => ({
   root: {
     borderRadius: 16,
@@ -72,66 +133,5 @@ const useStyle = makeStyles((theme) => ({
   },
   containerButton: { margin: theme.spacing(4, 0, 2) },
 }));
-
-const Avatar = ({
-  background,
-  backgroundSize,
-  backgroundPosition,
-  onClick,
-  name,
-  title,
-  section,
-}) => {
-  const classes = useStyle({
-    background,
-    backgroundSize,
-    backgroundPosition,
-  });
-  return (
-    <Paper elevation={3} square className={classes.root}>
-      <Grid
-        container
-        justify="center"
-        direction="column"
-        alignItems="center"
-        className={classes.itemAvatar}
-      >
-        <Grid item xs={12} className={classes.iconAvatar} />
-        <Grid
-          container
-          justify="center"
-          alignContent="center"
-          className={classes.descriptionAvatars}
-        >
-          <Typography className={classes.name}>{name}</Typography>
-          <Typography className={classes.title}>{title}</Typography>
-          <Typography className={classes.section}>
-            {section}
-          </Typography>
-          <Grid
-            item
-            xs={7}
-            sm={8}
-            className={classes.containerButton}
-          >
-            <Button
-              variant="contained"
-              fullWidth
-              className={classes.button}
-              onClick={onClick}
-            >
-              <Typography
-                variant="caption"
-                className={classes.textButton}
-              >
-                Profile
-              </Typography>
-            </Button>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Paper>
-  );
-};
 
 export default Avatar;

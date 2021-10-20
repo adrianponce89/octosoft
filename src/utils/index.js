@@ -82,3 +82,34 @@ export const FindIndex = (services, search) => {
   );
   return newIndex;
 };
+
+export const sortGroupTeamMembersCategories = (teamMembers) => {
+  const sortTeamMembersCategory = [];
+  const titleTypeCategorySet = new Set();
+
+  teamMembers.forEach((member) => {
+    titleTypeCategorySet.add(member.node.category);
+  });
+
+  titleTypeCategorySet.forEach((value) => {
+    sortTeamMembersCategory.push({
+      category: value,
+      teamMembers: teamMembers.filter(
+        (member) => member.node.category === value,
+      ),
+    });
+  });
+
+  return sortTeamMembersCategory;
+};
+
+const letterFirst = (str) => {
+  const res = [];
+  if (str.length != 0) {
+    const arrAux = str.split(' ');
+    arrAux.forEach((item) => {
+      res.push({ first: item.slice(0, 1), second: item.slice(1) });
+    });
+  }
+  return res;
+};
