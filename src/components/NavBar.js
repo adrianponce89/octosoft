@@ -137,7 +137,7 @@ const menuList = [
   {
     title: 'WHAT WE DO',
     children: [
-      { title: 'Our services', link: '/ourservices' },
+      { title: 'Our Services', link: '/ourservices' },
       { title: 'Portfolio', link: '/underConstruction' },
     ],
   },
