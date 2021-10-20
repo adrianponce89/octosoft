@@ -65,6 +65,20 @@ const styles = makeStyles({
   rotate: { transform: 'scaleX(-1)' },
 });
 
+const loadImage = (image) => {
+  console.log('load image::', image);
+  return new Promise((resolve, reject) => {
+    const loadImg = new Image();
+    loadImg.src = image.url;
+    loadImg.onload = () =>
+      setTimeout(() => {
+        resolve(image.url);
+      }, 1500);
+
+    loadImg.onerror = (err) => reject(err);
+  });
+};
+
 const ViewerService = ({
   words,
   categories,
@@ -72,36 +86,27 @@ const ViewerService = ({
   setCategoryShow,
 }) => {
   const classes = styles();
-  const [category, setCategory] = useState({});
-  const selectedCategory = (node) => {
-    setCategoryShow(!categoryShow);
-    setCategory(node);
-  };
 
   const [imgsLoaded, setImgsLoaded] = useState(false);
+  const [reverseAnimation, setReverseAnimation] = useState(false);
 
   useEffect(() => {
-    const loadImage = (image) => {
-      return new Promise((resolve, reject) => {
-        const loadImg = new Image();
-        loadImg.src = image.url;
-        loadImg.onload = () =>
-          setTimeout(() => {
-            resolve(image.url);
-          }, 1500);
-
-        loadImg.onerror = (err) => reject(err);
-      });
-    };
-
     Promise.all(
       categories
         .map(({ node }) => node.icon.file.url)
         .map((image) => loadImage(image)),
     )
       .then(() => setImgsLoaded(true))
-      .catch((err) => console.log('Failed to load images', err));
+      .catch((err) => console.log('Failed to load images::', err));
   }, []);
+
+  const animateToCategory = (node) => {
+    setReverseAnimation(true);
+    loadImage(node.iconLarge.file).then(() => {
+      setCategoryShow(node);
+      setReverseAnimation(false);
+    });
+  };
 
   return (
     <Grid justify="center" className={classes.root}>
@@ -115,11 +120,11 @@ const ViewerService = ({
               alignItems="center"
               className={classes.rotate}
             >
-              {categoryShow ? (
+              {!!categoryShow ? (
                 <ShowCategory
-                  title={category.title}
-                  image={category.iconLarge.file.url}
-                  description={category.description.description}
+                  title={categoryShow.title}
+                  image={categoryShow.iconLarge.file.url}
+                  description={categoryShow.description.description}
                 />
               ) : (
                 <>
@@ -128,7 +133,8 @@ const ViewerService = ({
                       index={i}
                       key={node.title}
                       icon={node.icon.file.url}
-                      onClick={() => selectedCategory(node)}
+                      onClick={() => animateToCategory(node)}
+                      reverseAnimation={reverseAnimation}
                     />
                   ))}
                 </>

@@ -5,17 +5,25 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const styles = makeStyles({
   root: {
-    border: '5px solid #c2c1bf',
-    width: '100%',
-    margin: '40px auto 40px auto',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
-
+  '@keyframes fadein': {
+    '0%': {
+      opacity: 0,
+    },
+    '100%': {
+      opacity: 1,
+    },
+  },
   iconsDescriptions: {
     width: '100%',
     backgroundImage: (props) => `url(${props.image})`,
-    backgroundSize: '100%',
+    backgroundSize: '150%',
+    backgroundPosition: '0% 50%',
     backgroundRepeat: 'no-repeat',
     paddingBottom: '100%',
+    animation: '$fadein 3000ms forwards',
   },
   titleDescriptions: {
     margin: '20px 0 20px 0',
@@ -26,6 +34,7 @@ const styles = makeStyles({
     overflow: 'auto',
     background: 'transparent',
     padding: 0,
+    animation: '$fadein 3000ms forwards',
     '& li p': {
       fontSize: '2.1vmin',
       lineHeight: '1.2em',

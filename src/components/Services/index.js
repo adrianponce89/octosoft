@@ -22,10 +22,10 @@ const Services = ({
 }) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [categoryShow, setCategoryShow] = useState(false);
+  const [categoryShow, setCategoryShow] = useState(null);
 
   const selectService = (s) => {
-    setCategoryShow(false);
+    setCategoryShow(null);
     setSelectedCategories(
       selectedCategory(services[FindIndex(services, s)], category),
     );
