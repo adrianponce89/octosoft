@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   link: {
-    padding: '15px 25px',
+    margin: '15px 10px',
+    padding: '0px 15px',
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',
