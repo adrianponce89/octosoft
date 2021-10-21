@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100vw',
     padding: 0,
     maxWidth: '100%',
+    backgroundColor: 'white',
   },
   formContainer: {
     display: 'flex',
