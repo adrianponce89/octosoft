@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-const Left = ({ email, setEmail }) => {
+const Left = ({ email, setEmail, handleSubmit }) => {
   const classes = useStyles();
   return (
     <Grid item xs={12} md={4}>
@@ -20,25 +20,44 @@ const Left = ({ email, setEmail }) => {
           We are currently renewing our site!
         </Typography>
         <Grid container justify="space-between" alignItems="center">
-          <Grid item xs={7}>
-            <TextField
-              fullWidth
-              id="email"
-              label="Enter your email"
-              variant="outlined"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={classes.input}
-              required
+          <form
+            name="contactunder"
+            onSubmit={handleSubmit}
+            data-netlify="true"
+            className={classes.boxForm}
+          >
+            <input
+              type="hidden"
+              name="form-name"
+              value="contactunder"
             />
-          </Grid>
-          <Grid item xs={4}>
-            <Button variant="contained" className={classes.btn}>
-              <Typography variant="button" className={classes.btnTxt}>
-                NOTIFY ME
-              </Typography>
-            </Button>
-          </Grid>
+            <Grid item xs={7}>
+              <TextField
+                fullWidth
+                id="email"
+                label="Enter your email"
+                variant="outlined"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={classes.input}
+                required
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <Button
+                variant="contained"
+                className={classes.btn}
+                type="submit"
+              >
+                <Typography
+                  variant="button"
+                  className={classes.btnTxt}
+                >
+                  NOTIFY ME
+                </Typography>
+              </Button>
+            </Grid>
+          </form>
         </Grid>
       </Grid>
     </Grid>
@@ -71,6 +90,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontSize: theme.spacing(6),
     fontStyle: 'normal',
+  },
+  boxForm: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flex: 1,
   },
   input: {
     boxShadow: '5px 15px 25px rgba(187, 109, 199, 0.25)',
