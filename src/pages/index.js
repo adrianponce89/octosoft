@@ -26,8 +26,6 @@ const useStyles = makeStyles((theme) => ({
   backgroundHome: {
     width: '100%',
     height: '310vh',
-    // minHeight: ({ BackgroundImage }) =>
-    //   '100vh',
     opacity: 0.2,
     top: '100vh',
     left: 0,
