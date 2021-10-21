@@ -27,26 +27,15 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
   },
   gridContainer: {
-    // flex: 1,
-    margin: 30,
+    margin: '45px 30px 30px 30px',
   },
   gridItem: {
     padding: '0 5px',
     width: '400px',
     flexBasis: 0,
-    margin: '0 15px',
-    
-    '& input': {
-      border: '1px solid #ccc',
-      borderRadius: '4px',
-      backgroundColor: 'white',
-      width: '400px',
-    },
+    margin: '0 15px 15px 15px',
 
     '& textarea': {
-      border: '1px solid #ccc',
-      borderRadius: '4px',
-      backgroundColor: 'white',
       height: '70px',
     },
 
@@ -104,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: 5,
-    width: 150,
+    width: 130,
     height: '40px',
     borderRadius: '4px',
     backgroundColor: '#33adff',
@@ -113,7 +102,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontFamily: 'Montserrat',
     position: 'relative',
-    left: '118px',
+    left: '128px',
+    top: '-10px',
   },
   smartphoneImg: {  
     display: 'flex',
@@ -124,15 +114,12 @@ const useStyles = makeStyles((theme) => ({
       height: '50px',
       width: '50px',
       position: 'relative',
-      top: '140px',
+      top: '130px',
       margin: '0 20px',
     },
   },
   phoneInput: {
     top: '-22px',
-  },
-  phoneLabelInput: {
-    top: '-13px !important',
   },
 }));
 
@@ -195,28 +182,27 @@ const Contact = (props) => {
             spacing={3}
           >
             <Grid className={classes.gridItem} item xs={6}>
-              <label>Full name</label>
               <PrimaryInput
                 id="NameInput"
                 value={name}
                 name="name"
                 onChange={({ target }) => setName(target.value)}
                 label="Name"
+                variant='outlined'
                 required
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={6}>
-              <label>Subject</label>
               <PrimaryInput
                 id="SubjectInput"
                 value={subject}
                 name="subject"
                 onChange={({ target }) => setSubject(target.value)}
                 label="Subject (Optional)"
+                variant='outlined'
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <label>E-mail</label>
               <PrimaryInput
                 id="EmailInput"
                 value={email}
@@ -224,11 +210,11 @@ const Contact = (props) => {
                 type="email"
                 onChange={({ target }) => setEmail(target.value)}
                 label="Your Email"
+                variant='outlined'
                 required
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={12}>
-              <label>Your message</label>
               <PrimaryInput
                 id="ContentInput"
                 value={content}
@@ -236,11 +222,12 @@ const Contact = (props) => {
                 onChange={({ target }) => setContent(target.value)}
                 multiline
                 rows={12}
+                label='Your message'
+                variant='outlined'
                 size="small"
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
-              <label className={classes.phoneLabelInput}>Phone number</label>
               <PrimaryInput
                 className={classes.phoneInput}
                 id="PhoneInput"
@@ -248,6 +235,7 @@ const Contact = (props) => {
                 name="phone"
                 onChange={({ target }) => setPhone(target.value)}
                 label="Your Phone Number"
+                variant='outlined'
                 required
               />
             </Grid>
