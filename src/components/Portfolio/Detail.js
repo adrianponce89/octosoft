@@ -12,12 +12,12 @@ const DetailPortfolio = ({ portfolios }) => {
       <Grid
         item
         container
-        xs={12}
-        sm={8}
+        xs={10}
+        sm={9}
         justify="space-evenly"
         className={classes.boxGrid}
       >
-        {portfolios.map(({ file, title }) => (
+        {portfolios.map(({ file, title, description }) => (
           <Grid
             item
             xs={12}
@@ -26,7 +26,11 @@ const DetailPortfolio = ({ portfolios }) => {
             justify="center"
             key={title}
           >
-            <ItemPortfolio portfolio={file} title={title} />
+            <ItemPortfolio
+              portfolio={file}
+              title={title}
+              link={description}
+            />
           </Grid>
         ))}
       </Grid>

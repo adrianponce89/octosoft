@@ -22,6 +22,7 @@ const PortfolioPage = () => {
                 url
               }
               title
+              description
             }
           }
         }
