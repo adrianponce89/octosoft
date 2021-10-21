@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     maxWidth: '100%',
     backgroundColor: 'white',
+    height: '100%',
   },
   formContainer: {
     display: 'flex',
@@ -105,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     left: '128px',
     top: '-10px',
   },
-  smartphoneImg: {  
+  smartphoneImg: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -156,7 +157,7 @@ const Contact = (props) => {
   };
 
   return (
-    <Container
+    <div
       className={classes.root}
       // background={`url(${BackgroundImage})`}
       innerBackground={'none'}
@@ -170,9 +171,9 @@ const Contact = (props) => {
         <div className={classes.formContainer}>
           <Grid item className={classes.imgContainer} md={4}>
             <div className={classes.smartphoneImg}>
-              <img src={whatsapp} alt="whatsapp"/>
-              <img src={telegram} alt="telegram"/>
-              <img src={discord} alt="discord"/>
+              <img src={whatsapp} alt="whatsapp" />
+              <img src={telegram} alt="telegram" />
+              <img src={discord} alt="discord" />
             </div>
           </Grid>
           <Grid
@@ -199,7 +200,7 @@ const Contact = (props) => {
                 name="subject"
                 onChange={({ target }) => setSubject(target.value)}
                 label="Subject (Optional)"
-                variant='outlined'
+                variant="outlined"
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
@@ -210,7 +211,7 @@ const Contact = (props) => {
                 type="email"
                 onChange={({ target }) => setEmail(target.value)}
                 label="Your Email"
-                variant='outlined'
+                variant="outlined"
                 required
               />
             </Grid>
@@ -222,8 +223,8 @@ const Contact = (props) => {
                 onChange={({ target }) => setContent(target.value)}
                 multiline
                 rows={12}
-                label='Your message'
-                variant='outlined'
+                label="Your message"
+                variant="outlined"
                 size="small"
               />
             </Grid>
@@ -235,7 +236,7 @@ const Contact = (props) => {
                 name="phone"
                 onChange={({ target }) => setPhone(target.value)}
                 label="Your Phone Number"
-                variant='outlined'
+                variant="outlined"
                 required
               />
             </Grid>
@@ -252,7 +253,7 @@ const Contact = (props) => {
           </Grid>
         </div>
       </form>
-    </Container>
+    </div>
   );
 };
 
