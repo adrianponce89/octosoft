@@ -17,6 +17,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
+import Contact from './Contact';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -112,6 +113,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#33adff',
     padding: '6px 30px',
   },
+  menu: {
+    background: 'pink',
+    width: '100vw',
+  },
 }));
 
 const HideOnScroll = (props) => {
@@ -153,7 +158,7 @@ const menuList = [
       },
     ],
   },
-  { title: 'CONTACT US', link: '/contact' },
+  { title: 'CONTACT US', children: [] },
 ];
 const NavLinks = (props) => {
   const classes = useStyles(props);
@@ -195,15 +200,19 @@ const NavLinks = (props) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {menu.children.map((child) => (
-                  <MenuItem
-                    component={Link}
-                    to={child.link}
-                    onClick={handleClose}
-                  >
-                    {child.title}
-                  </MenuItem>
-                ))}
+                {menu.title === 'CONTACT US' ? (
+                  <Contact />
+                ) : (
+                  menu.children.map((child) => (
+                    <MenuItem
+                      component={Link}
+                      to={child.link}
+                      onClick={handleClose}
+                    >
+                      {child.title}
+                    </MenuItem>
+                  ))
+                )}
               </Menu>
             ) : null}
           </>
