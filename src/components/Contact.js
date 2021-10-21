@@ -3,25 +3,66 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Container from './Container';
-import BackgroundImage from '../assets/Trama.png';
+// import BackgroundImage from '../assets/Trama.png';
 import { submitForm } from '../utils';
 import PrimaryInput from './PrimaryInput';
+import discord from '../assets/discord.png';
+import whatsapp from '../assets/whatsapp.png';
+import telegram from '../assets/telegram.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100vw',
+    padding: 0,
+    maxWidth: '100%',
   },
   formContainer: {
     display: 'flex',
-    alignItems: 'stretch',
+    alignItems: 'space-between',
     justifyContent: 'center',
+    width: '100%',
+  },
+  outsideBox: {
+    justifyContent: 'space-between',
   },
   gridContainer: {
-    flex: 1,
+    // flex: 1,
     margin: 30,
   },
   gridItem: {
     padding: '0 5px',
+    width: '400px',
+    flexBasis: 0,
+    margin: '0 15px',
+    
+    '& input': {
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      backgroundColor: 'white',
+      width: '400px',
+    },
+
+    '& textarea': {
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+      backgroundColor: 'white',
+      height: '70px',
+    },
+
+    '& div div > div': {
+      padding: '0 !important',
+      width: '400px',
+    },
+
+    '& > label': {
+      backgroundColor: 'white',
+      padding: '0 8px',
+      top: '8px',
+      left: '15px',
+      position: 'relative',
+      zIndex: '100',
+      fontWeight: 'bold',
+    },
   },
   title: {
     margin: '10px 10px 30px 0',
@@ -41,7 +82,19 @@ const useStyles = makeStyles((theme) => ({
   imgContainer: {
     flex: 1,
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'column',
+
+    '&:after': {
+      content: '"Contact us"',
+      color: '#33adff',
+      fontFamily: 'Montserrat',
+      fontWeight: 'bold',
+      fontSize: '50px',
+      top: '35px',
+      position: 'absolute',
+    },
   },
   buttonContainer: {
     flex: 1,
@@ -50,8 +103,35 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: 5,
-    width: 200,
-    borderRadius: 0,
+    width: 150,
+    height: '40px',
+    borderRadius: '4px',
+    backgroundColor: '#33adff',
+    color: 'black',
+    fontSize: '14px',
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
+    position: 'relative',
+    left: '118px',
+  },
+  smartphoneImg: {  
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+
+    '& > img': {
+      height: '50px',
+      width: '50px',
+      position: 'relative',
+      top: '140px',
+      margin: '0 20px',
+    },
+  },
+  phoneInput: {
+    top: '-22px',
+  },
+  phoneLabelInput: {
+    top: '-13px !important',
   },
 }));
 
@@ -90,7 +170,7 @@ const Contact = (props) => {
   return (
     <Container
       className={classes.root}
-      background={`url(${BackgroundImage})`}
+      // background={`url(${BackgroundImage})`}
       innerBackground={'none'}
     >
       <form
@@ -101,7 +181,11 @@ const Contact = (props) => {
         <input type="hidden" name="form-name" value="contact" />
         <div className={classes.formContainer}>
           <Grid item className={classes.imgContainer} md={4}>
-            <div className={classes.smartphoneImg} />
+            <div className={classes.smartphoneImg}>
+              <img src={whatsapp} alt="whatsapp"/>
+              <img src={telegram} alt="telegram"/>
+              <img src={discord} alt="discord"/>
+            </div>
           </Grid>
           <Grid
             className={classes.gridContainer}
@@ -110,6 +194,7 @@ const Contact = (props) => {
             spacing={3}
           >
             <Grid className={classes.gridItem} item xs={6}>
+              <label>Full name</label>
               <PrimaryInput
                 id="NameInput"
                 value={name}
@@ -120,6 +205,7 @@ const Contact = (props) => {
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={6}>
+              <label>Subject</label>
               <PrimaryInput
                 id="SubjectInput"
                 value={subject}
@@ -129,6 +215,7 @@ const Contact = (props) => {
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
+              <label>E-mail</label>
               <PrimaryInput
                 id="EmailInput"
                 value={email}
@@ -140,6 +227,7 @@ const Contact = (props) => {
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={12}>
+              <label>Your message</label>
               <PrimaryInput
                 id="ContentInput"
                 value={content}
@@ -151,7 +239,9 @@ const Contact = (props) => {
               />
             </Grid>
             <Grid className={classes.gridItem} item xs={12} sm={6}>
+              <label className={classes.phoneLabelInput}>Phone number</label>
               <PrimaryInput
+                className={classes.phoneInput}
                 id="PhoneInput"
                 value={phone}
                 name="phone"
@@ -167,7 +257,7 @@ const Contact = (props) => {
                 type="submit"
                 className={classes.button}
               >
-                Send
+                SUBMIT
               </Button>
             </div>
           </Grid>
