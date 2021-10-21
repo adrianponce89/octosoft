@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   },
   gridItem: {
     padding: '0 5px',
-    width: '400px',
     flexBasis: 0,
     margin: '0 15px 15px 15px',
 
@@ -42,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
     '& div div > div': {
       padding: '0 !important',
       width: '400px',
+      borderRadius: '4px',
     },
 
     '& > label': {
@@ -188,7 +188,7 @@ const Contact = (props) => {
                 name="name"
                 onChange={({ target }) => setName(target.value)}
                 label="Name"
-                variant='outlined'
+                variant="outlined"
                 required
               />
             </Grid>
