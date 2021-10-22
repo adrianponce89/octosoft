@@ -83,13 +83,15 @@ const useStyles = makeStyles((theme) => ({
     },
     backgroundColor: 'rgb(131,58,180)',
     background:
-      'radial-gradient(circle, #3B1440 11%, #F7B900 56%, #BB6DC7 90%)',
+      'linear-gradient(to bottom right, #3B1440 15%, #BB6DC7 40%, #F7B900 70%) bottom right, linear-gradient(to bottom left, #3B1440 15%, #BB6DC7 40%, #F7B900 70%) bottom left, linear-gradient(to top left, #3B1440 25%, #BB6DC7 70%) top left, linear-gradient(to top right,  #3B1440 25%, #BB6DC7 70%) top right;',
     backgroundRepeat: 'no-repeat',
+    backgroundSize: '50% 50%',
     fontStyle: 'normal',
     width: 'fit-content',
     boxSizing: 'border-box',
     WebkitTextFillColor: 'transparent',
     WebkitBackgroundClip: 'text',
+    MozBackgroundClip: 'text',
   },
   subTitle: {
     width: 'fit-content',
