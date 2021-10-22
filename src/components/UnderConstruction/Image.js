@@ -27,7 +27,13 @@ const Image = ({ imgUrl }) => {
   );
 };
 const useStyles = makeStyles((theme) => ({
-  root: { position: 'relative', height: '80vh' },
+  root: {
+    position: 'relative',
+    height: '80vh',
+    [theme.breakpoints.down('xs')]: {
+      height: '40vh',
+    },
+  },
   imgContainer: {
     zIndex: 3,
     position: 'relative',

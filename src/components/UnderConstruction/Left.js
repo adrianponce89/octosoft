@@ -11,8 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const Left = ({ email, setEmail, handleSubmit }) => {
   const classes = useStyles();
   return (
-    <Grid item xs={12} md={4}>
-      <Grid item xs={12} container wrap className={classes.root}>
+    <Grid item xs={12} md={4} className={classes.root}>
+      <Grid item xs={12} container wrap className={classes.container}>
         <Typography variant="h1" className={classes.title}>
           UNDER CONSTRUCTION
         </Typography>
@@ -31,7 +31,7 @@ const Left = ({ email, setEmail, handleSubmit }) => {
               name="form-name"
               value="contactunder"
             />
-            <Grid item xs={7}>
+            <Grid item xs={7} sm={6}>
               <TextField
                 fullWidth
                 id="email"
@@ -43,7 +43,7 @@ const Left = ({ email, setEmail, handleSubmit }) => {
                 required
               />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={4} sm={5}>
               <Button
                 variant="contained"
                 className={classes.btn}
@@ -66,22 +66,32 @@ const Left = ({ email, setEmail, handleSubmit }) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(2.5),
+    },
+  },
+  container: {
     rowGap: `${theme.spacing(7.5)}px`,
   },
   title: {
     fontFamily: 'Montserrat',
     fontWeight: 800,
     letterSpacing: '0.15rem',
-    fontSize: theme.spacing(20),
+    fontSize: '4vw',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '9vw',
+    },
     backgroundColor: 'rgb(131,58,180)',
     background:
-      'radial-gradient(circle, #3B1440 11%, #F7B900 56%, #BB6DC7 90%)',
+      'linear-gradient(to bottom right, #3B1440 15%, #BB6DC7 40%, #F7B900 70%) bottom right, linear-gradient(to bottom left, #3B1440 15%, #BB6DC7 40%, #F7B900 70%) bottom left, linear-gradient(to top left, #3B1440 25%, #BB6DC7 70%) top left, linear-gradient(to top right,  #3B1440 25%, #BB6DC7 70%) top right;',
     backgroundRepeat: 'no-repeat',
+    backgroundSize: '50% 50%',
     fontStyle: 'normal',
     width: 'fit-content',
     boxSizing: 'border-box',
     WebkitTextFillColor: 'transparent',
     WebkitBackgroundClip: 'text',
+    MozBackgroundClip: 'text',
   },
   subTitle: {
     width: 'fit-content',
@@ -124,8 +134,10 @@ const useStyles = makeStyles((theme) => ({
   btnTxt: {
     fontFamily: 'Montserrat',
     fontWeight: 'bold',
-    fontSize: theme.spacing(4.5),
     color: theme.palette.common.white,
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.775rem',
+    },
   },
 }));
 
