@@ -7,7 +7,8 @@ import BrandSectionText from './BrandSectionText'
 import Icons from './IconsBrand/indexIcons';
 import Colors from './ColorsBrand/indexColors';
 
-const Brand = ({ logos, colors }) => {
+const Brand = ({ logos, colors, identityInfo, legalInfo }) => {
+  const { description:{description}, title } = legalInfo
   const classes = useStyles();
   return (
     <Grid
@@ -21,7 +22,15 @@ const Brand = ({ logos, colors }) => {
       <Icons logos={logos} />
       <Colors colors={colors} />
       <TypographySection />
-      <BrandSectionText haveList/>
+      <BrandSectionText
+        title="IDENTITY GUIDELINES"
+        haveList
+        listItems={identityInfo}
+      />
+      <BrandSectionText
+        title={title}
+        text={description}
+      />
     </Grid>
   );
 };

@@ -21,8 +21,8 @@ const TitleIcons = ({ title, sort }) => {
 const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: 'Montserrat',
-    fontWeight: 900,
-    fontSize: 30,
+    fontWeight: 700,
+    fontSize: 40,
     marginLeft: '1%',
     marginBottom: '4%',
     marginTop: '4%',
