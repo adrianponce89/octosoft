@@ -136,7 +136,7 @@ const menuList = [
     children: [
       { title: 'About Octosoft', link: '/aboutus' },
       { title: 'Our Team', link: '/aboutus' },
-      { title: 'Our Brand', link: '/underConstruction' },
+      { title: 'Our Brand', link: '/brand' },
     ],
   },
   {
