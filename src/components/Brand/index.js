@@ -3,6 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import TypographySection from './TypographySection/index'
 import BrandHeader from './BrandHeader'
+import BrandSectionText from './BrandSectionText'
 
 const Brand = () => {
     const classes = useStyles();
@@ -16,6 +17,7 @@ const Brand = () => {
       >
         <BrandHeader />
         <TypographySection />
+        <BrandSectionText haveList/>
       </Grid>
     );
 }
