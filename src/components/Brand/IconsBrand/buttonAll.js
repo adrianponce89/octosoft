@@ -7,7 +7,7 @@ import { saveAs } from 'file-saver';
 const ButtonAll = ({files}) => {
   const classes = useStyles();
 
-  const toDataURL = (url) =>{
+  const toDataURL = (url) =>
   fetch(url)
     .then((response) => response.blob())
     .then(
@@ -19,19 +19,25 @@ const ButtonAll = ({files}) => {
           reader.readAsDataURL(blob);
         }),
     );
-  }
+  
 
   const onDownloadZip = async () => {
     let zip = new JSZip();
     let img = zip.folder('logos');
 
-    files.map( async (file,index) => {
-      const dataUrl = await toDataURL(file)
-      console.log('mapping', dataUrl);
-      let array = [];
-      array = dataUrl.split(',');
-      img.file(`octoLogo${index}`, array[1], { base64: true });
-    })
+    // files.map( async (file,index) => {
+    //   const dataUrl = await toDataURL(file)
+    //   console.log('mapping', dataUrl);
+    //   let array = [];
+    //   array = dataUrl.split(',');
+    //   img.file(`octoLogo${index}`, array[1], { base64: true });
+    // })
+
+    const dataUrl = await toDataURL(files[0]);
+    console.log('mapping', dataUrl);
+    let array = [];
+    array = dataUrl.split(',');
+    img.file(`octoLogo`, array[1], { base64: true });
 
     zip.generateAsync({ type: 'blob' }).then(function (content) {
       saveAs(content, 'logosOctosoft.zip');
