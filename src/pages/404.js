@@ -5,7 +5,11 @@ import NotFound from '../components/NotFound';
 
 const NotFoundPage = () => {
   return (
-    <Container innerBackground={'#E5E5E5'}>
+    <Container
+      backgroundColor={'#E5E5E5'}
+      innerBackground={'#E5E5E5'}
+      opacity={1}
+    >
       <NotFound />
     </Container>
   );
