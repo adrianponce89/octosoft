@@ -26,7 +26,6 @@ export const onDownloadPNG = async (imgUrl, title) => {
   let blob = await fetch(imgUrl);
   blob.blob().then((blob) => {
     const url = window.URL.createObjectURL(
-      // new Blob([blob], { type: 'image/png' }),
       new Blob([blob], { type: 'image/png' }),
     );
     const link = document.createElement('a');
