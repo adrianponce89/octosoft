@@ -22,6 +22,38 @@ export const submitForm = (formName, params) => {
   });
 };
 
+export const onDownloadPNG = async (imgUrl, title) => {
+  let blob = await fetch(imgUrl);
+  blob.blob().then((blob) => {
+    const url = window.URL.createObjectURL(
+      // new Blob([blob], { type: 'image/png' }),
+      new Blob([blob], { type: 'image/png' }),
+    );
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', title);
+    document.body.appendChild(link);
+    link.click();
+    link.parentNode.removeChild(link);
+  });
+};
+
+export const onDownloadSVG = async (imgUrl, title) => {
+  let blob = await fetch(imgUrl);
+  blob.blob().then((blob) => {
+    const url = window.URL.createObjectURL(
+      // new Blob([blob], { type: 'image/png' }),
+      new Blob([blob], { type: 'image/svg' }),
+    );
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', title);
+    document.body.appendChild(link);
+    link.click();
+    link.parentNode.removeChild(link);
+  });
+};
+
 export const darkenColor = (color, ratio) => {
   const R = Math.floor(
     parseInt(color.slice(1, 3), 16) * ratio,

@@ -9,6 +9,10 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
+import {
+  onDownloadPNG,
+  onDownloadSVG,
+} from '../../../utils/index.js';
 
 const IconsCardRight = ({ logos }) => {
   const classes = useStyles();
@@ -25,23 +29,33 @@ const IconsCardRight = ({ logos }) => {
           >
             <Card className={classes.logoCard}>
               <div className={classes.noBorder}>
-                <div
-                  className={classes.cardMedia}
-                  style={{
-                    backgroundImage: `url(${item.image.file.url})`,
-                  }}
-                />
+                  <div
+                    className={classes.cardMedia}
+                    style={{
+                      backgroundImage: `url(${item.image.file.url})`,
+                    }}
+                  />
               </div>
             </Card>
             <Typography className={classes.description}>
               {item.description.description}
             </Typography>
             <Box className={classes.groupButtons}>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() =>
+                  onDownloadPNG(item.image.file.url, 'logoOcto')
+                }
+              >
                 <Download className={classes.iconButton} />
                 PNG
               </Button>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() =>
+                  onDownloadSVG(item.image.file.url, 'logoOcto')
+                }
+              >
                 <Download className={classes.iconButton} />
                 SVG
               </Button>
@@ -66,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     height: '260px',
     backgroundColor: '#37ADD4',
     outline: 'none',
-    border: 0,
+    border: 'none',
   },
   cardMedia: {
     width: '100%',
@@ -74,8 +88,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
-    border: 0,
     overflow: 'hidden',
+    border: '-2px solid yellow',
   },
   logoCard: {
     alignItems: 'centar',
