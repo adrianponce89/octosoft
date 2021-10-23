@@ -3,6 +3,8 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Icons from './IconsBrand/indexIcons';
 import Colors from './ColorsBrand/indexColors';
+import TypographySection from './TypographySection/index';
+import BrandHeader from './BrandHeader';
 const Brand = ({ logos, colors }) => {
   const classes = useStyles();
   return (
@@ -13,8 +15,10 @@ const Brand = ({ logos, colors }) => {
       justify="center"
       className={classes.root}
     >
+      <BrandHeader />
       <Icons logos={logos} />
       <Colors colors={colors} />
+      <TypographySection />
     </Grid>
   );
 };

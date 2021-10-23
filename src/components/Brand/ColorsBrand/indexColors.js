@@ -27,7 +27,7 @@ const IndexColors = ({ colors }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginTop: '3%',
+    marginTop: '1%',
     marginBottom: '3%',
   },
   title: {
