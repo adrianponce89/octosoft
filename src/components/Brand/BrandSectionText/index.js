@@ -27,7 +27,7 @@ const BrandSectionText = ({
       </Grid>
       <Grid xs={12} container className={classes.textContainer}>
         {text && (
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="subtitle" className={classes.text}>
               {text}
             </Typography>
@@ -41,7 +41,12 @@ const BrandSectionText = ({
           container
           className={classes.textContainer}
         >
-          <Grid xs={5} container className={classes.textContainer}>
+          <Grid
+            xs={12}
+            md={5}
+            container
+            className={classes.textContainer}
+          >
             {listItems && (
               <>
                 <Typography
@@ -66,7 +71,12 @@ const BrandSectionText = ({
               </>
             )}
           </Grid>
-          <Grid xs={5} container className={classes.textContainer}>
+          <Grid
+            xs={12}
+            md={5}
+            container
+            className={classes.textContainer}
+          >
             {listItems && (
               <>
                 <Typography
