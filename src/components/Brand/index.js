@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import BrandHeader from './BrandHeader'
 
 const Brand = () => {
     const classes = useStyles();
@@ -12,13 +13,14 @@ const Brand = () => {
         justify="center"
         className={classes.root}
       >
+        <BrandHeader />
       </Grid>
     );
 }
 
 const useStyles = makeStyles((theme) => ({
     root:{
-        height: 100,
+        // height: 100,
     }
 }))
 
