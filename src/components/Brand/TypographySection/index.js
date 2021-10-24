@@ -133,7 +133,7 @@ const TypographySection = () => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: { padding: theme.spacing(0, 5) },
+  root: {},
   fontContainer: {
     margin: theme.spacing(6, 0),
   },
@@ -141,7 +141,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
   },
   buttonLink: {
-    padding: theme.spacing(2,5),
+    padding: theme.spacing(2, 5),
     marginTop: theme.spacing(3),
     border: '1px solid #FF9F3B',
     boxShadow:
@@ -159,12 +159,12 @@ const useStyles = makeStyles((theme) => ({
   typographyMontserrat: {
     fontFamily: 'Montserrat',
     fontWeight: 700,
-    fontSize: 28,
+    fontSize: 24,
     lineHeight: '50px',
     color: '#000000',
     letterSpacing: '0.05em',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   montserratHeadlines: {
@@ -174,7 +174,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   poppinsSubtitles: {
@@ -185,7 +185,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     color: '#000000',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   montserratSubtitles: {
@@ -196,7 +196,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   montserratRegular: {
@@ -206,7 +206,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   poppinsRegular: {
@@ -216,18 +216,18 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   typographyPoppins: {
     fontFamily: 'Poppins',
     fontWeight: 700,
-    fontSize: 28,
+    fontSize: 24,
     lineHeight: '50px',
     color: '#000000',
     letterSpacing: '0.05em',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   poppinsHeadlines: {
@@ -237,7 +237,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
-      fontSize: 16,
+      fontSize: 14,
     },
   },
   titleLeft: {},

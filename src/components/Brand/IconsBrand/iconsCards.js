@@ -9,13 +9,17 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
+import {
+  onDownloadPNG,
+  onDownloadSVG,
+} from '../../../utils/index.js';
 
 const IconsCards = ({ logos }) => {
   const classes = useStyles();
   return (
     <Grid container xs={12} justify="flex-start">
       {logos &&
-        logos.slice(0,3).map((item, index) => (
+        logos.slice(0, 3).map((item, index) => (
           <Grid
             item
             md={3}
@@ -35,11 +39,21 @@ const IconsCards = ({ logos }) => {
               {item.description.description}
             </Typography>
             <Box className={classes.groupButtons}>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() =>
+                  onDownloadPNG(item.image.file.url, 'logoOcto')
+                }
+              >
                 <Download className={classes.iconButton} />
                 PNG
               </Button>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() =>
+                  onDownloadSVG(item.image.file.url, 'logoOcto')
+                }
+              >
                 <Download className={classes.iconButton} />
                 SVG
               </Button>

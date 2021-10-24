@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BrandHeaderCard from './BrandHeaderCard'
-import Line from '../../../assets/underline.svg'
+import Line from '../../../assets/Divider.svg'
 
 const BrandHeader = () => {
     const classes = useStyles()
