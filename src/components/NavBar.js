@@ -158,7 +158,7 @@ const menuList = [
       },
     ],
   },
-  { title: 'CONTACT US', children: [] },
+  { title: 'CONTACT US', children: [], linkContact: '/contact' },
 ];
 const NavLinks = (props) => {
   const classes = useStyles(props);
@@ -174,6 +174,8 @@ const NavLinks = (props) => {
     setAnchorEl(null);
   };
 
+  console.log(props.onDesktop)
+
   return (
     <>
       {menuList.map((menu) =>
@@ -183,15 +185,52 @@ const NavLinks = (props) => {
           </Link>
         ) : menu.children ? (
           <>
-            <a
-              aria-controls="simple-menu"
-              aria-haspopup="true"
-              onClick={(e) => handleClick(e, menu.title)}
-              className={classes.link}
-              margin={2}
-            >
-              <div className={classes.chevron}>{menu.title}</div>
-            </a>
+            {props.onDesktop !== true ? (
+              menu.title !== 'CONTACT US' ? (
+                <a
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={(e) => handleClick(e, menu.title)}
+                  className={classes.link}
+                  margin={2}
+                >
+                  <div className={classes.chevron}>{menu.title}</div>
+                </a>
+              ) : null
+            ) : (
+              <a
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={(e) => handleClick(e, menu.title)}
+                className={classes.link}
+                margin={2}
+              >
+                <div className={classes.chevron}>{menu.title}</div>
+              </a>
+            )}
+            {/* {(menu.title !== 'CONTACT US') &
+            (props.onDesktop !== true) ? (
+              <a
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={(e) => handleClick(e, menu.title)}
+                className={classes.link}
+                margin={2}
+              >
+                <div className={classes.chevron}>{menu.title}</div>
+              </a>
+            ) : null} */}
+
+            {/* {props.onDesktop === false &&
+            menu.title === 'CONTACT US' ? (
+              <Link
+                className={classes.link}
+                margin={2}
+                to={menu.linkContact}
+              >
+                <div className={classes.linkText}>{menu.title}</div>
+              </Link>
+            ) : null} */}
             {menuSelected === menu.title ? (
               <Menu
                 id="simple-menu"
@@ -218,6 +257,12 @@ const NavLinks = (props) => {
           </>
         ) : null,
       )}
+      {!props.onDesktop && (
+        <Link className={classes.link} margin={2} to={'/contact'}>
+          <div className={classes.linkText}>{'CONTACT US'}</div>
+        </Link>
+      )}
+
       <Link
         className={classes.linkButton}
         to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
@@ -270,7 +315,10 @@ const NavBar = (props) => {
             </Hidden>
             <Hidden mdDown>
               <Box className={classes.links}>
-                <NavLinks transparent={transparent} />
+                <NavLinks
+                  transparent={transparent}
+                  onDesktop={true}
+                />
               </Box>
             </Hidden>
           </Toolbar>
@@ -283,7 +331,11 @@ const NavBar = (props) => {
           onClose={() => setShowDrawer(false)}
           onOpen={() => setShowDrawer(true)}
         >
-          <NavLinks color="black" textShadow="none" />
+          <NavLinks
+            color="black"
+            textShadow="none"
+            onDesktop={false}
+          />
         </SwipeableDrawer>
       </Hidden>
     </React.Fragment>

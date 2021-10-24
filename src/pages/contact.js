@@ -9,6 +9,9 @@ import Container from '../components/Container';
 import BackgroundImage from '../assets/Trama.png';
 import { submitForm, darkenColor } from '../utils';
 import PrimaryInput from '../components/PrimaryInput';
+import discord from '../assets/discord.png';
+import whatsapp from '../assets/whatsapp.png';
+import telegram from '../assets/telegram.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -69,6 +72,20 @@ const useStyles = makeStyles((theme) => ({
       background: (props) =>
         darkenColor(props.contactBanner.color, 0.8),
     },
+  },
+  phoneImg: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  icon: { height: '50px', width: '50px', margin: '0 20px' },
+  imgMobileContainer: {
+    margin: theme.spacing(7, 0),
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flexDirection: 'column',
   },
 }));
 
@@ -220,10 +237,42 @@ const Contact = (props) => {
                 name="content"
                 onChange={({ target }) => setContent(target.value)}
                 multiline
-                rows={12}
+                rows={8}
                 size="small"
               />
+              <Hidden lgUp>
+                <Grid
+                  item
+                  className={classes.imgMobileContainer}
+                  xs={12}
+                >
+                  <div className={classes.phoneImg}>
+                    <a href={`https://wa.me/${14152864255}`}>
+                      <img
+                        className={classes.icon}
+                        src={whatsapp}
+                        alt="whatsapp"
+                      />
+                    </a>
+                    <a href={`https://telegram.me/${14152864255}`}>
+                      <img
+                        className={classes.icon}
+                        src={telegram}
+                        alt="telegram"
+                      />
+                    </a>
+                    <a href={`https://discord.gg/rWPADbXrEd`}>
+                      <img
+                        className={classes.icon}
+                        src={discord}
+                        alt="discord"
+                      />
+                    </a>
+                  </div>
+                </Grid>
+              </Hidden>
             </Grid>
+
             <div className={classes.buttonContainer}>
               <Button
                 variant="contained"
