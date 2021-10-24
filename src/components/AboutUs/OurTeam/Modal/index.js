@@ -38,7 +38,7 @@ const OurTeamModal = ({
           </Typography>
         </Grid>
 
-        <Grid item xs={11} className={classes.fixResponsive}>
+        <Grid item  className={classes.fixResponsive}>
           <Grid item xs={10} container alignItems="center">
             <Typography variant="h4" className={classes.subTitle}>
               Expertise
@@ -47,12 +47,12 @@ const OurTeamModal = ({
 
           <Grid
             item
-            xs={11}
             container
             direction="column"
             className={classes.containerDescription}
           >
             <div
+            className={classes.expertise}
               dangerouslySetInnerHTML={{
                 __html: documentToHtmlString(expertise.json),
               }}
@@ -150,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 3,
     marginLeft: '36%',
     '@media (max-width: 768px)': {
-      width: '95%',
+      width: '90%',
       marginLeft: '5%',
     },
   },
@@ -172,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '5px 0px 0px rgb(130 127 132)',
     borderRadius: 10,
     '@media (max-width: 768px)': {
-      display:'none',
+      display: 'none',
       width: '0%',
       height: '85%',
     },
@@ -215,7 +215,13 @@ const useStyles = makeStyles((theme) => ({
     color: '#26A1FF',
     width: '100%',
   },
+  expertise:{
+    '@media (max-width: 768px)': {
+      width: '100%',
+    },
+  },
   fixResponsive: {
+    width: '100%',
     '@media (max-width: 768px)': {
       height: '40vh',
       width: '100%',
@@ -260,7 +266,7 @@ const useStyles = makeStyles((theme) => ({
       margin: '0 10px 10px 0',
       '@media (max-width: 768px)': {
         fontSize: '1.5vh',
-        width:'100%'
+        width: '100%',
       },
     },
     '& li p::before': {
