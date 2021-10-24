@@ -9,7 +9,7 @@ import TitleIcons from './titleIcons';
 const IndexIcons = ({ logos }) => {
   const classes = useStyles();
   return (
-    <Grid className={classes.root} xs={12} container justify="center">
+    <Grid className={classes.root} xs={11} container justify="center">
       <TitleIcons title={'LOGOS'} sort={'Left'} />
       <IconsCards logos={logos} />
       <TitleIcons title={' NEGATIVE LOGOS'} sort={'Right'} />
