@@ -12,7 +12,9 @@ const IndexColors = ({ colors }) => {
   return (
     <Grid className={classes.root} xs={11} container justify="center">
       <Grid xs={12} container justify="left">
-        <Typography className={classes.title}>THE COLORS</Typography>
+        <Typography className={classes.title}>
+          COLOR PALETTE
+        </Typography>
       </Grid>
       <TitleColors text={'PRIMARY'} />
       <ColorsCards colors={primary} />
@@ -32,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontFamily: 'Montserrat',
-    fontWeight: 900,
-    fontSize: 30,
+    fontWeight: 700,
+    fontSize: 40,
     justifyContent: 'flex-start',
     marginBottom: '1%',
     marginTop: '6%',

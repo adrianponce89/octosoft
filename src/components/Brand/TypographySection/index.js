@@ -133,7 +133,7 @@ const TypographySection = () => {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: { padding: theme.spacing(0, 5) },
+  root: {  },
   fontContainer: {
     margin: theme.spacing(6, 0),
   },
@@ -159,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
   typographyMontserrat: {
     fontFamily: 'Montserrat',
     fontWeight: 700,
-    fontSize: 28,
+    fontSize: 24,
     lineHeight: '50px',
     color: '#000000',
     letterSpacing: '0.05em',
@@ -222,7 +222,7 @@ const useStyles = makeStyles((theme) => ({
   typographyPoppins: {
     fontFamily: 'Poppins',
     fontWeight: 700,
-    fontSize: 28,
+    fontSize: 24,
     lineHeight: '50px',
     color: '#000000',
     letterSpacing: '0.05em',
