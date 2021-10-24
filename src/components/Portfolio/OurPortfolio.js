@@ -17,7 +17,7 @@ const OurPortfolio = ({ description, colorTitle, title }) => {
         <Typography variant="h5" className={classes.titleCard}>
           {title}
         </Typography>
-        <Grid item xs={10}>
+        <Grid item xs={12} ms={10}>
           <Typography variant="body1" className={classes.description}>
             {description}
           </Typography>
@@ -50,6 +50,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
+    [theme.breakpoints.down('xs')]: {
+      textAlign: 'center',
+    },
   },
   description: {
     fontFamily: 'Montserrat',
@@ -57,6 +60,9 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'break-spaces',
     fontSize: '1.625rem',
     textAlign: 'center',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '1rem',
+    },
   },
 }));
 
