@@ -28,7 +28,6 @@ const OurTeamModal = ({
       <Grid item xs={4} className={classes.cornerTopRight} />
       <Grid
         item
-        xs={9}
         container
         justify="flex-start"
         className={classes.boxInfo}
@@ -39,7 +38,7 @@ const OurTeamModal = ({
           </Typography>
         </Grid>
 
-        <Grid item xs={11} className={classes.fixResponsive}>
+        <Grid item  className={classes.fixResponsive}>
           <Grid item xs={10} container alignItems="center">
             <Typography variant="h4" className={classes.subTitle}>
               Expertise
@@ -48,19 +47,19 @@ const OurTeamModal = ({
 
           <Grid
             item
-            xs={11}
             container
             direction="column"
             className={classes.containerDescription}
           >
             <div
+            className={classes.expertise}
               dangerouslySetInnerHTML={{
                 __html: documentToHtmlString(expertise.json),
               }}
             />
           </Grid>
         </Grid>
-        <Grid item xs={9} className={classes.fixResponsive}>
+        <Grid F className={classes.fixResponsive}>
           <Grid item xs={10} container alignItems="center">
             <Typography variant="h4" className={classes.subTitle}>
               Bio
@@ -143,10 +142,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '88%',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
+    '@media (max-width: 768px)': {
+      width: '100%',
+    },
   },
   boxInfo: {
     zIndex: 3,
     marginLeft: '36%',
+    '@media (max-width: 768px)': {
+      width: '90%',
+      marginLeft: '5%',
+    },
   },
   boxImageMember: {
     position: 'absolute',
@@ -166,7 +172,8 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: '5px 0px 0px rgb(130 127 132)',
     borderRadius: 10,
     '@media (max-width: 768px)': {
-      width: '90%',
+      display: 'none',
+      width: '0%',
       height: '85%',
     },
   },
@@ -206,10 +213,18 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1em',
     fontWeight: 500,
     color: '#26A1FF',
+    width: '100%',
+  },
+  expertise:{
+    '@media (max-width: 768px)': {
+      width: '100%',
+    },
   },
   fixResponsive: {
+    width: '100%',
     '@media (max-width: 768px)': {
       height: '40vh',
+      width: '100%',
     },
   },
   description: {
@@ -227,11 +242,16 @@ const useStyles = makeStyles((theme) => ({
       '@media (max-width: 585px)': {
         fontSize: '1.5vh',
         height: 'fit-content',
+        width: '100%',
       },
       '@media (max-width: 565px)': {
         fontSize: '1.5vh',
         height: 'fit-content',
+        width: '100%',
       },
+    },
+    '@media (max-width: 768px)': {
+      width: '100%',
     },
   },
   containerDescription: {
@@ -246,6 +266,7 @@ const useStyles = makeStyles((theme) => ({
       margin: '0 10px 10px 0',
       '@media (max-width: 768px)': {
         fontSize: '1.5vh',
+        width: '100%',
       },
     },
     '& li p::before': {
@@ -267,6 +288,7 @@ const useStyles = makeStyles((theme) => ({
       '@media (max-width: 760px)': {
         flexWrap: 'nowrap',
         maxHeight: 'max-content',
+        width: '100%',
       },
     },
     '@media (max-width: 768px)': {
@@ -281,6 +303,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     '@media (max-width: 768px)': {
       top: '0%',
+      width: '100%',
       margin: 0,
     },
   },
