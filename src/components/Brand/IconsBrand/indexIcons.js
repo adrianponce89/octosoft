@@ -6,8 +6,8 @@ import IconsCardsRight from './iconsCardsRight';
 import IconsMovie from './iconsMovie';
 import ButtonAll from './buttonAll';
 import TitleIcons from './titleIcons';
+
 const IndexIcons = ({ logos }) => {
-  console.log('logos', logos)
   const [logoFiles, setLogoFiles] = useState([])
 
   useEffect(() => {

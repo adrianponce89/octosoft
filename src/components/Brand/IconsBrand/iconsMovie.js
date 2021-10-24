@@ -8,8 +8,21 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
+import {
+  onDownloadFBX,
+} from '../../../utils/index.js';
 
 const IconsMovie = ({ logos }) => {
+
+  const handleDownload = (asset) =>{
+    console.log('fbx download!')
+    onDownloadFBX(
+      asset.file.url,
+      asset.file.fileName,
+      asset.file.contentType,
+    );
+  }
+
   const classes = useStyles();
   return (
     <Grid container xs={12} justify="flex-start">
@@ -35,31 +48,49 @@ const IconsMovie = ({ logos }) => {
               {item.description.description}
             </Typography>
             <Box className={classes.groupButtons}>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() => handleDownload(item.fbxMedia[0])}
+              >
                 <Download className={classes.iconButton} />
                 FBX Metallic
               </Button>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() => handleDownload(item.fbxMedia[1])}
+              >
                 <Download className={classes.iconButton} />
                 FBX Matte
               </Button>
             </Box>
             <Box className={classes.groupButtons}>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() => handleDownload(item.fbxMedia[2])}
+              >
                 <Download className={classes.iconButton} />
                 FBX Metallic Thin
               </Button>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() => handleDownload(item.fbxMedia[3])}
+              >
                 <Download className={classes.iconButton} />
                 FBX Matte Thin
               </Button>
             </Box>
             <Box className={classes.groupButtons}>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() => handleDownload(item.fbxMedia[4])}
+              >
                 <Download className={classes.iconButton} />
                 FBX Metallic Bold
               </Button>
-              <Button className={classes.buttonsCard}>
+              <Button
+                className={classes.buttonsCard}
+                onClick={() => handleDownload(item.fbxMedia[5])}
+              >
                 <Download className={classes.iconButton} />
                 FBX Matte Bold
               </Button>

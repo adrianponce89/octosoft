@@ -37,6 +37,21 @@ export const onDownloadPNG = async (imgUrl, title) => {
   });
 };
 
+export const onDownloadFBX = async (imgUrl, title, type) => {
+  let blob = await fetch(imgUrl);
+  blob.blob().then((blob) => {
+    const url = window.URL.createObjectURL(
+      new Blob([blob], { type: type }),
+    );
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', title);
+    document.body.appendChild(link);
+    link.click();
+    link.parentNode.removeChild(link);
+  });
+};
+
 export const onDownloadSVG = async (imgUrl, title) => {
   let blob = await fetch(imgUrl);
   blob.blob().then((blob) => {

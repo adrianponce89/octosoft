@@ -56,6 +56,13 @@ export const query = graphql`
                  description
                }
                order
+               fbxMedia {
+                 file {
+                   contentType
+                   fileName
+                   url
+                 }
+               }
              }
            }
            allContentfulBrandColorCard(sort: { fields: order }) {
