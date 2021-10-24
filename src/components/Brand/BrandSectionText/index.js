@@ -41,12 +41,7 @@ const BrandSectionText = ({
           container
           className={classes.textContainer}
         >
-          <Grid
-            xs={12}
-            md={5}
-            container
-            className={classes.textContainer}
-          >
+          <Grid xs={12} md={5} container className={classes.wrapper}>
             {listItems && (
               <>
                 <Typography
@@ -57,26 +52,29 @@ const BrandSectionText = ({
                 </Typography>
                 <Grid container item xs={12}>
                   {listItems[0].list1.map((listItem) => (
-                    <Grid item xs={12}>
+                    <Grid
+                      item
+                      xs={12}
+                      container
+                      alignItems="center"
+                      className={classes.textList}
+                    >
                       <GreenIcon className={classes.icon} />
-                      <Typography
-                        variant="subtitle"
-                        className={classes.listItem}
-                      >
-                        {listItem}
-                      </Typography>
+                      <Grid item xs={10}>
+                        <Typography
+                          variant="subtitle"
+                          className={classes.listItem}
+                        >
+                          {listItem}
+                        </Typography>
+                      </Grid>
                     </Grid>
                   ))}
                 </Grid>
               </>
             )}
           </Grid>
-          <Grid
-            xs={12}
-            md={5}
-            container
-            className={classes.textContainer}
-          >
+          <Grid xs={12} md={5} container className={classes.wrapper}>
             {listItems && (
               <>
                 <Typography
@@ -87,14 +85,22 @@ const BrandSectionText = ({
                 </Typography>
                 <Grid container item xs={12}>
                   {listItems[1].list1.map((listItem) => (
-                    <Grid item xs={12}>
+                    <Grid
+                      item
+                      xs={12}
+                      container
+                      alignItems="center"
+                      className={classes.textList}
+                    >
                       <PinkIcon className={classes.icon} />
-                      <Typography
-                        variant="subtitle"
-                        className={classes.listItem}
-                      >
-                        {listItem}
-                      </Typography>
+                      <Grid item xs={10}>
+                        <Typography
+                          variant="subtitle"
+                          className={classes.listItem}
+                        >
+                          {listItem}
+                        </Typography>
+                      </Grid>
                     </Grid>
                   ))}
                 </Grid>
@@ -110,7 +116,7 @@ const BrandSectionText = ({
 const useStyles = makeStyles((theme) => ({
   root: {},
   fontContainer: {
-    margin: theme.spacing(8,0, 0, 6),
+    margin: theme.spacing(8, 0, 0, 6),
   },
   link: {
     textDecoration: 'none',
@@ -121,6 +127,9 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid #FF9F3B',
     boxShadow:
       '-3px -3px 5px rgba(255, 159, 59, 0.25), 3px 3px 5px rgba(255, 159, 59, 0.25);',
+  },
+  wrapper: {
+    margin: theme.spacing(3, 0, 0, 0),
   },
   title: {
     margin: theme.spacing(6, 0),
@@ -137,17 +146,29 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     fontSize: 30,
     color: '#000000',
+    '@media (max-width: 760px)': {
+      fontSize: 24,
+    },
   },
   listItem: {
     fontFamily: 'Montserrat',
     fontWeight: 700,
     fontSize: 15,
     color: '#000000',
+    '@media (max-width: 760px)': {
+      fontSize: 13,
+    },
   },
-  icon:{
+  icon: {
     width: 24,
-    marginRight: theme.spacing(2)
+    marginRight: theme.spacing(2),
+    '@media (max-width: 760px)': {
+      width: 15,
+    },
   },
+  textList:{
+    marginTop:5,
+  }
 }));
 
 export default BrandSectionText

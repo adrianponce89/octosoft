@@ -38,7 +38,6 @@ const Brand = ({ logos, colors, identityInfo, legalInfo }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    padding: theme.spacing(0, 15),
     '@media (max-width: 768px)': {
       padding: 0,
     },
