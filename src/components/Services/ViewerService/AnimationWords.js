@@ -14,7 +14,7 @@ const AnimationWords = ({ words }) => {
       alignItems="center"
       className={classes.root}
     >
-      <TypingAnimation words={words} fontSize="70px" />
+      <TypingAnimation words={words} />
     </Grid>
   );
 };
