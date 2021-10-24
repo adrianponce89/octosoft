@@ -110,14 +110,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-
-    '& > img': {
-      height: '50px',
-      width: '50px',
-      position: 'relative',
-      top: '130px',
-      margin: '0 20px',
-    },
+  },
+  icon: {
+    height: '50px',
+    width: '50px',
+    position: 'relative',
+    top: '130px',
+    margin: '0 20px',
   },
   phoneInput: {
     top: '-22px',
@@ -171,9 +170,27 @@ const Contact = (props) => {
         <div className={classes.formContainer}>
           <Grid item className={classes.imgContainer} md={4}>
             <div className={classes.smartphoneImg}>
-              <img src={whatsapp} alt="whatsapp" />
-              <img src={telegram} alt="telegram" />
-              <img src={discord} alt="discord" />
+              <a href={`https://wa.me/${14152864255}`}>
+                <img
+                  className={classes.icon}
+                  src={whatsapp}
+                  alt="whatsapp"
+                />
+              </a>
+              <a href={`https://telegram.me/${14152864255}`}>
+                <img
+                  className={classes.icon}
+                  src={telegram}
+                  alt="telegram"
+                />
+              </a>
+              <a href={`https://discord.gg/rWPADbXrEd`}>
+                <img
+                  className={classes.icon}
+                  src={discord}
+                  alt="discord"
+                />
+              </a>
             </div>
           </Grid>
           <Grid
