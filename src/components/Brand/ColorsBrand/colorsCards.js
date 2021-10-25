@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '3%',
   },
   eachGrid: {
-    marginRight: '6%',
+    marginRight: '8%',
     '@media (max-width: 768px)': {
       marginRight: 0,
       marginBottom: '5%',
@@ -72,10 +72,11 @@ const useStyles = makeStyles((theme) => ({
   description: {
     fontFamily: 'Montserrat',
     fontWeight: 300,
-    fontSize: 13,
+    fontSize: 10,
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
+    width:'60%'
   },
   eachColor: {
     alignItems: 'flex-end',

@@ -131,9 +131,13 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 300,
     fontSize: 13,
+    height: '5rem',
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
+    '@media (max-width: 768px)': {
+      height: 'fit-content',
+    },
   },
   groupButtons: {
     alignItems: 'flex-start',

@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import IconsCards from './iconsCards';
@@ -8,7 +8,7 @@ import ButtonAll from './buttonAll';
 import TitleIcons from './titleIcons';
 
 const IndexIcons = ({ logos }) => {
-  const [logoFiles, setLogoFiles] = useState([])
+  const [logoFiles, setLogoFiles] = useState([]);
 
   useEffect(() => {
     let array = [];
@@ -37,8 +37,11 @@ const IndexIcons = ({ logos }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginTop: '3%',
+    marginTop: '12%',
     marginBottom: '3%',
+    '@media (max-width: 768px)': {
+      marginTop: '45%',
+    },
   },
   buttonAll: {
     alignItems: 'center',

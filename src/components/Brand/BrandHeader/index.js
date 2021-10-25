@@ -4,47 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import BrandHeaderCard from './BrandHeaderCard'
 import Line from '../../../assets/Divider.svg'
 
-const BrandHeader = () => {
+const BrandHeader = ({titles}) => {
     const classes = useStyles()
-    const cards = [
-      {
-        title: 'WE ARE',
-        order: 1,
-        description: {
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at ex dapibus ex rhoncus tincidunt. Maecenas consectetur rhoncus augue',
-        },
-      },
-      {
-        title: 'THIS IS WHY',
-        order: 2,
-        description: {
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at ex dapibus ex rhoncus tincidunt. Maecenas consectetur rhoncus augue',
-        },
-      },
-      {
-        title: 'PLACEHOLDER',
-        order: 3,
-        description: {
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at ex dapibus ex rhoncus tincidunt. Maecenas consectetur rhoncus augue',
-        },
-      },
-      {
-        title: 'ALIENS',
-        order: 4,
-        description: {
-          description:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at ex dapibus ex rhoncus tincidunt. Maecenas consectetur rhoncus augue',
-        },
-      },
-    ]
-
     return (
       <Grid
         item
-        xs={12}
+        xs={11}
         container
         justify="center"
         alignItems="center"
@@ -99,7 +64,7 @@ const BrandHeader = () => {
           justify="center"
           className={classes.cardContainer}
         >
-          {cards && cards.map((card) => <BrandHeaderCard item={card}/>)}
+          {titles && titles.map((card) => <BrandHeaderCard item={card}/>)}
         </Grid>
       </Grid>
     );
@@ -108,7 +73,7 @@ const BrandHeader = () => {
 const useStyles = makeStyles((theme) => ({
   line: {
     width: 250,
-    paddingRight: '25%',
+    paddingRight: '20%',
     '@media (max-width: 1024px)': {
       width: 200,
       paddingRight: '20%',

@@ -93,13 +93,17 @@ const useStyles = makeStyles((theme) => ({
   description: {
     fontFamily: 'Montserrat',
     fontWeight: 300,
+    height: '5rem',
     fontSize: 13,
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
+    '@media (max-width: 768px)': {
+      height: 'fit-content',
+    },
   },
   groupButtons: {
-    alignItems: 'flex-start',
+    alignItems: 'flex-end',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -108,15 +112,15 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 768px)': {
       justifyContent: 'center',
       flexDirection: 'column',
-      
     },
   },
 
   buttonsCard: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
     display: 'flex',
     fontFamily: 'Montserrat',
     fontSize: 8,
+    height: 'fit-content',
     fontWeight: 600,
     justifyContent: 'left',
     paddingLeft: '0%',

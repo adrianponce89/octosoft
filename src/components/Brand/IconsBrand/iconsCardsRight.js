@@ -5,7 +5,6 @@ import {
   Card,
   Button,
   Box,
-  CardMedia,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
@@ -107,9 +106,13 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 300,
     fontSize: 13,
+    height: '5rem',
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
+    '@media (max-width: 768px)': {
+      height: 'fit-content',
+    },
   },
   groupButtons: {
     alignItems: 'flex-start',
