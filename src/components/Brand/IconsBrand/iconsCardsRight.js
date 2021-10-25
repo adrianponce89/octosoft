@@ -12,11 +12,12 @@ import {
   onDownloadPNG,
   onDownloadSVG,
 } from '../../../utils/index.js';
+import trama from '../../../assets/brand.png';
 
 const IconsCardRight = ({ logos }) => {
   const classes = useStyles();
   return (
-    <Grid container xs={12} justify="flex-end">
+    <Grid container xs={12} justify="flex-end" className={classes.root} >
       {logos &&
         logos.slice(3, 6).map((item, index) => (
           <Grid
@@ -28,12 +29,12 @@ const IconsCardRight = ({ logos }) => {
           >
             <Card className={classes.logoCard}>
               <div className={classes.noBorder}>
-                  <div
-                    className={classes.cardMedia}
-                    style={{
-                      backgroundImage: `url(${item.image.file.url})`,
-                    }}
-                  />
+                <div
+                  className={classes.cardMedia}
+                  style={{
+                    backgroundImage: `url(${item.image.file.url})`,
+                  }}
+                />
               </div>
             </Card>
             <Typography className={classes.description}>
@@ -66,6 +67,12 @@ const IconsCardRight = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  root:{
+    backgroundImage: `url(${trama})`,
+    backgroundPosition: 'left -50% top -50%',
+    backgroundSize: '600px 600px',
+    backgroundRepeat: 'no-repeat',
+  },
   eachGrid: {
     marginLeft: '4%',
     '@media (max-width: 768px)': {
