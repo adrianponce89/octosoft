@@ -135,6 +135,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'left',
     paddingLeft: '0%',
     margin: '0%',
+    textAlign: 'left',
     width: '50%',
     '&:hover': {
       cursor: 'pointer',
