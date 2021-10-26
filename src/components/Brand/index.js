@@ -6,7 +6,7 @@ import BrandHeader from './BrandHeader';
 import BrandSectionText from './BrandSectionText';
 import Icons from './IconsBrand/indexIcons';
 import Colors from './ColorsBrand/indexColors';
-
+import EndSection from './BrandSectionText/sectionEnd';
 const Brand = ({
   logos,
   colors,
@@ -36,7 +36,7 @@ const Brand = ({
         haveList
         listItems={identityInfo}
       />
-      <BrandSectionText title={title} text={description} />
+      <EndSection title={title} text={description} />
     </Grid>
   );
 };

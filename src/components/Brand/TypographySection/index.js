@@ -132,7 +132,7 @@ const TypographySection = () => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginBottom: '2rem',
+    marginBottom: '0rem',
     marginTop: '2rem',
   },
   fontContainer: {

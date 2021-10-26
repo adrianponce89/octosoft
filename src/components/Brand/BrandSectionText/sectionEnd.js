@@ -3,8 +3,9 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import GreenIcon from '../../../assets/iconfigma.svg';
 import PinkIcon from '../../../assets/pinkiconfigma.svg';
+import trama from '../../../assets/Brand2.png';
 
-const BrandSectionText = ({
+const EndSection = ({
   haveList = false,
   title,
   text,
@@ -114,7 +115,12 @@ const BrandSectionText = ({
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    backgroundImage: `url(${trama})`,
+    backgroundPosition: 'right -40% top 0%',
+    backgroundSize: '600px 600px',
+    backgroundRepeat: 'no-repeat',
+  },
   fontContainer: {
     margin: theme.spacing(8, 0, 0, 6),
   },
@@ -171,4 +177,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default BrandSectionText;
+export default EndSection;

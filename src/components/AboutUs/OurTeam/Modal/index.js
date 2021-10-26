@@ -326,10 +326,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#26A1FF',
     boxShadow: '5px 0px 0px rgb(130 127 132)',
     borderRadius: 8,
+    height:'3rem',
     padding: theme.spacing(3, 7.5),
-    position: 'absolute',
+    position: 'fixed',
     right: 32,
-    bottom: 40,
+    bottom: 10,
     '@media (max-width: 768px)': {
       position: 'fixed',
       right: 20,

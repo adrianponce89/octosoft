@@ -72,18 +72,12 @@ const IconsCardRight = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundImage: `url(${trama})`,
-    backgroundPosition: 'left -50% top -50%',
-    backgroundSize: '600px 600px',
-    backgroundRepeat: 'no-repeat',
-  },
   eachGrid: {
-    marginLeft: '4%',
+    marginLeft: '2rem',
     '@media (max-width: 768px)': {
       marginLeft: 0,
-      marginBottom: '5%',
-      marginTop: '5%',
+      marginBottom: '1rem',
+      marginTop: '1rem',
     },
   },
   noBorder: {
@@ -119,8 +113,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 300,
     fontSize: 13,
     height: '5rem',
-    marginBottom: '3%',
-    marginTop: '3%',
+    marginBottom: '1rem',
+    marginTop: '1rem',
     textAlign: 'justify',
     '@media (max-width: 768px)': {
       height: 'fit-content',

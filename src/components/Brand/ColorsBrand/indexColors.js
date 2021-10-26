@@ -29,14 +29,13 @@ const IndexColors = ({ colors }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginBottom: '2rem',
+    marginBottom: '1rem',
   },
   title: {
     fontFamily: 'Montserrat',
     fontWeight: 700,
     fontSize: 40,
     justifyContent: 'flex-start',
-    marginBottom: '1rem',
     marginTop: '1rem',
     '@media (max-width: 768px)': {
       alignItems: 'center',

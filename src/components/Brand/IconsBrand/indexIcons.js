@@ -6,6 +6,7 @@ import IconsCardsRight from './iconsCardsRight';
 import IconsMovie from './iconsMovie';
 import ButtonAll from './buttonAll';
 import TitleIcons from './titleIcons';
+import trama from '../../../assets/Brand.png';
 
 const IndexIcons = ({ logos }) => {
   const [logoFiles, setLogoFiles] = useState([]);
@@ -37,17 +38,21 @@ const IndexIcons = ({ logos }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginTop: '5rem',
-    marginBottom: '2rem',
+    marginTop: '4rem',
+    marginBottom: '1rem',
+    backgroundImage: `url(${trama})`,
+    backgroundPosition: 'left -95% top 60%',
+    backgroundSize: '600px 600px',
+    backgroundRepeat: 'no-repeat',
     '@media (max-width: 768px)': {
-      marginTop: '8rem',
+      marginTop: '5rem',
     },
   },
   buttonAll: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '4rem',
+    marginTop: '2rem',
     width: '100%',
   },
 }));

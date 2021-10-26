@@ -105,11 +105,11 @@ const IconsMovie = ({ logos }) => {
 
 const useStyles = makeStyles((theme) => ({
   eachGrid: {
-    marginRight: '4%',
+    marginRight: '2rem',
     '@media (max-width: 768px)': {
       marginRight: 0,
-      marginBottom: '5%',
-      marginTop: '5%',
+      marginBottom: '1rem',
+      marginTop: '1rem',
     },
   },
   cardMedia: {
@@ -134,8 +134,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 300,
     fontSize: 13,
     height: '5rem',
-    marginBottom: '3%',
-    marginTop: '3%',
+    marginBottom: '1rem',
+    marginTop: '1rem',
     textAlign: 'justify',
     '@media (max-width: 768px)': {
       height: 'fit-content',
