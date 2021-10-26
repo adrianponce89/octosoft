@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BrandHeaderCard from './BrandHeaderCard';
 import Line from '../../../assets/Divider.svg';
-import trama from '../../../assets/brand.png';
+import trama from '../../../assets/Brand.png';
 const BrandHeader = ({ titles }) => {
   const classes = useStyles();
   return (
