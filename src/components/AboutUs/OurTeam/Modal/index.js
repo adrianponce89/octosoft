@@ -28,7 +28,6 @@ const OurTeamModal = ({
       <Grid item xs={4} className={classes.cornerTopRight} />
       <Grid
         item
-        xs={9}
         container
         justify="flex-start"
         className={classes.boxInfo}
@@ -39,7 +38,7 @@ const OurTeamModal = ({
           </Typography>
         </Grid>
 
-        <Grid item xs={11}>
+        <Grid item  className={classes.fixResponsive}>
           <Grid item xs={10} container alignItems="center">
             <Typography variant="h4" className={classes.subTitle}>
               Expertise
@@ -48,19 +47,19 @@ const OurTeamModal = ({
 
           <Grid
             item
-            xs={11}
             container
             direction="column"
             className={classes.containerDescription}
           >
             <div
+            className={classes.expertise}
               dangerouslySetInnerHTML={{
                 __html: documentToHtmlString(expertise.json),
               }}
             />
           </Grid>
         </Grid>
-        <Grid item xs={9}>
+        <Grid F className={classes.fixResponsive}>
           <Grid item xs={10} container alignItems="center">
             <Typography variant="h4" className={classes.subTitle}>
               Bio
@@ -116,6 +115,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 16,
     background: '#F1F1F1',
     overflow: 'hidden',
+    '@media (max-width: 768px)': {
+      width: '90%',
+      left: '5%',
+    },
   },
   cornerTopRight: {
     position: 'absolute',
@@ -139,10 +142,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '88%',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
+    '@media (max-width: 768px)': {
+      width: '100%',
+    },
   },
   boxInfo: {
     zIndex: 3,
     marginLeft: '36%',
+    '@media (max-width: 768px)': {
+      width: '90%',
+      marginLeft: '5%',
+    },
   },
   boxImageMember: {
     position: 'absolute',
@@ -161,11 +171,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     boxShadow: '5px 0px 0px rgb(130 127 132)',
     borderRadius: 10,
+    '@media (max-width: 768px)': {
+      display: 'none',
+      width: '0%',
+      height: '85%',
+    },
   },
   boxName: { columnGap: `${theme.spacing(4)}px` },
   titleName: {
     padding: theme.spacing(8, 0, 4, 0),
-    textShadow: '3px 1px 1px rgb(130 127 132)',
+    /* textShadow: '3px 1px 1px rgb(130 127 132)', */
     fontFamily: 'Poppins',
     fontWeight: 500,
     color: '#26A1FF',
@@ -175,18 +190,42 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 585px)': {
       fontSize: '5vmin',
     },
+    '@media (max-width: 768px)': {
+      padding: 0,
+      marginTop: '5%',
+      marginBottom: '5%',
+    },
   },
   subTitle: {
     fontSize: '2.7vmin',
     fontFamily: 'Poppins',
     fontWeight: 700,
     color: '#f9a055',
+    '@media (max-width: 768px)': {
+      fontSize: '1.7vh',
+      padding: 0,
+      marginTop: '5%',
+      marginBottom: '5%',
+    },
   },
   text: {
     fontFamily: 'Poppins',
     fontSize: '1em',
     fontWeight: 500,
     color: '#26A1FF',
+    width: '100%',
+  },
+  expertise:{
+    '@media (max-width: 768px)': {
+      width: '100%',
+    },
+  },
+  fixResponsive: {
+    width: '100%',
+    '@media (max-width: 768px)': {
+      height: '40vh',
+      width: '100%',
+    },
   },
   description: {
     background: 'transparent',
@@ -198,13 +237,21 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '1em',
       '@media (max-width: 1256px)': {
         fontSize: '1.2vmax',
+        height: 'fit-content',
       },
       '@media (max-width: 585px)': {
-        fontSize: '2.6vmax',
+        fontSize: '1.5vh',
+        height: 'fit-content',
+        width: '100%',
       },
       '@media (max-width: 565px)': {
-        fontSize: '2.6vmin',
+        fontSize: '1.5vh',
+        height: 'fit-content',
+        width: '100%',
       },
+    },
+    '@media (max-width: 768px)': {
+      width: '100%',
     },
   },
   containerDescription: {
@@ -217,6 +264,10 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '1em',
       lineHeight: '1.2em',
       margin: '0 10px 10px 0',
+      '@media (max-width: 768px)': {
+        fontSize: '1.5vh',
+        width: '100%',
+      },
     },
     '& li p::before': {
       content: '"· "',
@@ -237,16 +288,39 @@ const useStyles = makeStyles((theme) => ({
       '@media (max-width: 760px)': {
         flexWrap: 'nowrap',
         maxHeight: 'max-content',
+        width: '100%',
       },
+    },
+    '@media (max-width: 768px)': {
+      width: '100%',
+      height: '70%',
+      margin: 0,
     },
   },
   boxBio: {
     maxHeight: '30vh',
     marginBottom: 40,
     overflow: 'auto',
+    '@media (max-width: 768px)': {
+      top: '0%',
+      width: '100%',
+      margin: 0,
+    },
   },
-  boxButton: { position: 'relative' },
-  boxSocialMedia: { position: 'absolute', bottom: 10, left: 45 },
+  boxButton: {
+    position: 'relative',
+    '@media (max-width: 768px)': {
+      position: 'absolute',
+    },
+  },
+  boxSocialMedia: {
+    position: 'absolute',
+    bottom: 0,
+    left: 45,
+    '@media (max-width: 768px)': {
+      left: 0,
+    },
+  },
   button: {
     zIndex: 3,
     backgroundColor: '#26A1FF',
@@ -256,6 +330,12 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     right: 32,
     bottom: 40,
+    '@media (max-width: 768px)': {
+      position: 'fixed',
+      right: 20,
+      height: '2.5rem',
+      bottom: '2%',
+    },
   },
   textButton: {
     color: '#fff',
@@ -271,6 +351,11 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 3,
     margin: 30,
     width: 'fit-content',
+    '@media (max-width: 768px)': {
+      left: 0,
+      width: '100rem',
+      margin: 0,
+    },
   },
 }));
 

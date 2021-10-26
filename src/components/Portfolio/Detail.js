@@ -9,22 +9,16 @@ const DetailPortfolio = ({ portfolios }) => {
 
   return (
     <Paper square elevation={1} className={classes.root}>
-      <Grid
-        item
-        container
-        xs={10}
-        sm={9}
-        justify="space-evenly"
-        className={classes.boxGrid}
-      >
+      <Grid item container xs={12}>
         {portfolios.map(({ file, title, description }) => (
           <Grid
             item
             xs={12}
-            md={5}
+            md={3}
             container
             justify="center"
             key={title}
+            className={classes.boxGrid}
           >
             <ItemPortfolio
               portfolio={file}
@@ -41,13 +35,16 @@ const DetailPortfolio = ({ portfolios }) => {
 const useStyle = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(8),
-    padding: theme.spacing(25, 0),
+    padding: theme.spacing(10),
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(5),
+    },
     borderRadius: 16,
     display: 'flex',
     justifyContent: 'center',
   },
   boxGrid: {
-    gap: '44px 0',
+    padding: 10,
   },
 }));
 

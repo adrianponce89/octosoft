@@ -11,6 +11,11 @@ const BrandPage = (props) => {
     'data.allContentfulBrandLogoCard.nodes',
   );
 
+  const titlesBrand = get(
+    props,
+    'data.allContentfulBrandHeaderCard.nodes',
+  );
+
   const colorsBrand = get(
     props,
     'data.allContentfulBrandColorCard.nodes',
@@ -26,8 +31,7 @@ const BrandPage = (props) => {
     'data.allContentfulBrandText.nodes[0]',
   );
 
-  console.log(identityGuidelines, legalDisclaimer);
-
+  console.log(titlesBrand);
   return (
     <Container
       background={`url(${BackgroundImage})`}
@@ -38,52 +42,69 @@ const BrandPage = (props) => {
         colors={colorsBrand}
         identityInfo={identityGuidelines}
         legalInfo={legalDisclaimer}
+        titles={titlesBrand}
       />
     </Container>
   );
 };
 
 export const query = graphql`
-         query BrandPageQuery {
-           allContentfulBrandLogoCard(sort: { fields: order }) {
-             nodes {
-               image {
-                 file {
-                   url
-                 }
-               }
-               description {
-                 description
-               }
-               order
-             }
-           }
-           allContentfulBrandColorCard(sort: { fields: order }) {
-             nodes {
-               description {
-                 description
-               }
-               colors
-               order
-               title
-             }
-           }
-           allContentfulBrandTextList(sort: { fields: order }) {
-             nodes {
-               title
-               list1
-               order
-             }
-           }
-           allContentfulBrandText {
-             nodes {
-               title
-               description {
-                 description
-               }
-             }
-           }
-         }
-       `;
+  query BrandPageQuery {
+    allContentfulBrandLogoCard(sort: { fields: order }) {
+      nodes {
+        image {
+          file {
+            url
+          }
+        }
+        description {
+          description
+        }
+        order
+        fbxMedia {
+          file {
+            contentType
+            fileName
+            url
+          }
+        }
+      }
+    }
+    allContentfulBrandColorCard(sort: { fields: order }) {
+      nodes {
+        description {
+          description
+        }
+        colors
+        order
+        title
+      }
+    }
+    allContentfulBrandTextList(sort: { fields: order }) {
+      nodes {
+        title
+        list1
+        order
+      }
+    }
+    allContentfulBrandText {
+      nodes {
+        title
+        description {
+          description
+        }
+      }
+    }
+    allContentfulBrandHeaderCard(sort: { fields: id, order: ASC }) {
+      nodes {
+        title
+        description {
+          description
+          id
+        }
+      }
+    }
+  }
+`;
 
 export default BrandPage;

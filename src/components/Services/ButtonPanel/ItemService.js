@@ -12,6 +12,9 @@ const styles = makeStyles({
     backgroundColor: (props) =>
       props.selected ? 'rgb(236,236,236)' : 'rgb(194,193,191)',
     boxShadow: '0px 5px 0px rgb(130 127 132)',
+    '@media (max-width: 776px)': {
+      margin: 8,
+    },
   },
   buttonIcon: {
     width: '100%',
@@ -36,8 +39,10 @@ const styles = makeStyles({
     fontWeight: 'bolder',
     color: (props) => (props.selected ? 'rgb(113,126,238)' : '#FFF'),
     '@media (max-width: 776px)': {
-      width: '50%',
-      fontSize: '1rem',
+      width: '90%',
+      margin: 0,
+      fontSize: '1.3vh',
+      textAlign: 'flex-start',
     },
   },
 });

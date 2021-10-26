@@ -9,8 +9,11 @@ const useStyles = makeStyles((theme) => ({
   },
   elegantTypewriterTextWrap: {
     fontWeight: '500',
-    fontSize: ({ fontSize }) => fontSize ?? 40,
+    fontSize: 70,
     color: 'gray',
+    '@media (max-width: 768px)': {
+      fontSize: 40,
+    },
   },
 }));
 
