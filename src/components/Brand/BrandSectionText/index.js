@@ -14,7 +14,7 @@ const BrandSectionText = ({
   return (
     <Grid
       item
-      xs={12}
+      xs={11}
       container
       justify="center"
       alignItems="center"

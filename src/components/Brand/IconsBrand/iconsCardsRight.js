@@ -5,7 +5,6 @@ import {
   Card,
   Button,
   Box,
-  CardMedia,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
@@ -13,11 +12,17 @@ import {
   onDownloadPNG,
   onDownloadSVG,
 } from '../../../utils/index.js';
+import trama from '../../../assets/Brand.png';
 
 const IconsCardRight = ({ logos }) => {
   const classes = useStyles();
   return (
-    <Grid container xs={12} justify="flex-end">
+    <Grid
+      container
+      xs={12}
+      justify="flex-end"
+      className={classes.root}
+    >
       {logos &&
         logos.slice(3, 6).map((item, index) => (
           <Grid
@@ -29,12 +34,12 @@ const IconsCardRight = ({ logos }) => {
           >
             <Card className={classes.logoCard}>
               <div className={classes.noBorder}>
-                  <div
-                    className={classes.cardMedia}
-                    style={{
-                      backgroundImage: `url(${item.image.file.url})`,
-                    }}
-                  />
+                <div
+                  className={classes.cardMedia}
+                  style={{
+                    backgroundImage: `url(${item.image.file.url})`,
+                  }}
+                />
               </div>
             </Card>
             <Typography className={classes.description}>
@@ -67,6 +72,12 @@ const IconsCardRight = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    backgroundImage: `url(${trama})`,
+    backgroundPosition: 'left -50% top -50%',
+    backgroundSize: '600px 600px',
+    backgroundRepeat: 'no-repeat',
+  },
   eachGrid: {
     marginLeft: '4%',
     '@media (max-width: 768px)': {
@@ -107,9 +118,13 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 300,
     fontSize: 13,
+    height: '5rem',
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
+    '@media (max-width: 768px)': {
+      height: 'fit-content',
+    },
   },
   groupButtons: {
     alignItems: 'flex-start',
@@ -132,6 +147,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'left',
     paddingLeft: '0%',
     margin: '0%',
+    textAlign: 'left',
     width: '50%',
     '&:hover': {
       cursor: 'pointer',

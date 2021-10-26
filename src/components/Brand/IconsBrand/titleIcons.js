@@ -31,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    marginBottom: '2%',
+    marginTop: '2%',
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',
@@ -40,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
+    marginBottom: '2%',
+    marginTop: '2%',
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',

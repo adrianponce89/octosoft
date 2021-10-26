@@ -21,7 +21,7 @@ const BrandHeaderCard = ({ item }) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '316px',
+    maxWidth: '226px',
     height: '196px',
     marginBottom: theme.spacing(5),
   },
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    fontSize: 19,
+    fontSize: 16,
     marginBottom: 20,
   },
   text: {

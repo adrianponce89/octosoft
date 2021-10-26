@@ -8,24 +8,26 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
-import {
-  onDownloadFBX,
-} from '../../../utils/index.js';
+import { onDownloadFBX } from '../../../utils/index.js';
 
 const IconsMovie = ({ logos }) => {
-
-  const handleDownload = (asset) =>{
-    console.log('fbx download!')
+  const handleDownload = (asset) => {
+    console.log('fbx download!');
     onDownloadFBX(
       asset.file.url,
       asset.file.fileName,
       asset.file.contentType,
     );
-  }
+  };
 
   const classes = useStyles();
   return (
-    <Grid container xs={12} justify="flex-start">
+    <Grid
+      container
+      xs={12}
+      justify="flex-start"
+      className={classes.root}
+    >
       {logos &&
         logos.slice(6, 9).map((item, index) => (
           <Grid
@@ -131,9 +133,13 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 300,
     fontSize: 13,
+    height: '5rem',
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
+    '@media (max-width: 768px)': {
+      height: 'fit-content',
+    },
   },
   groupButtons: {
     alignItems: 'flex-start',
@@ -157,6 +163,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'left',
     margin: '0%',
     paddingLeft: '0%',
+    textAlign: 'left',
     width: '50%',
     '&:hover': {
       cursor: 'pointer',

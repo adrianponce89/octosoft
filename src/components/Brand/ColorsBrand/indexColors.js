@@ -29,7 +29,6 @@ const IndexColors = ({ colors }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginTop: '1%',
     marginBottom: '3%',
   },
   title: {
@@ -38,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 40,
     justifyContent: 'flex-start',
     marginBottom: '1%',
-    marginTop: '6%',
+    marginTop: '4%',
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',
