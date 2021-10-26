@@ -21,7 +21,7 @@ const BrandHeaderCard = ({ item }) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '256px',
+    maxWidth: '286px',
     height: '196px',
     marginBottom: theme.spacing(5),
   },

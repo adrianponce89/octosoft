@@ -68,7 +68,7 @@ const BrandHeader = ({ titles }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundImage: `url(${trama})`,
-    backgroundPosition: 'right -80% top -450%',
+    backgroundPosition: 'right -50% top -400%',
     backgroundSize: '600px 600px',
     backgroundRepeat: 'no-repeat',
   },
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
   line: {
     display:'flex',
-    width: '65%',
+    width: '70%',
     '@media (max-width: 760px)': {
       width:'35%',
     },

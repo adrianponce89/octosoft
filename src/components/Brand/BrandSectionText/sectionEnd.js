@@ -5,12 +5,7 @@ import GreenIcon from '../../../assets/iconfigma.svg';
 import PinkIcon from '../../../assets/pinkiconfigma.svg';
 import trama from '../../../assets/Brand2.png';
 
-const EndSection = ({
-  haveList = false,
-  title,
-  text,
-  listItems,
-}) => {
+const EndSection = ({ haveList = false, title, text, listItems }) => {
   const classes = useStyles();
   return (
     <Grid
@@ -120,6 +115,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'right -40% top 0%',
     backgroundSize: '600px 600px',
     backgroundRepeat: 'no-repeat',
+    '@media (max-width: 768px)': {
+      backgroundImage: 'none',
+    },
   },
   fontContainer: {
     margin: theme.spacing(8, 0, 0, 6),

@@ -41,10 +41,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '4rem',
     marginBottom: '1rem',
     backgroundImage: `url(${trama})`,
-    backgroundPosition: 'left -95% top 60%',
+    backgroundPosition: 'left -65% top 60%',
     backgroundSize: '600px 600px',
     backgroundRepeat: 'no-repeat',
     '@media (max-width: 768px)': {
+      backgroundImage: 'none',
       marginTop: '5rem',
     },
   },

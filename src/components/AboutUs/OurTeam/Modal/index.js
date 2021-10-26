@@ -329,8 +329,9 @@ const useStyles = makeStyles((theme) => ({
     height:'3rem',
     padding: theme.spacing(3, 7.5),
     position: 'fixed',
-    right: 32,
+    right: 120,
     bottom: 10,
+    width:'5rem',
     '@media (max-width: 768px)': {
       position: 'fixed',
       right: 20,
