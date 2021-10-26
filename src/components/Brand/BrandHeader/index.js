@@ -9,7 +9,7 @@ const BrandHeader = ({ titles }) => {
   return (
     <Grid
       item
-      xs={11}
+      xs={12}
       container
       justify="center"
       alignItems="center"
@@ -32,7 +32,7 @@ const BrandHeader = ({ titles }) => {
             BRAND MANUAL
           </Typography>
         </Grid>
-        <Grid container item xs={11} md={11} xl={6} justify="center">
+        <Grid container item xs={12} md={11} xl={6} justify="center">
           <Typography variant="h5" className={classes.description}>
             From freelancers to the world, we <br />
             help people build great digital <br /> products from head
@@ -41,10 +41,11 @@ const BrandHeader = ({ titles }) => {
           <Grid
             container
             item
-            xs={11}
+            xs={12}
             md={11}
             xl={6}
             justify="flex-end"
+            className={classes.gridLine}
           >
             <Line className={classes.line} />
           </Grid>
@@ -71,16 +72,17 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '600px 600px',
     backgroundRepeat: 'no-repeat',
   },
-  line: {
-    width: 250,
-    paddingRight: '20%',
-    '@media (max-width: 1024px)': {
-      width: 200,
-      paddingRight: '20%',
-    },
+  gridLine:{
     '@media (max-width: 760px)': {
-      width: 150,
-      paddingRight: '0%',
+      display:'flex',
+      marginRight:'15%'
+    },
+  },
+  line: {
+    display:'flex',
+    width: '65%',
+    '@media (max-width: 760px)': {
+      width:'35%',
     },
   },
   titleContainer: {

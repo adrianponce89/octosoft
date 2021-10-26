@@ -106,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     padding: '0%',
     width: '100%',
     '@media (max-width: 768px)': {
@@ -119,7 +119,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     display: 'flex',
     fontFamily: 'Montserrat',
-    fontSize: 8,
+    fontSize: 10,
     height: 'fit-content',
     fontWeight: 600,
     justifyContent: 'left',

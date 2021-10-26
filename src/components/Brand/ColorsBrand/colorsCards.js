@@ -50,8 +50,8 @@ const colorsCards = ({ colors }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginBottom: '3%',
-    marginTop: '3%',
+    marginBottom: '2rem',
+    marginTop: '2rem',
   },
   eachGrid: {
     marginRight: '8%',
@@ -72,10 +72,10 @@ const useStyles = makeStyles((theme) => ({
   description: {
     fontFamily: 'Montserrat',
     fontWeight: 300,
-    fontSize: 10,
+    fontSize: 13,
     marginBottom: '3%',
     marginTop: '3%',
-    textAlign: 'justify',
+    textAlign: 'left',
     width:'60%'
   },
   eachColor: {
@@ -92,7 +92,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 10,
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    justifyContent: 'flex-end',
+    justifyContent: 'fle-start',
+    marginLeft:'5%',
     width: '35%',
   },
   boxColors: {

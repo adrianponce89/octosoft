@@ -29,26 +29,15 @@ const IndexColors = ({ colors }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginBottom: '3%',
+    marginBottom: '2rem',
   },
   title: {
     fontFamily: 'Montserrat',
     fontWeight: 700,
     fontSize: 40,
     justifyContent: 'flex-start',
-    marginBottom: '1%',
-    marginTop: '4%',
-    '@media (max-width: 768px)': {
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-    },
-  },
-  subTitle: {
-    fontFamily: 'Montserrat',
-    fontWeight: 900,
-    fontSize: 20,
-    marginBottom: '1%',
-    marginTop: '5%',
+    marginBottom: '1rem',
+    marginTop: '1rem',
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',

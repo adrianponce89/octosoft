@@ -157,7 +157,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     display: 'flex',
     fontFamily: 'Montserrat',
-    fontSize: 8,
+    fontSize: 10,
     fontWeight: 600,
     height: 'fit-content',
     justifyContent: 'left',

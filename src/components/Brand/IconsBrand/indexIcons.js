@@ -37,17 +37,17 @@ const IndexIcons = ({ logos }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
-    marginTop: '12%',
-    marginBottom: '3%',
+    marginTop: '5rem',
+    marginBottom: '2rem',
     '@media (max-width: 768px)': {
-      marginTop: '45%',
+      marginTop: '8rem',
     },
   },
   buttonAll: {
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '5%',
+    marginTop: '4rem',
     width: '100%',
   },
 }));

@@ -30,8 +30,9 @@ const GreyCards = ({ colors }) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: '3%',
-    marginTop: '3%',
+    width: '100%',
+    marginBottom: '2rem',
+    marginTop: '2rem',
   },
   boxGrey: {
     alignItems: 'center',
