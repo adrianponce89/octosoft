@@ -1,18 +1,11 @@
 import React from 'react';
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Box,
-} from '@material-ui/core';
+import { Grid, Typography, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
 import {
   onDownloadPNG,
   onDownloadSVG,
 } from '../../../utils/index.js';
-import trama from '../../../assets/Brand.png';
 
 const IconsCardRight = ({ logos }) => {
   const classes = useStyles();
@@ -32,16 +25,14 @@ const IconsCardRight = ({ logos }) => {
             key={index}
             className={classes.eachGrid}
           >
-            <Card className={classes.logoCard}>
-              <div className={classes.noBorder}>
-                <div
-                  className={classes.cardMedia}
-                  style={{
-                    backgroundImage: `url(${item.image.file.url})`,
-                  }}
-                />
-              </div>
-            </Card>
+            <div className={classes.logoCard}>
+              <div
+                className={classes.cardMedia}
+                style={{
+                  backgroundImage: `url(${item.image.file.url})`,
+                }}
+              />
+            </div>
             <Typography className={classes.description}>
               {item.description.description}
             </Typography>
@@ -86,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#37ADD4',
     outline: 'none',
     border: 'none',
+    borderRadius: '10px 10px 10px 10px',
   },
   cardMedia: {
     width: '100%',
@@ -94,19 +86,23 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
     overflow: 'hidden',
+    borderRadius: '10px 10px 10px 10px',
     border: '-2px solid yellow',
   },
   logoCard: {
     alignItems: 'centar',
     display: 'flex',
     justifyContent: 'center',
-    width: '100%',
+    width: '280px',
+    height: '280px',
+    backgroundColor: '#37ADD4',
+    outline: 'none',
     background: '#FFFFFF',
     border: '1.3px solid #DFDFDF',
     boxSizing: 'border-box',
     boxShadow:
       '-10px -10px 20px rgba(0, 0, 0, 0.1), 10px 10px 20px rgba(0, 0, 0, 0.1)',
-    borderRadius: '6px',
+    borderRadius: '10px 10px 10px 10px',
   },
   description: {
     fontFamily: 'Montserrat',

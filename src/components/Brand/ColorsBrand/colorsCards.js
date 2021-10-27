@@ -32,12 +32,21 @@ const colorsCards = ({ colors }) => {
                         backgroundColor: `${hexadecimals}`,
                       }}
                     />
-                    <Typography
-                      className={classes.hexColor}
-                      style={{ color: `${item.colors[0]}` }}
-                    >
-                      HEX: {hexadecimals}
-                    </Typography>
+                    {item.colors[0] === '#FFE53B' ? (
+                      <Typography
+                        className={classes.hexColor}
+                        style={{ color: '#666666' }}
+                      >
+                        HEX: {hexadecimals}
+                      </Typography>
+                    ) : (
+                      <Typography
+                        className={classes.hexColor}
+                        style={{ color: `${item.colors[0]}` }}
+                      >
+                        HEX: {hexadecimals}
+                      </Typography>
+                    )}
                   </Box>
                 ))}
             </Fragment>
@@ -73,10 +82,11 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 300,
     fontSize: 13,
-    marginBottom: '3%',
-    marginTop: '3%',
+    height: '6rem',
+    marginBottom: '1rem',
+    marginTop: '1rem',
     textAlign: 'left',
-    width:'60%'
+    width: '60%',
   },
   eachColor: {
     alignItems: 'flex-end',
@@ -93,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 600,
     justifyContent: 'fle-start',
-    marginLeft:'5%',
+    marginLeft: '5%',
     width: '35%',
   },
   boxColors: {

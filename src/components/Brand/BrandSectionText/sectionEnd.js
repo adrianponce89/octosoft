@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import GreenIcon from '../../../assets/iconfigma.svg';
 import PinkIcon from '../../../assets/pinkiconfigma.svg';
-import trama from '../../../assets/Brand2.png';
+import trama from '../../../assets/VectorEnd.png';
 
 const EndSection = ({ haveList = false, title, text, listItems }) => {
   const classes = useStyles();
@@ -16,6 +16,7 @@ const EndSection = ({ haveList = false, title, text, listItems }) => {
       alignItems="center"
       className={classes.root}
     >
+      <img src={trama} alt="" className={classes.backgroundimage} />
       <Grid xs={12} container>
         <Typography variant="h4" className={classes.title}>
           {title}
@@ -110,15 +111,13 @@ const EndSection = ({ haveList = false, title, text, listItems }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundImage: `url(${trama})`,
-    backgroundPosition: 'right -40% top 0%',
-    backgroundSize: '600px 600px',
-    backgroundRepeat: 'no-repeat',
-    '@media (max-width: 768px)': {
-      backgroundImage: 'none',
-    },
+  backgroundimage: {
+    position: 'absolute',
+    right: '8%',
+    width: '600px',
+    bottom: '0%',
   },
+  root: {},
   fontContainer: {
     margin: theme.spacing(8, 0, 0, 6),
   },

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Box,
-  CardMedia,
-} from '@material-ui/core';
+import { Grid, Typography, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
 import {
@@ -27,14 +20,13 @@ const IconsCards = ({ logos }) => {
             key={index}
             className={classes.eachGrid}
           >
-            <Card className={classes.logoCard}>
-              <CardMedia
-                component="img"
-                className={classes.cardMedia}
-                image={item.image.file.url}
-                alt={item.description.description}
-              />
-            </Card>
+            <img
+              className={classes.logoCard}
+              sx={{ borderRadius: '50%' }}
+              src={item.image.file.url}
+              alt={item.description.description}
+            />
+
             <Typography className={classes.description}>
               {item.description.description}
             </Typography>
@@ -73,22 +65,19 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '1rem',
     },
   },
-  cardMedia: {
-    width: '100%',
-    height: '260px',
-    objectFit: 'contain',
-  },
   logoCard: {
     alignItems: 'centar',
     display: 'flex',
     justifyContent: 'center',
-    width: '100%',
+    width: '280px',
+    height: '280px',
+    objectFit: 'contain',
     background: '#FFFFFF',
     border: '1.3px solid #DFDFDF',
+    borderRadius: '10px 10px 10px 10px',
     boxSizing: 'border-box',
     boxShadow:
       '-10px -10px 20px rgba(0, 0, 0, 0.1), 10px 10px 20px rgba(0, 0, 0, 0.1)',
-    borderRadius: '6px',
   },
   description: {
     fontFamily: 'Montserrat',

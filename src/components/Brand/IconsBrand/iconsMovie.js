@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Box,
-} from '@material-ui/core';
+import { Grid, Typography, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
 import { onDownloadFBX } from '../../../utils/index.js';
@@ -37,7 +31,7 @@ const IconsMovie = ({ logos }) => {
             key={index}
             className={classes.eachGrid}
           >
-            <Card className={classes.logoCard}>
+            <div className={classes.logoCard}>
               <video
                 src={item.image.file.url}
                 autoPlay={true}
@@ -45,7 +39,7 @@ const IconsMovie = ({ logos }) => {
                 className={classes.cardMedia}
                 muted={true}
               ></video>
-            </Card>
+            </div>
             <Typography className={classes.description}>
               {item.description.description}
             </Typography>
@@ -113,21 +107,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardMedia: {
-    width: '100%',
-    height: '260px',
+    width: '270px',
+    height: '280px',
     objectFit: 'contain',
   },
   logoCard: {
     alignItems: 'centar',
     display: 'flex',
     justifyContent: 'center',
-    width: '100%',
+    width: '280px',
     background: '#FFFFFF',
     border: '1.3px solid #DFDFDF',
     boxSizing: 'border-box',
     boxShadow:
       '-10px -10px 20px rgba(0, 0, 0, 0.1), 10px 10px 20px rgba(0, 0, 0, 0.1)',
-    borderRadius: '6px',
+    borderRadius: '10px 10px 10px 10px',
   },
   description: {
     fontFamily: 'Montserrat',

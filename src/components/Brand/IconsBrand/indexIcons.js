@@ -6,7 +6,7 @@ import IconsCardsRight from './iconsCardsRight';
 import IconsMovie from './iconsMovie';
 import ButtonAll from './buttonAll';
 import TitleIcons from './titleIcons';
-import trama from '../../../assets/Brand.png';
+import trama from '../../../assets/VectorMid.png';
 
 const IndexIcons = ({ logos }) => {
   const [logoFiles, setLogoFiles] = useState([]);
@@ -26,7 +26,7 @@ const IndexIcons = ({ logos }) => {
       <IconsCards logos={logos} />
       <TitleIcons title={' NEGATIVE LOGOS'} sort={'Right'} />
       <IconsCardsRight logos={logos} />
-      <TitleIcons title={' ANIMATED LOGO BEHAVIOUR'} sort={'Left'} />
+      <TitleIcons title={'LOGOS 3D'} sort={'Left'} />
       <IconsMovie logos={logos} />
       <Box className={classes.buttonAll}>
         <ButtonAll files={logoFiles} />
@@ -41,8 +41,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '4rem',
     marginBottom: '1rem',
     backgroundImage: `url(${trama})`,
-    backgroundPosition: 'left -65% top 60%',
-    backgroundSize: '600px 600px',
+    backgroundPosition: 'left -5% top 60%',
     backgroundRepeat: 'no-repeat',
     '@media (max-width: 768px)': {
       backgroundImage: 'none',
