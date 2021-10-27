@@ -88,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContainer: {
     width: '100%',
-    columnGap: theme.spacing(5),
+    columnGap: theme.spacing(4),
     // backgroundColor: 'red',
     padding: theme.spacing(6, 0),
   },

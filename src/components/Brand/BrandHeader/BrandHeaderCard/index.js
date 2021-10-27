@@ -21,12 +21,13 @@ const BrandHeaderCard = ({ item }) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '226px',
-    height: '196px',
+    maxWidth: '290px',
+    height: '180px',
     marginBottom: theme.spacing(5),
   },
   paper: {
-    padding: theme.spacing(6),
+    padding: theme.spacing(4),
+    overflow: 'auto',
     boxShadow:
       '-10px -10px 20px rgba(0, 0, 0, 0.1), 10px 10px 20px rgba(0, 0, 0, 0.1);',
     backgroundImage: `url(${headerCardBackground})`,
