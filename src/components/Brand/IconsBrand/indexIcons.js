@@ -22,6 +22,7 @@ const IndexIcons = ({ logos }) => {
   const classes = useStyles();
   return (
     <Grid className={classes.root} xs={11} container justify="center">
+      <img src={trama} alt='' className={classes.backgroundImage} />
       <TitleIcons title={'LOGOS'} sort={'Left'} />
       <IconsCards logos={logos} />
       <TitleIcons title={' NEGATIVE LOGOS'} sort={'Right'} />
@@ -36,15 +37,17 @@ const IndexIcons = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  backgroundImage:{
+    position:'absolute',
+    left:'8.5%',
+    top:'25%',
+    zIndex:'0'
+  },
   root: {
     height: 'fit-content',
     marginTop: '4rem',
     marginBottom: '1rem',
-    backgroundImage: `url(${trama})`,
-    backgroundPosition: 'left -5% top 60%',
-    backgroundRepeat: 'no-repeat',
     '@media (max-width: 768px)': {
-      backgroundImage: 'none',
       marginTop: '5rem',
     },
   },
