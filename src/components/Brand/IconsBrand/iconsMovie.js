@@ -55,14 +55,19 @@ const IconsMovie = ({ logos }) => {
                 onClick={() => handleDownload(item.fbxMedia[0])}
               >
                 <Download className={classes.iconButton} />
-                FBX Metallic
+                <Typography className={classes.btnText}>
+                  FBX Metallic
+                </Typography>
               </Button>
               <Button
                 className={classes.buttonsCard}
                 onClick={() => handleDownload(item.fbxMedia[1])}
               >
                 <Download className={classes.iconButton} />
-                FBX Matte
+
+                <Typography className={classes.btnText}>
+                  FBX Matte
+                </Typography>
               </Button>
             </Box>
             <Box className={classes.groupButtons}>
@@ -71,14 +76,18 @@ const IconsMovie = ({ logos }) => {
                 onClick={() => handleDownload(item.fbxMedia[2])}
               >
                 <Download className={classes.iconButton} />
-                FBX Metallic Thin
+                <Typography className={classes.btnText}>
+                  FBX Metallic Thin
+                </Typography>
               </Button>
               <Button
                 className={classes.buttonsCard}
                 onClick={() => handleDownload(item.fbxMedia[3])}
               >
                 <Download className={classes.iconButton} />
-                FBX Matte Thin
+                <Typography className={classes.btnText}>
+                  FBX Matte Thin
+                </Typography>
               </Button>
             </Box>
             <Box className={classes.groupButtons}>
@@ -87,14 +96,18 @@ const IconsMovie = ({ logos }) => {
                 onClick={() => handleDownload(item.fbxMedia[4])}
               >
                 <Download className={classes.iconButton} />
-                FBX Metallic Bold
+                <Typography className={classes.btnText}>
+                  FBX Metallic Bold
+                </Typography>
               </Button>
               <Button
                 className={classes.buttonsCard}
                 onClick={() => handleDownload(item.fbxMedia[5])}
               >
                 <Download className={classes.iconButton} />
-                FBX Matte Bold
+                <Typography className={classes.btnText}>
+                  FBX Matte Bold
+                </Typography>
               </Button>
             </Box>
           </Grid>
@@ -111,6 +124,11 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '5%',
       marginTop: '5%',
     },
+  },
+  btnText: {
+    fontFamily:'Montserrat',
+    fontWeight:600,
+    fontSize: 10,
   },
   cardMedia: {
     width: '100%',
@@ -132,7 +150,7 @@ const useStyles = makeStyles((theme) => ({
   description: {
     fontFamily: 'Montserrat',
     fontWeight: 300,
-    fontSize: 13,
+    fontSize: 15,
     height: '5rem',
     marginBottom: '3%',
     marginTop: '3%',

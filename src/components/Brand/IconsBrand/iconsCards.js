@@ -46,7 +46,12 @@ const IconsCards = ({ logos }) => {
                 }
               >
                 <Download className={classes.iconButton} />
-                PNG
+                <Typography
+                  variant="subtitle"
+                  className={classes.btnText}
+                >
+                  PNG
+                </Typography>
               </Button>
               <Button
                 className={classes.buttonsCard}
@@ -55,7 +60,12 @@ const IconsCards = ({ logos }) => {
                 }
               >
                 <Download className={classes.iconButton} />
-                SVG
+                <Typography
+                  variant="subtitle"
+                  className={classes.btnText}
+                >
+                  SVG
+                </Typography>
               </Button>
             </Box>
           </Grid>
@@ -78,6 +88,9 @@ const useStyles = makeStyles((theme) => ({
     height: '260px',
     objectFit: 'contain',
   },
+  btnText:{
+    fontSize: 16
+  },
   logoCard: {
     alignItems: 'centar',
     display: 'flex',
@@ -94,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 300,
     height: '5rem',
-    fontSize: 13,
+    fontSize: 15,
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
@@ -137,8 +150,9 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     paddingLeft: '0%',
-    height: '1rem',
+    height: 21,
     width: '2rem',
+    marginBottom: theme.spacing(2),
   },
 }));
 
