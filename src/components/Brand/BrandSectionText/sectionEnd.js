@@ -3,13 +3,9 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import GreenIcon from '../../../assets/iconfigma.svg';
 import PinkIcon from '../../../assets/pinkiconfigma.svg';
+import trama from '../../../assets/VectorEnd.png';
 
-const BrandSectionText = ({
-  haveList = false,
-  title,
-  text,
-  listItems,
-}) => {
+const EndSection = ({ haveList = false, title, text, listItems }) => {
   const classes = useStyles();
   return (
     <Grid
@@ -20,6 +16,7 @@ const BrandSectionText = ({
       alignItems="center"
       className={classes.root}
     >
+      <img src={trama} alt="" className={classes.backgroundimage} />
       <Grid xs={12} container>
         <Typography variant="h4" className={classes.title}>
           {title}
@@ -114,6 +111,15 @@ const BrandSectionText = ({
 };
 
 const useStyles = makeStyles((theme) => ({
+  backgroundimage: {
+    position: 'absolute',
+    right: '8%',
+    width: '600px',
+    bottom: '0%',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
+  },
   root: {},
   fontContainer: {
     margin: theme.spacing(8, 0, 0, 6),
@@ -171,4 +177,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default BrandSectionText;
+export default EndSection;

@@ -6,7 +6,9 @@ import BrandHeader from './BrandHeader';
 import BrandSectionText from './BrandSectionText';
 import Icons from './IconsBrand/indexIcons';
 import Colors from './ColorsBrand/indexColors';
-
+import EndSection from './BrandSectionText/sectionEnd';
+import OctoOne from '../../assets/OctoBrandFirst.png';
+import OctoTwo from '../../assets/OctoBrandSecond.png';
 const Brand = ({
   logos,
   colors,
@@ -27,6 +29,8 @@ const Brand = ({
       justify="center"
       className={classes.root}
     >
+      <img src={OctoOne} alt="" className={classes.octoOne} />
+      <img src={OctoTwo} alt="" className={classes.octoTwo} />
       <BrandHeader titles={titles} />
       <Icons logos={logos} />
       <Colors colors={colors} />
@@ -36,7 +40,7 @@ const Brand = ({
         haveList
         listItems={identityInfo}
       />
-      <BrandSectionText title={title} text={description} />
+      <EndSection title={title} text={description} />
     </Grid>
   );
 };
@@ -46,6 +50,26 @@ const useStyles = makeStyles((theme) => ({
     height: 'fit-content',
     '@media (max-width: 768px)': {
       padding: 0,
+    },
+  },
+  octoOne: {
+    position: 'absolute',
+    width: '500px',
+    top: '4%',
+    left: '8.5%',
+    zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
+  },
+  octoTwo: {
+    position: 'absolute',
+    width: '500px',
+    top: '80%',
+    right: '8.5%',
+    zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
     },
   },
 }));
