@@ -23,15 +23,14 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 700,
     fontSize: 40,
-    marginLeft: '1%',
-    marginBottom: '4%',
-    marginTop: '4%',
+    marginBottom: '1%',
+    marginTop: '3%',
   },
   titleLeft: {
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    marginBottom: '2%',
+    marginBottom: '1%',
     marginTop: '2%',
     '@media (max-width: 768px)': {
       alignItems: 'center',

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 900,
     fontSize: 20,
     marginBottom: '1%',
-    marginTop: '5%',
+    marginTop: theme.spacing(2),
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',

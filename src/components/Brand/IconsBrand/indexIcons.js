@@ -36,8 +36,6 @@ const IndexIcons = ({ logos }) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: 'fit-content',
-    marginTop: '12%',
     marginBottom: '3%',
     '@media (max-width: 768px)': {
       marginTop: '45%',

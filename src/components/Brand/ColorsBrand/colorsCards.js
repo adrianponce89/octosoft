@@ -6,7 +6,7 @@ const colorsCards = ({ colors }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
   return (
-    <Grid container xs={12} justify="flex-start">
+    <Grid container xs={12} justify="flex-start" className={classes.colorContainer}>
       {colors &&
         colors.map((item, index) => (
           <Grid
@@ -55,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   eachGrid: {
     marginRight: '8%',
+    marginBottom: theme.spacing(9),
     '@media (max-width: 768px)': {
       marginRight: 0,
       marginBottom: '5%',
@@ -76,7 +77,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
-    width:'60%'
+    width: '60%',
   },
   eachColor: {
     alignItems: 'flex-end',
