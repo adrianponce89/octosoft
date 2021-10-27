@@ -132,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '1rem',
     marginTop: '1rem',
     textAlign: 'justify',
+    width: '280px',
     '@media (max-width: 768px)': {
       height: 'fit-content',
     },
