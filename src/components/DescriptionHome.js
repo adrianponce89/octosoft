@@ -38,7 +38,7 @@ const styles = makeStyles((theme) => ({
     },
   },
   video: {
-    width: 650,
+    width: 700,
     '@media (max-width: 760px)': {
       width: 350,
     },
@@ -58,15 +58,15 @@ const DescriptionHome = ({ content }) => {
   const {description} = content;
   const classes = styles();
   const opts = {
-    height: '390',
-    width: '640',
+    width: 750,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
       controls: 1,
       showinfo: 1,
       modestbranding: 1,
-      disablekb:1,
+      disablekb: 1,
+      color:'white',
     },
   };
   return (
