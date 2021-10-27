@@ -44,6 +44,8 @@ const useStyles = makeStyles((theme) => ({
   text: {
     fontFamily: 'Montserrat',
     fontSize: 13,
+    overflow: 'auto',
+    maxHeight: '105px',
   },
 }));
 
