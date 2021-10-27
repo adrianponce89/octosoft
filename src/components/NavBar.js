@@ -142,7 +142,7 @@ const menuList = [
   {
     title: 'WHAT WE DO',
     children: [
-      { title: 'Our services', link: '/ourservices' },
+      { title: 'Our Services', link: '/ourservices' },
       { title: 'Portfolio', link: '/portfolio' },
     ],
   },
@@ -174,7 +174,7 @@ const NavLinks = (props) => {
     setAnchorEl(null);
   };
 
-  console.log(props.onDesktop)
+  console.log(props.onDesktop);
 
   return (
     <>

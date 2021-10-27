@@ -4,7 +4,11 @@ import { FormControl, TextField } from '@material-ui/core';
 const PrimaryInput = ({ className, variant, ...otherProps }) => {
   return (
     <FormControl variant={variant} size="small" fullWidth>
-      <TextField variant={variant} {...otherProps} />
+      <TextField
+        className={`${className}`}
+        variant={variant}
+        {...otherProps}
+      />
     </FormControl>
   );
 };
