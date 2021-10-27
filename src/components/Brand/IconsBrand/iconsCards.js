@@ -69,24 +69,16 @@ const IconsCards = ({ logos }) => {
 const useStyles = makeStyles((theme) => ({
   eachGrid: {
     marginRight: '2rem',
-    zIndex:'1',
+    zIndex: '1',
     '@media (max-width: 768px)': {
       marginRight: 0,
       marginBottom: '1rem',
       marginTop: '1rem',
     },
   },
-<<<<<<< HEAD
-  cardMedia: {
-    width: '100%',
-    height: '260px',
-    objectFit: 'contain',
+  btnText: {
+    fontSize: 16,
   },
-  btnText:{
-    fontSize: 16
-  },
-=======
->>>>>>> develop
   logoCard: {
     alignItems: 'centar',
     display: 'flex',

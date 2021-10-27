@@ -44,13 +44,9 @@ const useStyles = makeStyles((theme) => ({
     zIndex:'0'
   },
   root: {
-<<<<<<< HEAD
-    marginBottom: '3%',
-=======
     height: 'fit-content',
     marginTop: '4rem',
     marginBottom: '1rem',
->>>>>>> develop
     '@media (max-width: 768px)': {
       marginTop: '5rem',
     },

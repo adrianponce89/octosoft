@@ -97,6 +97,7 @@ const useStyles = makeStyles((theme) => ({
       width: 250,
       height: 30,
       paddingRight: '5%',
+    }},
   root: {},
   gridLine: {
     '@media (max-width: 760px)': {
