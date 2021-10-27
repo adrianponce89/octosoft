@@ -3,7 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BrandHeaderCard from './BrandHeaderCard';
 import Line from '../../../assets/Divider.svg';
-import trama from '../../../assets/Brand.png';
+import trama from '../../../assets/VectorStart.png';
 const BrandHeader = ({ titles }) => {
   const classes = useStyles();
   return (
@@ -25,6 +25,11 @@ const BrandHeader = ({ titles }) => {
           direction="column"
           className={classes.titleContainer}
         >
+          <img
+            src={trama}
+            alt=""
+            className={classes.backgroundImage}
+          />
           <Typography variant="h5" className={classes.mainTitle}>
             Octosoft
           </Typography>
@@ -66,23 +71,25 @@ const BrandHeader = ({ titles }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundImage: `url(${trama})`,
-    backgroundPosition: 'right -50% top -400%',
-    backgroundSize: '600px 600px',
-    backgroundRepeat: 'no-repeat',
+  backgroundImage: {
+    position: 'absolute',
+    width: '500px',
+    top: '0%',
+    right: '8.5%',
+    zIndex: '0',
   },
-  gridLine:{
+  root: {},
+  gridLine: {
     '@media (max-width: 760px)': {
-      display:'flex',
-      marginRight:'15%'
+      display: 'flex',
+      marginRight: '15%',
     },
   },
   line: {
-    display:'flex',
+    display: 'flex',
     width: '70%',
     '@media (max-width: 760px)': {
-      width:'35%',
+      width: '35%',
     },
   },
   titleContainer: {
@@ -99,6 +106,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 900,
     fontSize: 119,
     color: '#8249DC',
+    zIndex: '1',
     '@media (max-width: 760px)': {
       fontSize: 50,
     },
