@@ -65,6 +65,7 @@ const IconsCardRight = ({ logos }) => {
 const useStyles = makeStyles((theme) => ({
   eachGrid: {
     marginLeft: '2rem',
+    zIndex:'1',
     '@media (max-width: 768px)': {
       marginLeft: 0,
       marginBottom: '1rem',
