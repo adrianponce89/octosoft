@@ -42,8 +42,8 @@ const BrandHeader = ({ titles }) => {
             container
             item
             xs={11}
-            md={11}
-            xl={6}
+            md={6}
+            xl={8}
             justify="flex-end"
           >
             <Line className={classes.line} />
@@ -74,9 +74,20 @@ const useStyles = makeStyles((theme) => ({
   line: {
     width: 250,
     paddingRight: '20%',
-    '@media (max-width: 1024px)': {
-      width: 200,
-      paddingRight: '20%',
+    marginBottom:theme.spacing(5),
+    '@media (min-width: 1024px)': {
+      width: 250,
+      paddingRight: '0%',
+    },
+    '@media (min-width: 1324px)': {
+      width: 250,
+      paddingRight: '5%',
+    },
+    '@media (min-width: 2024px)': {
+      width: 250,
+      height: 30,
+      paddingRight: '5%',
+      // backgroundColor: 'red',
     },
     '@media (max-width: 760px)': {
       width: 150,
@@ -89,7 +100,6 @@ const useStyles = makeStyles((theme) => ({
   cardContainer: {
     width: '100%',
     columnGap: theme.spacing(4),
-    // backgroundColor: 'red',
     padding: theme.spacing(6, 0),
   },
   mainTitle: {

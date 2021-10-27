@@ -6,7 +6,12 @@ const colorsCards = ({ colors }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const classes = useStyles();
   return (
-    <Grid container xs={12} justify="flex-start" className={classes.colorContainer}>
+    <Grid
+      container
+      xs={12}
+      justify="flex-start"
+      className={classes.colorContainer}
+    >
       {colors &&
         colors.map((item, index) => (
           <Grid
@@ -19,9 +24,12 @@ const colorsCards = ({ colors }) => {
             <Typography className={classes.title}>
               {item.title}
             </Typography>
-            <Typography className={classes.description}>
-              {item.description.description}
-            </Typography>
+            <div className={classes.decriptionContainer}>
+              <Typography className={classes.description}>
+                {item.description.description}
+              </Typography>
+            </div>
+
             <Fragment>
               {item.colors &&
                 item.colors.map((hexadecimals, index) => (
@@ -62,6 +70,10 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '5%',
     },
   },
+  decriptionContainer:{
+    minHeight: 80,
+    marginBottom: 10,
+  },
   title: {
     color: '#E05160',
     fontFamily: 'Montserrat',
@@ -73,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
   description: {
     fontFamily: 'Montserrat',
     fontWeight: 300,
-    fontSize: 10,
+    fontSize: 13,
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
