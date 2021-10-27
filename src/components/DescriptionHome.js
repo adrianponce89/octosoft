@@ -2,9 +2,9 @@ import React from 'react'
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/octoLogoNew.svg';
-import videoTest from '../assets/videotest.mp4';
 import OctoLogoName from '../assets/Logoocto2.svg'
 import Fade from 'react-reveal/Fade';
+import YouTube from 'react-youtube';
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -57,6 +57,18 @@ const styles = makeStyles((theme) => ({
 const DescriptionHome = ({ content }) => {
   const {description} = content;
   const classes = styles();
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+      controls: 1,
+      showinfo: 1,
+      modestbranding: 1,
+      disablekb:1,
+    },
+  };
   return (
     <Grid
       container
@@ -78,9 +90,11 @@ const DescriptionHome = ({ content }) => {
           </div>
         </Fade>
         <Fade bottom>
-          <video className={classes.video} autoPlay loop muted>
-            <source src={videoTest} type="video/mp4"></source>
-          </video>
+          <YouTube
+            videoId="0uqkxOcoehc"
+            opts={opts}
+            className={classes.video}
+          />
         </Fade>
       </Grid>
 
