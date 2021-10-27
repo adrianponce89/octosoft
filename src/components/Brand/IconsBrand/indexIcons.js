@@ -41,7 +41,10 @@ const useStyles = makeStyles((theme) => ({
     position:'absolute',
     left:'8.5%',
     top:'25%',
-    zIndex:'0'
+    zIndex:'0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
   },
   root: {
     height: 'fit-content',
