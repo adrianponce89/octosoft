@@ -126,9 +126,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btnText: {
-    fontFamily:'Montserrat',
-    fontWeight:600,
+    fontFamily: 'Montserrat',
+    fontWeight: 600,
     fontSize: 10,
+    '@media (min-width: 1980px)': {
+      fontSize: 12,
+    },
   },
   cardMedia: {
     width: '100%',
@@ -193,8 +196,9 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     paddingLeft: '0%',
-    height: '1rem',
+    height: 21,
     width: '2rem',
+    marginBottom: theme.spacing(2),
   },
 }));
 

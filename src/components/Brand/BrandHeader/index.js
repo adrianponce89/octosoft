@@ -42,8 +42,8 @@ const BrandHeader = ({ titles }) => {
             container
             item
             xs={11}
-            md={6}
-            xl={8}
+            md={7}
+            xl={10}
             justify="flex-end"
           >
             <Line className={classes.line} />
