@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 900,
     fontSize: 20,
-    marginBottom: '1rem',
-    marginTop: '1rem',
+    marginBottom: '1%',
+    marginTop: theme.spacing(2),
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',

@@ -38,7 +38,12 @@ const IconsCards = ({ logos }) => {
                 }
               >
                 <Download className={classes.iconButton} />
-                PNG
+                <Typography
+                  variant="subtitle"
+                  className={classes.btnText}
+                >
+                  PNG
+                </Typography>
               </Button>
               <Button
                 className={classes.buttonsCard}
@@ -47,7 +52,12 @@ const IconsCards = ({ logos }) => {
                 }
               >
                 <Download className={classes.iconButton} />
-                SVG
+                <Typography
+                  variant="subtitle"
+                  className={classes.btnText}
+                >
+                  SVG
+                </Typography>
               </Button>
             </Box>
           </Grid>
@@ -59,12 +69,15 @@ const IconsCards = ({ logos }) => {
 const useStyles = makeStyles((theme) => ({
   eachGrid: {
     marginRight: '2rem',
-    zIndex:'1',
+    zIndex: '1',
     '@media (max-width: 768px)': {
       marginRight: 0,
       marginBottom: '1rem',
       marginTop: '1rem',
     },
+  },
+  btnText: {
+    fontSize: 16,
   },
   logoCard: {
     alignItems: 'centar',
@@ -128,8 +141,9 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     paddingLeft: '0%',
-    height: '1rem',
+    height: 21,
     width: '2rem',
+    marginBottom: theme.spacing(2),
   },
 }));
 
