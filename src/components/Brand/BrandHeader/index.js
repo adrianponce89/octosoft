@@ -77,6 +77,9 @@ const useStyles = makeStyles((theme) => ({
     top: '0%',
     right: '8.5%',
     zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
   },
   root: {},
   gridLine: {

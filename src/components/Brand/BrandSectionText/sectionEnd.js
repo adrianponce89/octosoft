@@ -116,6 +116,9 @@ const useStyles = makeStyles((theme) => ({
     right: '8%',
     width: '600px',
     bottom: '0%',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
   },
   root: {},
   fontContainer: {

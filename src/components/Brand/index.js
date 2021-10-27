@@ -58,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
     top: '4%',
     left: '8.5%',
     zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
   },
   octoTwo: {
     position: 'absolute',
@@ -65,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
     top: '80%',
     right: '8.5%',
     zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
   },
 }));
 
