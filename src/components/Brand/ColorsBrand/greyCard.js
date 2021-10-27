@@ -29,19 +29,15 @@ const GreyCards = ({ colors }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    marginBottom: '3%',
-    marginTop: '3%',
-  },
   boxGrey: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'row',
-    marginTop: '2%',
+    marginTop: '1rem',
     width: '100%',
     '@media (max-width: 768px)': {
       flexDirection: 'column',
-      marginTop: '5%',
+      marginTop: '3rem',
     },
   },
   eachBox: {
@@ -59,9 +55,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 10,
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    marginTop: '2%',
+    marginTop: '0.5rem',
     '@media (max-width: 768px)': {
-      marginBottom: '5%',
+      marginBottom: '1rem',
     },
   },
 }));

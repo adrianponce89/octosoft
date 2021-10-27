@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import headerCardBackground from '../../../../assets/headerCardBackgroud.png'
+import headerCardBackground from '../../../../assets/CardHeaderBrand.png';
 
 const BrandHeaderCard = ({ item }) => {
   const classes = useStyles({ headerCardBackground });
@@ -29,11 +29,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
     overflow: 'auto',
     boxShadow:
-      '-10px -10px 20px rgba(0, 0, 0, 0.1), 10px 10px 20px rgba(0, 0, 0, 0.1);',
+      '-10px -10px 20px rgba(0, 0, 0, 0.1), 10px 10px 20px rgba(0, 0, 0, 0.1);' ,
     backgroundImage: `url(${headerCardBackground})`,
     backgroundSize: 'cover',
     backgroundPosition: 'top',
     backgroundRepeat: 'no-repeat',
+    backgroundColor: '#FFFFFF',
+    zIndex: '1',
   },
   title: {
     fontFamily: 'Montserrat',
@@ -49,4 +51,4 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default BrandHeaderCard
+export default BrandHeaderCard;

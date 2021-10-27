@@ -129,7 +129,6 @@ const TypographySection = () => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-
   },
   fontContainer: {
     margin: theme.spacing(6, 0),

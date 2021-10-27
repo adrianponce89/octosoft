@@ -3,13 +3,13 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BrandHeaderCard from './BrandHeaderCard';
 import Line from '../../../assets/Divider.svg';
-import trama from '../../../assets/Brand.png';
+import trama from '../../../assets/VectorStart.png';
 const BrandHeader = ({ titles }) => {
   const classes = useStyles();
   return (
     <Grid
       item
-      xs={11}
+      xs={12}
       container
       justify="center"
       alignItems="center"
@@ -25,6 +25,11 @@ const BrandHeader = ({ titles }) => {
           direction="column"
           className={classes.titleContainer}
         >
+          <img
+            src={trama}
+            alt=""
+            className={classes.backgroundImage}
+          />
           <Typography variant="h5" className={classes.mainTitle}>
             Octosoft
           </Typography>
@@ -32,7 +37,7 @@ const BrandHeader = ({ titles }) => {
             BRAND MANUAL
           </Typography>
         </Grid>
-        <Grid container item xs={11} md={11} xl={6} justify="center">
+        <Grid container item xs={12} md={11} xl={6} justify="center">
           <Typography variant="h5" className={classes.description}>
             From freelancers to the world, we <br />
             help people build great digital <br /> products from head
@@ -45,6 +50,7 @@ const BrandHeader = ({ titles }) => {
             md={7}
             xl={10}
             justify="flex-end"
+            className={classes.gridLine}
           >
             <Line className={classes.line} />
           </Grid>
@@ -65,11 +71,15 @@ const BrandHeader = ({ titles }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundImage: `url(${trama})`,
-    backgroundPosition: 'right -80% top -450%',
-    backgroundSize: '600px 600px',
-    backgroundRepeat: 'no-repeat',
+  backgroundImage: {
+    position: 'absolute',
+    width: '500px',
+    top: '0%',
+    right: '8.5%',
+    zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
   },
   line: {
     width: 250,
@@ -87,11 +97,11 @@ const useStyles = makeStyles((theme) => ({
       width: 250,
       height: 30,
       paddingRight: '5%',
-      // backgroundColor: 'red',
-    },
+  root: {},
+  gridLine: {
     '@media (max-width: 760px)': {
-      width: 150,
-      paddingRight: '0%',
+      display: 'flex',
+      marginRight: '15%',
     },
   },
   titleContainer: {
@@ -107,6 +117,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 900,
     fontSize: 119,
     color: '#8249DC',
+    zIndex: '1',
     '@media (max-width: 760px)': {
       fontSize: 50,
     },

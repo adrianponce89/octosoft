@@ -1,7 +1,6 @@
 import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
 const TitleIcons = ({ title, sort }) => {
   const classes = useStyles();
   return (
@@ -41,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-    marginBottom: '2%',
-    marginTop: '2%',
+    marginBottom: '1rem',
+    marginTop: '1rem',
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',

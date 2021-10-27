@@ -40,12 +40,21 @@ const colorsCards = ({ colors }) => {
                         backgroundColor: `${hexadecimals}`,
                       }}
                     />
-                    <Typography
-                      className={classes.hexColor}
-                      style={{ color: `${item.colors[0]}` }}
-                    >
-                      HEX: {hexadecimals}
-                    </Typography>
+                    {item.colors[0] === '#FFE53B' ? (
+                      <Typography
+                        className={classes.hexColor}
+                        style={{ color: '#666666' }}
+                      >
+                        HEX: {hexadecimals}
+                      </Typography>
+                    ) : (
+                      <Typography
+                        className={classes.hexColor}
+                        style={{ color: `${item.colors[0]}` }}
+                      >
+                        HEX: {hexadecimals}
+                      </Typography>
+                    )}
                   </Box>
                 ))}
             </Fragment>
@@ -58,8 +67,8 @@ const colorsCards = ({ colors }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginBottom: '3%',
-    marginTop: '3%',
+    marginBottom: '2rem',
+    marginTop: '2rem',
   },
   eachGrid: {
     marginRight: '8%',
@@ -86,9 +95,10 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 300,
     fontSize: 13,
-    marginBottom: '3%',
-    marginTop: '3%',
-    textAlign: 'justify',
+    height: '6rem',
+    marginBottom: '1rem',
+    marginTop: '1rem',
+    textAlign: 'left',
     width: '60%',
   },
   eachColor: {
@@ -105,7 +115,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 10,
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    justifyContent: 'flex-end',
+    justifyContent: 'fle-start',
+    marginLeft: '5%',
     width: '35%',
   },
   boxColors: {

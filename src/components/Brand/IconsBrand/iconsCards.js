@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Box,
-  CardMedia,
-} from '@material-ui/core';
+import { Grid, Typography, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
 import {
@@ -27,14 +20,13 @@ const IconsCards = ({ logos }) => {
             key={index}
             className={classes.eachGrid}
           >
-            <Card className={classes.logoCard}>
-              <CardMedia
-                component="img"
-                className={classes.cardMedia}
-                image={item.image.file.url}
-                alt={item.description.description}
-              />
-            </Card>
+            <img
+              className={classes.logoCard}
+              sx={{ borderRadius: '50%' }}
+              src={item.image.file.url}
+              alt={item.description.description}
+            />
+
             <Typography className={classes.description}>
               {item.description.description}
             </Typography>
@@ -76,13 +68,15 @@ const IconsCards = ({ logos }) => {
 
 const useStyles = makeStyles((theme) => ({
   eachGrid: {
-    marginRight: '4%',
+    marginRight: '2rem',
+    zIndex:'1',
     '@media (max-width: 768px)': {
       marginRight: 0,
-      marginBottom: '5%',
-      marginTop: '5%',
+      marginBottom: '1rem',
+      marginTop: '1rem',
     },
   },
+<<<<<<< HEAD
   cardMedia: {
     width: '100%',
     height: '260px',
@@ -91,17 +85,21 @@ const useStyles = makeStyles((theme) => ({
   btnText:{
     fontSize: 16
   },
+=======
+>>>>>>> develop
   logoCard: {
     alignItems: 'centar',
     display: 'flex',
     justifyContent: 'center',
-    width: '100%',
+    width: '280px',
+    height: '280px',
+    objectFit: 'contain',
     background: '#FFFFFF',
     border: '1.3px solid #DFDFDF',
+    borderRadius: '10px 10px 10px 10px',
     boxSizing: 'border-box',
     boxShadow:
       '-10px -10px 20px rgba(0, 0, 0, 0.1), 10px 10px 20px rgba(0, 0, 0, 0.1)',
-    borderRadius: '6px',
   },
   description: {
     fontFamily: 'Montserrat',
@@ -111,6 +109,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '3%',
     marginTop: '3%',
     textAlign: 'justify',
+    width: '280px',
     '@media (max-width: 768px)': {
       height: 'fit-content',
     },
@@ -119,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     padding: '0%',
     width: '100%',
     '@media (max-width: 768px)': {
@@ -132,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     display: 'flex',
     fontFamily: 'Montserrat',
-    fontSize: 8,
+    fontSize: 10,
     height: 'fit-content',
     fontWeight: 600,
     justifyContent: 'left',
