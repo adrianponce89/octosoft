@@ -3,6 +3,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import GreenIcon from '../../../assets/iconfigma.svg';
 import PinkIcon from '../../../assets/pinkiconfigma.svg';
+import TitleIcons from '../IconsBrand/titleIcons';
 
 const BrandSectionText = ({
   haveList = false,
@@ -20,11 +21,7 @@ const BrandSectionText = ({
       alignItems="center"
       className={classes.root}
     >
-      <Grid xs={12} container>
-        <Typography variant="h4" className={classes.title}>
-          {title}
-        </Typography>
-      </Grid>
+      <TitleIcons title={title} sort={'Left'} />
       <Grid xs={12} container className={classes.textContainer}>
         {text && (
           <Grid item xs={12} md={6}>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import TitleBrand from '../TitleBrand'
+import TitleIcons from '../IconsBrand/titleIcons'
 
 const TypographySection = () => {
   const classes = useStyles();
@@ -13,11 +15,7 @@ const TypographySection = () => {
       alignItems="center"
       className={classes.root}
     >
-      <Grid xs={12} container className={classes.titleLeft}>
-        <Typography variant="h4" className={classes.title}>
-          TYPOGRAPHY
-        </Typography>
-      </Grid>
+      <TitleIcons title={'TYPOGRAPHY'} sort={'Left'} />
       <Grid
         xs={12}
         container
@@ -131,9 +129,6 @@ const TypographySection = () => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: 'fit-content',
-    marginBottom: '0rem',
-    marginTop: '2rem',
   },
   fontContainer: {
     margin: theme.spacing(6, 0),

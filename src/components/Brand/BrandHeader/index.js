@@ -46,9 +46,9 @@ const BrandHeader = ({ titles }) => {
           <Grid
             container
             item
-            xs={12}
-            md={11}
-            xl={6}
+            xs={11}
+            md={7}
+            xl={10}
             justify="flex-end"
             className={classes.gridLine}
           >
@@ -81,6 +81,23 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
+  line: {
+    width: 250,
+    paddingRight: '20%',
+    marginBottom:theme.spacing(5),
+    '@media (min-width: 1024px)': {
+      width: 250,
+      paddingRight: '0%',
+    },
+    '@media (min-width: 1324px)': {
+      width: 250,
+      paddingRight: '5%',
+    },
+    '@media (min-width: 2024px)': {
+      width: 250,
+      height: 30,
+      paddingRight: '5%',
+    }},
   root: {},
   gridLine: {
     '@media (max-width: 760px)': {
@@ -88,20 +105,12 @@ const useStyles = makeStyles((theme) => ({
       marginRight: '15%',
     },
   },
-  line: {
-    display: 'flex',
-    width: '70%',
-    '@media (max-width: 760px)': {
-      width: '35%',
-    },
-  },
   titleContainer: {
     marginBottom: theme.spacing(9),
   },
   cardContainer: {
     width: '100%',
-    columnGap: theme.spacing(5),
-    // backgroundColor: 'red',
+    columnGap: theme.spacing(4),
     padding: theme.spacing(6, 0),
   },
   mainTitle: {
