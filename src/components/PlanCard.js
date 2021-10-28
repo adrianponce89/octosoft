@@ -9,13 +9,13 @@ const styles = makeStyles((theme) => ({
     backgroundColor: ({ index }) => {
       switch (index) {
         case 0:
-          return '#F34604';
+          return '#FF9F3B';
           break;
         case 1:
-          return '#1d2178';
+          return '#7543DB';
           break;
         case 2:
-          return '#FF9929';
+          return '#37D4AD';
           break;
       }
     },

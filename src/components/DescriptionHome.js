@@ -1,7 +1,8 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import OctoLogo from '../assets/octoLogoNew.svg';
+// import OctoLogo from '../assets/logoHome2021.svg';
+import OctoLogoNew from '../assets/newLogo.svg'
 import OctoLogoName from '../assets/Logoocto2.svg'
 import Fade from 'react-reveal/Fade';
 import YouTube from 'react-youtube';
@@ -21,11 +22,13 @@ const styles = makeStyles((theme) => ({
     marginTop: 20,
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: 160,
+    height: 160,
+    marginRight: 20,
     '@media (max-width: 760px)': {
       width: 150,
       height: 150,
+      marginRight: 0,
     },
   },
   description: {
@@ -51,7 +54,7 @@ const styles = makeStyles((theme) => ({
     alignItems: 'center',
     height: 200,
     overflow: 'hidden',
-  }
+  },
 }));
 
 const DescriptionHome = ({ content }) => {
@@ -106,7 +109,7 @@ const DescriptionHome = ({ content }) => {
         alignItems="center"
         md={12}
       >
-        <OctoLogo className={classes.logo} />
+        <OctoLogoNew className={classes.logo} />
         <Typography variant="h2" className={classes.description}>
           {description}
         </Typography>

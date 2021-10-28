@@ -40,6 +40,7 @@ const styles = makeStyles((theme) => ({
     },
   },
   title: {
+    color: '#231D4F',
     fontFamily: 'Montserrat',
     fontSize: 42,
     '@media (max-width: 760px)': {
@@ -49,18 +50,10 @@ const styles = makeStyles((theme) => ({
   },
   buttonSelected: {
     borderRadius: '50px !important',
-    backgroundColor: '#BB6DC7',
+    backgroundColor: '#D437AD',
     padding: '15px',
     '&:hover': {
-      backgroundColor: '#BB6DC7',
-    },
-  },
-  btnPackageSelected: {
-    borderRadius: '50px !important',
-    backgroundColor: '#0C3294',
-    padding: '15px',
-    '&:hover': {
-      backgroundColor: '#0C3294',
+      backgroundColor: '#D437AD',
     },
   },
   textBtnSelected: {
@@ -86,17 +79,7 @@ const styles = makeStyles((theme) => ({
 const HomePlans = ({ plans }) => {
   const classes = styles();
   const [showPackages, setShowPackages] = useState(true);
-  const [view, setView] = useState('PACKAGE_VIEW');
-
-  const changeView = (text) => {
-    switch (text) {
-      case 'PACKAGE_VIEW':
-        setView('PACKAGE_VIEW');
-      case 'CUSTOM_VIEW':
-        setView('CUSTOM_VIEW');
-    }
-    setShowPackages(!showPackages);
-  };
+  const [packageView, setPackageView] = useState(true);
 
   return (
     <Grid container md={12} className={classes.plans}>
@@ -111,12 +94,11 @@ const HomePlans = ({ plans }) => {
         >
           <Button
             className={
-              showPackages
-                ? classes.btnPackageSelected
-                : classes.button
+              showPackages ? classes.buttonSelected : classes.button
             }
             onClick={() => {
-              changeView('PACKAGE_VIEW');
+              setPackageView(true);
+              setShowPackages(true);
             }}
           >
             <Typography
@@ -134,7 +116,8 @@ const HomePlans = ({ plans }) => {
               showPackages ? classes.button : classes.buttonSelected
             }
             onClick={() => {
-              changeView('CUSTOM_VIEW');
+              setPackageView(false);
+              setShowPackages(false);
             }}
           >
             <Typography
@@ -149,7 +132,7 @@ const HomePlans = ({ plans }) => {
           </Button>
         </ButtonGroup>
       </Grid>
-      {view === 'PACKAGE_VIEW' ? (
+      {packageView ? (
         <Grid container item md={8} className={classes.package}>
           {plans.slice(12, 15).map((plan, i) => {
             return <PlanCard plan={plan} index={i} />;

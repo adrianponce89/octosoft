@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
   },
   bottomBar: {
-    background: '#1d2178',
+    background: '#420DAE',
     color: '#fff',
     flexWrap: 'wrap',
     padding: theme.spacing(2, 16),

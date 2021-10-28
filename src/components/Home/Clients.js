@@ -19,6 +19,7 @@ const styles = makeStyles((theme) => ({
   title: {
     fontFamily: 'Montserrat',
     fontSize: 42,
+    color:'#231D4F',
     '@media (max-width: 760px)': {
       fontSize: 32,
       paddingBottom: 20,
@@ -28,6 +29,11 @@ const styles = makeStyles((theme) => ({
     width: 120,
     height: 120,
     margin: 30,
+  },
+  titlesContainer: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    marginBottom: 60,
   },
   root: {
     marginBottom: 60,
@@ -48,7 +54,7 @@ export default function Clients({ title, dataClients }) {
       const classes = styles();
     return (
       <Grid container md={12} className={classes.plans}>
-        <Grid container item md={8} className={classes.root}>
+        <Grid container item md={8} className={classes.titlesContainer}>
           <Typography className={classes.title}>
             Some of our clients
           </Typography>

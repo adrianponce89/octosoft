@@ -1,8 +1,6 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import Container from '../Container';
-import BridgeOcto from '../../assets/brige-octo.mp4';
 import { makeStyles } from '@material-ui/core/styles';
 import TypingAnimation from '../TypingAnimation';
 import MainLogo from './MainLogo';
@@ -54,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
     zIndex: '1',
   },
   videoContainer: {
-    // position:'relative',
     overflow: 'hidden',
     width: '100%',
     zIndex: 10,
@@ -73,12 +70,6 @@ export default ({ descriptionLanding }) => {
       <div className={classes.typingContainer}>
         <TypingAnimation words={words} />
       </div>
-      {/* <div className={classes.videoContainer}>
-        <video className={classes.video} autoPlay loop muted>
-          <source src={BridgeOcto} type="video/mp4"></source>
-        </video>
-      </div> */}
-
       <Grid
         container
         justify="center"

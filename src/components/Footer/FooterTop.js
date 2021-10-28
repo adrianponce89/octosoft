@@ -9,18 +9,19 @@ import {
   IconButton,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Send } from '@material-ui/icons';
+import { ChevronRight } from '@material-ui/icons';
 
 import PrimaryInput from '../PrimaryInput';
 
 const useStyles = makeStyles((theme) => ({
+  '@global': {
+    '.MuiFilledInput-adornedEnd': {
+      paddingRight: '0px',
+    },
+  },
   toolbar: {
     padding: theme.spacing(4, 16),
-    // display: 'flex',
-    // flexDirection: 'row',
-    // justifyContent: 'space-between',
-    // color: 'black',
-    background: '#1d2178',
+    background: '#420DAE',
     flexWrap: 'wrap',
     '@media (max-width: 576px)': { padding: theme.spacing(2) },
   },
@@ -31,6 +32,11 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     color: '#fff',
+    '@global': {
+      '.MuiFormLabel-root': {
+        color: '#FFFF',
+      },
+    },
   },
   sectionTitle: {
     color: '#fff',
@@ -57,8 +63,22 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: 10,
   },
   IconSend: {
-    fontSize: 14,
+    fontSize: 18,
     fill: '#37add4',
+  },
+  iconBtn: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: ' 8px 8px 0px 0px',
+    '&:hover': {
+      backgroundColor: '#FFFFFF',
+    },
+  },
+  iconEnd: {
+    '@global': {
+      '.MuiFilledInput-adornedEnd': {
+        paddingRight: '0px',
+      },
+    },
   },
 }));
 
@@ -69,7 +89,8 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
       <Grid item xs={12} md={10} container justify="space-between">
         <Grid item xs={12} sm={4} className={classes.section}>
           <Typography className={classes.text}>
-            Subscribe to our newsletter
+            Subscribe to our <br />
+            newsletter
           </Typography>
           <div className={classes.formContainer}>
             <form
@@ -90,9 +111,15 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
                 required
                 InputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton type="submit">
-                        <Send className={classes.IconSend} />
+                    <InputAdornment
+                      position="end"
+                      className={classes.iconEnd}
+                    >
+                      <IconButton
+                        className={classes.iconBtn}
+                        type="submit"
+                      >
+                        <ChevronRight className={classes.IconSend} />
                       </IconButton>
                     </InputAdornment>
                   ),
