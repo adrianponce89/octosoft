@@ -14,14 +14,13 @@ const IconsCardRight = ({ logos }) => {
       container
       xs={12}
       justify="flex-end"
-      className={classes.root}
+      className={classes.gridContainer}
+      spacing={8}
     >
       {logos &&
         logos.slice(3, 6).map((item, index) => (
           <Grid
             item
-            md={3}
-            xs={12}
             key={index}
             className={classes.eachGrid}
           >
@@ -73,8 +72,11 @@ const IconsCardRight = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  gridContainer:{
+    alignItems:'center',
+    marginLeft:'1rem'
+  },
   eachGrid: {
-    marginLeft: '2rem',
     zIndex:'1',
     '@media (max-width: 768px)': {
       marginLeft: 0,
