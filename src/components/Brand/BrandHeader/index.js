@@ -82,10 +82,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   line: {
-    width: 250,
-    paddingRight: '20%',
-    marginBottom:theme.spacing(5),
-    '@media (min-width: 1024px)': {
+    width: '60%',
+    marginBottom: theme.spacing(5),
+    /* '@media (min-width: 1024px)': {
       width: 250,
       paddingRight: '0%',
     },
@@ -97,7 +96,14 @@ const useStyles = makeStyles((theme) => ({
       width: 250,
       height: 30,
       paddingRight: '5%',
-    }},
+    }, */
+    '@media (min-width: 2800px)': {
+      width:'70%',
+    },
+    '@media (max-width: 760px)': {
+      visibility: 'hidden',
+    },
+  },
   root: {},
   gridLine: {
     '@media (max-width: 760px)': {
