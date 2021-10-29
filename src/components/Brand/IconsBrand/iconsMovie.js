@@ -20,17 +20,12 @@ const IconsMovie = ({ logos }) => {
       container
       xs={12}
       justify="flex-start"
-      className={classes.root}
+      className={classes.gridContainer}
+      spacing={8}
     >
       {logos &&
         logos.slice(6, 9).map((item, index) => (
-          <Grid
-            item
-            md={3}
-            xs={12}
-            key={index}
-            className={classes.eachGrid}
-          >
+          <Grid item key={index} className={classes.eachGrid}>
             <div className={classes.logoCard}>
               <video
                 src={item.image.file.url}
@@ -111,9 +106,12 @@ const IconsMovie = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  gridContainer: {
+    alignItems: 'center',
+    marginRight: '1rem',
+  },
   eachGrid: {
-    marginRight: '2rem',
-    zIndex:'1',
+    zIndex: '1',
     '@media (max-width: 768px)': {
       marginRight: 0,
       marginBottom: '1rem',

@@ -10,16 +10,16 @@ import {
 const IconsCards = ({ logos }) => {
   const classes = useStyles();
   return (
-    <Grid container xs={12} justify="flex-start">
+    <Grid
+      container
+      xs={12}
+      justify="flex-start"
+      className={classes.gridContainer}
+      spacing={8}
+    >
       {logos &&
         logos.slice(0, 3).map((item, index) => (
-          <Grid
-            item
-            md={3}
-            xs={12}
-            key={index}
-            className={classes.eachGrid}
-          >
+          <Grid item key={index} className={classes.eachGrid}>
             <img
               className={classes.logoCard}
               sx={{ borderRadius: '50%' }}
@@ -67,8 +67,11 @@ const IconsCards = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  gridContainer: {
+    alignItems: 'center',
+    marginRight: '1rem',
+  },
   eachGrid: {
-    marginRight: '2rem',
     zIndex: '1',
     '@media (max-width: 768px)': {
       marginRight: 0,
