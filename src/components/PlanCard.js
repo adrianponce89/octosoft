@@ -24,6 +24,11 @@ const styles = makeStyles((theme) => ({
     '@media (max-width: 760px)': {
       marginBottom: 50,
     },
+    '@media (max-width: 1368px)': {
+      width: 280,
+      height: 450,
+      marginBottom: 50,
+    },
   },
   content: {
     padding: 20,
@@ -31,6 +36,9 @@ const styles = makeStyles((theme) => ({
     marginTop: -20,
     backgroundColor: '#FFFF',
     height: 450,
+    '@media (max-width: 1368px)': {
+      height: 400,
+    },
   },
   choose: {
     textAlign: 'left',
@@ -45,16 +53,19 @@ const styles = makeStyles((theme) => ({
     color: '#1d2178',
     fontFamily: 'Montserrat',
     fontSize: 40,
-    marginRight: 20,
+    marginRight: 10,
     '@media (max-width: 760px)': {
       fontSize: 24,
+    },
+    '@media (max-width: 1368px)': {
+      fontSize: 30,
     },
   },
   month: {
     textAlign: 'left',
     color: 'grey',
     fontFamily: 'Montserrat',
-    fontSize: 24,
+    fontSize: 17,
     '@media (max-width: 760px)': {
       fontSize: 16,
     },
@@ -68,6 +79,10 @@ const styles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     paddingBottom: 40,
+    '@media (max-width: 1368px)': {
+      width: 230,
+      height: 175,
+    },
     '& p': {
       lineHeight: '1.2em',
       fontSize: '1.5vmin',
@@ -138,6 +153,9 @@ const styles = makeStyles((theme) => ({
     fontSize: 30,
     '@media (max-width: 760px)': {
       fontSize: 25,
+    },
+    '@media (max-width: 1368px)': {
+      fontSize: 28,
     },
   },
   link: {

@@ -1,15 +1,13 @@
 import React from 'react'
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-// import OctoLogo from '../assets/logoHome2021.svg';
 import OctoLogoNew from '../assets/newLogo.svg'
-import OctoLogoName from '../assets/Logoocto2.svg'
 import Fade from 'react-reveal/Fade';
 import YouTube from 'react-youtube';
 
 const styles = makeStyles((theme) => ({
   container: {
-    // backgroundColor: '#F7F8FA',
+    backgroundColor: '#F7F8FA',
     paddingTop: 60,
     paddingBottom: 60,
     '@media (max-width: 760px)': {
@@ -34,20 +32,23 @@ const styles = makeStyles((theme) => ({
   description: {
     width: 600,
     fontFamily: 'Montserrat',
-    fontSize: 26,
+    fontSize: 22,
     '@media (max-width: 760px)': {
       fontSize: 18,
       textAlign: 'center',
     },
-  },
-  video: {
-    width: 700,
-    '@media (max-width: 760px)': {
-      width: 350,
+    '@media (max-width: 1368px)': {
+      fontSize: 20,
+      textAlign: 'center',
     },
   },
-  logoName: {
-    width: 450,
+  video: {
+    width: 530,
+    height: 300,
+    '@media (max-width: 760px)': {
+      width: 330,
+      height: 200,
+    },
   },
   imgContainer: {
     display: 'flex',
@@ -61,7 +62,7 @@ const DescriptionHome = ({ content }) => {
   const {description} = content;
   const classes = styles();
   const opts = {
-    width: 750,
+    width: 530,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
@@ -87,11 +88,7 @@ const DescriptionHome = ({ content }) => {
         justify="center"
         alignItems="center"
       >
-        <Fade bottom>
-          <div className={classes.imgContainer}>
-            <OctoLogoName className={classes.logoName} />
-          </div>
-        </Fade>
+        
         <Fade bottom>
           <YouTube
             videoId="0uqkxOcoehc"

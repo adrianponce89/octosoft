@@ -19,7 +19,7 @@ const styles = makeStyles((theme) => ({
   title: {
     fontFamily: 'Montserrat',
     fontSize: 42,
-    color:'#231D4F',
+    color: '#231D4F',
     '@media (max-width: 760px)': {
       fontSize: 32,
       paddingBottom: 20,
@@ -34,6 +34,12 @@ const styles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginBottom: 60,
+    '@media (max-width: 760px)': {
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginBottom: 60,
+    },
   },
   root: {
     marginBottom: 60,
@@ -53,8 +59,19 @@ const styles = makeStyles((theme) => ({
 export default function Clients({ title, dataClients }) {
       const classes = styles();
     return (
-      <Grid container md={12} className={classes.plans}>
-        <Grid container item md={8} className={classes.titlesContainer}>
+      <Grid
+        container
+        xl={8}
+        lg={10}
+        xs={12}
+        className={classes.plans}
+      >
+        <Grid
+          container
+          item
+          md={12}
+          className={classes.titlesContainer}
+        >
           <Typography className={classes.title}>
             Some of our clients
           </Typography>
@@ -66,7 +83,7 @@ export default function Clients({ title, dataClients }) {
           md={10}
           className={classes.root}
         >
-          {dataClients.slice(0,4).map((media, index) => {
+          {dataClients.slice(0, 4).map((media, index) => {
             return (
               <img
                 key={index}

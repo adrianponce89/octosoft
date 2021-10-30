@@ -2,13 +2,9 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import { Grid } from '@material-ui/core';
-import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Trama.png';
-import HomeItems from '../components/HomeItems';
-import Banners from '../components/Banners';
 import HomeBanner from '../components/Home/Banner';
-import PlansGrid from '../components/PlansGrid';
 import DescriptionHome from '../components/DescriptionHome';
 import Services from '../components/Home/Services';
 import HomePlans from '../components/HomePlans';
@@ -68,7 +64,6 @@ export default (props) => {
         <CalendarButton />
       </Link>
       <section id="work">
-        <div className={classes.backgroundHome} />
         <Grid
           container
           direction="column"

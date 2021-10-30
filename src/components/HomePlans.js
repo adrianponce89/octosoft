@@ -6,7 +6,7 @@ import HomeForm from './HomeForm';
 
 const styles = makeStyles((theme) => ({
   plans: {
-    // backgroundColor: '#F7F8FA',
+    backgroundColor: '#F7F8FA',
     paddingTop: 60,
     paddingBottom: 60,
     flexDirection: 'column',
@@ -19,7 +19,6 @@ const styles = makeStyles((theme) => ({
     },
   },
   package: {
-    // flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
     '@media (max-width: 760px)': {
@@ -83,7 +82,14 @@ const HomePlans = ({ plans }) => {
 
   return (
     <Grid container md={12} className={classes.plans}>
-      <Grid container item md={8} className={classes.root}>
+      <Grid
+        container
+        item
+        xl={8}
+        lg={10}
+        xs={12}
+        className={classes.root}
+      >
         <Typography className={classes.title}>
           Select your plan
         </Typography>

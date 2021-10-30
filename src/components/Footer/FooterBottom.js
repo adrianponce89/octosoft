@@ -1,14 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
-
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import YouTubeIcon from '@material-ui/icons/YouTube';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import BehanceIcon from '../../assets/behance.svg';
 
 const useStyles = makeStyles((theme) => ({
   section: {
@@ -41,28 +37,20 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 576px)': { margin: theme.spacing(0) },
   },
   iconSocial: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     marginLeft: 15,
-    clipPath:
-      'polygon(50% 0, 85.5% 14.5%, 100% 50%, 85.5% 85.5%, 50% 100%, 14.5% 85.5%, 0 50%, 14.5% 14.5% )',
-    background: 'white',
-    color: '#1d2178',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     '& svg': {
       transition: '0.2s',
+      fill: 'white',
     },
     '&:hover svg': {
       width: 30,
       height: 30,
     },
-  },
-  iconBehance: {
-    width: 25,
-    height: 25,
-    fill: '#1d2178',
   },
   linkText: {
     color: '#fff',
@@ -129,7 +117,7 @@ const FooterBottom = () => {
           alignContent="center"
           justify="center"
         >
-          <Grid item xs={10} sm={4} container justify="center">
+          <Grid item xs={10} sm={4} md={5} container justify="flex-end">
             <Link
               className={classes.link}
               to="https://www.facebook.com/octosoftprofessionals"

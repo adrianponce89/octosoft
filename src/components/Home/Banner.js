@@ -1,9 +1,10 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
 import TypingAnimation from '../TypingAnimation';
 import MainLogo from './MainLogo';
+import OctoLogoName from '../../assets/Logoocto2.svg';
+import Fade from 'react-reveal/Fade';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     left: '2vw',
     top: '5vh',
-    zIndex:11,
+    zIndex: 11,
   },
   typingContainer: {
     alignSelf: 'flex-start',
@@ -33,28 +34,20 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'center',
   },
-  arrowDown: {
-    fontSize: '5em',
-    color: '#37add4',
-    margin: 0,
-    padding: 0,
-  },
   containerArrow: {
     position: 'absolute',
-    bottom: -25,
+    bottom: -180,
+  },
+  logoName: {
+    width: 310,
   },
   video: {
     width: '130vw',
-    marginLeft:'-280px', 
+    marginLeft: '-280px',
     '@media (max-width: 760px)': {
       width: 350,
     },
     zIndex: '1',
-  },
-  videoContainer: {
-    overflow: 'hidden',
-    width: '100%',
-    zIndex: 10,
   },
 }));
 
@@ -73,11 +66,13 @@ export default ({ descriptionLanding }) => {
       <Grid
         container
         justify="center"
-        className={`Arrow ${classes.containerArrow}`}
+        className={classes.containerArrow}
       >
-        <a href="#work">
-          <ExpandMoreIcon className={classes.arrowDown} />
-        </a>
+        <Fade bottom>
+          <div className={classes.imgContainer}>
+            <OctoLogoName className={classes.logoName} />
+          </div>
+        </Fade>
       </Grid>
     </div>
   );

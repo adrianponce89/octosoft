@@ -1,7 +1,5 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core';
-import { graphql } from 'gatsby';
-import get from 'lodash/get';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ServiceItem from '../serviceItem';
 
