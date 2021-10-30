@@ -27,7 +27,7 @@ const IndexIcons = ({ logos }) => {
       <IconsCards logos={logos} />
       <TitleIcons title={' NEGATIVE LOGOS'} sort={'Right'} />
       <IconsCardsRight logos={logos} />
-      <TitleIcons title={'LOGOS 3D'} sort={'Left'} />
+      <TitleIcons title={'3D LOGOS'} sort={'Left'} />
       <IconsMovie logos={logos} />
       <Box className={classes.buttonAll}>
         <ButtonAll files={logoFiles} />
