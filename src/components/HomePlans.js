@@ -49,11 +49,14 @@ const styles = makeStyles((theme) => ({
   },
   buttonSelected: {
     borderRadius: '50px !important',
-    backgroundColor: '#D437AD',
+    backgroundColor: '#D437AD !important',
     padding: '15px',
     '&:hover': {
       backgroundColor: '#D437AD',
     },
+    // '&:focus':{
+    //   backgroundColor: 'yellow',
+    // }
   },
   textBtnSelected: {
     color: '#FFFF',
@@ -62,7 +65,8 @@ const styles = makeStyles((theme) => ({
   },
   button: {
     borderRadius: 50,
-    backgroundColor: '#FFFF',
+    backgroundColor: 'transparent',
+    boxShadow:'none',
     padding: '15px',
     '&:hover': {
       backgroundColor: '#FFFF',
@@ -93,11 +97,7 @@ const HomePlans = ({ plans }) => {
         <Typography className={classes.title}>
           Select your plan
         </Typography>
-        <ButtonGroup
-          disableElevation
-          variant="contained"
-          color="primary"
-        >
+        <div>
           <Button
             className={
               showPackages ? classes.buttonSelected : classes.button
@@ -136,7 +136,7 @@ const HomePlans = ({ plans }) => {
               CUSTOM
             </Typography>
           </Button>
-        </ButtonGroup>
+        </div>
       </Grid>
       {packageView ? (
         <Grid container item md={8} className={classes.package}>

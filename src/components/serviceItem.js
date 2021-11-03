@@ -47,7 +47,7 @@ const ServiceItem = ({ service, description }) => {
     >
       <Grid item>
         <div className={classes.imgContainer}>
-          <img src={service.node.images[0].file.url} />
+          <img src={service.node.images[1].file.url} />
         </div>
         <Typography className={classes.title}>
           {service.node.title}

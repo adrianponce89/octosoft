@@ -51,7 +51,7 @@ const styles = makeStyles((theme) => ({
       alignItems: 'space-between',
     },
     '@media (min-width: 1800px)': {
-      maxWidth: '60%',
+      maxWidth: '80%',
     },
   },
 }));
@@ -83,7 +83,7 @@ export default function Clients({ title, dataClients }) {
           md={10}
           className={classes.root}
         >
-          {dataClients.slice(0, 4).map((media, index) => {
+          {dataClients.slice(0, 6).map((media, index) => {
             return (
               <img
                 key={index}

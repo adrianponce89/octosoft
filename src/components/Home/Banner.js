@@ -1,10 +1,8 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import TypingAnimation from '../TypingAnimation';
 import MainLogo from './MainLogo';
-import OctoLogoName from '../../assets/Logoocto2.svg';
-import Fade from 'react-reveal/Fade';
+
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
@@ -57,23 +55,13 @@ export default ({ descriptionLanding }) => {
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
   });
+
   return (
     <div className={classes.backgroundHead}>
       <MainLogo className={classes.mainLogo} />
       <div className={classes.typingContainer}>
         <TypingAnimation words={words} />
       </div>
-      <Grid
-        container
-        justify="center"
-        className={classes.containerArrow}
-      >
-        <Fade bottom>
-          <div className={classes.imgContainer}>
-            <OctoLogoName className={classes.logoName} />
-          </div>
-        </Fade>
-      </Grid>
     </div>
   );
 };

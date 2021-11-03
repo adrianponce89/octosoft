@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogoNew from '../assets/newLogo.svg'
-import Fade from 'react-reveal/Fade';
+import OctoLogoName from '../assets/Logoocto2.svg';
 import YouTube from 'react-youtube';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -50,11 +52,23 @@ const styles = makeStyles((theme) => ({
       height: 200,
     },
   },
+  mediaContainer:{
+   marginBottom:-250,
+  },
   imgContainer: {
     display: 'flex',
     alignItems: 'center',
     height: 200,
-    overflow: 'hidden',
+    // overflow: 'hidden',
+    position: 'relative',
+    top: -250,
+  },
+  videoContainer: {
+    position: 'relative',
+    top: -250,
+  },
+  logoName: {
+    width: 310,
   },
 }));
 
@@ -65,7 +79,7 @@ const DescriptionHome = ({ content }) => {
     width: 530,
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
+      autoplay: 0,
       controls: 1,
       showinfo: 1,
       modestbranding: 1,
@@ -73,6 +87,11 @@ const DescriptionHome = ({ content }) => {
       color:'white',
     },
   };
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   return (
     <Grid
       container
@@ -87,15 +106,26 @@ const DescriptionHome = ({ content }) => {
         direction="column"
         justify="center"
         alignItems="center"
+        className={classes.mediaContainer}
       >
-        
-        <Fade bottom>
+        <div className={classes.imgContainer}>
+          <div
+            data-aos="fade-down"
+            data-aos-anchor-placement="top-center"
+          >
+            <OctoLogoName className={classes.logoName} />
+          </div>
+        </div>
+        <div
+          className={classes.videoContainer}
+          data-aos="zoom-in-down"
+        >
           <YouTube
             videoId="0uqkxOcoehc"
             opts={opts}
             className={classes.video}
           />
-        </Fade>
+        </div>
       </Grid>
 
       <Grid

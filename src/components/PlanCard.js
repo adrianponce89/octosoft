@@ -10,13 +10,12 @@ const styles = makeStyles((theme) => ({
       switch (index) {
         case 0:
           return '#FF9F3B';
-          break;
         case 1:
           return '#7543DB';
-          break;
         case 2:
           return '#37D4AD';
-          break;
+        default:
+          return '#FFFF';
       }
     },
     width: 350,
@@ -47,6 +46,21 @@ const styles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 600,
     fontSize: 22,
+    transition:'all 0.3s linear',
+    '&:hover': {
+      color: ({ index }) => {
+        switch (index) {
+          case 0:
+            return '#FFC991';
+          case 1:
+            return '#B192EF';
+          case 2:
+            return '#B2ECDC';
+          default:
+            return '#FFFF';
+        }
+      },
+    },
   },
   price: {
     textAlign: 'left',
@@ -136,6 +150,7 @@ const styles = makeStyles((theme) => ({
   },
   description: {
     textAlign: 'left',
+    marginLeft: 15,
     color: 'grey',
     fontFamily: 'Montserrat',
   },

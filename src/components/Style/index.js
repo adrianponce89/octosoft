@@ -40,7 +40,8 @@ export const theme = createMuiTheme({
            },
            MuiButtonGroup: {
              groupedContainedHorizontal: {
-               borderRight: 'none  !important',
+               borderRight: 'none !important',
+              backgroundColor:'transparent !important'
              },
            },
            MuiToolbar: {
