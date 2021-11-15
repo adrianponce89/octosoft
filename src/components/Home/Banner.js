@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TypingAnimation from '../TypingAnimation';
 import MainLogo from './MainLogo';
+import BridgeVideo from '../../assets/brige-octo.mp4'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -40,12 +41,16 @@ const useStyles = makeStyles((theme) => ({
     width: 310,
   },
   video: {
-    width: '130vw',
-    marginLeft: '-280px',
+    width: '100vw',
+    // marginLeft: '-280px',
     '@media (max-width: 760px)': {
       width: 350,
     },
     zIndex: '1',
+  },
+  white: {
+    backgroundColor: 'white',
+    width: '80vw',
   },
 }));
 
@@ -57,11 +62,29 @@ export default ({ descriptionLanding }) => {
   });
 
   return (
-    <div className={classes.backgroundHead}>
-      <MainLogo className={classes.mainLogo} />
-      <div className={classes.typingContainer}>
+    <>
+      <div
+        data-aos="fade-up"
+        data-aos-easing="linear"
+        data-aos-duration="1000"
+        className={classes.backgroundHead}
+      >
+        {/* <div className={classes.typingContainer}>
         <TypingAnimation words={words} />
+      </div> */}
+        {/* <video className={classes.video} autoPlay loop muted>
+        <source src={BridgeVideo} type="video/mp4"></source>
+      </video> */}
+        {/* <img src={BridgeVideo} className={classes.video} /> */}
       </div>
-    </div>
+      <div
+        data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1000"
+        className={classes.mainLogo}
+      >
+        <MainLogo />
+      </div>
+    </>
   );
 };
