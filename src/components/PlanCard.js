@@ -165,7 +165,7 @@ const styles = makeStyles((theme) => ({
     color: '#1d2178',
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    fontSize: 30,
+    fontSize: 24,
     '@media (max-width: 760px)': {
       fontSize: 25,
     },

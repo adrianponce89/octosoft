@@ -112,6 +112,7 @@ const DescriptionHome = ({ content }) => {
           <div
             data-aos="fade-down"
             data-aos-anchor-placement="top-center"
+            data-aos-once="true"
           >
             <OctoLogoName className={classes.logoName} />
           </div>
@@ -119,6 +120,7 @@ const DescriptionHome = ({ content }) => {
         <div
           className={classes.videoContainer}
           data-aos="zoom-in-down"
+          data-aos-once="true"
         >
           <YouTube
             videoId="0uqkxOcoehc"

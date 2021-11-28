@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
 import CalendarIcon from '../assets/calentarIcon.svg'
 
 const styles = makeStyles({
@@ -14,7 +13,7 @@ const styles = makeStyles({
     position: 'absolute',
     top: '0',
     left: '0',
-    boxShadow: 'box-shadow: 0px 0px 18px 0px rgba(143,131,131,0.61);',
+
     zIndex: 98,
   },
   container: {
@@ -25,6 +24,7 @@ const styles = makeStyles({
     width: '65px',
     height: '65px',
     top: '90vh',
+    filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
     right: '10px',
   },
   calendarIcon: {
