@@ -51,7 +51,7 @@ const styles = makeStyles((theme) => ({
       alignItems: 'space-between',
     },
     '@media (min-width: 1800px)': {
-      maxWidth: '80%',
+      maxWidth: '90%',
     },
   },
 }));

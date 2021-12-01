@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MainLogo from './MainLogo';
+import BannerTrama from '../../assets/trama2.png';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingTop: '10vh',
+    paddingTop: '20vh',
     minHeight: '85vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingTop: '10vh',
+    paddingTop: '20vh',
     minHeight: '50vh',
     position: 'relative',
     '@media (max-width: 560px)': { height: '100%' },
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     left: '2vw',
     top: '5vh',
-    zIndex: 11,
+    zIndex: 16,
   },
   typingContainer: {
     alignSelf: 'flex-start',
@@ -62,6 +63,23 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     width: '80vw',
   },
+  trama: {
+    width: '50%',
+    height: '70%',
+    minHeight: '10vh',
+    opacity: 0.6,
+    top: -160,
+    left: -400,
+    bottom: 0,
+    right: 0,
+    position: 'absolute',
+    background: `url(${BannerTrama})`,
+    backgroundColor: '#FFFFFF',
+    backgroundPosition: 'initial',
+    backgroundRepeat: 'repeat',
+    backgroundSize: 'cover',
+    zIndex: '-2',
+  },
 }));
 
 export default ({ descriptionLanding }) => {
@@ -82,8 +100,6 @@ export default ({ descriptionLanding }) => {
     }
   };
 
-  console.log(isActive, window.scrollY);
-
   useEffect(()=>{
     window.addEventListener('scroll', handleScroll);
     handleScroll();
@@ -97,9 +113,16 @@ export default ({ descriptionLanding }) => {
         }
       ></div>
       <div
+        data-aos="fade-down-right"
+        data-aos-once="true"
+        data-aos-easing="linear"
+        data-aos-duration="1500"
+        className={firstView ? classes.trama : { display: 'none' }}
+      ></div>
+      <div
         data-aos="fade-down"
         data-aos-easing="linear"
-        data-aos-duration="1000"
+        data-aos-duration="1500"
         data-aos-once="true"
         className={classes.mainLogo}
       >
