@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 
-const Titles = ({ title, color }) => {
+const Titles = ({ title, subTitle, color }) => {
   const classes = useStyles({ color });
   return (
     <Grid
@@ -24,6 +24,11 @@ const Titles = ({ title, color }) => {
         <Typography variant="h1" className={classes.title}>
           {title}
         </Typography>
+        {subTitle && (
+          <Typography variant="h3" className={classes.subTitle}>
+            {subTitle}
+          </Typography>
+        )}
       </Grid>
     </Grid>
   );
@@ -34,15 +39,25 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     color: ({ color }) => color || theme.palette.primary.main,
-    fontWeight: 'bold',
-    fontFamily: 'Poppins',
+    fontWeight: 900,
+    fontFamily: 'Montserrat',
     textTransform: 'capitalize',
     textAlign: 'center',
+  },
+  subTitle: {
+    fontFamily: 'Montserrat',
+    fontWeight: 700,
+    fontSize: 30,
+    color: '#000000',
+    '@media (max-width: 760px)': {
+      fontSize: 24,
+    },
   },
 }));
 
 Titles.propTypes = {
   title: PropTypes.string.isRequired,
+  subTitle: PropTypes.string,
   color: PropTypes.string,
 };
 
