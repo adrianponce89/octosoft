@@ -1,9 +1,11 @@
 import React from 'react';
+import Background from '../../components/Background';
 import SubCategories from '../../components/Services/SubCategories';
 
 const subcategories = () => {
   return (
-    <div style={{ backgroundColor: '#efefef' }}>
+    <div>
+      <Background />
       <SubCategories />
     </div>
   );
