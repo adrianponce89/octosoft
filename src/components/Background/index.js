@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const Background = () => {
   const classes = useStyles();
-
   return (
     <div className="background">
       <img
