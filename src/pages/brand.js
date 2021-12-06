@@ -31,20 +31,14 @@ const BrandPage = (props) => {
     'data.allContentfulBrandText.nodes[0]',
   );
 
-  console.log(titlesBrand);
   return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      innerPadding="80px 25px 25px 25px"
-    >
-      <Brand
-        logos={logosBrand}
-        colors={colorsBrand}
-        identityInfo={identityGuidelines}
-        legalInfo={legalDisclaimer}
-        titles={titlesBrand}
-      />
-    </Container>
+    <Brand
+      logos={logosBrand}
+      colors={colorsBrand}
+      identityInfo={identityGuidelines}
+      legalInfo={legalDisclaimer}
+      titles={titlesBrand}
+    />
   );
 };
 

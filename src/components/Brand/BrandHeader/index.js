@@ -3,7 +3,6 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import BrandHeaderCard from './BrandHeaderCard';
 import Line from '../../../assets/Divider.svg';
-import trama from '../../../assets/VectorStart.png';
 const BrandHeader = ({ titles }) => {
   const classes = useStyles();
   return (
@@ -23,18 +22,14 @@ const BrandHeader = ({ titles }) => {
           justify="center"
           alignItems="center"
           direction="column"
+     
           className={classes.titleContainer}
         >
-          <img
-            src={trama}
-            alt=""
-            className={classes.backgroundImage}
-          />
           <Typography variant="h5" className={classes.mainTitle}>
-            Octosoft
+            Brand Manual
           </Typography>
           <Typography variant="h5" className={classes.subtitle}>
-            BRAND MANUAL
+            OCTOSOFT PROFESSIONAL
           </Typography>
         </Grid>
         <Grid container item xs={12} md={11} xl={6} justify="center">
@@ -71,32 +66,9 @@ const BrandHeader = ({ titles }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  backgroundImage: {
-    position: 'absolute',
-    width: '500px',
-    top: '0%',
-    right: '8.5%',
-    zIndex: '0',
-    '@media (max-width: 768px)': {
-      display: 'none',
-    },
-  },
   line: {
     width: '60%',
     marginBottom: theme.spacing(5),
-    /* '@media (min-width: 1024px)': {
-      width: 250,
-      paddingRight: '0%',
-    },
-    '@media (min-width: 1324px)': {
-      width: 250,
-      paddingRight: '5%',
-    },
-    '@media (min-width: 2024px)': {
-      width: 250,
-      height: 30,
-      paddingRight: '5%',
-    }, */
     '@media (min-width: 2800px)': {
       width:'70%',
     },
@@ -104,7 +76,13 @@ const useStyles = makeStyles((theme) => ({
       visibility: 'hidden',
     },
   },
-  root: {},
+  root: {
+    width: '100%',
+    marginTop: '10rem',
+    '@media (max-width: 760px)': {
+    marginTop: '7rem',
+  },
+  },
   gridLine: {
     '@media (max-width: 760px)': {
       display: 'flex',
@@ -126,6 +104,10 @@ const useStyles = makeStyles((theme) => ({
     color: '#8249DC',
     zIndex: '1',
     '@media (max-width: 760px)': {
+      alignItems:"center",
+      textAlign: 'center',
+      width: '100%',
+      justifyContent: 'center',
       fontSize: 50,
     },
   },
