@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import BrandHeaderCard from './BrandHeaderCard';
 import Line from '../../../assets/Divider.svg';
 import trama from '../../../assets/VectorStart.png';
+import UnderLined from '../../UnderLined';
 const BrandHeader = ({ titles }) => {
   const classes = useStyles();
   return (
@@ -37,24 +38,7 @@ const BrandHeader = ({ titles }) => {
             BRAND MANUAL
           </Typography>
         </Grid>
-        <Grid container item xs={12} md={11} xl={6} justify="center">
-          <Typography variant="h5" className={classes.description}>
-            From freelancers to the world, we <br />
-            help people build great digital <br /> products from head
-            to toe.
-          </Typography>
-          <Grid
-            container
-            item
-            xs={11}
-            md={7}
-            xl={10}
-            justify="flex-end"
-            className={classes.gridLine}
-          >
-            <Line className={classes.line} />
-          </Grid>
-        </Grid>
+        <UnderLined />
       </Grid>
       <Grid
         container
@@ -84,21 +68,8 @@ const useStyles = makeStyles((theme) => ({
   line: {
     width: '60%',
     marginBottom: theme.spacing(5),
-    /* '@media (min-width: 1024px)': {
-      width: 250,
-      paddingRight: '0%',
-    },
-    '@media (min-width: 1324px)': {
-      width: 250,
-      paddingRight: '5%',
-    },
-    '@media (min-width: 2024px)': {
-      width: 250,
-      height: 30,
-      paddingRight: '5%',
-    }, */
     '@media (min-width: 2800px)': {
-      width:'70%',
+      width: '70%',
     },
     '@media (max-width: 760px)': {
       visibility: 'hidden',
