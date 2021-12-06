@@ -13,30 +13,30 @@ const Background = () => {
         className={classes.backgroundStart}
         alt="background"
       />
-      <img src={OctoOne} className={classes.Octo} alt="background" />
+      <img src={OctoOne} className={classes.octo} alt="background" />
     </div>
   );
 };
 const useStyles = makeStyles((theme) => ({
-    Octo: {
-        position: 'absolute',
-        width: '700px',
-        top: '30%',
-        left: '-7%',
-        zIndex: '0',
-        '@media (max-width: 768px)': {
-          display: 'none',
-        },
-      },
-      backgroundStart: {
-        position: 'absolute',
-        top: '5%',
-        right: '0%',
-        zIndex: '0',
-        '@media (max-width: 768px)': {
-          display: 'none',
-        },
-      },
+  octo: {
+    position: 'absolute',
+    width: '700px',
+    top: '30%',
+    left: '-7%',
+    zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
+  },
+  backgroundStart: {
+    position: 'absolute',
+    top: '5%',
+    right: '0%',
+    zIndex: '0',
+    '@media (max-width: 768px)': {
+      display: 'none',
+    },
+  },
 }));
 
 export default Background;
