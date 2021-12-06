@@ -6,7 +6,7 @@ import Line from '../../assets/Divider.svg';
 const UnderLined = () => {
   const classes = useStyles();
   return (
-    <Grid container item xs={12} md={11} xl={6} justify="center">
+    <Grid container item xs={12} md={11} justify="center">
       <Typography variant="h5" className={classes.description}>
         From freelancers to the world, we <br />
         help people build great digital <br /> products from head to
@@ -17,7 +17,6 @@ const UnderLined = () => {
         item
         xs={11}
         md={7}
-        xl={10}
         justify="flex-end"
         className={classes.gridLine}
       >
