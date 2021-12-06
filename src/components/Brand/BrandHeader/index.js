@@ -84,19 +84,6 @@ const useStyles = makeStyles((theme) => ({
   line: {
     width: '60%',
     marginBottom: theme.spacing(5),
-    /* '@media (min-width: 1024px)': {
-      width: 250,
-      paddingRight: '0%',
-    },
-    '@media (min-width: 1324px)': {
-      width: 250,
-      paddingRight: '5%',
-    },
-    '@media (min-width: 2024px)': {
-      width: 250,
-      height: 30,
-      paddingRight: '5%',
-    }, */
     '@media (min-width: 2800px)': {
       width:'70%',
     },
