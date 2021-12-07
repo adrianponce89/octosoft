@@ -18,7 +18,7 @@ const SubCategories = () => {
         className={classes.cardContainer}
       >
         {cards.map((item, i) => (
-          <CardSubCategories key={`${item + i}`} />
+          <CardSubCategories key={i} />
         ))}
       </Grid>
     </Grid>

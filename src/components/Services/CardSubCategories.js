@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 const CardSubCategories = ({ title, description }) => {
   const classes = useStyles();
   return (
@@ -56,7 +56,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    flexWrap: 'wrap',
     borderRadius: 12,
     width: 415,
     height: 500,
