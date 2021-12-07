@@ -13,6 +13,7 @@ const AboutUsPage = (props) => {
 
   const aboutUsBanner = get(props, 'data.contentfulBanners');
 
+  console.log(teamMembers);
   return (
     <Container
       background={`url(${BackgroundImage})`}
@@ -46,6 +47,42 @@ export const pageQuery = graphql`
         id
         internal {
           content
+        }
+      }
+    }
+    allContentfulTeamMember(sort: { fields: order }) {
+      edges {
+        node {
+          id
+          title
+          category
+          section
+          socialMedia {
+            github
+            facebook
+            behance
+            instagram
+            linkedin
+            twitter
+            web
+          }
+          photo {
+            file {
+              url
+            }
+          }
+          fullPhoto {
+            file {
+              url
+            }
+          }
+          name
+          biography {
+            json
+          }
+          expertise {
+            json
+          }
         }
       }
     }
