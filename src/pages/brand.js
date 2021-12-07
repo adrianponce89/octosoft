@@ -1,7 +1,5 @@
 import React from 'react';
 import Brand from '../components/Brand';
-import Container from '../components/Container';
-import BackgroundImage from '../assets/Trama.png';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 
