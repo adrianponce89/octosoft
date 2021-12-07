@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   },
   OctoFive: {
     position: 'absolute',
-    bottom: '-554%',
+    bottom: '-568%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 768px)': {
