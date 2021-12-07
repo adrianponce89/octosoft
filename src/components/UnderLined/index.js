@@ -6,7 +6,15 @@ import Line from '../../assets/Divider.svg';
 const UnderLined = () => {
   const classes = useStyles();
   return (
-    <Grid container item xs={12} md={11} justify="center">
+    <Grid
+      container
+      className={classes.root}
+      item
+      xs={12}
+      md={11}
+      alignItems="center"
+      justify="center"
+    >
       <Typography variant="h5" className={classes.description}>
         From freelancers to the world, we <br />
         help people build great digital <br /> products from head to
@@ -26,21 +34,19 @@ const UnderLined = () => {
   );
 };
 const useStyles = makeStyles((theme) => ({
-  line: {
-    width: '60%',
-    marginBottom: theme.spacing(5),
-    '@media (min-width: 2800px)': {
-      width: '70%',
-    },
+  root: {
+    flexDirection: 'column',
+    width: '100%',
+    marginBottom: 60,
+    marginTop: 60,
     '@media (max-width: 760px)': {
-      visibility: 'hidden',
+      marginTop: 20,
     },
   },
-  root: {},
   gridLine: {
     '@media (max-width: 760px)': {
       display: 'flex',
-      marginRight: '15%',
+
     },
   },
   description: {
@@ -51,6 +57,21 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     '@media (max-width: 760px)': {
       fontSize: 16,
+    },
+  },
+  line: {
+    marginBottom: theme.spacing(5),
+    '@media (min-width: 2800px)': {
+      width: '85%',
+    },
+    '@media (min-width: 1024px)': {
+      width: '55%',
+    },
+    '@media (min-width: 1400px)': {
+      width: '75%',
+    },
+    '@media (max-width: 760px)': {
+      visibility: 'hidden',
     },
   },
 }));

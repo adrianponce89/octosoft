@@ -6,7 +6,6 @@ import IconsCardsRight from './iconsCardsRight';
 import IconsMovie from './iconsMovie';
 import ButtonAll from './buttonAll';
 import TitleIcons from './titleIcons';
-import trama from '../../../assets/VectorMid.png';
 
 const IndexIcons = ({ logos }) => {
   const [logoFiles, setLogoFiles] = useState([]);
@@ -22,7 +21,6 @@ const IndexIcons = ({ logos }) => {
   const classes = useStyles();
   return (
     <Grid className={classes.root} xs={11} container justify="center">
-      <img src={trama} alt='' className={classes.backgroundImage} />
       <TitleIcons title={'LOGOS'} sort={'Left'} />
       <IconsCards logos={logos} />
       <TitleIcons title={' NEGATIVE LOGOS'} sort={'Right'} />
@@ -37,12 +35,6 @@ const IndexIcons = ({ logos }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  backgroundImage:{
-    position:'absolute',
-    left:'8.5%',
-    top:'25%',
-    zIndex:'0'
-  },
   root: {
     height: 'fit-content',
     marginTop: '4rem',

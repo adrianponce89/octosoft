@@ -1,6 +1,6 @@
 import React from 'react';
 import OctoThree from '../../assets/VectorStart.png';
-import OctoOne from '../../assets/Vector.png';
+import OctoOne from '../../assets/Complete.png';
 import { makeStyles } from '@material-ui/core/styles';
 
 const Background = () => {
