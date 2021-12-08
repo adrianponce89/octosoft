@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Cards from './Cards';
 import Title from './Title';
 import PopUp from './PopUp';
+
 const NewOurTeam = ({ teamMembers }) => {
   const classes = useStyles();
   const [member, setMember] = useState(null);
@@ -32,7 +33,7 @@ const NewOurTeam = ({ teamMembers }) => {
   const handleClose = () => {
     setShowPopUp(false);
   };
-  console.log(member);
+
   return (
     <Grid
       item
@@ -124,11 +125,10 @@ const NewOurTeam = ({ teamMembers }) => {
         </div>
         {showPopUp ? (
           <Dialog
-            aria-labelledby="customized-dialog-title"
             open={member !== null}
             className={classes.popup}
-            maxWidth={'120rem'}
-          >
+            maxWidth="false"
+            >
             <PopUp
               name={member.node.name}
               biography={

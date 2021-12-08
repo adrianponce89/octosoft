@@ -2,6 +2,8 @@ import React, { Fragment, useState } from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SocialNetwork from '../AboutUs/OurTeam/SocialNetwork';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
 
 const PopUp = ({
   name,
@@ -19,7 +21,6 @@ const PopUp = ({
     popup(false);
     member(null);
   };
-  console.log(socialMedia);
   return (
     <Fragment>
       <div className={classes.root}>
@@ -51,7 +52,7 @@ const PopUp = ({
             <div className={classes.divExpertise}>
               {expertise &&
                 expertise.map(({ content }, index) => (
-                  <div className={classes.eachExpertise}>
+                  <div key={index} className={classes.eachExpertise}>
                     <Typography key={index} className={classes.bio}>
                       {content[0].content[0].value}
                     </Typography>
@@ -64,7 +65,7 @@ const PopUp = ({
             <div className={classes.divBio}>
               {biography &&
                 biography.map(({ value }, index) => (
-                  <div className={classes.eachBio}>
+                  <div key={index} className={classes.eachBio}>
                     <Typography key={index} className={classes.bio}>
                       {value}
                     </Typography>
@@ -91,13 +92,23 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     width: '110rem',
     backgroundColor: '#F5F7F7',
-    height: '50rem',
-    '@media (max-width: 768px)': {
+    height: '60rem',
+    transition: 'all 2s ease-in-out',
+    '@media (max-width: 1800px)': {
+      width: '90rem',
+      height: '100%',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      overflowY: 'scroll',
+    },
+    '@media (max-width: 1024px)': {
       width: '100%',
       height: '100%',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      overflowY: 'scroll',
     },
   },
   divPhoto: {
@@ -107,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '90%',
       height: '100%',
     },
@@ -121,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     borderRadius: 6,
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       height: '100%',
       boxShadow: 'none',
@@ -134,7 +145,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       height: '100%',
       alignItems: 'center',
@@ -147,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
     height: 'fit-content',
     marginTop: '2rem',
     flexDirection: 'row',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       height: '100%',
       flexDirection: 'column',
@@ -161,7 +172,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
     marginRight: '1rem',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       margin: '0',
       alignItems: 'center',
       justifyContent: 'center',
@@ -175,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0',
     color: '#37ADD4',
     textTransform: 'capitalize',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       fontSize: '3.5vh',
     },
   },
@@ -184,7 +195,7 @@ const useStyles = makeStyles((theme) => ({
     width: 'fit-content',
     alignItems: 'flex-end',
     justifyContent: 'flex-start',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       margin: '0',
       alignItems: 'center',
       justifyContent: 'center',
@@ -199,7 +210,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0',
     color: '#000000',
     textTransform: 'uppercase',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       fontSize: '3vh',
     },
   },
@@ -208,7 +219,7 @@ const useStyles = makeStyles((theme) => ({
     width: '40%',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       alignItems: 'center',
       justifyContent: 'center',
@@ -219,7 +230,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     alignItems: 'flex-end',
     justifyContent: 'flex-end',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       alignItems: 'center',
       justifyContent: 'center',
@@ -243,8 +254,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1rem',
     marginBottom: '1rem',
     textTransform: 'uppercase',
-    '@media (max-width: 768px)': {
-      fontSize: '3vh',
+    '@media (max-width: 1024px)': {
+      fontSize: '2vh',
       margin: '0',
     },
   },
@@ -255,7 +266,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     height: 'fit-content',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       flexDirection: 'column',
       marginTop: '1rem',
@@ -273,7 +284,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 50,
     fontSize: '1,5vh',
     color: '#4D4D4D',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '95%',
     },
   },
@@ -283,7 +294,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '10rem',
     flexDirection: 'column',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       flexWrap: 'nowrap',
       flexDirection: 'column',
@@ -302,7 +313,7 @@ const useStyles = makeStyles((theme) => ({
     height: '15rem',
     overflowY: 'scroll',
     flexDirection: 'column',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '100%',
       flexWrap: 'nowrap',
       flexDirection: 'column',
@@ -318,7 +329,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '30%',
     height: 'fit-content',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '90%',
       height: '100%',
     },
@@ -326,7 +337,7 @@ const useStyles = makeStyles((theme) => ({
   eachBio: {
     display: 'flex',
     width: '45%',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       width: '90%',
       height: '100%',
     },
@@ -337,7 +348,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: '5',
     bottom: '5%',
     right: '5%',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       position: 'fixed',
       bottom: '1%',
       right: '1%',
@@ -349,7 +360,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     border: `0.2rem solid #37ADD4`,
     backgroundColor: '#F5F7F7',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1024px)': {
       backgroundColor: '#F5F7F7',
     },
   },
