@@ -11,6 +11,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
   const handleClose = () => {
     setSelectedMember(null);
   };
+
   const classes = useStyle();
   return (
     <>

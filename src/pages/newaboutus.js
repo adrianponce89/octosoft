@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import NewAboutUs from '../components/newAboutUs/index';
+import NewAboutUs from '../components/NewAboutUs/index';
 const NewAboutUsPage = (props) => {
   const aboutUsBanner = get(props, 'data.allContentfulHomeItem');
   console.log(aboutUsBanner);
