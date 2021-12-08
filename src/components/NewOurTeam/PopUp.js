@@ -14,7 +14,7 @@ const PopUp = ({
   popup,
 }) => {
   const classes = useStyles({ background });
-
+  console.log(biography);
   const handleClick = () => {
     popup(false);
     member(null);
@@ -53,7 +53,7 @@ const PopUp = ({
                 expertise.map(({ content }, index) => (
                   <div className={classes.eachExpertise}>
                     <Typography key={index} className={classes.bio}>
-                      {content[0].content[0].value}{' '}
+                      {content[0].content[0].value}
                     </Typography>
                   </div>
                 ))}
@@ -61,10 +61,15 @@ const PopUp = ({
           </div>
           <div className={classes.divSubs}>
             <Typography className={classes.titles}>Bio</Typography>
-            <div className={classes.divText}>
-              <Typography className={classes.bio}>
-                {biography}
-              </Typography>
+            <div className={classes.divBio}>
+              {biography &&
+                biography.map(({ value }, index) => (
+                  <div className={classes.eachBio}>
+                    <Typography key={index} className={classes.bio}>
+                      {value}
+                    </Typography>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
@@ -124,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
   },
   secondColumn: {
     display: 'flex',
-    width: '70%',
+    width: '80%',
     height: '100%',
     flexDirection: 'column',
     alignItems: 'flex-start',
@@ -290,10 +295,37 @@ const useStyles = makeStyles((theme) => ({
       height: '10rem',
     },
   },
+  divBio: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    width: '100%',
+    height: '15rem',
+    overflowY: 'scroll',
+    flexDirection: 'column',
+    '@media (max-width: 768px)': {
+      width: '100%',
+      flexWrap: 'nowrap',
+      flexDirection: 'column',
+      marginTop: '1rem',
+      marginBottom: '1rem',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
+      overflow: 'scroll',
+      height: '10rem',
+    },
+  },
   eachExpertise: {
     display: 'flex',
     width: '30%',
     height: 'fit-content',
+    '@media (max-width: 768px)': {
+      width: '90%',
+      height: '100%',
+    },
+  },
+  eachBio: {
+    display: 'flex',
+    width: '45%',
     '@media (max-width: 768px)': {
       width: '90%',
       height: '100%',

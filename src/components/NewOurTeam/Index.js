@@ -132,7 +132,7 @@ const NewOurTeam = ({ teamMembers }) => {
             <PopUp
               name={member.node.name}
               biography={
-                member.node.biography.json.content[0].content[0].value
+                member.node.biography.json.content[0].content
               }
               expertise={
                 member.node.expertise.json.content[0].content
