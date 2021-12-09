@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Background from '../Background';
 import { Typography, Grid, Dialog } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -10,6 +10,8 @@ const NewOurTeam = ({ teamMembers }) => {
   const classes = useStyles();
   const [member, setMember] = useState(null);
   const [showPopUp, setShowPopUp] = useState(false);
+  const [width, setWidth] = useState(null);
+  const [height, setHeight] = useState(null);
   const executives = teamMembers.filter(
     (item) => item.node.category === 'Executive Partners',
   );
@@ -33,6 +35,16 @@ const NewOurTeam = ({ teamMembers }) => {
   const handleClose = () => {
     setShowPopUp(false);
   };
+
+  useEffect(() => {
+    const change = () => {
+      let intViewportWidth = window.innerWidth;
+      let intViewportHeight = window.innerHeight;
+      setWidth(intViewportWidth);
+      setHeight(intViewportHeight);
+    };
+    change();
+  }, [width]);
 
   return (
     <Grid
@@ -127,8 +139,8 @@ const NewOurTeam = ({ teamMembers }) => {
           <Dialog
             open={member !== null}
             className={classes.popup}
-            maxWidth="false"
-            >
+            fullScreen={width}
+          >
             <PopUp
               name={member.node.name}
               biography={

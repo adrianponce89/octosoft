@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import SocialNetwork from '../AboutUs/OurTeam/SocialNetwork';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
-
 const PopUp = ({
   name,
   section,
@@ -21,6 +20,7 @@ const PopUp = ({
     popup(false);
     member(null);
   };
+
   return (
     <Fragment>
       <div className={classes.root}>
@@ -90,12 +90,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    width: '110rem',
+    width: '100%',
     backgroundColor: '#F5F7F7',
     height: '60rem',
     transition: 'all 2s ease-in-out',
     '@media (max-width: 1800px)': {
-      width: '90rem',
+      width: '100%',
       height: '100%',
       flexDirection: 'column',
       alignItems: 'center',
@@ -118,9 +118,8 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    '@media (max-width: 1024px)': {
-      width: '90%',
-      height: '100%',
+    '@media (max-width: 1800px)': {
+      display: 'none',
     },
   },
   gridPhoto: {
@@ -132,11 +131,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     borderRadius: 6,
-    '@media (max-width: 1024px)': {
-      width: '100%',
-      height: '100%',
-      boxShadow: 'none',
-    },
   },
   secondColumn: {
     display: 'flex',
@@ -160,10 +154,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     '@media (max-width: 1024px)': {
       width: '100%',
-      height: '100%',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
     },
   },
   divName: {
@@ -244,6 +237,13 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
+    '@media (max-width: 1024px)': {
+      width: '90%',
+      height: '100%',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+    },
   },
   titles: {
     width: '100%',
@@ -257,6 +257,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 1024px)': {
       fontSize: '2vh',
       margin: '0',
+      justifyContent: 'flex-start',
     },
   },
   divText: {
