@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography, Paper } from '@material-ui/core';
+import { Grid, Typography, Box } from '@material-ui/core';
 
-const OurPortfolio = ({ description, colorTitle, title }) => {
+const OurPortfolio = ({ colorTitle, title }) => {
   const classes = useStyles({ colorTitle });
+
   return (
-    <Paper square elevation={1} className={classes.root}>
+    <Box square elevation={1} className={classes.root}>
       <Grid
         item
         xs={12}
@@ -15,15 +16,10 @@ const OurPortfolio = ({ description, colorTitle, title }) => {
         className={classes.box}
       >
         <Typography variant="h5" className={classes.titleCard}>
-          {title}
+          {title || 'Our Portfolio'}
         </Typography>
-        <Grid item xs={12} ms={10}>
-          <Typography variant="body1" className={classes.description}>
-            {description}
-          </Typography>
-        </Grid>
       </Grid>
-    </Paper>
+    </Box>
   );
 };
 
@@ -31,13 +27,13 @@ const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(8),
     marginTop: theme.spacing(8),
-    borderRadius: 16,
-    backgroundPosition: '0 33%',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor: theme.palette.common.white,
-    backgroundOrigin: 'padding-box',
     zIndex: 1,
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(7),
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(3),
+    },
   },
   box: { zIndex: 3 },
   media: {
@@ -45,23 +41,18 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   titleCard: {
-    color: ({ colorTitle }) => colorTitle ?? '#DA2BBC',
-    fontSize: '2.5rem',
-    fontWeight: 700,
+    color: ({ colorTitle }) => '#37ADD4' /* colorTitle ?? '#8249DC' */,
+    fontSize: '6rem',
+    fontWeight: 900,
     fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
+    [theme.breakpoints.down('sm')]: {
+      textAlign: 'center',
+      fontSize: '3rem'
+    },
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
-    },
-  },
-  description: {
-    fontFamily: 'Montserrat',
-    fontWeight: 500,
-    whiteSpace: 'break-spaces',
-    fontSize: '1.625rem',
-    textAlign: 'center',
-    [theme.breakpoints.down('xs')]: {
-      fontSize: '1rem',
+      fontSize: '2rem'
     },
   },
 }));

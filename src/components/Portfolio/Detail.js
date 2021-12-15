@@ -1,50 +1,85 @@
 import React from 'react';
-
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 import ItemPortfolio from './Item';
+import { Link } from 'gatsby';
 
 const DetailPortfolio = ({ portfolios }) => {
   const classes = useStyle();
 
+
   return (
-    <Paper square elevation={1} className={classes.root}>
-      <Grid item container xs={12}>
-        {portfolios.map(({ file, title, description }) => (
-          <Grid
+    <Container className={classes.root}>
+      <Grid container xs={12} className={classes.gridContainer}>
+        {portfolios.map(node =>
+          <Link
             item
             xs={12}
             md={3}
             container
             justify="center"
-            key={title}
+            key={node.title}
             className={classes.boxGrid}
+            to={node.node.portfolioLink}
           >
             <ItemPortfolio
-              portfolio={file}
-              title={title}
-              link={description}
+              data={node}
             />
-          </Grid>
-        ))}
+          </Link>
+        )}
       </Grid>
-    </Paper>
+    </Container>
   );
 };
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(10),
-    [theme.breakpoints.down('xs')]: {
-      padding: theme.spacing(5),
+    padding: 0,
+    [theme.breakpoints.down('sm')]: {
+      height: '70%',
+      width: '100%'
     },
-    borderRadius: 16,
+    [theme.breakpoints.down('xs')]: {
+      padding: theme.spacing(0),
+    },
+  },
+  gridContainer: {
+    width: '100%',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    boxSizing: 'border-box',
+    maxWidth: 'unset',
+    [theme.breakpoints.down('sm')]: {
+      height: '100%',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      gap: '5px'
+    },
   },
   boxGrid: {
-    padding: 10,
+    minHeight: '380px',
+    flexWrap: 'wrap',
+    flexGrow: 0,
+    maxWidth: '10%',
+    flexBasis: '25%',
+    borderRadius: '8px',
+    overflow: 'hidden',
+    transition: '0.5s ease-out',
+    cursor: 'pointer',
+    '&:hover': {
+      maxWidth: '12%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+      maxWidth: 'initial',
+      minHeight: '9.5%',
+      flexBasis: '0',
+      '&:hover': {
+        minHeight: '13%',
+        maxWidth: 'initial'
+      },
+    },
   },
 }));
 
