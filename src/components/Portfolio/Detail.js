@@ -7,7 +7,6 @@ import { Link } from 'gatsby';
 const DetailPortfolio = ({ portfolios }) => {
   const classes = useStyle();
 
-
   return (
     <Container className={classes.root}>
       <Grid container xs={12} className={classes.gridContainer}>
@@ -75,6 +74,7 @@ const useStyle = makeStyles((theme) => ({
       maxWidth: 'initial',
       minHeight: '9.5%',
       flexBasis: '0',
+      borderRadius: '4px',
       '&:hover': {
         minHeight: '13%',
         maxWidth: 'initial'

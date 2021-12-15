@@ -19,6 +19,11 @@ const PortfolioPage = (props) => {
                 url
               }
             }
+            porfolioBackgorundWide{
+              file {
+                url
+              }
+            }
             portfolioLink
           }
         }

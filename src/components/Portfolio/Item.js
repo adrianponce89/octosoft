@@ -6,11 +6,13 @@ import zIndex from '@material-ui/core/styles/zIndex';
 const ItemPortfolio = ({ data }) => {
   const classes = useStyles();
   const { url } = data.node.porfolioBackground.file
-
+  const { url: urlWide } = data.node.porfolioBackgorundWide.file
+  const screen = window.innerWidth
+  console.log(screen >= 769 ? urlWide : url);
   return (
     <div to={data.portfolioLink} className={classes.itemContainer} style={{ 'backgroundColor': data.node.color }} >
       <div className={classes.boxImg} data-descr={data.portfolioLink}>
-        <img src={url} alt={data.node.title} className={classes.img} />
+        <img src={screen >= 769 ? url : urlWide} alt={data.node.title} className={classes.img} />
       </div>
       <p className={classes.title}>{data.node.title}</p>
     </div >
@@ -21,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
     textDecoration: 'none',
-    borderRadius: '8px',
     transition: '0.5s ease-out',
     [theme.breakpoints.down('md')]: {
 
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
       writingMode: 'initial',
       transform: 'rotate(0)',
       height: 'initial',
-      margin: '-35px 10px',
+      margin: '-40px 50px',
       textAlign: 'left',
       inlineSize: 'max-content'
     },
@@ -65,7 +66,8 @@ const useStyles = makeStyles((theme) => ({
     left: '-85% ',
     [theme.breakpoints.down('sm')]: {
       left: '0',
-      transform: 'scale(2)'
+      top: '-470%',
+      transform: 'scale(1)'
     },
   },
   boxImg: {
