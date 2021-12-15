@@ -25,6 +25,7 @@ export default (props) => {
   );
   const banners = get(props, 'data.allContentfulBanners.edges');
   const homeItems = get(props, 'data.allContentfulHomeItem.edges');
+  console.log(homeItems);
   const plans = get(props, 'data.allContentfulPlan.edges');
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
@@ -76,19 +77,19 @@ export default (props) => {
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulHomeItem(sort: { fields: order }) {
+    allContentfulHomeItem(filter: {order: {in: [0, 1]}}) {
       edges {
         node {
           id
           link
           order
+          title
           color
           image {
             file {
               url
             }
           }
-          title
           description {
             description
           }
