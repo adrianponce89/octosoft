@@ -46,7 +46,6 @@ const NewAboutUs = ({ aboutUs }) => {
             />
           ))}
       </Grid>
-      <UnderLined />
     </Grid>
   );
 };

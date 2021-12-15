@@ -77,19 +77,19 @@ export default (props) => {
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulHomeItem(filter: {order: {in: [0, 1]}}) {
+    allContentfulHomeItem(sort: {fields: order}, filter: {order: {in: [0, 1]}}) {
       edges {
         node {
           id
           link
           order
-          title
           color
           image {
             file {
               url
             }
           }
+          title
           description {
             description
           }

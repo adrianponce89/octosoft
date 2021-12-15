@@ -12,19 +12,19 @@ export default NewAboutUsPage;
 
 export const pageQuery = graphql`
   query NewAboutUsQuery {
-    allContentfulHomeItem(sort: { fields: order }) {
+    allContentfulHomeItem(sort: {fields: order}, filter: {order: {gt: 1}}) {
       edges {
         node {
           id
           link
           order
+          title
           color
           image {
             file {
               url
             }
           }
-          title
           description {
             description
           }

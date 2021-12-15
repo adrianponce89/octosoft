@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
 
 const Cards = (props) => {
   const classes = useStyles(props);
@@ -29,9 +30,22 @@ const Cards = (props) => {
           sm={6}
           className={classes.containerCard}
         >
+          <Typography variant="h5" className={classes.titleCard}>
+            {props.title}
+          </Typography>
+
           <Typography className={classes.descriptionCard}>
             {props.description}
           </Typography>
+
+          {(props.link != null) && 
+            <Link className={classes.link} to={props.link}>
+              <Typography className={classes.descriptionLink}>
+                Learn more...
+              </Typography>
+            </Link>
+          }
+          
         </Grid>
       </div>
     </Grid>
@@ -69,6 +83,11 @@ const useStyles = makeStyles((theme) => ({
       width: '90%',
     },
   },
+  titleCard: {
+    fontFamily: 'Montserrat',
+    fontWeight: 900,
+    fontSize: 30,
+  },
   descriptionCard: {
     fontFamily: 'Montserrat',
     fontSize: 18,
@@ -82,15 +101,24 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 20,
     },
   },
+  descriptionLink: {
+    fontFamily: 'Montserrat',
+    fontSize: 18,
+    textAlign: 'right',
+    '&:hover': {
+      textDecoration: 'underline',
+    },
+  },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
+    height: '100%',
     minHeight: '35vh',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
-    '@media (max-width: 768px)': {
+    '@media (max-width: 576px)': {
       order: () => -1,
     },
   },
