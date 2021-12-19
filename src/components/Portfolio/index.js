@@ -24,7 +24,11 @@ const Portfolio = ({ data }) => {
   }
   const { colorTitle, titlePortfolioPage } = sectionData
 
-  const { edges: portfolioContent } = data.allContentfulService
+  const { nodes: portfolioContent } = data.allContentfulService
+
+  const orderedPortfolios = portfolioContent
+    .filter(portfolio => portfolio.newName !== 'Octosoft')
+    .sort((a, b) => a.newOrder - b.newOrder)
 
   return (
     <>
@@ -32,7 +36,7 @@ const Portfolio = ({ data }) => {
         colorTitle={colorTitle}
         title={titlePortfolioPage}
       />
-      <DetailPortfolio portfolios={portfolioContent} />
+      <DetailPortfolio portfolios={orderedPortfolios} />
     </>
   );
 };

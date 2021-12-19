@@ -9,11 +9,11 @@ import BackgroundImage from '../assets/Trama.png';
 const PortfolioPage = (props) => {
   const data = useStaticQuery(graphql`
     query services {
-      allContentfulService {
-        edges {
-          node {
-            color
-            title
+      allContentfulService{
+          nodes {
+            newColor
+            newName
+            newOrder
             porfolioBackground{
               file {
                 url
@@ -26,7 +26,6 @@ const PortfolioPage = (props) => {
             }
             portfolioLink
           }
-        }
       }
       allContentfulBanners {
         edges {

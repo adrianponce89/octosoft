@@ -17,9 +17,9 @@ const DetailPortfolio = ({ portfolios }) => {
             md={3}
             container
             justify="center"
-            key={node.title}
+            key={node.newName}
             className={classes.boxGrid}
-            to={node.node.portfolioLink}
+            to={node.portfolioLink}
           >
             <ItemPortfolio
               data={node}
@@ -60,14 +60,15 @@ const useStyle = makeStyles((theme) => ({
     minHeight: '380px',
     flexWrap: 'wrap',
     flexGrow: 0,
-    maxWidth: '10%',
+    maxWidth: '11%',
     flexBasis: '25%',
     borderRadius: '8px',
     overflow: 'hidden',
     transition: '0.5s ease-out',
     cursor: 'pointer',
+    textDecoration: 'none',
     '&:hover': {
-      maxWidth: '12%',
+      maxWidth: '13%',
     },
     [theme.breakpoints.down('sm')]: {
       width: '100%',

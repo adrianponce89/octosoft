@@ -5,16 +5,18 @@ import zIndex from '@material-ui/core/styles/zIndex';
 
 const ItemPortfolio = ({ data }) => {
   const classes = useStyles();
-  const { url } = data.node.porfolioBackground.file
-  const { url: urlWide } = data.node.porfolioBackgorundWide.file
+  const { url } = data.porfolioBackground.file
+  const { url: urlWide } = data.porfolioBackgorundWide.file
   const screen = window.innerWidth
-  console.log(screen >= 769 ? urlWide : url);
+
   return (
-    <div to={data.portfolioLink} className={classes.itemContainer} style={{ 'backgroundColor': data.node.color }} >
+    <div to={data.portfolioLink} className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} >
       <div className={classes.boxImg} data-descr={data.portfolioLink}>
-        <img src={screen >= 769 ? url : urlWide} alt={data.node.title} className={classes.img} />
+        <img src={screen >= 769 ? url : urlWide} alt={data.newName} className={classes.img} />
       </div>
-      <p className={classes.title}>{data.node.title}</p>
+      <div className={classes.titleContainer}>
+        <p className={classes.title} style={{ 'inlineSize': data.newName.length > 14 && screen >= 769 ? 'min-content' : 'max-content' }}>{data.newName}</p>
+      </div>
     </div >
   );
 };
@@ -28,42 +30,50 @@ const useStyles = makeStyles((theme) => ({
 
     },
   },
-  title: {
+  titleContainer: {
     position: 'absolute',
     color: '#F5F5F5',
+    //color: '#333',
     writingMode: 'vertical-rl',
+    transform: 'rotate(180deg)',
+    contain: 'size',
+    pointerEvents: 'none',
+    margin: '-10px -30px',
+    inlineSize: 'min-content',
+    textAlign: 'left',
+    zIndex: 3,
+    [theme.breakpoints.down('sm')]: {
+      writingMode: 'initial',
+      transform: 'rotate(0)',
+      margin: '-40px 50px',
+      inlineSize: 'max-content !important',
+      position: 'initial'
+    },
+    [theme.breakpoints.down('xs')]: {
+      margin: '-29px 10px',
+    },
+  },
+  title: {
     fontSize: '2rem',
     fontWeight: 700,
     fontFamily: 'Montserrat',
-    transform: 'rotate(180deg)',
-    pointerEvents: 'none',
-    margin: '-340px 0',
-    height: '380px',
     lineHeight: '1.2',
-    inlineSize: 'min-content',
-    textAlign: 'right',
-    zIndex: 3,
     [theme.breakpoints.down('sm')]: {
       fontSize: '1.5rem',
-      writingMode: 'initial',
-      transform: 'rotate(0)',
-      height: 'initial',
       margin: '-40px 50px',
-      textAlign: 'left',
       inlineSize: 'max-content'
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '1.2rem',
       margin: '-29px 10px',
     },
-
   },
   img: {
     width: 'unset',
     position: 'absolute',
     //transform: 'scale(0.9)',
     top: '0',
-    left: '-85% ',
+    left: '-50% ',
     [theme.breakpoints.down('sm')]: {
       left: '0',
       top: '-470%',
