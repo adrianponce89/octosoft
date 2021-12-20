@@ -31,29 +31,19 @@ const Cards = ({
   };
   return (
     <div className={type ? classes.paperFive : classes.paper}>
-      <Grid
+      <div
         container
         justify="center"
         direction="column"
         alignItems="center"
         className={classes.itemAvatar}
       >
-        <Grid
-          item
-          xs={12}
-          alignItems="center"
-          justify="center"
-          className={classes.octogane}
-        >
-          <Grid
-            item
-            alignItems="center"
-            justify="center"
-            xs={12}
+        <div className={classes.octogane}>
+          <div
             className={classes.iconAvatar}
             onClick={() => handleClickCard(name)}
           />
-        </Grid>
+        </div>
         <Grid
           container
           justify="center"
@@ -87,16 +77,24 @@ const Cards = ({
             </Button>
           </Grid>
         </Grid>
-      </Grid>
+      </div>
     </div>
   );
 };
 const useStyles = makeStyles((theme) => ({
   paperFive: {
-    borderRadius: 16,
-    width: '23%',
+    display: 'flex',
+    width: '22%',
     margin: '3%',
-    '@media (max-width: 768px)': {
+    marginTop: '0rem',
+    height: '100%',
+    '@media (max-width: 1400px)': {
+      width: '40%',
+      margin: '0%',
+      marginBottom: '2rem',
+      marginTop: '2rem',
+    },
+    '@media (max-width: 1024px)': {
       width: '100%',
       margin: '0%',
       marginBottom: '2rem',
@@ -104,10 +102,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   paper: {
-    borderRadius: 16,
+    display: 'flex',
     margin: theme.spacing(4),
-    width: '23%',
-    '@media (max-width: 768px)': {
+    width: '22%',
+    height: '100%',
+    '@media (max-width: 1400px)': {
+      width: '40%',
+      margin: '0%',
+      marginBottom: '2rem',
+      marginTop: '2rem',
+    },
+    '@media (max-width: 1024px)': {
       width: '100%',
       margin: '0%',
       marginBottom: '2rem',
@@ -115,42 +120,16 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   itemAvatar: {
-    padding: theme.spacing(5),
+    display: 'flex',
+    flexDirection: 'column',
+    padding: theme.spacing(3),
+    width: '100%',
     height: '100%',
-  },
-  name: {
-    width: '100%',
-    fontFamily: 'Poppins',
-    fontWeight: 800,
-    fontSize: '3vh',
-    color: '#000000',
-    textTransform: 'capitalize',
-    '@media (max-width: 660px)': {
-      fontSize: '2em',
-    },
-  },
-  title: {
-    fontFamily: 'Poppins',
-    fontWeight: 500,
-    color: '#0024B5',
-    width: '100%',
-    fontSize: 20,
-    '@media (max-width: 360px)': {
-      fontSize: '5vw',
-    },
-  },
-  section: {
-    fontFamily: 'Poppins',
-    fontWeight: 700,
-    width: '100%',
-    fontSize: 18,
-    textTransform: 'uppercase',
-    color: ({ color }) => color || '#ECECEC',
-    '@media (max-width: 360px)': {
-      fontSize: '4vw',
-    },
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   octogane: {
+    display: 'flex',
     width: '100%',
     height: '100%',
     alignItems: 'center',
@@ -161,23 +140,56 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'contain',
   },
   iconAvatar: {
-    width: '100%',
-    height: '100%',
-    paddingTop: '1%',
+    display: 'flex',
+    width: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundImage: ({ photoNoBackground }) =>
       photoNoBackground || '#ECECEC',
-    backgroundSize: 'contain',
-    backgroundPosition: ({ backgroundPosition }) =>
-      backgroundPosition || 'center',
+    backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
     paddingBottom: '100%',
+    zIndex: 1,
     '&:hover': {
       backgroundImage: ({ hover }) => hover || '#ECECEC',
       cursor: 'pointer',
     },
   },
+  name: {
+    width: '100%',
+    fontFamily: 'Montserrat',
+    fontWeight: 800,
+    fontSize: '3vh',
+    color: '#000000',
+    textTransform: 'capitalize',
+    '@media (max-width: 768px)': {
+      fontSize: '2em',
+    },
+  },
+  title: {
+    fontFamily: 'Montserrat',
+    fontWeight: 500,
+    color: '#0024B5',
+    width: '100%',
+    fontSize: 20,
+    '@media (max-width: 768px)': {
+      fontSize: '5vw',
+    },
+  },
+  section: {
+    fontFamily: 'Montserrat',
+    fontWeight: 700,
+    width: '100%',
+    fontSize: 18,
+    textTransform: 'uppercase',
+    color: ({ color }) => color || '#ECECEC',
+    '@media (max-width: 768px)': {
+      fontSize: '4vw',
+    },
+  },
   descriptionAvatars: {
-    fontFamily: 'Poppins',
+    fontFamily: 'Montserrat',
     fontWeight: 500,
     width: '100%',
     overflow: 'hidden',
@@ -190,8 +202,8 @@ const useStyles = makeStyles((theme) => ({
     borderColor: ({ color }) => color || '#ECECEC',
   },
   textButton: {
-    fontFamily: 'Poppins',
-    fontWeight: 500,
+    fontFamily: 'Montserrat',
+    fontWeight: 800,
     color: '#000000',
     fontSize: 18,
     textTransform: 'uppercase',

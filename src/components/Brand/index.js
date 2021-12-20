@@ -8,7 +8,7 @@ import Icons from './IconsBrand/indexIcons';
 import Colors from './ColorsBrand/indexColors';
 import EndSection from './BrandSectionText/sectionEnd';
 import OctoOne from '../../assets/OctoOne.png';
-import OctoTwo from '../../assets/OctoOne.png';
+import OctoTwo from '../../assets/OctoBrandSecond.png';
 import OctoThree from '../../assets/VectorStart.png';
 import OctoFour from '../../assets/VectorMid.png';
 import OctoFive from '../../assets/VectorEnd.png';
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: '700px',
     bottom: '-490%',
-    right: '-8%',
+    right: '0%',
     zIndex: '0',
     '@media (max-width: 768px)': {
       display: 'none',
@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   },
   OctoFive: {
     position: 'absolute',
-    bottom: '-568%',
+    bottom: '-586%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 768px)': {

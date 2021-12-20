@@ -22,8 +22,6 @@ const PopUp = ({
     };
   };
 
-  console.log("biography >>",biography);
-
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions(),
   );
@@ -177,6 +175,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      marginTop: '15%',
     },
   },
   column: {
@@ -211,9 +210,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#37ADD4',
     textTransform: 'capitalize',
     '@media (max-width: 1024px)': {
-      fontSize: '3.5vh',
       alignItems: 'center',
       justifyContent: 'center',
+      margin: '0',
     },
   },
   divSection: {
@@ -225,7 +224,6 @@ const useStyles = makeStyles((theme) => ({
       margin: '0',
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: '1rem',
     },
   },
   section: {
@@ -242,7 +240,6 @@ const useStyles = makeStyles((theme) => ({
       margin: '0',
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: '1rem',
     },
   },
   divSocialMedia: {
@@ -283,6 +280,7 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
       flexDirection: 'column',
       alignItems: 'center',
+      
       justifyContent: 'flex-start',
     },
   },
@@ -339,7 +337,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     fontFamily: 'Montserrat',
     fontWeight: 500,
-    fontSize: '20',
+    fontSize: '1.7vh',
     color: '#4D4D4D',
   },
   divBio: {
@@ -371,7 +369,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '10%',
     '@media (max-width: 1024px)': {
       width: '90%',
-      height: '100%',
+      height: 'fit-content',
+      margin: '0',
+      marginTop: '5%',  
+      marginBottom: '5%',
     },
   },
   divButton: {

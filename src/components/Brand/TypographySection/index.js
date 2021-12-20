@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import TitleBrand from '../TitleBrand'
-import TitleIcons from '../IconsBrand/titleIcons'
+import TitleBrand from '../TitleBrand';
+import TitleIcons from '../ColorsBrand/titleComponent';
 
 const TypographySection = () => {
   const classes = useStyles();
@@ -15,7 +15,7 @@ const TypographySection = () => {
       alignItems="center"
       className={classes.root}
     >
-      <TitleIcons title={'TYPOGRAPHY'} sort={'Left'} />
+      <TitleIcons title={'TYPOGRAPHY'} />
       <Grid
         xs={12}
         container
@@ -128,8 +128,7 @@ const TypographySection = () => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-  },
+  root: {},
   fontContainer: {
     margin: theme.spacing(6, 0),
   },

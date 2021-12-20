@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Background from '../Background';
-import { Typography, Grid, Dialog } from '@material-ui/core';
+import { Grid, Dialog } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Cards from './Cards';
 import Title from './Title';
 import PopUp from './PopUp';
-
+import TitleComponent from '../TitleComponent/index';
 const NewOurTeam = ({ teamMembers }) => {
   const classes = useStyles();
   const [member, setMember] = useState(null);
@@ -44,22 +44,7 @@ const NewOurTeam = ({ teamMembers }) => {
     >
       <Background />
       <Grid container justify="center" alignItems="center">
-        <Grid
-          container
-          item
-          xs={12}
-          justify="center"
-          alignItems="center"
-          direction="column"
-          className={classes.titleContainer}
-        >
-          <Typography variant="h5" className={classes.mainTitle}>
-            Our Team
-          </Typography>
-          <Typography variant="h5" className={classes.subtitle}>
-            OCTOSOFT PROFESSIONAL
-          </Typography>
-        </Grid>
+        <TitleComponent title="Our Team" />
         <div className={classes.divFather}>
           <Title title={'Executive Partners'} color="#37ADD4" />
           <div className={classes.divContainer}>
@@ -145,7 +130,9 @@ const NewOurTeam = ({ teamMembers }) => {
           {member && (
             <PopUp
               name={member.node.name}
-              biography={member.node.biography.json.content[0].content}
+              biography={
+                member.node.biography.json.content[0].content
+              }
               expertise={
                 member.node.expertise.json.content[0].content
               }
@@ -184,6 +171,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop: '0rem',
+    marginBottom: '3rem',
     '@media (max-width: 768px)': {
       flexDirection: 'column',
       width: '90%',
@@ -197,38 +186,17 @@ const useStyles = makeStyles((theme) => ({
     columnGap: theme.spacing(4),
     padding: theme.spacing(6, 0),
   },
-  mainTitle: {
-    fontFamily: 'Montserrat',
-    fontWeight: 900,
-    fontSize: 119,
-    color: '#8249DC',
-    zIndex: '1',
-    '@media (max-width: 760px)': {
-      alignItems: 'center',
-      textAlign: 'center',
-      width: '100%',
-      justifyContent: 'center',
-      fontSize: 50,
-    },
-  },
-  subtitle: {
-    fontFamily: 'Montserrat',
-    fontWeight: 700,
-    fontSize: 30,
-    color: '#000000',
-    '@media (max-width: 760px)': {
-      fontSize: 24,
-    },
-  },
   popup: {
     zIndex: '2',
     display: 'flex',
     width: '90%',
     height: '100%',
     marginLeft: '5%',
-    '@media (max-width: 760px)': {
+    alignItems: 'center',
+    justifyContent: 'center',
+    '@media (max-width: 1800px)': {
       width: '100%',
-      marginLeft: '0',
+      margin: '0',
     },
   },
 }));
