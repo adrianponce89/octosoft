@@ -11,8 +11,17 @@ const Cards = ({
   section,
   length,
   handleClick,
+  photoNoBackground,
+  octogone,
+  hover,
 }) => {
-  const classes = useStyles({ color, background });
+  const classes = useStyles({
+    color,
+    background,
+    photoNoBackground,
+    octogone,
+    hover,
+  });
   const [type, setType] = useState(false);
   useEffect(() => {
     length && length % 5 === 0 ? setType(true) : setType(false);
@@ -29,7 +38,22 @@ const Cards = ({
         alignItems="center"
         className={classes.itemAvatar}
       >
-        <Grid item xs={12} className={classes.iconAvatar} />
+        <Grid
+          item
+          xs={12}
+          alignItems="center"
+          justify="center"
+          className={classes.octogane}
+        >
+          <Grid
+            item
+            alignItems="center"
+            justify="center"
+            xs={12}
+            className={classes.iconAvatar}
+            onClick={() => handleClickCard(name)}
+          />
+        </Grid>
         <Grid
           container
           justify="center"
@@ -43,8 +67,9 @@ const Cards = ({
           </Typography>
           <Grid
             item
-            xs={7}
-            sm={8}
+            justify="center"
+            alignItems="center"
+            xs={6}
             className={classes.containerButton}
           >
             <Button
@@ -69,7 +94,7 @@ const Cards = ({
 const useStyles = makeStyles((theme) => ({
   paperFive: {
     borderRadius: 16,
-    width: '20%',
+    width: '23%',
     margin: '3%',
     '@media (max-width: 768px)': {
       width: '100%',
@@ -81,7 +106,7 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     borderRadius: 16,
     margin: theme.spacing(4),
-    width: '20%',
+    width: '23%',
     '@media (max-width: 768px)': {
       width: '100%',
       margin: '0%',
@@ -90,7 +115,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   itemAvatar: {
-    padding: theme.spacing(4),
+    padding: theme.spacing(5),
+    height: '100%',
   },
   name: {
     width: '100%',
@@ -124,15 +150,31 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '4vw',
     },
   },
+  octogane: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundImage: ({ octogone }) => octogone || '#ECECEC',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+  },
   iconAvatar: {
     width: '100%',
     height: '100%',
-    backgroundImage: ({ background }) => background || '#ECECEC',
-    backgroundSize: ({ backgroundSize }) => backgroundSize || 'cover',
+    paddingTop: '1%',
+    backgroundImage: ({ photoNoBackground }) =>
+      photoNoBackground || '#ECECEC',
+    backgroundSize: 'contain',
     backgroundPosition: ({ backgroundPosition }) =>
       backgroundPosition || 'center',
     backgroundRepeat: 'no-repeat',
     paddingBottom: '100%',
+    '&:hover': {
+      backgroundImage: ({ hover }) => hover || '#ECECEC',
+      cursor: 'pointer',
+    },
   },
   descriptionAvatars: {
     fontFamily: 'Poppins',
@@ -144,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     borderRadius: 8,
     border: `0.2rem solid`,
-    backgroundColor: 'transparent',
+    backgroundColor: '#FFFFFF',
     borderColor: ({ color }) => color || '#ECECEC',
   },
   textButton: {

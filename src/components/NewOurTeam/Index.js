@@ -9,9 +9,7 @@ import PopUp from './PopUp';
 const NewOurTeam = ({ teamMembers }) => {
   const classes = useStyles();
   const [member, setMember] = useState(null);
-  const [showPopUp, setShowPopUp] = useState(false);
-  const [width, setWidth] = useState(null);
-  const [height, setHeight] = useState(null);
+
   const executives = teamMembers.filter(
     (item) => item.node.category === 'Executive Partners',
   );
@@ -29,22 +27,11 @@ const NewOurTeam = ({ teamMembers }) => {
       (item) => item.node.name === member,
     );
     setMember(selected);
-    setShowPopUp(true);
   };
 
   const handleClose = () => {
-    setShowPopUp(false);
+    setMember(null);
   };
-
-  useEffect(() => {
-    const change = () => {
-      let intViewportWidth = window.innerWidth;
-      let intViewportHeight = window.innerHeight;
-      setWidth(intViewportWidth);
-      setHeight(intViewportHeight);
-    };
-    change();
-  }, [width]);
 
   return (
     <Grid
@@ -84,8 +71,11 @@ const NewOurTeam = ({ teamMembers }) => {
                   section={member.node.section}
                   length={executives.length}
                   background={`url(${member.node.photo.file.url})`}
+                  photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#37ADD4"
                   handleClick={handleClick}
+                  octogone={`url(${member.node.octogone.file.url})`}
+                  hover={`url(${member.node.hover.file.url})`}
                 />
               ))}
           </div>
@@ -99,8 +89,11 @@ const NewOurTeam = ({ teamMembers }) => {
                   name={member.node.name}
                   section={member.node.section}
                   background={`url(${member.node.photo.file.url})`}
+                  photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#37D4AD"
                   handleClick={handleClick}
+                  octogone={`url(${member.node.octogone.file.url})`}
+                  hover={`url(${member.node.hover.file.url})`}
                 />
               ))}
           </div>
@@ -114,8 +107,11 @@ const NewOurTeam = ({ teamMembers }) => {
                   section={member.node.section}
                   length={juniors.length}
                   background={`url(${member.node.photo.file.url})`}
+                  photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#FF9F3B"
                   handleClick={handleClick}
+                  octogone={`url(${member.node.octogone.file.url})`}
+                  hover={`url(${member.node.hover.file.url})`}
                 />
               ))}
           </div>
@@ -129,23 +125,27 @@ const NewOurTeam = ({ teamMembers }) => {
                   length={associates.length}
                   section={member.node.section}
                   background={`url(${member.node.photo.file.url})`}
+                  photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#D437AD"
                   handleClick={handleClick}
+                  octogone={`url(${member.node.octogone.file.url})`}
+                  hover={`url(${member.node.hover.file.url})`}
                 />
               ))}
           </div>
         </div>
-        {showPopUp ? (
-          <Dialog
-            open={member !== null}
-            className={classes.popup}
-            fullScreen={width}
-          >
+        <Dialog
+          onClose={handleClose}
+          open={member !== null}
+          className={classes.popup}
+          maxWidth={'xl'}
+          alignItems="center"
+          justify="center"
+        >
+          {member && (
             <PopUp
               name={member.node.name}
-              biography={
-                member.node.biography.json.content[0].content
-              }
+              biography={member.node.biography.json.content[0].content}
               expertise={
                 member.node.expertise.json.content[0].content
               }
@@ -153,11 +153,10 @@ const NewOurTeam = ({ teamMembers }) => {
               background={`url(${member.node.fullPhoto.file.url})`}
               onClose={handleClose}
               socialMedia={member.node.socialMedia}
-              popup={setShowPopUp}
               member={setMember}
             />
-          </Dialog>
-        ) : null}
+          )}
+        </Dialog>
       </Grid>
     </Grid>
   );
@@ -223,8 +222,14 @@ const useStyles = makeStyles((theme) => ({
   },
   popup: {
     zIndex: '2',
-    width: '100%',
+    display: 'flex',
+    width: '90%',
     height: '100%',
+    marginLeft: '5%',
+    '@media (max-width: 760px)': {
+      width: '100%',
+      marginLeft: '0',
+    },
   },
 }));
 

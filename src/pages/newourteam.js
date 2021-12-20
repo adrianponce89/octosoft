@@ -39,6 +39,21 @@ export const pageQuery = graphql`
               url
             }
           }
+          photoNoBackground {
+            file {
+              url
+            }
+          }
+          octogone {
+            file {
+              url
+            }
+          }
+          hover {
+            file {
+              url
+            }
+          }
           fullPhoto {
             file {
               url
