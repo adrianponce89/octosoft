@@ -36,6 +36,7 @@ const NewAboutUs = ({ aboutUs }) => {
             OCTOSOFT PROFESSIONAL
           </Typography>
         </Grid>
+        
         {edges &&
           edges.map(({ node }, i) => (
             <Cards
