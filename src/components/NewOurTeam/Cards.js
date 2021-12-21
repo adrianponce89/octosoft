@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: ({ octogone }) => octogone || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'contain',
+    backgroundSize: '310px 310px',
   },
   iconAvatar: {
     display: 'flex',
@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
       photoNoBackground || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
+    backgroundSize: '305px 305px',
     paddingBottom: '100%',
     zIndex: 1,
     '&:hover': {
