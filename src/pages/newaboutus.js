@@ -2,10 +2,15 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import NewAboutUs from '../components/NewAboutUs/index';
+
 const NewAboutUsPage = (props) => {
   const aboutUsBanner = get(props, 'data.allContentfulHomeItem');
   console.log(aboutUsBanner);
-  return <NewAboutUs aboutUs={aboutUsBanner} />;
+  return (    
+    <div styles={{ width: '100%', backgroundColor: '#F5F7F7' }}>
+      <NewAboutUs aboutUs={aboutUsBanner} />
+    </div>
+  );
 };
 
 export default NewAboutUsPage;

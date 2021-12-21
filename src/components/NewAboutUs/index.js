@@ -8,6 +8,7 @@ const NewAboutUs = ({ aboutUs }) => {
   const { edges } = aboutUs;
 
   const classes = useStyles();
+
   return (
     <Grid
       item
