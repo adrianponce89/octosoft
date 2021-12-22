@@ -2,7 +2,6 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Grid, Typography, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import SocialNetwork from '../AboutUs/OurTeam/SocialNetwork';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import CloseIcon from '@material-ui/icons/Close';
 
 const PopUp = ({
@@ -231,9 +230,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    fontSize: '4vh',
+    fontSize: '3vh',
     margin: '0',
-    color: '#000000',
+    color: '#4D4D4D',
     textTransform: 'uppercase',
     '@media (max-width: 1024px)': {
       fontSize: '3vh',

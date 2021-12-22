@@ -84,7 +84,7 @@ const Cards = ({
 const useStyles = makeStyles((theme) => ({
   paperFive: {
     display: 'flex',
-    width: '22%',
+    width: '23%',
     margin: '3%',
     marginTop: '0rem',
     height: '100%',
@@ -103,8 +103,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     display: 'flex',
-    margin: theme.spacing(4),
-    width: '22%',
+    margin: theme.spacing(3),
+    width: '23%',
     height: '100%',
     '@media (max-width: 1400px)': {
       width: '40%',
@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: ({ octogone }) => octogone || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '310px 310px',
+    backgroundSize: '310px 325px',
   },
   iconAvatar: {
     display: 'flex',
@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
       photoNoBackground || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '305px 305px',
+    backgroundSize: '305px 320px',
     paddingBottom: '100%',
     zIndex: 1,
     '&:hover': {
@@ -159,9 +159,10 @@ const useStyles = makeStyles((theme) => ({
   name: {
     width: '100%',
     fontFamily: 'Montserrat',
-    fontWeight: 800,
-    fontSize: '3vh',
+    fontWeight: 700,
+    fontSize: '2.3vh',
     color: '#000000',
+    marginTop: '1rem',
     textTransform: 'capitalize',
     '@media (max-width: 768px)': {
       fontSize: '2em',
@@ -181,7 +182,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 700,
     width: '100%',
-    fontSize: 18,
+    fontSize: '2.3vh',
     textTransform: 'uppercase',
     color: ({ color }) => color || '#ECECEC',
     '@media (max-width: 768px)': {
@@ -199,13 +200,14 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 8,
     border: `0.2rem solid`,
     backgroundColor: '#FFFFFF',
+    marginTop: '0.5rem',
     borderColor: ({ color }) => color || '#ECECEC',
   },
   textButton: {
     fontFamily: 'Montserrat',
-    fontWeight: 800,
+    fontWeight: 550,
     color: '#000000',
-    fontSize: 18,
+    fontSize: '2.3vh',
     textTransform: 'uppercase',
   },
   containerButton: { margin: theme.spacing(4, 0, 2) },
