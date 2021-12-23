@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Background from '../../components/Background';
 import SubCategories from '../../components/Services/SubCategories';
 
 const subcategories = () => {
   return (
-    <div>
+    <Fragment>
       <Background />
       <SubCategories />
-    </div>
+    </Fragment>
   );
 };
 

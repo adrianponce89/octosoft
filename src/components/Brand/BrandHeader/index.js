@@ -15,7 +15,7 @@ const BrandHeader = ({ titles }) => {
       alignItems="center"
       className={classes.root}
     >
-      <Grid container justify="center" alignItems="center">
+      <Grid container xs={12} justify="center" alignItems="center">
         <TitleComponent title="Our Brand" />
         <UnderLined />
       </Grid>

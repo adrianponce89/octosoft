@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     top: '30%',
     left: '-7%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1000px)': {
       display: 'none',
     },
   },
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     top: '5%',
     right: '0%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1000px)': {
       display: 'none',
     },
   },

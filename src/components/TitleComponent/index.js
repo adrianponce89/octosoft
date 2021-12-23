@@ -25,6 +25,11 @@ const Title = ({ title }) => {
 };
 
 const useStyles = makeStyles((theme) => ({
+  titleContainer: {
+    display: 'flex',
+    width: '100%',
+    textAlign: 'center',
+  },
   mainTitle: {
     fontFamily: 'Montserrat',
     fontWeight: 900,
