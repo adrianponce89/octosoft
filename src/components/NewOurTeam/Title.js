@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '5vh',
     color: ({ color }) => color || '#ECECEC',
     fontWeight: '700',
-    marginTop: '1.5rem',
+    marginTop: '2rem',
     marginBottom: '0rem',
   },
 }));

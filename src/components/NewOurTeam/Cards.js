@@ -107,9 +107,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: theme.spacing(3),
     width: '23%',
-    height: '100%',
-    '@media (max-width: 1400px)': {
+    height: 'fit-content',
+    '@media (max-width: 1800px)': {
       width: '40%',
+      height: 'fit-content',
       margin: '0%',
       marginBottom: '2rem',
       marginTop: '2rem',
@@ -126,25 +127,29 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     padding: theme.spacing(3),
     width: '100%',
-    height: '100%',
+    height: 'fit-content',
     alignItems: 'center',
     justifyContent: 'center',
   },
   octogane: {
     display: 'flex',
     width: '100%',
-    height: '100%',
+    height: 'fit-content',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundImage: ({ octogone }) => octogone || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '310px 325px',
+    '@media (max-width: 1800px)': {
+      height: '20rem',
+      },
   },
   iconAvatar: {
     display: 'flex',
     width: '90%',
     alignItems: 'center',
+    height: 'fit-content',
     justifyContent: 'center',
     backgroundImage: ({ photoNoBackground }) =>
       photoNoBackground || '#ECECEC',
@@ -164,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     fontSize: '2.3vh',
     color: '#000000',
-    marginTop: '1rem',
+    marginTop: '2rem',
     textTransform: 'capitalize',
     '@media (max-width: 768px)': {
       fontSize: '2em',

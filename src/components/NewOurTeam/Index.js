@@ -56,7 +56,6 @@ const NewOurTeam = ({ teamMembers }) => {
               executives.map((member, index) => (
                 <Cards
                   key={index}
-                  seniority='Executive'
                   name={member.node.name}
                   section={member.node.section}
                   length={executives.length}
@@ -75,7 +74,6 @@ const NewOurTeam = ({ teamMembers }) => {
               seniors.map((member, index) => (
                 <Cards
                   key={index}
-                  seniority='Seniors'
                   length={seniors.length}
                   name={member.node.name}
                   section={member.node.section}
@@ -94,7 +92,6 @@ const NewOurTeam = ({ teamMembers }) => {
               juniors.map((member, index) => (
                 <Cards
                   key={index}
-                  seniority='Junior'
                   name={member.node.name}
                   section={member.node.section}
                   length={juniors.length}
@@ -113,7 +110,6 @@ const NewOurTeam = ({ teamMembers }) => {
               associates.map((member, index) => (
                 <Cards
                   key={index}
-                  seniority='Associates'
                   name={member.node.name}
                   length={associates.length}
                   section={member.node.section}
