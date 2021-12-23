@@ -71,7 +71,10 @@ const PopUp = ({
               {expertise &&
                 expertise.map(({ content }, index) => (
                   <div key={index} className={classes.eachExpertise}>
-                    <Typography key={index} className={classes.expertise}>
+                    <Typography
+                      key={index}
+                      className={classes.expertise}
+                    >
                       {content[0].content[0].value}
                     </Typography>
                   </div>
@@ -84,7 +87,10 @@ const PopUp = ({
               {biography &&
                 biography.map(({ content }, index) => (
                   <div key={index} className={classes.eachBio}>
-                    <Typography key={index} className={classes.expertise}>
+                    <Typography
+                      key={index}
+                      className={classes.expertise}
+                    >
                       {content[0].content[0].value}
                     </Typography>
                   </div>
@@ -279,7 +285,7 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
       flexDirection: 'column',
       alignItems: 'center',
-      
+
       justifyContent: 'flex-start',
     },
   },
@@ -306,7 +312,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1200px)': {
       width: '100%',
       flexWrap: 'nowrap',
       flexDirection: 'column',
@@ -314,7 +320,19 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '1rem',
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
-      overflow: 'scroll',
+      overflowY: 'scroll',
+      overflowX: 'hidden',
+    },
+    '@media (max-width: 728px)': {
+      width: '100%',
+      flexWrap: 'nowrap',
+      flexDirection: 'column',
+      marginTop: '1rem',
+      marginBottom: '1rem',
+      alignItems: 'flex-start',
+      justifyContent: 'flex-start',
+      overflowY: 'scroll',
+      overflowX: 'hidden',
       height: '10rem',
     },
   },
@@ -355,7 +373,8 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '1rem',
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
-      overflow: 'scroll',
+      overflowY: 'scroll',
+      overflowX: 'hidden',
       height: '10rem',
     },
   },
@@ -370,7 +389,7 @@ const useStyles = makeStyles((theme) => ({
       width: '90%',
       height: 'fit-content',
       margin: '0',
-      marginTop: '5%',  
+      marginTop: '5%',
       marginBottom: '5%',
     },
   },

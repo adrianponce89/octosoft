@@ -6,6 +6,10 @@ import Cards from './Cards';
 import Title from './Title';
 import PopUp from './PopUp';
 import TitleComponent from '../TitleComponent/index';
+import Executive from '../../assets/Executive.png';
+import Junior from '../../assets/Junior.png';
+import Associates from '../../assets/Associates.png';
+import Senior from '../../assets/Senior.png';
 const NewOurTeam = ({ teamMembers }) => {
   const classes = useStyles();
   const [member, setMember] = useState(null);
@@ -52,6 +56,7 @@ const NewOurTeam = ({ teamMembers }) => {
               executives.map((member, index) => (
                 <Cards
                   key={index}
+                  seniority='Executive'
                   name={member.node.name}
                   section={member.node.section}
                   length={executives.length}
@@ -59,7 +64,7 @@ const NewOurTeam = ({ teamMembers }) => {
                   photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#37ADD4"
                   handleClick={handleClick}
-                  octogone={`url(${member.node.octogone.file.url})`}
+                  octogone={`url(${Executive})`}
                   hover={`url(${member.node.hover.file.url})`}
                 />
               ))}
@@ -70,6 +75,7 @@ const NewOurTeam = ({ teamMembers }) => {
               seniors.map((member, index) => (
                 <Cards
                   key={index}
+                  seniority='Seniors'
                   length={seniors.length}
                   name={member.node.name}
                   section={member.node.section}
@@ -77,7 +83,7 @@ const NewOurTeam = ({ teamMembers }) => {
                   photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#37D4AD"
                   handleClick={handleClick}
-                  octogone={`url(${member.node.octogone.file.url})`}
+                  octogone={`url(${Senior})`}
                   hover={`url(${member.node.hover.file.url})`}
                 />
               ))}
@@ -88,6 +94,7 @@ const NewOurTeam = ({ teamMembers }) => {
               juniors.map((member, index) => (
                 <Cards
                   key={index}
+                  seniority='Junior'
                   name={member.node.name}
                   section={member.node.section}
                   length={juniors.length}
@@ -95,7 +102,7 @@ const NewOurTeam = ({ teamMembers }) => {
                   photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#FF9F3B"
                   handleClick={handleClick}
-                  octogone={`url(${member.node.octogone.file.url})`}
+                  octogone={`url(${Junior})`}
                   hover={`url(${member.node.hover.file.url})`}
                 />
               ))}
@@ -106,6 +113,7 @@ const NewOurTeam = ({ teamMembers }) => {
               associates.map((member, index) => (
                 <Cards
                   key={index}
+                  seniority='Associates'
                   name={member.node.name}
                   length={associates.length}
                   section={member.node.section}
@@ -113,7 +121,7 @@ const NewOurTeam = ({ teamMembers }) => {
                   photoNoBackground={`url(${member.node.photoNoBackground.file.url})`}
                   color="#D437AD"
                   handleClick={handleClick}
-                  octogone={`url(${member.node.octogone.file.url})`}
+                  octogone={`url(${Associates})`}
                   hover={`url(${member.node.hover.file.url})`}
                 />
               ))}

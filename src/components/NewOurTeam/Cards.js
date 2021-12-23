@@ -3,7 +3,6 @@ import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const Cards = ({
-  index,
   color,
   background,
   name,
@@ -12,9 +11,12 @@ const Cards = ({
   length,
   handleClick,
   photoNoBackground,
-  octogone,
   hover,
+  octogone,
 }) => {
+  useEffect(() => {
+    length && length % 5 === 0 ? setType(true) : setType(false);
+  }, [length]);
   const classes = useStyles({
     color,
     background,
@@ -23,9 +25,9 @@ const Cards = ({
     hover,
   });
   const [type, setType] = useState(false);
-  useEffect(() => {
-    length && length % 5 === 0 ? setType(true) : setType(false);
-  }, [length]);
+
+  console.log('octogone', octogone);
+  console.log('type', type);
   const handleClickCard = (member) => {
     handleClick(member);
   };
