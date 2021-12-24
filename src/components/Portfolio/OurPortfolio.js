@@ -7,7 +7,7 @@ const OurPortfolio = ({ colorTitle, title }) => {
   const classes = useStyles({ colorTitle });
 
   return (
-    <Box square elevation={1} className={classes.root}>
+    <Box className={classes.root}>
       <Grid
         item
         xs={12}
@@ -28,11 +28,13 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8),
     marginTop: theme.spacing(8),
     zIndex: 1,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       padding: theme.spacing(7),
+      marginTop: theme.spacing(7),
     },
     [theme.breakpoints.down('sm')]: {
-      padding: theme.spacing(3),
+      padding: theme.spacing(1),
+      marginTop: theme.spacing(1),
     },
   },
   box: { zIndex: 3 },
@@ -41,18 +43,20 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
   titleCard: {
-    color: ({ colorTitle }) => '#37ADD4' /* colorTitle ?? '#8249DC' */,
+    color: ({ colorTitle }) => colorTitle ?? '#8249DC',
     fontSize: '6rem',
     fontWeight: 900,
     fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
-      fontSize: '3rem'
+      fontSize: '3rem',
+      marginBottom: theme.spacing(2),
     },
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
-      fontSize: '2rem'
+      fontSize: '1.8rem',
+      marginBottom: theme.spacing(1),
     },
   },
 }));

@@ -37,7 +37,7 @@ const PortfolioPage = (props) => {
       }
     }
   `);
-  console.log(data);
+
   return (
     <Container
       background={`url(${BackgroundImage})`}

@@ -3,27 +3,10 @@ import DetailPortfolio from './Detail';
 import OurPortfolio from './OurPortfolio';
 
 const Portfolio = ({ data }) => {
-  /*   const {
-      allContentfulBanners: {
-        edges: [
-          {
-            node: {
-              colorTitle,
-              titlePortfolioPage,
-              description: { description },
-              portfoliosImage,
-            },
-          },
-        ],
-      },
-    } = data; */
-  //const sectionData = data.allContentfulBanners.edges.filter(node => node.title === 'Our Portfolio')
-  const sectionData = {
-    colorTitle: '#37ADD4',
-    titlePortfolioPage: 'Our Portfolio'
-  }
-  const { colorTitle, titlePortfolioPage } = sectionData
 
+  let sectionData = data.allContentfulBanners.edges.find(node => node.node.title == 'Our Portfolio')
+
+  const { node: sectionTitle } = sectionData
   const { nodes: portfolioContent } = data.allContentfulService
 
   const orderedPortfolios = portfolioContent
@@ -33,8 +16,8 @@ const Portfolio = ({ data }) => {
   return (
     <>
       <OurPortfolio
-        colorTitle={colorTitle}
-        title={titlePortfolioPage}
+        colorTitle={sectionTitle.color}
+        title={sectionTitle.title}
       />
       <DetailPortfolio portfolios={orderedPortfolios} />
     </>

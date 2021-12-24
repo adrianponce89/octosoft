@@ -10,13 +10,14 @@ const ItemPortfolio = ({ data }) => {
   const screen = window.innerWidth
 
   return (
-    <div to={data.portfolioLink} className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} >
+    <div to={data.portfolioLink} className={classes.itemContainer} >
       <div className={classes.boxImg} data-descr={data.portfolioLink}>
         <img src={screen >= 769 ? url : urlWide} alt={data.newName} className={classes.img} />
       </div>
       <div className={classes.titleContainer}>
         <p className={classes.title} style={{ 'inlineSize': data.newName.length > 14 && screen >= 769 ? 'min-content' : 'max-content' }}>{data.newName}</p>
       </div>
+      <div className={classes.tag} style={{ 'backgroundColor': data.newColor }}></div>
     </div >
   );
 };
@@ -33,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   titleContainer: {
     position: 'absolute',
     color: '#F5F5F5',
-    //color: '#333',
     writingMode: 'vertical-rl',
     transform: 'rotate(180deg)',
     contain: 'size',
@@ -71,13 +71,15 @@ const useStyles = makeStyles((theme) => ({
   img: {
     width: 'unset',
     position: 'absolute',
-    //transform: 'scale(0.9)',
     top: '0',
-    left: '-50% ',
+    left: '-40% ',
+    backgroundColor: 'black',
+    mixBlendMode: 'multiply',
+    transition: '0.5s ease-out',
     [theme.breakpoints.down('sm')]: {
-      left: '0',
-      top: '-470%',
-      transform: 'scale(1)'
+      marginTop: '-20px',
+      position: 'initial',
+      width: '100%'
     },
   },
   boxImg: {
@@ -89,6 +91,7 @@ const useStyles = makeStyles((theme) => ({
       transition: '0.5s ease-out',
     },
     '&:hover img': {
+      mixBlendMode: 'overlay',
       [theme.breakpoints.down('xs')]: {
         width: '100%',
       },
@@ -97,6 +100,15 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
       width: '98%',
       marginLeft: '2%'
+    },
+  },
+  tag: {
+    height: '5%',
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      width: '2%',
+      height: '250%',
+      marginTop: '-60px'
     },
   },
 }));

@@ -35,7 +35,7 @@ const useStyle = makeStyles((theme) => ({
   root: {
     padding: 0,
     [theme.breakpoints.down('sm')]: {
-      height: '70%',
+      height: '80%',
       width: '100%'
     },
     [theme.breakpoints.down('xs')]: {
@@ -68,7 +68,7 @@ const useStyle = makeStyles((theme) => ({
     cursor: 'pointer',
     textDecoration: 'none',
     '&:hover': {
-      maxWidth: '13%',
+      maxWidth: '20%',
     },
     [theme.breakpoints.down('sm')]: {
       width: '100%',
