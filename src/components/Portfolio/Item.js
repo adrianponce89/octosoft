@@ -4,24 +4,24 @@ import { Link } from 'gatsby';
 import zIndex from '@material-ui/core/styles/zIndex';
 
 const ItemPortfolio = ({ data }) => {
-  const classes = useStyles();
   const { url } = data.porfolioBackground.file
   const { url: urlWide } = data.porfolioBackgorundWide.file
-  const screen = window.innerWidth
+  const titleLength = data.newName.length
+  const classes = useStyles({ url, urlWide, titleLength });
 
   return (
     <div to={data.portfolioLink} className={classes.itemContainer} >
       <div className={classes.boxImg} data-descr={data.portfolioLink}>
-        <img src={screen >= 769 ? url : urlWide} alt={data.newName} className={classes.img} />
+        <div className={classes.img} />
       </div>
       <div className={classes.titleContainer}>
-        <p className={classes.title} style={{ 'inlineSize': data.newName.length > 14 && screen >= 769 ? 'min-content' : 'max-content' }}>{data.newName}</p>
+        <p className={classes.title} >{data.newName}</p>
       </div>
       <div className={classes.tag} style={{ 'backgroundColor': data.newColor }}></div>
     </div >
   );
 };
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme, url, urlWide, titleLength) => ({
   itemContainer: {
     width: '100%',
     height: '100%',
@@ -46,7 +46,7 @@ const useStyles = makeStyles((theme) => ({
       writingMode: 'initial',
       transform: 'rotate(0)',
       margin: '-40px 50px',
-      inlineSize: 'max-content !important',
+      inlineSize: ({ titleLength }) => titleLength < 14 ? 'max-content !important' : 'min-content',
       position: 'initial'
     },
     [theme.breakpoints.down('xs')]: {
@@ -58,10 +58,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     fontFamily: 'Montserrat',
     lineHeight: '1.2',
+    inlineSize: ({ titleLength }) => titleLength < 14 ? 'max-content' : 'min-content',
     [theme.breakpoints.down('sm')]: {
-      fontSize: '1.5rem',
-      margin: '-40px 50px',
-      inlineSize: 'max-content'
+      fontSize: '1.8rem',
+      margin: '-45px -25px',
+      inlineSize: 'max-content !important'
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '1.2rem',
@@ -69,15 +70,20 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   img: {
-    width: 'unset',
+    width: '100%',
+    height: '100%',
     position: 'absolute',
     top: '0',
-    left: '-40% ',
-    backgroundColor: 'black',
-    mixBlendMode: 'multiply',
+    left: '0% ',
+    backgroundImage: ({ url }) => `url(${url})` ?? '#474747',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    mixBlendMode: 'color-burn',
     transition: '0.5s ease-out',
     [theme.breakpoints.down('sm')]: {
-      marginTop: '-20px',
+      backgroundImage: ({ urlWide }) => `url(${urlWide})` ?? '#474747',
+      backgroundSize: 'cover',
+      marginTop: '0px',
       position: 'initial',
       width: '100%'
     },
@@ -91,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
       transition: '0.5s ease-out',
     },
     '&:hover img': {
-      mixBlendMode: 'overlay',
+      mixBlendMode: 'multiply',
       [theme.breakpoints.down('xs')]: {
         width: '100%',
       },
