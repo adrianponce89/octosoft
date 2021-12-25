@@ -54,8 +54,8 @@ const Cards = (props) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginBottom: 60,
-    marginTop: 60,
+    marginBottom: 20,
+    marginTop: 20,
   },
   cardBody: {
     paddingLeft: 20,
