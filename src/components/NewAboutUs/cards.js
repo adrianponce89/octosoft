@@ -41,7 +41,7 @@ const Cards = (props) => {
           {(props.link != null) && 
             <Link className={classes.link} to={props.link}>
               <Typography className={classes.descriptionLink}>
-                Learn more...
+                KNOW OUR TEAM
               </Typography>
             </Link>
           }
@@ -85,12 +85,12 @@ const useStyles = makeStyles((theme) => ({
   },
   titleCard: {
     fontFamily: 'Montserrat',
-    fontWeight: 900,
+    fontWeight: 700,
     fontSize: 30,
   },
   descriptionCard: {
     fontFamily: 'Montserrat',
-    fontSize: 18,
+    fontSize: 16,
     textAlign: 'left',
     color: '#000000',
     '@media (max-width: 768px)': {
@@ -103,8 +103,11 @@ const useStyles = makeStyles((theme) => ({
   },
   descriptionLink: {
     fontFamily: 'Montserrat',
-    fontSize: 18,
-    textAlign: 'right',
+    fontSize: 13,
+    width: '149px',
+    height: '50px',
+    textAlign: 'left',
+    color: '#000000',
     '&:hover': {
       textDecoration: 'underline',
     },

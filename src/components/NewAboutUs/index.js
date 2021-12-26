@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   mainTitle: {
     fontFamily: 'Montserrat',
     fontWeight: 900,
-    fontSize: 119,
+    fontSize: 120,
     color: '#8249DC',
     zIndex: '1',
     '@media (max-width: 760px)': {
