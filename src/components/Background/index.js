@@ -17,6 +17,12 @@ const Background = () => {
   );
 };
 const useStyles = makeStyles((theme) => ({
+  background: {
+    width: '100%',
+    height: 'fit-content',
+    minHeight: '100vh',
+    backgroundColor: '#F5F7F7',
+  },
   octo: {
     position: 'absolute',
     width: '700px',

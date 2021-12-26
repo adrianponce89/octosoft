@@ -66,7 +66,6 @@ const Cards = ({
           >
             <Button
               variant="contained"
-              fullWidth
               className={classes.button}
               onClick={() => handleClickCard(name)}
             >
@@ -140,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: ({ octogone }) => octogone || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '310px 325px',
+    backgroundSize: '310px 335px',
     '@media (max-width: 1800px)': {
       height: '20rem',
       },
@@ -155,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
       photoNoBackground || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '305px 320px',
+    backgroundSize: '305px 330px',
     paddingBottom: '100%',
     zIndex: 1,
     '&:hover': {
@@ -189,7 +188,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 700,
     width: '100%',
-    fontSize: '2.3vh',
+    fontSize: '20',
     textTransform: 'uppercase',
     color: ({ color }) => color || '#ECECEC',
     '@media (max-width: 768px)': {

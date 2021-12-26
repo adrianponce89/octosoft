@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
-const CardSubCategories = ({ title, description }) => {
-  const classes = useStyles();
+import Polygon from '../../assets/ServicesExample.png';
+const CardSubCategories = ({ title, description, color }) => {
+  const classes = useStyles({color});
   return (
     <Grid
       item
@@ -17,7 +18,7 @@ const CardSubCategories = ({ title, description }) => {
     >
       <div className={classes.paper}>
         <img
-          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+          src={Polygon}
           alt="google"
           className={classes.img}
         />
@@ -59,11 +60,12 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 12,
     width: 415,
     height: 500,
-    background: '#ffffff52',
+    background: '#FFFFFF',
+    zIndex: '1',
   },
   img: { width: 200, height: 200 },
   title: {
-    color: '#9E7BE6',
+    color: ({ color }) => color,
     textTransform: 'capitalize',
     fontFamily: 'Montserrat',
     fontWeight: 'bold',
