@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme, url, urlWide, titleLength) => ({
     transform: 'rotate(180deg)',
     contain: 'size',
     pointerEvents: 'none',
-    margin: '-10px -30px',
+    margin: '-10px -25px',
     inlineSize: 'min-content',
     textAlign: 'left',
     zIndex: 3,
@@ -92,7 +92,7 @@ const useStyles = makeStyles((theme, url, urlWide, titleLength) => ({
     position: 'relative',
     height: '95%',
     overflow: 'hidden',
-    backgroundColor: 'rgba(33,33,33,0.4)',
+    backgroundColor: 'rgba(33,33,33,0.55)',
     '& img': {
       transition: '0.5s ease-out',
     },
