@@ -45,6 +45,7 @@ const NewAboutUs = ({ aboutUs }) => {
               title={node.title}
               description={node.description.description}
               link={node.link}
+              color={node.color}
             />
           ))}
       </Grid>

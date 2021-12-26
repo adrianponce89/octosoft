@@ -71,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: 0,
       paddingRight: 0,
     },
+    color: ({ color }) => color,
   },
   containerCard: {
     display: 'flex',
