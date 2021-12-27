@@ -54,13 +54,14 @@ const Cards = (props) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginBottom: 20,
-    marginTop: 20,
+    marginBottom: '40px',
+    marginTop: '40px',
   },
   cardBody: {
     paddingLeft: 20,
     paddingRight: 20,
     width: '100%',
+    height: '100%',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'row',
@@ -92,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
   descriptionCard: {
     fontFamily: 'Montserrat',
     fontSize: 16,
+    lineHeight: '30px',
     textAlign: 'left',
     color: '#000000',
     '@media (max-width: 768px)': {
@@ -102,13 +104,21 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: 20,
     },
   },
+  link: {
+    width: '149px',
+    height: '50px',
+  },
   descriptionLink: {
     fontFamily: 'Montserrat',
     fontSize: 13,
+    lineHeight: '20px',
     width: '149px',
     height: '50px',
-    textAlign: 'left',
+    textAlign: 'center',
     color: '#000000',
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
     '&:hover': {
       textDecoration: 'underline',
     },
