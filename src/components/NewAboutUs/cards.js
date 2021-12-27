@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     height: '50px',
     textAlign: 'center',
     color: '#000000',
-    justifyContent: 'center',
+    justifyContent: 'left',
     alignItems: 'center',
     display: 'flex',
     '&:hover': {
