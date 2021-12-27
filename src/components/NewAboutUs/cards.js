@@ -89,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 700,
     fontSize: 30,
+    paddingBottom: 10,
   },
   descriptionCard: {
     fontFamily: 'Montserrat',
