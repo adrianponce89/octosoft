@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme, url, urlWide, titleLength) => ({
       inlineSize: 'max-content !important'
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: '1.2rem',
+      fontSize: '1rem',
       margin: '-29px 10px',
     },
   },
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme, url, urlWide, titleLength) => ({
       backgroundSize: 'cover',
       marginTop: '0px',
       position: 'initial',
-      width: '100%'
+      width: '100%',
     },
   },
   boxImg: {
@@ -93,6 +93,10 @@ const useStyles = makeStyles((theme, url, urlWide, titleLength) => ({
     height: '95%',
     overflow: 'hidden',
     backgroundColor: 'rgba(33,33,33,0.55)',
+    transition: '50ms ease-in-out',
+    '&:hover': {
+      backgroundColor: 'rgba(33,33,33,0.2)',
+    },
     '& img': {
       transition: '0.5s ease-out',
     },

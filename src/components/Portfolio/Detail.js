@@ -35,7 +35,7 @@ const useStyle = makeStyles((theme) => ({
   root: {
     padding: 0,
     [theme.breakpoints.down('sm')]: {
-      height: '80%',
+      height: '80vh',
       width: '100%'
     },
     [theme.breakpoints.down('xs')]: {
@@ -50,10 +50,10 @@ const useStyle = makeStyles((theme) => ({
     boxSizing: 'border-box',
     maxWidth: 'unset',
     [theme.breakpoints.down('sm')]: {
-      height: '100%',
+      height: '95%',
       flexDirection: 'column',
-      justifyContent: 'center',
-      gap: '5px'
+      justifyContent: 'space-evenly',
+      //gap: '5px'
     },
   },
   boxGrid: {
@@ -73,11 +73,11 @@ const useStyle = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%',
       maxWidth: 'initial',
-      minHeight: '9.5%',
+      minHeight: '11%',
       flexBasis: '0',
       borderRadius: '4px',
       '&:hover': {
-        minHeight: '13%',
+        minHeight: '15%',
         maxWidth: 'initial'
       },
     },
