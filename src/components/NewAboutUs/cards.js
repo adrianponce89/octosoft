@@ -94,12 +94,13 @@ const useStyles = makeStyles((theme) => ({
   descriptionCard: {
     fontFamily: 'Montserrat',
     fontSize: 16,
+    fontWeight: 500,
     lineHeight: '30px',
-    textAlign: 'justify',
+    textAlign: 'left',
     color: '#000000',
     '@media (max-width: 768px)': {
       width: '90%',
-      textAlign: 'center',
+      textAlign: 'left',
       fontSize: 16,
       marginTop: 20,
       marginBottom: 20,
@@ -129,9 +130,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    height: '100%',
     minHeight: '35vh',
-    height: 'inherit',
+    height: '100%',
     order: ({ right }) => (right ? -1 : 1),
     '@media (max-width: 576px)': {
       order: () => -1,
