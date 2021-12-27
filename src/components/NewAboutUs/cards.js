@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontSize: 16,
     lineHeight: '30px',
-    textAlign: 'left',
+    textAlign: 'justify',
     color: '#000000',
     '@media (max-width: 768px)': {
       width: '90%',
