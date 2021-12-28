@@ -54,6 +54,7 @@ const Brand = ({
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
+    backgroundColor: '#F5F7F7',
     '@media (max-width: 768px)': {
       padding: 0,
     },
@@ -98,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
   },
   OctoFive: {
     position: 'absolute',
-    bottom: '-586%',
+    bottom: '-579%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 768px)': {

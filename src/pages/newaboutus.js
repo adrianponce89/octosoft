@@ -4,7 +4,6 @@ import get from 'lodash/get';
 import NewAboutUs from '../components/NewAboutUs/index';
 const NewAboutUsPage = (props) => {
   const aboutUsBanner = get(props, 'data.allContentfulHomeItem');
-  console.log(aboutUsBanner);
   return <NewAboutUs aboutUs={aboutUsBanner} />;
 };
 

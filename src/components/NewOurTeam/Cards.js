@@ -25,21 +25,12 @@ const Cards = ({
     hover,
   });
   const [type, setType] = useState(false);
-
-  console.log('octogone', octogone);
-  console.log('type', type);
   const handleClickCard = (member) => {
     handleClick(member);
   };
   return (
     <div className={type ? classes.paperFive : classes.paper}>
-      <div
-        container
-        justify="center"
-        direction="column"
-        alignItems="center"
-        className={classes.itemAvatar}
-      >
+      <div className={classes.itemAvatar}>
         <div className={classes.octogane}>
           <div
             className={classes.iconAvatar}
@@ -88,8 +79,9 @@ const useStyles = makeStyles((theme) => ({
     width: '23%',
     margin: '3%',
     marginTop: '0rem',
-    height: '100%',
-    '@media (max-width: 1400px)': {
+    marginBottom: '0rem',
+    height: 'fit-content',
+    '@media (max-width: 1800px)': {
       width: '40%',
       margin: '0%',
       marginBottom: '2rem',
@@ -139,22 +131,22 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: ({ octogone }) => octogone || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '310px 335px',
+    backgroundSize: '315px 345px',
     '@media (max-width: 1800px)': {
       height: '20rem',
-      },
+    },
   },
   iconAvatar: {
     display: 'flex',
     width: '90%',
     alignItems: 'center',
-    height: 'fit-content',
+    height: '1rem',
     justifyContent: 'center',
     backgroundImage: ({ photoNoBackground }) =>
       photoNoBackground || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '305px 330px',
+    backgroundSize: '310px 340px',
     paddingBottom: '100%',
     zIndex: 1,
     '&:hover': {

@@ -285,7 +285,6 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
       flexDirection: 'column',
       alignItems: 'center',
-
       justifyContent: 'flex-start',
     },
   },
@@ -312,18 +311,23 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+
+    '@media (max-width: 1900px)': {
+      height: '4rem',
+    },
     '@media (max-width: 1200px)': {
       width: '100%',
-      flexWrap: 'nowrap',
+      flexWrap: 'wrap',
       flexDirection: 'column',
       marginTop: '1rem',
       marginBottom: '1rem',
+      height: '8rem',
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
       overflowY: 'scroll',
-      overflowX: 'hidden',
+      overflowX: 'auto',
     },
-    '@media (max-width: 728px)': {
+    '@media (max-width: 600px)': {
       width: '100%',
       flexWrap: 'nowrap',
       flexDirection: 'column',
@@ -342,7 +346,10 @@ const useStyles = makeStyles((theme) => ({
     height: 'fit-content',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1200px)': {
+      width: '55%',
+    },
+    '@media (max-width: 600px)': {
       width: '90%',
       height: '100%',
     },
@@ -389,7 +396,6 @@ const useStyles = makeStyles((theme) => ({
       width: '90%',
       height: 'fit-content',
       margin: '0',
-      marginTop: '5%',
       marginBottom: '5%',
     },
   },

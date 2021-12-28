@@ -156,7 +156,8 @@ const NewOurTeam = ({ teamMembers }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginTop: '10rem',
+    paddingTop: '10rem',
+    backgroundColor: '#F5F7F7',
     '@media (max-width: 760px)': {
       marginTop: '7rem',
     },

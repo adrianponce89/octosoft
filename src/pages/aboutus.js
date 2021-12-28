@@ -13,7 +13,6 @@ const AboutUsPage = (props) => {
 
   const aboutUsBanner = get(props, 'data.contentfulBanners');
 
-  console.log(teamMembers);
   return (
     <Container
       background={`url(${BackgroundImage})`}

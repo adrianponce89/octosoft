@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     textAlign: 'center',
     marginBottom: '5rem',
+    '@media (max-width: 760px)': {
+      marginBottom: '1rem',
+    },
   },
   mainTitle: {
     fontFamily: 'Montserrat',
