@@ -146,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '10rem',
     width: ({ widthEdited }) => widthEdited || '100%',
     height: 'fit-content',
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 800px)': {
       width: '100%',
       flexWrap: 'nowrap',
       flexDirection: 'column',
