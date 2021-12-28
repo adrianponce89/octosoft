@@ -19,7 +19,11 @@ const NewAboutUs = ({ aboutUs }) => {
       className={classes.root}
     >
       <Background />
-      <Grid container justify="center" alignItems="center">
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+      >
         <Grid
           container
           item
@@ -86,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 700,
     fontSize: 30,
-    color: '#000000',
+    color: '#999999',
     '@media (max-width: 760px)': {
       fontSize: 24,
     },
