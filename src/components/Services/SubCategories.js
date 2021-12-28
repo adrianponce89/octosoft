@@ -28,7 +28,7 @@ const SubCategories = ({
           setSelected(design);
           setTitle('Design');
           setPaletteColor(design[0].node.color);
-          setWidthEdited('90%');
+          setWidthEdited('80%');
           design.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -37,7 +37,7 @@ const SubCategories = ({
           setSelected(media);
           setTitle('Social Media');
           setPaletteColor(media[0].node.color);
-          setWidthEdited('90%');
+          setWidthEdited('80%');
           media.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -46,7 +46,7 @@ const SubCategories = ({
           setSelected(marketing);
           setTitle('Marketing');
           setPaletteColor(marketing[0].node.color);
-          setWidthEdited('90%');
+          setWidthEdited('80%');
           marketing.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -55,7 +55,7 @@ const SubCategories = ({
           setSelected(operations);
           setTitle('Operations');
           setPaletteColor(operations[0].node.color);
-          setWidthEdited('70%');
+          setWidthEdited('60%');
           operations.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -64,7 +64,7 @@ const SubCategories = ({
           setSelected(dataScience);
           setTitle('Data Science');
           setPaletteColor(dataScience[0].node.color);
-          setWidthEdited('70%');
+          setWidthEdited('60%');
           dataScience.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -73,7 +73,7 @@ const SubCategories = ({
           setSelected(solutions);
           setTitle('IT Solutions');
           setPaletteColor(solutions[0].node.color);
-          setWidthEdited('90%');
+          setWidthEdited('80%');
           solutions.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -82,7 +82,7 @@ const SubCategories = ({
           setSelected(web3);
           setTitle('Web 3');
           setPaletteColor(web3[0].node.color);
-          setWidthEdited('90%');
+          setWidthEdited('80%');
           web3.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -91,7 +91,7 @@ const SubCategories = ({
           setSelected(software);
           setTitle('Software Engineer');
           setPaletteColor(software[0].node.color);
-          setWidthEdited('90%');
+          setWidthEdited('80%');
           software.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
