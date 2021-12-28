@@ -71,11 +71,19 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             <div className={classes.linkText}>Home</div>
           </Link>
 
-          <Link className={classes.link} margin={2} to="/aboutus">
+          <Link
+            className={classes.link}
+            margin={2}
+            to="/" /* to="/aboutus" */
+          >
             <div className={classes.linkText}>About Us</div>
           </Link>
 
-          <Link className={classes.link} margin={2} to="/#ourplans">
+          <Link
+            className={classes.link}
+            margin={2}
+            to="/" /* to="/#ourplans" */
+          >
             <div className={classes.linkText}>Our Plans</div>
           </Link>
         </Grid>
@@ -90,13 +98,18 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
           justify="flex-start"
           alignItems="flex-start"
         >
-          <Link className={classes.link} margin={2} to="/contact">
+          <Link
+            className={classes.link}
+            margin={2}
+            to="/" /* to="/contact" */
+          >
             <div className={classes.linkText}>Contact Us</div>
           </Link>
           <Link
             className={classes.link}
             margin={2}
-            to="/clientsupport"
+            /*   to="/clientsupport" */
+            to="/"
           >
             <div className={classes.linkText}>Client Support</div>
           </Link>
@@ -112,14 +125,15 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
           justify="flex-start"
           alignItems="flex-start"
         >
-          <Link className={classes.link} margin={2} to="/news">
+          <Link className={classes.link} margin={2} to="/" /* to="/news" */>
             <div className={classes.linkText}>News</div>
           </Link>
 
           <Link
             className={classes.link}
             margin={2}
-            to="/borderlessIdentities"
+            to="/" 
+            /* to="/borderlessIdentities" */
           >
             <div className={classes.linkText}>
               Borderless Identities
@@ -132,15 +146,15 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
           LEGAL
         </Typography>
         <div className={classes.links}>
-          <Link className={classes.link} margin={2} to="/legal">
+          <Link className={classes.link} margin={2} to="/" /* to="/legal" */>
             <div className={classes.linkText}>Terms of Service</div>
           </Link>
 
-          <Link className={classes.link} margin={2} to="/legal">
+          <Link className={classes.link} margin={2} to="/" /* to="/legal" */>
             <div className={classes.linkText}>Terms of Use</div>
           </Link>
 
-          <Link className={classes.link} margin={2} to="/legal">
+          <Link className={classes.link} margin={2} to="/" /* to="/legal" */>
             <div className={classes.linkText}>Privacy Policy</div>
           </Link>
         </div>
