@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Grid, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import IconsCards from './iconsCards';
@@ -9,15 +9,6 @@ import TitleIcons from './titleIcons';
 import trama from '../../../assets/VectorMid.png';
 
 const IndexIcons = ({ logos }) => {
-  const [logoFiles, setLogoFiles] = useState([]);
-
-  useEffect(() => {
-    let array = [];
-    logos.forEach((logo) => {
-      array.push(logo.image.file.url);
-    });
-    setLogoFiles(array);
-  }, [logos]);
 
   const classes = useStyles();
   return (
@@ -30,7 +21,7 @@ const IndexIcons = ({ logos }) => {
       <TitleIcons title={'3D LOGOS'} sort={'Left'} />
       <IconsMovie logos={logos} />
       <Box className={classes.buttonAll}>
-        <ButtonAll files={logoFiles} />
+        <ButtonAll />
       </Box>
     </Grid>
   );
