@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 40,
     marginBottom: '1%',
     marginTop: '3%',
+    marginLeft: '2%',
   },
   titleLeft: {
     display: 'flex',

@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import Container from '../components/Container';
-import BackgroundImage from '../assets/Trama.png';
-import Services from '../components/Services';
+import Container from '../../components/Container';
+import BackgroundImage from '../../assets/Trama.png';
+import Services from '../../components/Services';
 
 const OurServices = (props) => {
   const banners = get(props, 'data.allContentfulBanners.edges');
