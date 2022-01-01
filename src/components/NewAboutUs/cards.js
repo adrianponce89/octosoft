@@ -45,6 +45,8 @@ const Cards = (props) => {
               </Typography>
             </Link>
           }
+
+          <div className={classes.cardsEnd}></div>
           
         </Grid>
       </div>
@@ -56,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginBottom: '40px',
     marginTop: '40px',
+  },
+  cardsEnd:{
+    marginBottom: '40px',
   },
   cardBody: {
     paddingLeft: 20,
@@ -123,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     '&:hover': {
       textDecoration: 'underline',
+      color: '#8249DC',
     },
   },
   backgroundCardImage: {

@@ -52,6 +52,8 @@ const NewAboutUs = ({ aboutUs }) => {
               color={node.color}
             />
           ))}
+
+        {<div className={classes.cardsEnd}></div>}
       </Grid>
     </Grid>
   );
@@ -63,6 +65,10 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 760px)': {
       marginTop: '7rem',
     },
+  },
+  cardsEnd:{
+    width: '100%',
+    height: '50px',
   },
   titleContainer: {
     marginBottom: theme.spacing(9),
