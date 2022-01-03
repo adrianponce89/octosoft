@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 const CardSubCategories = ({
@@ -8,16 +8,36 @@ const CardSubCategories = ({
   icon,
   octagon,
   length,
+  titleChanged,
 }) => {
   const classes = useStyles({ color, octagon, icon });
+  const [firstTitle, setFirstTitle] = useState('');
+  const [secondTitle, setSecondTitle] = useState('');
+  useEffect(() => {
+    setFirstTitle(title.split(' ').slice(0, 1));
+    setSecondTitle(title.split(' ').slice(1, title.length));
+  }, [title]);
+  console.log(secondTitle);
   return (
     <div className={length ? classes.rootFive : classes.root}>
       <div className={classes.octagon}>
         <div className={classes.icon} />
       </div>
-      <Typography variant="h3" className={classes.title}>
-        {title}
-      </Typography>
+      {!titleChanged ? (
+        <Typography className={classes.title}>{title}</Typography>
+      ) : (
+        <Fragment>
+          <Typography className={classes.title}>
+            {firstTitle}
+          </Typography>
+          {secondTitle ? (
+            <Typography className={classes.title}>
+              {secondTitle[0]}{' '}
+              {secondTitle[1] ? secondTitle[1] : null}
+            </Typography>
+          ) : null}
+        </Fragment>
+      )}
       <Typography
         variant="body1"
         color="initial"
@@ -83,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     height: '15rem',
     alignItems: 'center',
     marginTop: '1.5rem',
-    marginBottom: '1rem',
+    marginBottom: '.5rem',
     justifyContent: 'center',
     backgroundImage: ({ octagon }) => octagon || '#ECECEC',
     backgroundPosition: 'center',
@@ -104,15 +124,14 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,
   },
   title: {
-    width: '80%',
+    width: '90%',
     color: ({ color }) => color,
     fontFamily: 'Montserrat',
     fontWeight: '700',
     textAlign: 'center',
-    fontSize: '3vh',
+    fontSize: '3.5vh',
     margin: '0%',
-    marginBottom: '1.5rem',
-    lineHeight: '1.5',
+    marginBottom: '.3rem',
     '@media (max-width: 800px)': {
       width: '90%',
     },
@@ -123,8 +142,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontSize: '2vh',
     textAlign: 'center',
-    marginBottom: '1.5rem',
-
+    marginTop: '1rem',
+    marginBottom: '2.5rem',
+    lineHeight: '1.8',
     '@media (max-width: 800px)': {
       fontSize: '1,5vh',
       width: '90%',

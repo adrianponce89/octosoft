@@ -19,6 +19,7 @@ const SubCategories = ({
   const [paletteColor, setPaletteColor] = useState('');
   const [widthEdited, setWidthEdited] = useState('');
   const [lengthEdited, setLengthEdited] = useState(false);
+  const [changeTitles, setChangeTitles] = useState(false);
   const classes = useStyles({ widthEdited });
 
   useEffect(() => {
@@ -59,6 +60,7 @@ const SubCategories = ({
           operations.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setChangeTitles(true);
           break;
         case 'Data':
           setSelected(dataScience);
@@ -68,6 +70,7 @@ const SubCategories = ({
           dataScience.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setChangeTitles(true);
           break;
         case 'IT':
           setSelected(solutions);
@@ -95,6 +98,7 @@ const SubCategories = ({
           software.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setChangeTitles(true);
           break;
         default:
       }
@@ -115,6 +119,7 @@ const SubCategories = ({
               octagon={`url(${categories.node.octagon.file.url})`}
               icon={`url(${categories.node.icon.file.url})`}
               length={lengthEdited}
+              titleChanged={changeTitles}
             />
           ))}
       </div>
@@ -136,14 +141,13 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '8rem',
     },
   },
-
   cardContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingBottom: '10rem',
+    paddingBottom: '7rem',
     width: ({ widthEdited }) => widthEdited || '100%',
     height: 'fit-content',
     '@media (max-width: 800px)': {
