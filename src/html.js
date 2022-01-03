@@ -13,6 +13,7 @@ export default function HTML(props) {
         />
         <meta property="og:title" content="Octosoft Professionals" />
         <meta property="og:image" content="/images/sharing.png" />
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

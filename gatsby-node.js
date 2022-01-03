@@ -6,6 +6,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const PostTemplate = path.resolve('./src/templates/Post.js');
+    const ServicePortfolio = path.resolve('./src/components/ServicePortfolio/index.js')
     resolve(
       graphql(
         `
@@ -26,6 +27,15 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                 }
               }
+            },
+            allContentfulService {
+              edges {
+                node {
+                  newName
+                  categories
+                  newColor
+                }
+              }
             }
           }
         `,
@@ -36,6 +46,18 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const posts = result.data.allContentfulPost.edges;
+        const services = result.data.allContentfulService.edges;
+        services.forEach((service) => {
+          createPage({
+            path: `/portfolio/${service.node.newName}/`,
+            component: ServicePortfolio,
+            context: {
+              newName: service.node.newName,
+              categories: service.node.categories,
+              newColor: service.node.newColor
+            },
+          });
+        });
         posts.forEach((post) => {
           createPage({
             path: `/news/${post.node.slug}/`,

@@ -19,7 +19,7 @@ const DetailPortfolio = ({ portfolios }) => {
             justify="center"
             key={node.newName}
             className={classes.boxGrid}
-            to={node.portfolioLink}
+            to={`/portfolio/${node.newName}`}
           >
             <ItemPortfolio
               data={node}
