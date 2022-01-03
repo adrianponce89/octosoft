@@ -37,7 +37,8 @@ const useStyle = makeStyles((theme) => ({
     marginBottom: '50px',
     [theme.breakpoints.down('sm')]: {
       height: '80vh',
-      width: '100%'
+      width: '110%',
+      marginLeft: '-5%'
     },
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(0),

@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme, url, urlWide, titleLength) => ({
     [theme.breakpoints.down('sm')]: {
       width: '2%',
       height: '250%',
-      marginTop: '-60px'
+      marginTop: '-75px'
     },
   },
 }));
