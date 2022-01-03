@@ -34,7 +34,7 @@ const DetailPortfolio = ({ portfolios }) => {
 const useStyle = makeStyles((theme) => ({
   root: {
     padding: 0,
-    marginBottom: '100px',
+    marginBottom: '50px',
     [theme.breakpoints.down('sm')]: {
       height: '80vh',
       width: '100%'
