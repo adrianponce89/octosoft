@@ -53,7 +53,7 @@ const NewAboutUs = ({ aboutUs }) => {
             />
           ))}
 
-        {<div className={classes.cardsEnd}></div>}
+        {<div className={classes.cardsopen}></div>}
       </Grid>
     </Grid>
   );
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: '7rem',
     },
   },
-  cardsEnd:{
+  cardsopen:{
     width: '100%',
     height: '50px',
   },
