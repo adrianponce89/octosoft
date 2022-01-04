@@ -1,17 +1,21 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Container } from '@material-ui/core';
-import Masonry from 'masonry-layout'
+import { Container } from '@material-ui/core';
 import './pepe.css'
 
 const ServicePortfolioGrid = () => {
   const classes = useStyle();
 
+  //Acá debería hacerse la query para pedir la data de los proyectos de esta categoría, hecho eso
+  //Se rellena la grid con el contenido
+
   return (
     <Container className={classes.root}>
-
+      {/* La grilla es un molde que debiera extraerse en un componente diferente */}
       <div class="grid">
+
         <div className={classes.gridItem_width2} >
+          {/* itemImage debe tener la imagen de portada como backgroundImage */}
           <div className={classes.itemImage}>
             <h1 className={classes.itemTitle}>Título del proyecto</h1>
             <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>

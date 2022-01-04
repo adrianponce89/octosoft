@@ -18,7 +18,7 @@ const ServicePortfolioTitle = ({ name, categories, color }) => {
         className={classes.box}
       >
         <Typography variant="h5" className={classes.titleCard}>
-          {name || 'Service Title'}
+          {name ?? 'Service Title'}
         </Typography>
       </Grid>
       <Grid
@@ -29,11 +29,16 @@ const ServicePortfolioTitle = ({ name, categories, color }) => {
         className={classes.box}
       >
         {
-          categories.map(category =>
-            <Typography variant="h5" className={classes.subtitle}>
-              - {`${category}` || 'Service Category'} -
-            </Typography>
-          )
+          //Este condicional es un parche hasta que se acomode el contenido de services en contentful
+          categories === null ?
+            'Service Category'
+            :
+            //Esto es lo que debería renderizar las categorías (en este momento están mal escritas o son diferentes en contentful)
+            categories.map(category =>
+              <Typography variant="h5" className={classes.subtitle}>
+                - {`${category}` ?? 'Service Category'} -
+              </Typography>
+            )
         }
       </Grid>
     </Box>

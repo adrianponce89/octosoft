@@ -5,7 +5,7 @@ import ServicePortfolioGrid from './servicePortfolioGrid'
 import ServicePortfolioTitle from './servicePortfolioTitle'
 
 const Pepe = (props) => {
-  console.log(props.pageContext);
+
   const { newName, categories, newColor } = props.pageContext
 
   return (
