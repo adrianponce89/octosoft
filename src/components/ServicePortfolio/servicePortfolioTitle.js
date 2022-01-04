@@ -61,23 +61,33 @@ const useStyles = makeStyles((theme) => ({
   },
   titleCard: {
     color: ({ color }) => color ?? '#8249DC',
-    fontSize: '6rem',
+    fontSize: '5.5rem',
     fontWeight: 900,
     fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
     [theme.breakpoints.down('sm')]: {
       textAlign: 'center',
-      fontSize: '3rem',
+      fontSize: '2.5rem',
       marginBottom: theme.spacing(2),
     },
     [theme.breakpoints.down('xs')]: {
       textAlign: 'center',
-      fontSize: '1.8rem',
+      fontSize: '1.5rem',
       marginBottom: theme.spacing(1),
     },
   },
   subtitle: {
-
+    color: '#999999',
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    fontFamily: 'Montserrat',
+    textTransform: 'uppercase',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.9rem',
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.8em',
+    },
   }
 }));
 

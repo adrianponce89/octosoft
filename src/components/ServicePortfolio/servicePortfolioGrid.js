@@ -13,19 +13,55 @@ const ServicePortfolioGrid = () => {
       <div class="grid">
         <div className={classes.gridItem_width2} >
           <div className={classes.itemImage}>
-            <h1 className={classes.itemTitle}>Hola</h1>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
           </div>
         </div>
-        <div className={classes.gridItem}></div>
+        <div className={classes.gridItem}>
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
+          </div>
+        </div>
 
-        <div className={classes.gridItem}></div>
-        <div className={classes.gridItem_width2}></div>
+        <div className={classes.gridItem}>
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
+          </div>
+        </div>
+        <div className={classes.gridItem_width2}>
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
+          </div>
+        </div>
 
-        <div className={classes.gridItem_width2}></div>
-        <div className={classes.gridItem}></div>
+        <div className={classes.gridItem_width2}>
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
+          </div>
+        </div>
+        <div className={classes.gridItem}>
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
+          </div>
+        </div>
 
-        <div className={classes.gridItem_height2}></div>
-        <div className={classes.gridItem_width_height2}></div>
+        <div className={classes.gridItem_height2}>
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
+          </div>
+        </div>
+        <div className={classes.gridItem_width_height2}>
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>Título del proyecto</h1>
+            <h2 className={classes.itemSubtitle}>Subtitulo del proyecto</h2>
+          </div>
+        </div>
 
       </div>
 
@@ -39,12 +75,15 @@ const useStyle = makeStyles((theme) => ({
     marginTop: '80px',
     marginBottom: '80px',
     [theme.breakpoints.down('sm')]: {
-      height: '80vh',
       width: '110%',
+      marginTop: '40px',
+      marginBottom: '40px',
       marginLeft: '-5%'
     },
     [theme.breakpoints.down('xs')]: {
       padding: theme.spacing(0),
+      marginTop: '20px',
+      marginBottom: '20px',
     },
   },
   grid: {
@@ -70,8 +109,11 @@ const useStyle = makeStyles((theme) => ({
     '&:hover': {
       mixBlendMode: 'soft-light'
     },
-    '&:hover itemTitle': {
-      visibility: 'visible'
+    '& div': {
+      color: 'transparent',
+    },
+    '&:hover div': {
+      color: '#303030',
     },
     [theme.breakpoints.down('sm')]: {
 
@@ -90,16 +132,17 @@ const useStyle = makeStyles((theme) => ({
     alignItems: 'center',
     cursor: 'pointer',
     mixBlendMode: 'normal',
-    transition: '200ms ease-in-out',
+    transition: '500ms all ease-in-out',
+    '& div': {
+      color: 'transparent',
+    },
+    '&:hover div': {
+      color: '#303030',
+    },
     '&:hover': {
       mixBlendMode: 'soft-light'
     },
-    '& .itemImage .itemTitle': {
-      visibility: 'hidden'
-    },
-    '&:hover .itemImage .itemTitle': {
-      visibility: 'visible'
-    },
+
     [theme.breakpoints.down('sm')]: {
 
     },
@@ -122,11 +165,11 @@ const useStyle = makeStyles((theme) => ({
     '&:hover': {
       mixBlendMode: 'soft-light'
     },
-    '& .itemTitle': {
-      visibility: 'hidden'
+    '& div': {
+      color: 'transparent',
     },
-    '&:hover .itemTitle': {
-      visibility: 'visible'
+    '&:hover div': {
+      color: '#303030',
     },
     [theme.breakpoints.down('sm')]: {
 
@@ -150,21 +193,48 @@ const useStyle = makeStyles((theme) => ({
     '&:hover': {
       mixBlendMode: 'soft-light'
     },
-    '& .itemTitle': {
-      visibility: 'hidden'
+    '& div': {
+      color: 'transparent',
     },
-    '&:hover .itemTitle': {
-      visibility: 'visible'
+    '&:hover div': {
+      color: '#303030',
     },
     [theme.breakpoints.down('sm')]: {
 
     },
   },
   itemImage: {
-
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%'
   },
   itemTitle: {
-
+    textTransform: 'uppercase',
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    margin: '5px 0',
+    transition: '200ms all ease-in-out',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.5rem',
+      color: '#303030',
+      textAlign: 'center',
+      lineHeight: 'normal',
+      margin: ' 0 2.5px'
+    },
+  },
+  itemSubtitle: {
+    fontSize: '1rem',
+    margin: '5px 0',
+    fontWeight: 400,
+    transition: '200ms all ease-in-out',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '0.3rem',
+      color: '#303030',
+      textAlign: 'center'
+    },
   },
 }));
 
