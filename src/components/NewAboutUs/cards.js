@@ -19,9 +19,10 @@ const Cards = (props) => {
           item
           container
           xs={12}
-          sm={4}
+          sm={3}
           className={classes.backgroundCardImage}
         ></Grid>
+        <div className={classes.separator}></div>
         <Grid
           item
           container
@@ -57,9 +58,15 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '40px',
     marginTop: '40px',
   },
+  separator: {
+    borderWidth: 1,
+    alignSelf: 'stretch',
+    margin: 5,
+    '@media (max-width: 100px)': {
+      height: 0,
+    },
+  },
   cardBody: {
-    paddingLeft: 20,
-    paddingRight: 20,
     width: '100%',
     height: '100%',
     overflow: 'hidden',

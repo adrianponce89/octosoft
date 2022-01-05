@@ -1,6 +1,7 @@
 import React from 'react';
 import UnderLined from '../UnderLined';
 import Background from '../Background';
+import Container from '../Container';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Cards from './cards';
@@ -41,6 +42,7 @@ const NewAboutUs = ({ aboutUs }) => {
           </Typography>
         </Grid>
         
+        <>
         {edges &&
           edges.map(({ node }, i) => (
             <Cards
@@ -52,6 +54,7 @@ const NewAboutUs = ({ aboutUs }) => {
               color={node.color}
             />
           ))}
+        </>
 
         {<div className={classes.cardsopen}></div>}
       </Grid>
