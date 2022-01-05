@@ -25,7 +25,7 @@ const SubCategories = ({
   useEffect(() => {
     const selection = () => {
       switch (search) {
-        case 'Design':
+        case 'design':
           setSelected(design);
           setTitle('Design');
           setPaletteColor(design[0].node.color);
@@ -34,7 +34,7 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           break;
-        case 'Media':
+        case 'media':
           setSelected(media);
           setTitle('Social Media');
           setPaletteColor(media[0].node.color);
@@ -43,7 +43,7 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           break;
-        case 'Marketing':
+        case 'marketing':
           setSelected(marketing);
           setTitle('Marketing');
           setPaletteColor(marketing[0].node.color);
@@ -52,7 +52,7 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           break;
-        case 'Operations':
+        case 'operations':
           setSelected(operations);
           setTitle('Operations');
           setPaletteColor(operations[0].node.color);
@@ -62,7 +62,7 @@ const SubCategories = ({
             : setLengthEdited(false);
           setChangeTitles(true);
           break;
-        case 'Data':
+        case 'data':
           setSelected(dataScience);
           setTitle('Data Science');
           setPaletteColor(dataScience[0].node.color);
@@ -72,7 +72,7 @@ const SubCategories = ({
             : setLengthEdited(false);
           setChangeTitles(true);
           break;
-        case 'IT':
+        case 'it':
           setSelected(solutions);
           setTitle('IT Solutions');
           setPaletteColor(solutions[0].node.color);
@@ -81,7 +81,7 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           break;
-        case 'Web':
+        case 'web':
           setSelected(web3);
           setTitle('Web 3');
           setPaletteColor(web3[0].node.color);
@@ -90,7 +90,7 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           break;
-        case 'Software':
+        case 'software':
           setSelected(software);
           setTitle('Software Engineer');
           setPaletteColor(software[0].node.color);

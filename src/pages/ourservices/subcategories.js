@@ -22,7 +22,7 @@ const subcategories = (props) => {
 
   let search = props.location.search;
   let limit = search.indexOf('%');
-
+  search = search.toLowerCase();
   limit !== -1
     ? (search = search.slice(1, limit))
     : (search = search.slice(1, search.length + 1));

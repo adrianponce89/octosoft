@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: ({ octagon }) => octagon || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '200px 200px',
+    backgroundSize: '190px 190px',
   },
   icon: {
     display: 'flex',
@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: ({ icon }) => icon || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '90px 90px',
+    backgroundSize: '80px 80px',
     paddingBottom: '100%',
     marginBottom: '3%',
     zIndex: 1,
@@ -129,9 +129,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: '700',
     textAlign: 'center',
-    fontSize: '3.5vh',
+    fontSize: '3.2vh',
     margin: '0%',
-    marginBottom: '.3rem',
+    marginBottom: '.1rem',
     '@media (max-width: 800px)': {
       width: '90%',
     },
@@ -143,7 +143,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '2vh',
     textAlign: 'center',
     marginTop: '1rem',
-    marginBottom: '2.5rem',
+    marginBottom: '2.2rem',
     lineHeight: '1.8',
     '@media (max-width: 800px)': {
       fontSize: '1,5vh',
