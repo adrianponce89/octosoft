@@ -19,7 +19,7 @@ const Cards = (props) => {
           item
           container
           xs={12}
-          sm={3}
+          sm={4}
           className={classes.backgroundCardImage}
         ></Grid>
         <div className={classes.separator}></div>
