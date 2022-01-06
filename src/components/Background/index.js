@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   backgroundStart: {
     position: 'absolute',
-    top: '5%',
+    top: '9%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 1000px)': {
