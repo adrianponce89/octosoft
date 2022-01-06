@@ -1,7 +1,5 @@
 import React from 'react';
 import Brand from '../components/Brand';
-import Container from '../components/Container';
-import BackgroundImage from '../assets/Trama.png';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 
@@ -31,20 +29,14 @@ const BrandPage = (props) => {
     'data.allContentfulBrandText.nodes[0]',
   );
 
-  console.log(titlesBrand);
   return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      innerPadding="80px 25px 25px 25px"
-    >
-      <Brand
-        logos={logosBrand}
-        colors={colorsBrand}
-        identityInfo={identityGuidelines}
-        legalInfo={legalDisclaimer}
-        titles={titlesBrand}
-      />
-    </Container>
+    <Brand
+      logos={logosBrand}
+      colors={colorsBrand}
+      identityInfo={identityGuidelines}
+      legalInfo={legalDisclaimer}
+      titles={titlesBrand}
+    />
   );
 };
 

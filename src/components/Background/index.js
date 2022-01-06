@@ -1,6 +1,6 @@
 import React from 'react';
 import OctoThree from '../../assets/VectorStart.png';
-import OctoOne from '../../assets/Vector.png';
+import OctoOne from '../../assets/Complete.png';
 import { makeStyles } from '@material-ui/core/styles';
 
 const Background = () => {
@@ -17,13 +17,19 @@ const Background = () => {
   );
 };
 const useStyles = makeStyles((theme) => ({
+  background: {
+    width: '100%',
+    height: 'fit-content',
+    minHeight: '100vh',
+    backgroundColor: '#F5F7F7',
+  },
   octo: {
     position: 'absolute',
     width: '700px',
     top: '30%',
     left: '-7%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1000px)': {
       display: 'none',
     },
   },
@@ -32,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     top: '5%',
     right: '0%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1000px)': {
       display: 'none',
     },
   },

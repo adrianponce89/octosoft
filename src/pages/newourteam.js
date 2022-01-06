@@ -1,54 +1,23 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import Container from '../components/Container';
-import BackgroundImage from '../assets/Trama.png';
-import AboutUs from '../components/AboutUs';
+import NewOurTeam from '../components/NewOurTeam/Index';
 
-const AboutUsPage = (props) => {
+const NewOurTeamPage = (props) => {
   const teamMembers = get(
     props,
     'data.allContentfulTeamMember.edges',
   );
-
-  const aboutUsBanner = get(props, 'data.contentfulBanners');
-
   return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      innerPadding="80px 25px 25px 25px"
-      innerBackground={'#5ebff4'}
-    >
-      <AboutUs
-        teamMembers={teamMembers}
-        aboutUs={aboutUsBanner}
-        cla
-      />
-    </Container>
+    <div styles={{ width: '100%', backgroundColor: '#F5F7F7' }}>
+      <NewOurTeam teamMembers={teamMembers} />
+    </div>
   );
 };
-
-export default AboutUsPage;
+export default NewOurTeamPage;
 
 export const pageQuery = graphql`
-  query AboutUsQuery {
-    contentfulBanners(type: { eq: "AboutUs" }) {
-      color
-      image {
-        file {
-          url
-        }
-      }
-      subTitle
-      title
-      type
-      description {
-        id
-        internal {
-          content
-        }
-      }
-    }
+  query OurTeamQuery {
     allContentfulTeamMember(sort: { fields: order }) {
       edges {
         node {
@@ -66,6 +35,21 @@ export const pageQuery = graphql`
             web
           }
           photo {
+            file {
+              url
+            }
+          }
+          photoNoBackground {
+            file {
+              url
+            }
+          }
+          octogone {
+            file {
+              url
+            }
+          }
+          hover {
             file {
               url
             }
