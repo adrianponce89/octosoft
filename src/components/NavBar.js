@@ -19,106 +19,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 import Contact from './Contact';
 
-const useStyles = makeStyles((theme) => ({
-  toolbar: {
-    paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    color: 'black',
-    background: ({ transparent }) =>
-      !!transparent ? 'transparent' : '#fff',
-    transition: '0.2s',
-  },
-  links: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'right',
-    alignItems: 'center',
-  },
-  link: {
-    margin: '15px 10px',
-    padding: '0px 15px',
-    color: theme.palette.text.primary,
-    textDecoration: 'none',
-    cursor: 'pointer',
-  },
-  linkButton: {
-    padding: 6,
-    color: theme.palette.text.primary,
-    textDecoration: 'none',
-    cursor: 'pointer',
-  },
-  textLogoContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  textLogo: {
-    fontSize: 20,
-    margin: 0,
-    fontWeight: 800,
-    fontFamily: 'Montserrat',
-    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
-  },
-  textLogoSub: {
-    fontSize: 13,
-    margin: 0,
-    fontWeight: 800,
-    fontFamily: 'Montserrat',
-    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
-  },
-  logo: {
-    width: 46,
-    height: 46,
-    marginRight: 10,
-    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
-    fill: '#33adff',
-  },
-  linkText: {
-    fontWeight: 'bold',
-    fontSize: '14px',
-    color: 'black',
-    fontFamily: 'Montserrat',
-    textShadow: ({ transparent }) =>
-      !!transparent ? '0 0 4px #FFF' : 'none',
-  },
-  chevron: {
-    fontWeight: 'bold',
-    fontSize: '14px',
-    color: 'black',
-    fontFamily: 'Montserrat',
-    textShadow: ({ transparent }) =>
-      !!transparent ? '0 0 4px #FFF' : 'none',
-    '&::after': {
-      content: '" ⌄"',
-      display: 'inline',
-      position: 'relative',
-      top: '-0.25em',
-      fontSize: '120%',
-    },
-  },
-  appbar: {
-    background: 'none',
-    boxShadow: ({ transparent }) =>
-      !!transparent ? 'none' : '0 0 4px gray',
-  },
-  iconDrawer: {
-    color: 'black',
-    textShadow: ({ transparent }) =>
-      !!transparent ? '0 0 6px black' : 'none',
-  },
-  button: {
-    backgroundColor: '#33adff',
-    padding: '6px 30px',
-  },
-  menu: {
-    background: 'pink',
-    width: '100vw',
-  },
-}));
-
 const HideOnScroll = (props) => {
   const { children } = props;
   const trigger = useScrollTrigger({});
@@ -135,7 +35,7 @@ const menuList = [
     title: 'ABOUT US',
     children: [
       { title: 'About Octosoft', link: '/aboutus' },
-      { title: 'Our Team', link: '/aboutus' },
+      { title: 'Our Team', link: '/ourteam' },
       { title: 'Our Brand', link: '/brand' },
     ],
   },
@@ -342,4 +242,103 @@ const NavBar = (props) => {
   );
 };
 
+const useStyles = makeStyles((theme) => ({
+  toolbar: {
+    paddingLeft: theme.spacing(5),
+    paddingRight: theme.spacing(5),
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    color: 'black',
+    background: ({ transparent }) =>
+      !!transparent ? 'transparent' : '#fff',
+    transition: '0.2s',
+  },
+  links: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'right',
+    alignItems: 'center',
+  },
+  link: {
+    margin: '15px 10px',
+    padding: '0px 15px',
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+    cursor: 'pointer',
+  },
+  linkButton: {
+    padding: 6,
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+    cursor: 'pointer',
+  },
+  textLogoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+  },
+  textLogo: {
+    fontSize: 20,
+    margin: 0,
+    fontWeight: 800,
+    fontFamily: 'Montserrat',
+    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
+  },
+  textLogoSub: {
+    fontSize: 13,
+    margin: 0,
+    fontWeight: 800,
+    fontFamily: 'Montserrat',
+    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
+  },
+  logo: {
+    width: 46,
+    height: 46,
+    marginRight: 10,
+    opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
+    fill: '#33adff',
+  },
+  linkText: {
+    fontWeight: 'bold',
+    fontSize: '14px',
+    color: 'black',
+    fontFamily: 'Montserrat',
+    textShadow: ({ transparent }) =>
+      !!transparent ? '0 0 4px #FFF' : 'none',
+  },
+  chevron: {
+    fontWeight: 'bold',
+    fontSize: '14px',
+    color: 'black',
+    fontFamily: 'Montserrat',
+    textShadow: ({ transparent }) =>
+      !!transparent ? '0 0 4px #FFF' : 'none',
+    '&::after': {
+      content: '" ⌄"',
+      display: 'inline',
+      position: 'relative',
+      top: '-0.25em',
+      fontSize: '120%',
+    },
+  },
+  appbar: {
+    background: 'none',
+    boxShadow: ({ transparent }) =>
+      !!transparent ? 'none' : '0 0 4px gray',
+  },
+  iconDrawer: {
+    color: 'black',
+    textShadow: ({ transparent }) =>
+      !!transparent ? '0 0 6px black' : 'none',
+  },
+  button: {
+    backgroundColor: '#33adff',
+    padding: '6px 30px',
+  },
+  menu: {
+    background: 'pink',
+    width: '100vw',
+  },
+}));
 export default NavBar;
