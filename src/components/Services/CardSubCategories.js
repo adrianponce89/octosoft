@@ -124,7 +124,7 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 1,
   },
   title: {
-    width: '90%',
+    width: '100%',
     color: ({ color }) => color,
     fontFamily: 'Montserrat',
     fontWeight: '700',
@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   description: {
-    width: '80%',
+    width: '90%',
     color: '#000000',
     fontFamily: 'Montserrat',
     fontSize: '2vh',
