@@ -56,7 +56,7 @@ const SubCategories = ({
           setSelected(operations);
           setTitle('Operations');
           setPaletteColor(operations[0].node.color);
-          setWidthEdited('60%');
+          setWidthEdited('80%');
           operations.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
@@ -66,7 +66,7 @@ const SubCategories = ({
           setSelected(dataScience);
           setTitle('Data Science');
           setPaletteColor(dataScience[0].node.color);
-          setWidthEdited('60%');
+          setWidthEdited('80%');
           dataScience.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
