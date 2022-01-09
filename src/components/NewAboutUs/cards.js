@@ -68,11 +68,10 @@ const useStyles = makeStyles((theme) => ({
   },
   cardBody: {
     width: '100%',
-    height: '100%',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
     '@media (max-width: 768px)': {
       flexDirection: 'column',
@@ -139,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     minHeight: '35vh',
-    height: '100%',
+    height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
     '@media (max-width: 576px)': {
       order: () => -1,
