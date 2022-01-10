@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   description: {
-    width: '90%',
+    width: '85%',
     color: '#000000',
     fontFamily: 'Montserrat',
     fontSize: '2vh',
