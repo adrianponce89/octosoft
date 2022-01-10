@@ -4,6 +4,7 @@ import Background from '../Background';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Cards from './cards';
+import TitleComponent from '../TitleComponent/index';
 const NewAboutUs = ({ aboutUs }) => {
   const { edges } = aboutUs;
 
@@ -20,7 +21,7 @@ const NewAboutUs = ({ aboutUs }) => {
     >
       <Background />
       <Grid container justify="center" alignItems="center">
-        <Grid
+       {/*  <Grid
           container
           item
           xs={12}
@@ -35,7 +36,8 @@ const NewAboutUs = ({ aboutUs }) => {
           <Typography variant="h5" className={classes.subtitle}>
             OCTOSOFT PROFESSIONAL
           </Typography>
-        </Grid>
+        </Grid> */}
+        <TitleComponent title="About Us" />
         
         {edges &&
           edges.map(({ node }, i) => (
