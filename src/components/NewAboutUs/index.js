@@ -8,6 +8,7 @@ const NewAboutUs = ({ aboutUs }) => {
   const { edges } = aboutUs;
 
   const classes = useStyles();
+
   return (
     <Grid
       item
@@ -35,6 +36,7 @@ const NewAboutUs = ({ aboutUs }) => {
             OCTOSOFT PROFESSIONAL
           </Typography>
         </Grid>
+        
         {edges &&
           edges.map(({ node }, i) => (
             <Cards
@@ -46,7 +48,6 @@ const NewAboutUs = ({ aboutUs }) => {
             />
           ))}
       </Grid>
-      <UnderLined />
     </Grid>
   );
 };
