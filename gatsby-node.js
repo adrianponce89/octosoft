@@ -7,6 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const PostTemplate = path.resolve('./src/templates/Post.js');
     const ServicePortfolio = path.resolve('./src/components/ServicePortfolio/index.js')
+    const ProjectTemplate = path.resolve('./src/templates/Project/index.js')
     resolve(
       graphql(
         `
@@ -27,13 +28,42 @@ exports.createPages = ({ graphql, actions }) => {
                   }
                 }
               }
-            },
+            }
             allContentfulService {
               edges {
                 node {
                   newName
                   categories
                   newColor
+                }
+              }
+            }
+            allContentfulPortfolio {
+              edges {
+                node {
+                  active
+                  asset {
+                    file {
+                      url
+                    }
+                  }
+                  category
+                  clientName
+                  colorTitle
+                  contentful_id
+                  description {
+                    description
+                  }
+                  linkProject
+                  subtitle
+                  title
+                  titlePortfolioPage
+                  type
+                  banner {
+                    file {
+                      url
+                    }
+                  }
                 }
               }
             }
@@ -47,6 +77,8 @@ exports.createPages = ({ graphql, actions }) => {
 
         const posts = result.data.allContentfulPost.edges;
         const services = result.data.allContentfulService.edges;
+        const projects = result.data.allContentfulPortfolio.edges;
+
         services.forEach((service) => {
           createPage({
             path: `/portfolio/${service.node.newName}/`,
@@ -54,7 +86,7 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               newName: service.node.newName,
               categories: service.node.categories,
-              newColor: service.node.newColor
+              newColor: service.node.newColor,
             },
           });
         });
@@ -64,6 +96,15 @@ exports.createPages = ({ graphql, actions }) => {
             component: PostTemplate,
             context: {
               slug: post.node.slug,
+            },
+          });
+        });
+        projects.forEach((project) => {
+          createPage({
+            path: `/portfolio/${project.node.category}/${project.node.contentful_id}/`,
+            component: ProjectTemplate,
+            context: {
+              hola: 'hola',
             },
           });
         });

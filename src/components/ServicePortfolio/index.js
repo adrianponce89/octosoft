@@ -20,7 +20,6 @@ const Pepe = (props) => {
           color={newColor}
         />
         <ServicePortfolioGrid />
-
       </Container>
     </div>
   )
