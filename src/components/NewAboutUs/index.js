@@ -21,22 +21,6 @@ const NewAboutUs = ({ aboutUs }) => {
     >
       <Background />
       <Grid container justify="center" alignItems="center">
-       {/*  <Grid
-          container
-          item
-          xs={12}
-          justify="center"
-          alignItems="center"
-          direction="column"
-          className={classes.titleContainer}
-        >
-          <Typography variant="h5" className={classes.mainTitle}>
-            About Us
-          </Typography>
-          <Typography variant="h5" className={classes.subtitle}>
-            OCTOSOFT PROFESSIONAL
-          </Typography>
-        </Grid> */}
         <TitleComponent title="About Us" />
         
         {edges &&
