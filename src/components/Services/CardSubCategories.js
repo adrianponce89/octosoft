@@ -9,18 +9,25 @@ const CardSubCategories = ({
   octagon,
   length,
   titleChanged,
+  filter,
 }) => {
-  const classes = useStyles({ color, octagon, icon });
+  const classes = useStyles({ color, octagon, icon, filter });
   const [firstTitle, setFirstTitle] = useState('');
   const [secondTitle, setSecondTitle] = useState('');
+
   useEffect(() => {
     setFirstTitle(title.split(' ').slice(0, 1));
     setSecondTitle(title.split(' ').slice(1, title.length));
   }, [title]);
-  console.log(secondTitle);
+
   return (
     <div className={length ? classes.rootFive : classes.root}>
-      <div className={classes.octagon}>
+      <div className={classes.sortIcon}>
+        <img
+          src={octagon}
+          alt="octagon"
+          className={classes.octagon}
+        ></img>
         <div className={classes.icon} />
       </div>
       {!titleChanged ? (
@@ -97,28 +104,32 @@ const useStyles = makeStyles((theme) => ({
       minHeight: '30rem',
     },
   },
-  octagon: {
+  sortIcon: {
     display: 'flex',
     width: '100%',
-    height: '15rem',
+    flexDirection: 'column',
+    height: 'fit-content',
     alignItems: 'center',
-    marginTop: '1.5rem',
-    marginBottom: '.5rem',
     justifyContent: 'center',
-    backgroundImage: ({ octagon }) => octagon || '#ECECEC',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '185px 185px',
+    position: 'relative',
+    marginBottom: '2rem',
+    marginTop: '2.5rem',
+  },
+  octagon: {
+    display: 'flex',
+    width: '250px',
+    filter: ({ filter }) => filter,
   },
   icon: {
     display: 'flex',
     width: '100%',
+    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundImage: ({ icon }) => icon || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '75px 75px',
+    backgroundSize: '95px 95px',
     paddingBottom: '100%',
     marginBottom: '3%',
     zIndex: 1,

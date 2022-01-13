@@ -20,6 +20,7 @@ const SubCategories = ({
   const [widthEdited, setWidthEdited] = useState('');
   const [lengthEdited, setLengthEdited] = useState(false);
   const [changeTitles, setChangeTitles] = useState(false);
+  const [filter, setFilter] = useState('');
   const classes = useStyles({ widthEdited });
 
   useEffect(() => {
@@ -51,6 +52,9 @@ const SubCategories = ({
           marketing.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(162, 132, 223, 1))`,
+          );
           break;
         case 'operations':
           setSelected(operations);
@@ -61,6 +65,9 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           setChangeTitles(true);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(162, 132, 223, 1))`,
+          );
           break;
         case 'data':
           setSelected(dataScience);
@@ -71,6 +78,9 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           setChangeTitles(true);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(219, 125, 196, 0.4))`,
+          );
           break;
         case 'it':
           setSelected(solutions);
@@ -80,6 +90,9 @@ const SubCategories = ({
           solutions.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(219, 125, 196, 0.4))`,
+          );
           break;
         case 'web':
           setSelected(web3);
@@ -89,6 +102,9 @@ const SubCategories = ({
           web3.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(255, 159, 59, 0.4))`,
+          );
           break;
         case 'software':
           setSelected(software);
@@ -99,6 +115,9 @@ const SubCategories = ({
             ? setLengthEdited(true)
             : setLengthEdited(false);
           setChangeTitles(true);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(255, 159, 59, 0.4))`,
+          );
           break;
         default:
       }
@@ -116,10 +135,11 @@ const SubCategories = ({
               key={index}
               description={categories.node.description}
               title={categories.node.title}
-              octagon={`url(${categories.node.octagon.file.url})`}
               icon={`url(${categories.node.icon.file.url})`}
               length={lengthEdited}
               titleChanged={changeTitles}
+              octagon={categories.node.octagon.file.url}
+              filter={filter}
             />
           ))}
       </div>
