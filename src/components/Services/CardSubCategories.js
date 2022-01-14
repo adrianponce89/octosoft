@@ -131,7 +131,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: ({ icon }) => icon || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '95px 95px',
+    backgroundSize: '125px 125px',
     paddingBottom: '100%',
     marginBottom: '3%',
     zIndex: 1,

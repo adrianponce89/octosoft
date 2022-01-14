@@ -34,6 +34,9 @@ const SubCategories = ({
           design.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(125, 219, 196, 0.4))`,
+          );
           break;
         case 'media':
           setSelected(media);
@@ -43,6 +46,9 @@ const SubCategories = ({
           media.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(125, 219, 196, 0.4))`,
+          );
           break;
         case 'marketing':
           setSelected(marketing);
