@@ -35,6 +35,7 @@ exports.createPages = ({ graphql, actions }) => {
                   newName
                   categories
                   newColor
+                  category
                 }
               }
             }
@@ -64,6 +65,7 @@ exports.createPages = ({ graphql, actions }) => {
                       url
                     }
                   }
+                  bannerDimensions
                 }
               }
             }
@@ -87,6 +89,7 @@ exports.createPages = ({ graphql, actions }) => {
               newName: service.node.newName,
               categories: service.node.categories,
               newColor: service.node.newColor,
+              categoryType: service.node.category,
             },
           });
         });
@@ -104,7 +107,7 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/portfolio/${project.node.category}/${project.node.contentful_id}/`,
             component: ProjectTemplate,
             context: {
-              hola: 'hola',
+              projectType: project.node.type,
             },
           });
         });

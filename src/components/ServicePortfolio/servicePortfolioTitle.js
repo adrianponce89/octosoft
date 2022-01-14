@@ -36,7 +36,7 @@ const ServicePortfolioTitle = ({ name, categories, color }) => {
             //Esto es lo que debería renderizar las categorías (en este momento están mal escritas o son diferentes en contentful)
             categories.map(category =>
               <Typography variant="h5" className={classes.subtitle}>
-                - {`${category}` ?? 'Service Category'} -
+                {`${category}` ?? 'Service Category'} -
               </Typography>
             )
         }

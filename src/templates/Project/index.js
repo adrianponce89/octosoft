@@ -1,12 +1,23 @@
 import React from 'react'
+import DesignProject from './DesignTemplate'
+import SoftwareProject from './SoftwareTemplate'
 
 const ProjectTemplate = (props) => {
-  const { hola } = props.pageContext;
-  return (
-    <div>
+  const { projectType } = props.pageContext;
 
-    </div>
-  );
+  console.log('projectType', projectType[0]);
+
+  const generateTemplate = (type) => {
+    switch (type) {
+      case 'design':
+        return <DesignProject />
+      case 'software':
+        return <SoftwareProject />
+      default:
+        return <SoftwareProject />
+    }
+  }
+  return <div>{generateTemplate(projectType[0])}</div>;
 };
 
 export default ProjectTemplate

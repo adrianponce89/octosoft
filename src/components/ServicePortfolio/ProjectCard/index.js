@@ -1,41 +1,33 @@
-import React from 'react';
+import React from 'react'
+import {Link} from 'gatsby'
+import BackgroundImage from '../../../assets/Version_Horizontal.png';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
-import BackgroundImage from '../../assets/Version_Horizontal.png';
-import './pepe.css'
-import ProjectCard from './ProjectCard';
 
-const ServicePortfolioGrid = ({ portfolio }) => {
-  const background =
-    portfolio.length > 0 ? portfolio[0].banner.file.url : '#784321';
-  const classes = useStyle({ portfolio });
-  // eslint-disable-next-line no-unused-expressions
-  portfolio.length > 0 ? console.log('yey', portfolio[0].banner.file.url) : null
-
-  //Acá debería hacerse la query para pedir la data de los proyectos de esta categoría, hecho eso
-  //Se rellena la grid con el contenido
-
-  return (
-    <Container className={classes.root}>
-      {/* La grilla es un molde que debiera extraerse en un componente diferente */}
-      <div class="grid">
-        {portfolio.length > 0 && portfolio.map(project => {
-          return (
-            <ProjectCard
-              bannerUrl={project.banner.file.url}
-              size={project.bannerDimensions}
-              key={project.order}
-              title={project.title}
-              subtitle={project.subtitle}
-              category={project.category}
-              id={project.contentful_id}
-            />
-          );
-        })}
-      </div>
-    </Container>
-  );
-};
+const ProjectCart = ({size = 1, title = "Project Title", subtitle = "Project subtitle", bannerUrl, category, id }) => {
+    const classes = useStyle({ bannerUrl});
+    return (
+      <Link to={`/portfolio/${category}/${id}`}>
+        <div
+          className={
+            size === 1
+              ? classes.gridItem
+              : size === 2
+              ? classes.gridItem_width2
+              : size === 3
+              ? classes.gridItem_height2
+              : size === 4
+              ? classes.gridItem_width_height2
+              : null
+          }
+        >
+          <div className={classes.itemImage}>
+            <h1 className={classes.itemTitle}>{title}</h1>
+            <h2 className={classes.itemSubtitle}>{subtitle}</h2>
+          </div>
+        </div>
+      </Link>
+    );
+}
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -61,6 +53,11 @@ const useStyle = makeStyles((theme) => ({
     width: '32%',
     aspectRatio: '4/4',
     float: 'left',
+    backgroundImage: ({ bannerUrl }) =>
+      bannerUrl ? `url(${bannerUrl})` : `url(${BackgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     background: 'rgb(220, 114, 153)',
     borderColor: 'hsla(0, 0%, 0%, 0.5)',
     borderRadius: '8px',
@@ -86,10 +83,8 @@ const useStyle = makeStyles((theme) => ({
     width: '64%',
     aspectRatio: '4/2',
     float: 'left',
-    backgroundImage: ({ portfolio }) =>
-      portfolio.length > 0
-        ? `url(${portfolio[0].banner.file.url})`
-        : `url(${BackgroundImage})`,
+    backgroundImage: ({ bannerUrl }) =>
+      bannerUrl ? `url(${bannerUrl})` : `url(${BackgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -119,6 +114,11 @@ const useStyle = makeStyles((theme) => ({
     height: '50vw',
     aspectRatio: '4/2',
     float: 'left',
+    backgroundImage: ({ bannerUrl }) =>
+      bannerUrl ? `url(${bannerUrl})` : `url(${BackgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     background: 'rgb(220, 114, 153)',
     borderColor: 'hsla(0, 0%, 0%, 0.5)',
     borderRadius: '8px',
@@ -145,6 +145,11 @@ const useStyle = makeStyles((theme) => ({
     height: '50vw',
     aspectRatio: '4/4',
     float: 'left',
+    backgroundImage: ({ bannerUrl }) =>
+      bannerUrl ? `url(${bannerUrl})` : `url(${BackgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     background: 'rgb(220, 114, 153)',
     borderColor: 'hsla(0, 0%, 0%, 0.5)',
     borderRadius: '8px',
@@ -201,4 +206,4 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-export default ServicePortfolioGrid;
+export default ProjectCart
