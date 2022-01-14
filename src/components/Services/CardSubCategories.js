@@ -71,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#FFFFFF',
+    borderRadius: '0.8rem',
     '@media (max-width: 800px)': {
       width: '20rem',
       margin: '0%',
@@ -94,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#FFFFFF',
+    borderRadius: '0.8rem',
     '@media (max-width: 800px)': {
       width: '20rem',
       margin: '0%',

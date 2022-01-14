@@ -74,8 +74,6 @@ const NavLinks = (props) => {
     setAnchorEl(null);
   };
 
-  console.log(props.onDesktop);
-
   return (
     <>
       {menuList.map((menu) =>
