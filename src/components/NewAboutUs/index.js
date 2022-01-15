@@ -42,21 +42,32 @@ const NewAboutUs = ({ aboutUs }) => {
           </Typography>
         </Grid>
         
-        <>
-        {edges &&
-          edges.map(({ node }, i) => (
-            <Cards
-              right={i % 2 === 0}
-              backgroundImage={`url(${node.image.file.url})`}
-              title={node.title}
-              description={node.description.description}
-              link={node.link}
-              color={node.color}
-            />
-          ))}
-        </>
+        <Container
+          innerBackground={'none'}
+          className={classes.containerCard}
+        >
+          <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            xs={12}
+          >
+            {edges &&
+              edges.map(({ node }, i) => (
+                <Cards
+                  right={i % 2 === 0}
+                  backgroundImage={`url(${node.image.file.url})`}
+                  title={node.title}
+                  description={node.description.description}
+                  link={node.link}
+                  color={node.color}
+                />
+              ))}
+          </Grid>
+          {<div className={classes.cardsopen}></div>}
+        </Container>
 
-        {<div className={classes.cardsopen}></div>}
       </Grid>
     </Grid>
   );
@@ -68,6 +79,14 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 760px)': {
       marginTop: '7rem',
     },
+  },
+  containerCard:{
+    justifyContent: 'center',
+    width: '100%',
+    '@media (min-width: 1362px)': {
+      maxWidth: '95%!important',
+    },
+    padding: 'unset!important',
   },
   cardsopen:{
     width: '100%',

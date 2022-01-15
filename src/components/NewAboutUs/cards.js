@@ -11,8 +11,6 @@ const Cards = (props) => {
       item
       className={classes.root}
       xs={12}
-      alignItems="center"
-      justifyContent="center"
     >
       <div className={classes.cardBody}>
         <Grid
@@ -85,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     whiteSpace: 'pre-wrap',
     order: ({ right }) => (right ? 1 : -1),
-    '@media (max-width: 768px)': {
+    '@media (max-width: 576px)': {
       order: () => 1,
       alignItems: 'center',
       width: '90%',
@@ -140,7 +138,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '35vh',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
-    '@media (max-width: 576px)': {
+    '@media (max-width: 420px)': {
       order: () => -1,
     },
   },

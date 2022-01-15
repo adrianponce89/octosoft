@@ -17,13 +17,6 @@ const PortfolioPage = () => {
             description {
               description
             }
-            portfoliosImage {
-              file {
-                url
-              }
-              title
-              description
-            }
           }
         }
       }
