@@ -23,13 +23,14 @@ const SubCategories = ({
   const [filter, setFilter] = useState('');
   const classes = useStyles({ widthEdited });
 
+  console.log('design', design);
   useEffect(() => {
-    const selection = () => {
+    const selection = async() => {
       switch (search) {
         case 'design':
           setSelected(design);
           setTitle('Design');
-          setPaletteColor(design[0].node.color);
+          setPaletteColor(design[0]?.node?.color);
           setWidthEdited('80%');
           design.length % 5 === 0
             ? setLengthEdited(true)
@@ -124,18 +125,29 @@ const SubCategories = ({
           setFilter(
             `drop-shadow(0px 4px 4px rgba(255, 159, 59, 0.4))`,
           );
+          
           break;
         default:
       }
+    
     };
+/*     const sort = async() => {
+      let sorted = selected;
+      console.log(sorted);
+      sorted = await sorted.sort(function (a, b) {
+        return a.Id - b.Id;
+      });
+      setSelected(sorted);
+    }; */
     selection();
-  }, [search]);
+/*     sort();
+ */  }, [search]);
   return (
     <div className={classes.root}>
       <TitleComponent title={title} color={paletteColor} />
       <div className={classes.cardContainer}>
         {selected &&
-          selected.map((categories, index) => (
+          selected.sort((a, b) => a.node.order - b.node.order).map((categories, index) => (
             <CardSubCategories
               color={paletteColor}
               key={index}

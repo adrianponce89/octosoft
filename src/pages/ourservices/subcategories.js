@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Background from '../../components/Background';
 import SubCategories from '../../components/Services/SubCategories';
 import { graphql } from 'gatsby';
@@ -52,6 +52,7 @@ export const pageQuery = graphql`
         node {
           description
           color
+          order
           octagon {
             file {
               url
@@ -71,6 +72,7 @@ export const pageQuery = graphql`
         node {
           description
           color
+          order
           octagon {
             file {
               url
@@ -90,6 +92,7 @@ export const pageQuery = graphql`
         node {
           description
           color
+          order
           octagon {
             file {
               url
@@ -109,6 +112,7 @@ export const pageQuery = graphql`
         node {
           description
           color
+          order
           octagon {
             file {
               url
@@ -128,6 +132,7 @@ export const pageQuery = graphql`
         node {
           description
           color
+          order
           octagon {
             file {
               url
@@ -147,6 +152,7 @@ export const pageQuery = graphql`
         node {
           description
           color
+          order
           octagon {
             file {
               url
@@ -166,6 +172,7 @@ export const pageQuery = graphql`
         node {
           description
           color
+          order
           octagon {
             file {
               url
@@ -183,8 +190,9 @@ export const pageQuery = graphql`
     allContentfulSoftwareEngineering {
       edges {
         node {
-          title
+          description
           color
+          order
           description
           icon {
             file {

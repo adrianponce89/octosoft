@@ -39,7 +39,7 @@ const CardSubCategories = ({
           </Typography>
           {secondTitle ? (
             <Typography className={classes.title}>
-              {secondTitle[0]}{' '}
+              {secondTitle[0]}
               {secondTitle[1] ? secondTitle[1] : null}
             </Typography>
           ) : null}
