@@ -59,7 +59,7 @@ const CardSubCategories = ({
 const useStyles = makeStyles((theme) => ({
   rootFive: {
     display: 'flex',
-    width: '28rem',
+    width: '25rem',
     marginTop: '0.8rem',
     marginBottom: '0.8rem',
     marginLeft: '0.8rem',
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     display: 'flex',
-    width: '28rem',
+    width: '25rem',
     marginTop: '0.8rem',
     marginBottom: '0.8rem',
     marginLeft: '0.8rem',
