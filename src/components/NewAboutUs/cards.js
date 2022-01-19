@@ -10,14 +10,14 @@ const Cards = (props) => {
     <Grid
       item
       className={classes.root}
-      xs={12}
+      xs={11}
     >
       <div className={classes.cardBody}>
         <Grid
           item
           container
           xs={12}
-          sm={4}
+          sm={5}
           className={classes.backgroundCardImage}
         ></Grid>
         <div className={classes.separator}></div>
@@ -26,7 +26,7 @@ const Cards = (props) => {
           container
           direction="column"
           xs={12}
-          sm={6}
+          sm={7}
           className={classes.containerCard}
         >
           <Typography variant="h5" className={classes.titleCard}>
@@ -132,10 +132,10 @@ const useStyles = makeStyles((theme) => ({
   },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'bottom',
+    backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
-    minHeight: '35vh',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
     '@media (max-width: 420px)': {
