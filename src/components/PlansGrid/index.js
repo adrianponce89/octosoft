@@ -34,7 +34,6 @@ const PlansGrid = ({ plans }) => {
   const sortedPlans = sortPlans(plans);
 
   const handleClick = (p) => {
-    console.log('setting plan');
     setSelectedPlan(p);
   };
 

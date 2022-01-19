@@ -10,7 +10,8 @@ const Cards = (props) => {
     <Grid
       item
       className={classes.root}
-      xs={11}
+      xs={12}
+      sm={11}
     >
       <div className={classes.cardBody}>
         <Grid
@@ -93,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 700,
     fontSize: 30,
-    paddingBottom: 10,
+    paddingBottom: 5,
   },
   descriptionCard: {
     fontFamily: 'Montserrat',

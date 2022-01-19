@@ -17,11 +17,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     alignItems: 'center',
     fontFamily: 'Montserrat',
-    fontSize: '4vh',
+    fontSize: '5vh',
     color: ({ color }) => color || '#ECECEC',
     fontWeight: '700',
     marginTop: '2rem',
-    marginBottom: '2rem',
+    marginBottom: '0rem',
   },
 }));
 

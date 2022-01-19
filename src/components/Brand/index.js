@@ -8,7 +8,7 @@ import Icons from './IconsBrand/indexIcons';
 import Colors from './ColorsBrand/indexColors';
 import EndSection from './BrandSectionText/sectionEnd';
 import OctoOne from '../../assets/OctoOne.png';
-import OctoTwo from '../../assets/OctoOne.png';
+import OctoTwo from '../../assets/OctoBrandSecond.png';
 import OctoThree from '../../assets/VectorStart.png';
 import OctoFour from '../../assets/VectorMid.png';
 import OctoFive from '../../assets/VectorEnd.png';
@@ -54,6 +54,7 @@ const Brand = ({
 const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
+    backgroundColor: '#F5F7F7',
     '@media (max-width: 768px)': {
       padding: 0,
     },
@@ -72,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     width: '700px',
     bottom: '-490%',
-    right: '-8%',
+    right: '0%',
     zIndex: '0',
     '@media (max-width: 768px)': {
       display: 'none',
@@ -80,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
   OctoThree: {
     position: 'absolute',
-    top: '5%',
+    top: '9%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 768px)': {
@@ -98,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
   },
   OctoFive: {
     position: 'absolute',
-    bottom: '-568%',
+    bottom: '-579%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 768px)': {

@@ -17,22 +17,28 @@ const Background = () => {
   );
 };
 const useStyles = makeStyles((theme) => ({
+  background: {
+    width: '100%',
+    height: 'fit-content',
+    minHeight: '100vh',
+    backgroundColor: '#F5F7F7',
+  },
   octo: {
     position: 'absolute',
     width: '700px',
     top: '30%',
     left: '-7%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1000px)': {
       display: 'none',
     },
   },
   backgroundStart: {
     position: 'absolute',
-    top: '5%',
+    top: '9%',
     right: '0%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1000px)': {
       display: 'none',
     },
   },
