@@ -44,9 +44,10 @@ const useStyles = makeStyles((theme) => ({
   }),
   innerBox: (props) => ({
     width: '100%',
-    maxWidth: 1090,
+    //Los max width bloquean el ancho de la pantalla, hay que reverlo
+    maxWidth: '80%',
     '@media (min-width: 1362px)': {
-      maxWidth: '80%',
+      maxWidth: '95%'
     },
     background: props.innerBackground || theme.palette.common.white,
     padding: props.innerPadding || '80px 0 0 0',

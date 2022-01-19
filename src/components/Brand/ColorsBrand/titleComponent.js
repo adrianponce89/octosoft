@@ -1,16 +1,10 @@
 import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-const TitleIcons = ({ title, sort }) => {
+const TitleIcons = ({ title }) => {
   const classes = useStyles();
   return (
-    <Grid
-      xs={12}
-      container
-      className={
-        sort === 'Left' ? classes.titleLeft : classes.titleRight
-      }
-    >
+    <Grid xs={12} container className={classes.titleLeft}>
       <Typography className={classes.title} variant="h4">
         {title}
       </Typography>
@@ -24,7 +18,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 40,
     marginBottom: '1%',
     marginTop: '3%',
-    marginLeft: '2%',
   },
   titleLeft: {
     display: 'flex',
@@ -32,17 +25,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
     marginBottom: '1%',
     marginTop: '2%',
-    '@media (max-width: 768px)': {
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-    },
-  },
-  titleRight: {
-    display: 'flex',
-    alignItems: 'flex-end',
-    justifyContent: 'flex-end',
-    marginBottom: '1rem',
-    marginTop: '1rem',
     '@media (max-width: 768px)': {
       alignItems: 'center',
       justifyContent: 'flex-start',
