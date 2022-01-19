@@ -45,6 +45,7 @@ const NewAboutUs = ({ aboutUs }) => {
         <Container
           innerBackground={'none'}
           className={classes.containerCard}
+          xs={10}
         >
           <Grid
             container
