@@ -21,7 +21,6 @@ const NewAboutUs = ({ aboutUs }) => {
       className={classes.root}
     >
       <Background />
-<<<<<<< HEAD
       <Grid
         container
         justify="center"
@@ -43,10 +42,6 @@ const NewAboutUs = ({ aboutUs }) => {
             OCTOSOFT PROFESSIONAL
           </Typography>
         </Grid>
-=======
-      <Grid container justify="center" alignItems="center">
-        <TitleComponent title="About Us" />
->>>>>>> origin/newDevelop
         
         <Container
           innerBackground={'none'}

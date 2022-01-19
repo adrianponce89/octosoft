@@ -22,7 +22,6 @@ const PortfolioPage = (props) => {
           }
         }
       }
-    }
   `);
 
   return (

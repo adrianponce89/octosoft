@@ -16,7 +16,7 @@ const NewAboutUsPage = (props) => {
 export default NewAboutUsPage;
 
 export const pageQuery = graphql`
-  query NewAboutUsQuery {
+  query newAboutUsQuery {
     allContentfulHomeItem(sort: {fields: order}, filter: {order: {gt: 1}}) {
       edges {
         node {
