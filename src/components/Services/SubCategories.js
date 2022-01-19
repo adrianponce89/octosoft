@@ -22,8 +22,7 @@ const SubCategories = ({
   const [changeTitles, setChangeTitles] = useState(false);
   const [filter, setFilter] = useState('');
   const classes = useStyles({ widthEdited });
-
-  console.log('design', design);
+console.log('software', software);
   useEffect(() => {
     const selection = async() => {
       switch (search) {
@@ -39,7 +38,7 @@ const SubCategories = ({
             `drop-shadow(0px 4px 4px rgba(125, 219, 196, 0.4))`,
           );
           break;
-        case 'media':
+        case 'social':
           setSelected(media);
           setTitle('Social Media');
           setPaletteColor(media[0].node.color);
@@ -129,19 +128,10 @@ const SubCategories = ({
           break;
         default:
       }
-    
     };
-/*     const sort = async() => {
-      let sorted = selected;
-      console.log(sorted);
-      sorted = await sorted.sort(function (a, b) {
-        return a.Id - b.Id;
-      });
-      setSelected(sorted);
-    }; */
     selection();
-/*     sort();
- */  }, [search]);
+  }, [search]);
+  console.log('selected', selected);
   return (
     <div className={classes.root}>
       <TitleComponent title={title} color={paletteColor} />

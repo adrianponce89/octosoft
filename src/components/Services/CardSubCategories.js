@@ -14,11 +14,11 @@ const CardSubCategories = ({
   const classes = useStyles({ color, octagon, icon, filter });
   const [firstTitle, setFirstTitle] = useState('');
   const [secondTitle, setSecondTitle] = useState('');
-
+console.log("TITLE",title)
   useEffect(() => {
     setFirstTitle(title.split(' ').slice(0, 1));
     setSecondTitle(title.split(' ').slice(1, title.length));
-  }, [title]);
+  }, [title]); 
 
   return (
     <div className={length ? classes.rootFive : classes.root}>

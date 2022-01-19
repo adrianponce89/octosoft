@@ -194,6 +194,7 @@ export const pageQuery = graphql`
           color
           order
           description
+          title
           icon {
             file {
               url
