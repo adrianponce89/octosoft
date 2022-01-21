@@ -22,7 +22,7 @@ const SubCategories = ({
   const [changeTitles, setChangeTitles] = useState(false);
   const [filter, setFilter] = useState('');
   const classes = useStyles({ widthEdited });
-console.log('software', software);
+  
   useEffect(() => {
     const selection = async() => {
       switch (search) {

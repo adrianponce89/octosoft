@@ -78,7 +78,9 @@ const NavLinks = (props) => {
     <>
       {menuList.map((menu) =>
         menu.link ? (
-          <Link className={classes.link} margin={2} to={menu.link}>
+          <Link className={classes.link} margin={2} 
+          to={'/'}
+           to={menu.link} >
             <div className={classes.linkText}>{menu.title}</div>
           </Link>
         ) : menu.children ? (
@@ -143,7 +145,8 @@ const NavLinks = (props) => {
                   menu.children.map((child) => (
                     <MenuItem
                       component={Link}
-                      to={child.link}
+                      to={'/'}
+                       to={child.link} 
                       onClick={handleClose}
                     >
                       {child.title}
@@ -156,14 +159,17 @@ const NavLinks = (props) => {
         ) : null,
       )}
       {!props.onDesktop && (
-        <Link className={classes.link} margin={2} to={'/contact'}>
+        <Link className={classes.link} margin={2} 
+        to={'/'}
+         to={'/contact'} >
           <div className={classes.linkText}>{'CONTACT US'}</div>
         </Link>
       )}
 
       <Link
         className={classes.linkButton}
-        to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
+         to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03" 
+     to={'/'}
       >
         <Button className={classes.button}>
           <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
