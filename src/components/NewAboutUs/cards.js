@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1200px)': {
       flexDirection: 'column',
       paddingLeft: 0,
       paddingRight: 0,
@@ -83,7 +83,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     whiteSpace: 'pre-wrap',
     order: ({ right }) => (right ? 1 : -1),
-    '@media (max-width: 576px)': {
+    '@media (max-width: 820px)': {
       order: () => 1,
       alignItems: 'center',
       width: '90%',
@@ -134,12 +134,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
     backgroundPositionX: 'center',
     backgroundPositionY: 'bottom',
-    minHeight: '30vh',
+    minHeight: '20vh',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
-    '@media (max-width: 576px)': {
+    '@media (max-width: 768px)': {
       order: () => -1,
     },
   },
