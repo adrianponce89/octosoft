@@ -41,6 +41,7 @@ const styles = makeStyles((theme) => ({
 
 const ArticleViews = (props) => {
   const post = get(props, 'data.contentfulPost');
+  console.log(post)
   const classes = styles(post);
   return (
     <Container background={`url(${BackgroundImage})`}>

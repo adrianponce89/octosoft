@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { useStaticQuery, graphql } from 'gatsby';
-import get from 'lodash/get';
 import Container from '../components/Container';
 import Portfolio from '../components/Portfolio';
 import BackgroundImage from '../assets/Trama.png';
