@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ColorsCards from './colorsCards';
 import GreyCard from './greyCard';
 import TitleColors from './titleColors';
-import TitleIcons from '../IconsBrand/titleIcons'
+import TitleIcons from './titleComponent';
 
 const IndexColors = ({ colors }) => {
   const classes = useStyles();
@@ -13,7 +13,7 @@ const IndexColors = ({ colors }) => {
   const grey = colors?.slice(6, 7);
   return (
     <Grid className={classes.root} xs={11} container justify="center">
-      <TitleIcons title={'COLOR PALETTE'} sort={'Left'} />
+      <TitleIcons item xs={12} title={'COLOR PALETTE'} />
       <TitleColors text={'PRIMARY'} />
       <ColorsCards colors={primary} />
       <TitleColors text={'SECONDARY'} />

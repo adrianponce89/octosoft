@@ -66,7 +66,6 @@ const styles = makeStyles({
 });
 
 const loadImage = (image) => {
-  console.log('load image::', image);
   return new Promise((resolve, reject) => {
     const loadImg = new Image();
     loadImg.src = image.url;
