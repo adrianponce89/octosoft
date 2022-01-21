@@ -49,6 +49,7 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                   }
                   category
+                  subcategory
                   clientName
                   colorTitle
                   contentful_id
@@ -66,6 +67,19 @@ exports.createPages = ({ graphql, actions }) => {
                     }
                   }
                   bannerDimensions
+                  designAssets {
+                    description
+                    file {
+                      url
+                      details {
+                        image {
+                          height
+                          width
+                        }
+                      }
+                      fileName
+                    }
+                  }
                 }
               }
             }
@@ -107,7 +121,9 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/portfolio/${project.node.category}/${project.node.contentful_id}/`,
             component: ProjectTemplate,
             context: {
+              servicesInfo: services, 
               projectType: project.node.type,
+              project: project.node,
             },
           });
         });

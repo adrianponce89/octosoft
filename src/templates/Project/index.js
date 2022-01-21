@@ -3,18 +3,21 @@ import DesignProject from './DesignTemplate'
 import SoftwareProject from './SoftwareTemplate'
 
 const ProjectTemplate = (props) => {
-  const { projectType } = props.pageContext;
+  const { projectType, project, servicesInfo } = props.pageContext;
 
-  console.log('projectType', projectType[0]);
+  const filterSubCategories = () => {
+    let categories = servicesInfo.filter((service)=> service.node.category === project.category)
+    return categories[0].node.categories
+  }
 
   const generateTemplate = (type) => {
     switch (type) {
       case 'design':
-        return <DesignProject />
+        return <DesignProject project={project} categories={filterSubCategories()} />
       case 'software':
-        return <SoftwareProject />
+        return <SoftwareProject project={project} categories={filterSubCategories()} />
       default:
-        return <SoftwareProject />
+        return <SoftwareProject project={project} categories={filterSubCategories()} />
     }
   }
   return <div>{generateTemplate(projectType[0])}</div>;

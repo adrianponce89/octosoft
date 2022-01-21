@@ -3,8 +3,10 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography, Box } from '@material-ui/core';
 
-const ServicePortfolioTitle = ({ name, categories, color }) => {
-  const classes = useStyles({ color });
+const Title = ({ name, categories, color, size='5.5rem', marginTop='40px', subcategory=null }) => {
+  const classes = useStyles({ color, size, marginTop });
+  console.log(categories, subcategory)
+
   return (
     <Box className={classes.root}>
       <Grid
@@ -34,10 +36,14 @@ const ServicePortfolioTitle = ({ name, categories, color }) => {
             :
             //Esto es lo que debería renderizar las categorías (en este momento están mal escritas o son diferentes en contentful)
             categories.map((category, index) =>{
+              let categoryArr = category.split(' ')
+              let categoryString = categoryArr.join('')
+              console.log(categoryString.toLowerCase())
                 return (
-                  <Typography variant="h5" className={[classes.subtitle]}>
+                  <Typography variant="h5" className={categoryString.toLowerCase() === subcategory ? [classes.color, classes.subtitle] : [classes.subtitle]}>
                     {
                       index === categories.length - 1 ? index === 0 ? ` ${category} - ` : `${category}` : ` ${category} -`
+
                     }
                   </Typography>
                 )
@@ -51,14 +57,14 @@ const ServicePortfolioTitle = ({ name, categories, color }) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(8),
-    marginTop: theme.spacing(8),
+    marginTop: ({marginTop}) => marginTop ? marginTop : theme.spacing(8),
     zIndex: 1,
     [theme.breakpoints.down('md')]: {
       padding: theme.spacing(7),
       marginTop: theme.spacing(7),
     },
     [theme.breakpoints.down('sm')]: {
-      padding: theme.spacing(1),
+      //padding: theme.spacing(1),
       marginTop: theme.spacing(1),
     },
   },
@@ -67,9 +73,12 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: '100%',
   },
+  color:{
+	color: ({ color }) => color ?? '#999999',
+  },
   titleCard: {
     color: ({ color }) => color ?? '#8249DC',
-    fontSize: '5.5rem',
+    fontSize: '4.68rem' ,
     fontWeight: 900,
     fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
@@ -86,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     color: '#999999',
+	marginRight: theme.spacing(1),
     fontSize: '1.5rem',
     fontWeight: 'bold',
     fontFamily: 'Montserrat',
@@ -99,4 +109,4 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default ServicePortfolioTitle;
+export default Title;

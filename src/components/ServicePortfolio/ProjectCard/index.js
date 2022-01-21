@@ -3,7 +3,7 @@ import {Link} from 'gatsby'
 import BackgroundImage from '../../../assets/Version_Horizontal.png';
 import { makeStyles } from '@material-ui/core/styles';
 
-const ProjectCart = ({size = 1, title = "Project Title", subtitle = "Project subtitle", bannerUrl, category, id }) => {
+const ProjectCard = ({size = 1, title = "Project Title", subtitle = "Project subtitle", bannerUrl, category, id }) => {
     const classes = useStyle({ bannerUrl});
     return (
       <Link to={`/portfolio/${category}/${id}`}>
@@ -206,4 +206,4 @@ const useStyle = makeStyles((theme) => ({
   },
 }));
 
-export default ProjectCart
+export default ProjectCard
