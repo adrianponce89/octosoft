@@ -71,7 +71,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
-    justifyContent: 'center',
     '@media (max-width: 768px)': {
       flexDirection: 'column',
       paddingLeft: 0,
@@ -135,11 +134,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
     backgroundPositionX: 'center',
     backgroundPositionY: 'bottom',
+    minHeight: '30vh',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
-    '@media (max-width: 420px)': {
+    '@media (max-width: 576px)': {
       order: () => -1,
     },
   },
