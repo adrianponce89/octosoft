@@ -13,35 +13,54 @@ const SoftwareContent = ({project}) => {
 
     const classes = useStyle({imageUrl: url});
     return (
-        <Container className={classes.root}>
-          <Grid container justify="center" xs={12} >
-            <Grid item container justify="center" xs={11} sm={5} md={6} className={classes.imageContainer}>
-              <div className={classes.image}></div>
-            </Grid>
-            <Grid item container justify="center" xs={11} sm={5} md={6} className={classes.descriptionContainer}>
-              <div className={classes.description}>
-                <TitleProject title={project.title} />
-                <SubtitleProject text={project.subtitle}/>
-                <TextProject text={description}/>
-              </div>
-              <Link
-                underline="none"
-                variant="body2"
-                className={classes.btnLink}
-                target="_blank"
-                onClick={() => {
-                  console.info("I'm a button.");
-                }}
-                href={project.linkProject}
-              >
-                <Typography className={classes.btnText}>
-                  GITHUB
-                </Typography>
-              </Link>
-            </Grid>
+      <Container className={classes.root}>
+        <Grid container justify="center" xs={12}>
+          <Grid
+            item
+            container
+            justify="center"
+            xs={11}
+            sm={5}
+            md={6}
+            className={classes.imageContainer}
+          >
+            <div className={classes.image}></div>
           </Grid>
-        </Container>
-      );
+          <Grid
+            item
+            container
+            justify="center"
+            xs={11}
+            sm={5}
+            md={6}
+            className={classes.descriptionContainer}
+          >
+            <div className={classes.description}>
+              <TitleProject title={project.title} />
+              <SubtitleProject
+                text={project.subtitle}
+                clientName={project.clientName}
+              />
+              <TextProject text={description} />
+            </div>
+            <Link
+              underline="none"
+              variant="body2"
+              className={classes.btnLink}
+              target="_blank"
+              onClick={() => {
+                console.info("I'm a button.");
+              }}
+              href={project.linkProject}
+            >
+              <Typography className={classes.btnText}>
+                GITHUB
+              </Typography>
+            </Link>
+          </Grid>
+        </Grid>
+      </Container>
+    );
 }
 
 const useStyle = makeStyles((theme) => ({
