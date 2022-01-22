@@ -19,9 +19,23 @@ const PortfolioPage = (props) => {
                 url
               }
             }
+            porfolioBackgorundWide{
+              file {
+                url
+              }
+            }
+            portfolioLink
+          }
+      }
+      allContentfulBanners {
+        edges {
+          node {
+            color
+            title
           }
         }
       }
+    }
   `);
 
   return (
