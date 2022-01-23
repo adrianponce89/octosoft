@@ -52,7 +52,7 @@ const Pepe = (props) => {
         innerBackground={'tranparent'}
       >
         <ServicePortfolioTitle
-          name={newName}
+          name={categoryType}
           categories={categories}
           color={newColor}
         />

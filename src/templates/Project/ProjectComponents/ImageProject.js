@@ -5,7 +5,7 @@ import TextProject from '../ProjectComponents/TextProject'
 
 const ImageProject = ({imgUrl, imgWidth, imgHeight, description}) => {
     const classes = useStyle({ imgUrl});
-    console.log(description)
+    console.log('dimensions', imgWidth, imgHeight);
     if(imgWidth <= 600){
         return <Grid container item className={classes.imageGrid1} ></Grid>
     } else {

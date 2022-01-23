@@ -1,11 +1,13 @@
 import React from 'react'
 import Title from '../../../components/Title'
 import SoftwareContent from './SoftwareContent'
+import Background from '../../../components/Background';
 
 const SoftwareProject = ({project, categories}) => {
 
     return (
         <div>
+            <Background />
             <Title
                 name={project.titlePortfolioPage}
                 categories={categories}

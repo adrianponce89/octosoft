@@ -9,6 +9,7 @@ import ImageProject from '../ProjectComponents/ImageProject'
 const DesignContent = ({project}) => {
     const { description } = project.description
     const classes = useStyle();
+    console.log('hola', project.designAssets.length);
     return (
         <Container className={classes.root}>
             <Grid container justify="flex-start" xs={12} >
@@ -38,7 +39,7 @@ const DesignContent = ({project}) => {
                     </Grid>
                     
                     <Grid container justify="space-between" xs={12}>
-                        {project.designAssets.length >= 7 && 
+                        {project.designAssets.length >= 6 && 
                             project.designAssets.slice(3,6).map(({file,description})=>{
                                 return(
                                     <ImageProject  

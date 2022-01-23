@@ -97,7 +97,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         services.forEach((service) => {
           createPage({
-            path: `/portfolio/${service.node.newName}/`,
+            path: `/portfolio/${service.node.category}/`,
             component: ServicePortfolio,
             context: {
               newName: service.node.newName,

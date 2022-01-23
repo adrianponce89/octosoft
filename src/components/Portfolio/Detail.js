@@ -7,8 +7,6 @@ import { Link } from 'gatsby';
 const DetailPortfolio = ({ portfolios }) => {
   const classes = useStyle();
 
-  console.log('portfolio', portfolios)
-
   return (
     <Container className={classes.root}>
       <Grid container xs={12} className={classes.gridContainer}>
@@ -21,7 +19,7 @@ const DetailPortfolio = ({ portfolios }) => {
             justify="center"
             key={node.newName}
             className={classes.boxGrid}
-            to={`/portfolio/${node.newName}`}
+            to={`/portfolio/${node.category}`}
           >
             <ItemPortfolio
               data={node}

@@ -9,7 +9,7 @@ const SoftwareContent = ({project}) => {
     
     const { url } = project.asset.file
     const { description } = project.description
-    console.log(project)
+    console.log('hola', project.designAssets.length)
 
     const classes = useStyle({imageUrl: url});
     return (
