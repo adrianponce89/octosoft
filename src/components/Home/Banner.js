@@ -112,13 +112,14 @@ export default ({ descriptionLanding }) => {
           isActive ? classes.background : classes.backgroundHead
         }
       ></div>
-      <div
+      {/* <div
         data-aos="fade-down-right"
         data-aos-once="true"
         data-aos-easing="linear"
         data-aos-duration="1500"
         className={firstView ? classes.trama : { display: 'none' }}
-      ></div>
+      ></div>*/}
+
       <div
         data-aos="fade-down"
         data-aos-easing="linear"
