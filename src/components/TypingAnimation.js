@@ -9,14 +9,17 @@ const useStyles = makeStyles((theme) => ({
   },
   elegantTypewriterTextWrap: {
     fontWeight: '500',
-    fontSize: 40,
+    fontSize: 70,
     color: 'gray',
+    '@media (max-width: 768px)': {
+      fontSize: 40,
+    },
   },
 }));
 
-export default ({ words, className }) => {
+export default ({ words, className, fontSize }) => {
   const typistRef = useRef();
-  const classes = useStyles();
+  const classes = useStyles({ fontSize });
   const handleTypingDone = () => {
     typistRef.current.setState({ isDone: false });
     typistRef.current.typeAllLines();

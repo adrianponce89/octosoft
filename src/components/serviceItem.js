@@ -1,7 +1,7 @@
 import React from 'react'
+import {Link} from 'gatsby'
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const styles = makeStyles((theme) => ({
   root: {
@@ -12,26 +12,38 @@ const styles = makeStyles((theme) => ({
     marginRight: 10,
   },
   title: {
+    color: ({ color }) => color,
     textTransform: 'uppercase',
     fontFamily: 'Montserrat',
     fontWeight: 700,
-    fontSize: 22,
-    textAlign: 'center',
+    fontSize: theme.spacing(4),
+    textAlign: 'left',
+    paddingBottom: 15,
+    paddingTop: 15,
   },
   description: {
-    textAlign: 'justify',
+    textAlign: 'left',
     fontFamily: 'Montserrat',
+    fontSize: theme.spacing(3),
   },
-  imgContainer:{
+  imgContainer: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
-    paddingBottom: 15,
-  }
+    justifyContent: 'flex-start',
+  },
+  link: {
+    color: '#000000',
+  },
+  textLink: {
+    paddingTop: 15,
+    textAlign: 'left',
+    fontFamily: 'Montserrat',
+    fontSize: theme.spacing(3),
+  },
 }));
 
 const ServiceItem = ({ service, description }) => {
-  const classes = styles();
+  const classes = styles({color: service.node.newColor});
 
   let descriptionText = description.filter(
     (item) => Number(item.order) === service.node.order,
@@ -42,7 +54,7 @@ const ServiceItem = ({ service, description }) => {
       container
       item
       alignItems="center"
-      justify="center"
+      justify="flex-start"
       className={classes.root}
     >
       <Grid item>
@@ -50,13 +62,21 @@ const ServiceItem = ({ service, description }) => {
           <img src={service.node.images[1].file.url} />
         </div>
         <Typography className={classes.title}>
-          {service.node.title}
+          {service.node.newName}
         </Typography>
       </Grid>
       <Grid item>
         <Typography variant="body1" className={classes.description}>
           {descriptionText[0].description}
         </Typography>
+        <Link
+          to={`/portfolio/${service.node.category}`}
+          className={classes.link}
+        >
+          <Typography variant="body1" className={classes.textLink}>
+            VIEW PORTFOLIO
+          </Typography>
+        </Link>
       </Grid>
     </Grid>
   );

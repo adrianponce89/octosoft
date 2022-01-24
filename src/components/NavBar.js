@@ -17,6 +17,7 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
+import Contact from './Contact';
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -37,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   link: {
-    padding: 15,
+    margin: '15px 10px',
+    padding: '0px 15px',
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',
@@ -82,6 +84,21 @@ const useStyles = makeStyles((theme) => ({
     textShadow: ({ transparent }) =>
       !!transparent ? '0 0 4px #FFF' : 'none',
   },
+  chevron: {
+    fontWeight: 'bold',
+    fontSize: '14px',
+    color: 'black',
+    fontFamily: 'Montserrat',
+    textShadow: ({ transparent }) =>
+      !!transparent ? '0 0 4px #FFF' : 'none',
+    '&::after': {
+      content: '" ⌄"',
+      display: 'inline',
+      position: 'relative',
+      top: '-0.25em',
+      fontSize: '120%',
+    },
+  },
   appbar: {
     background: 'none',
     boxShadow: ({ transparent }) =>
@@ -94,6 +111,11 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     backgroundColor: '#33adff',
+    padding: '6px 30px',
+  },
+  menu: {
+    background: 'pink',
+    width: '100vw',
   },
 }));
 
@@ -107,78 +129,139 @@ const HideOnScroll = (props) => {
   );
 };
 
+const menuList = [
+  { title: 'HOME', link: '/' },
+  {
+    title: 'ABOUT US',
+    children: [
+      { title: 'About Octosoft', link: '/aboutus' },
+      { title: 'Our Team', link: '/aboutus' },
+      { title: 'Our Brand', link: '/brand' },
+    ],
+  },
+  {
+    title: 'WHAT WE DO',
+    children: [
+      { title: 'Our Services', link: '/ourservices' },
+      { title: 'Portfolio', link: '/portfolio' },
+    ],
+  },
+  {
+    title: 'COMMUNITY',
+    children: [
+      { title: 'News', link: '/underConstruction' },
+      { title: 'Events', link: '/underConstruction' },
+      { title: 'Blog', link: '/underConstruction' },
+      {
+        title: 'Bordeless Identities',
+        link: '/borderlessIdentities',
+      },
+    ],
+  },
+  { title: 'CONTACT US', children: [], linkContact: '/contact' },
+];
 const NavLinks = (props) => {
   const classes = useStyles(props);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [menuSelected, setMenuSelected] = React.useState(null);
 
-  const handleClick = (event) => {
+  const handleClick = (event, title) => {
     setAnchorEl(event.currentTarget);
+    setMenuSelected(title);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  console.log(props.onDesktop);
+
   return (
     <>
-      <Link className={classes.link} margin={2} to="/">
-        <div className={classes.linkText}>{'HOME'}</div>
-      </Link>
+      {menuList.map((menu) =>
+        menu.link ? (
+          <Link className={classes.link} margin={2} to={menu.link}>
+            <div className={classes.linkText}>{menu.title}</div>
+          </Link>
+        ) : menu.children ? (
+          <>
+            {props.onDesktop !== true ? (
+              menu.title !== 'CONTACT US' ? (
+                <a
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={(e) => handleClick(e, menu.title)}
+                  className={classes.link}
+                  margin={2}
+                >
+                  <div className={classes.chevron}>{menu.title}</div>
+                </a>
+              ) : null
+            ) : (
+              <a
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={(e) => handleClick(e, menu.title)}
+                className={classes.link}
+                margin={2}
+              >
+                <div className={classes.chevron}>{menu.title}</div>
+              </a>
+            )}
+            {/* {(menu.title !== 'CONTACT US') &
+            (props.onDesktop !== true) ? (
+              <a
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={(e) => handleClick(e, menu.title)}
+                className={classes.link}
+                margin={2}
+              >
+                <div className={classes.chevron}>{menu.title}</div>
+              </a>
+            ) : null} */}
 
-      <Hidden mdDown>|</Hidden>
-
-      <Link className={classes.link} margin={2} to="/aboutus">
-        <div className={classes.linkText}>{'ABOUT US'}</div>
-      </Link>
-
-      <Hidden mdDown>|</Hidden>
-
-      <Link className={classes.link} margin={2} to="/ourservices">
-        <div className={classes.linkText}>{'OUR SERVICES'}</div>
-      </Link>
-
-      <Hidden mdDown>|</Hidden>
-      <a
-        aria-controls="simple-menu"
-        aria-haspopup="true"
-        onClick={handleClick}
-        className={classes.link}
-        margin={2}
-      >
-        <div className={classes.linkText}>{'COMMUNITY'}</div>
-      </a>
-      <Menu
-        id="simple-menu"
-        anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
-        onClose={handleClose}
-      >
-        <MenuItem component={Link} to="/news" onClick={handleClose}>
-          {'NEWS'}
-        </MenuItem>
-        <MenuItem
-          component={Link}
-          to="/borderlessIdentities"
-          onClick={handleClose}
-        >
-          {'BORDERLESS IDENTITIES'}
-        </MenuItem>
-      </Menu>
-
-      <Hidden mdDown>|</Hidden>
-
-      <Link className={classes.link} margin={2} to="/clientsupport">
-        <div className={classes.linkText}>{'CLIENT SUPPORT'}</div>
-      </Link>
-
-      <Hidden mdDown>|</Hidden>
-
-      <Link className={classes.link} margin={2} to="/contact">
-        <div className={classes.linkText}>{'CONTACT US'}</div>
-      </Link>
-
-      <Hidden mdDown>|</Hidden>
+            {/* {props.onDesktop === false &&
+            menu.title === 'CONTACT US' ? (
+              <Link
+                className={classes.link}
+                margin={2}
+                to={menu.linkContact}
+              >
+                <div className={classes.linkText}>{menu.title}</div>
+              </Link>
+            ) : null} */}
+            {menuSelected === menu.title ? (
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                {menu.title === 'CONTACT US' ? (
+                  <Contact />
+                ) : (
+                  menu.children.map((child) => (
+                    <MenuItem
+                      component={Link}
+                      to={child.link}
+                      onClick={handleClose}
+                    >
+                      {child.title}
+                    </MenuItem>
+                  ))
+                )}
+              </Menu>
+            ) : null}
+          </>
+        ) : null,
+      )}
+      {!props.onDesktop && (
+        <Link className={classes.link} margin={2} to={'/contact'}>
+          <div className={classes.linkText}>{'CONTACT US'}</div>
+        </Link>
+      )}
 
       <Link
         className={classes.linkButton}
@@ -250,7 +333,11 @@ const NavBar = (props) => {
           onClose={() => setShowDrawer(false)}
           onOpen={() => setShowDrawer(true)}
         >
-          <NavLinks color="black" textShadow="none" />
+          <NavLinks
+            color="black"
+            textShadow="none"
+            onDesktop={false}
+          />
         </SwipeableDrawer>
       </Hidden>
     </React.Fragment>

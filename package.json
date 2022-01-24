@@ -1,7 +1,8 @@
 {
   "name": "octosoft",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "author": "Adrian Ponce <adrian.ponce.89@gmail.com> & Roger Bogado <roger.bogado.coverzola@gmail.com>",
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^14.1.1",
     "@contentful/rich-text-react-renderer": "^14.1.1",
@@ -12,6 +13,7 @@
     "@testing-library/user-event": "^7.2.1",
     "aos": "^3.0.0-beta.6",
     "contentful": "^7.14.6",
+    "file-saver": "^2.0.5",
     "gatsby": "^2.24.53",
     "gatsby-plugin-mailchimp": "^5.2.2",
     "gatsby-plugin-manifest": "^2.4.28",
@@ -19,6 +21,7 @@
     "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-source-contentful": "^2.3.41",
+    "jszip": "^3.7.1",
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

@@ -1,18 +1,10 @@
 import React, { useState } from 'react';
+
 import { Grid, Dialog, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import AvatarTeam from '../../Avatar';
-import OurTeamModal from './OurTeamModal';
 
-const useStyle = makeStyles({
-  titleCategory: {
-    fontFamily: 'Poppins',
-    color: '#663777',
-    fontSize: '2em',
-    fontWeight: 500,
-    margin: 12,
-  },
-});
+import AvatarTeam from './Avatar';
+import OurTeamModal from './Modal';
 
 const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
   const [selectedMember, setSelectedMember] = useState(null);
@@ -22,7 +14,12 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
   const classes = useStyle();
   return (
     <>
-      <Grid container justify="center" alignItems="center">
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.boxTitleCategory}
+      >
         <Typography variant="h2" className={classes.titleCategory}>
           {titleCategory}
         </Typography>
@@ -38,6 +35,7 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
             <Grid item xs={12} sm={6} md={4}>
               <AvatarTeam
                 key={i}
+                backgroundSize="contain"
                 name={member.node.name}
                 title={member.node.title}
                 section={member.node.section}
@@ -80,20 +78,43 @@ const OurTeamCategory = ({ teamMembers, titleCategory, index }) => {
         open={selectedMember !== null}
         maxWidth="lg"
       >
-        {selectedMember ? (
+        {selectedMember && (
           <OurTeamModal
             name={selectedMember.node.name}
             biography={selectedMember.node.biography}
+            expertise={selectedMember.node.expertise}
             background={`url(${selectedMember.node.fullPhoto.file.url})`}
             onClose={handleClose}
             socialMedia={selectedMember.node.socialMedia}
           />
-        ) : (
-          ''
         )}
       </Dialog>
     </>
   );
 };
+
+const useStyle = makeStyles((theme) => ({
+  titleCategory: {
+    fontFamily: 'Poppins',
+    color: '#663777',
+    fontSize: '2em',
+    fontWeight: 500,
+    margin: 12,
+    zIndex: 2,
+    backgroundColor: '#F3F3F1',
+    padding: theme.spacing(1, 3),
+    borderRadius: 50,
+  },
+  boxTitleCategory: {
+    position: 'relative',
+  },
+  logo: {
+    position: 'absolute',
+    fill: '#FFBB99',
+    width: 'fit-content',
+    height: '120%',
+    zIndex: 2,
+  },
+}));
 
 export default OurTeamCategory;

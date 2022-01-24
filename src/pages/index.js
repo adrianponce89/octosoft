@@ -88,131 +88,136 @@ export default (props) => {
 };
 
 export const pageQuery = graphql`
-         query HomeQuery {
-           allContentfulHomeItem(sort: { fields: order }) {
-             edges {
-               node {
-                 id
-                 link
-                 order
-                 color
-                 image {
-                   file {
-                     url
-                   }
-                 }
-                 title
-                 description {
-                   description
-                 }
-               }
-             }
-           }
-           allContentfulHomeBorderlessIdentities {
-             edges {
-               node {
-                 id
-                 title
-                 description {
-                   description
-                 }
-                 image {
-                   file {
-                     url
-                   }
-                 }
-                 link
-               }
-             }
-           }
-           allContentfulPlan(sort: { fields: order }) {
-             edges {
-               node {
-                 id
-                 amount
-                 type
-                 order
-                 link
-                 description {
-                   json
-                 }
-                 title
-                 image {
-                   file {
-                     url
-                   }
-                 }
-               }
-             }
-           }
-           contentfulLandingDescription {
-             description
-             title
-             backgroundImage {
-               file {
-                 url
-               }
-             }
-           }
-           allContentfulService(sort: { fields: order }) {
-             nodes {
-               description
-               order
-             }
-             edges {
-               node {
-                 color
-                 id
-                 order
-                 title
-                 images {
-                   file {
-                     url
-                   }
-                 }
-                 content {
-                   json
-                 }
-               }
-             }
-           }
-           allContentfulHomeClients {
-             edges {
-               node {
-                 title
-                 media {
-                   title
-                   file {
-                     url
-                   }
-                 }
-               }
-             }
-           }
-           allContentfulAboutUs {
-             nodes {
-               image {
-                 file {
-                   url
-                 }
-               }
-               description
-             }
-           }
-           allContentfulBanners {
-             edges {
-               node {
-                 title
-                 color
-                 image {
-                   file {
-                     url
-                   }
-                 }
-                 type
-               }
-             }
-           }
-         }
-       `;
+  query HomeQuery {
+    allContentfulHomeItem(sort: { fields: order }) {
+      edges {
+        node {
+          id
+          link
+          order
+          color
+          image {
+            file {
+              url
+            }
+          }
+          title
+          description {
+            description
+          }
+        }
+      }
+    }
+    allContentfulHomeBorderlessIdentities {
+      edges {
+        node {
+          id
+          title
+          description {
+            description
+          }
+          image {
+            file {
+              url
+            }
+          }
+          link
+        }
+      }
+    }
+    allContentfulPlan(sort: { fields: order }) {
+      edges {
+        node {
+          id
+          amount
+          type
+          order
+          link
+          color
+          description {
+            json
+          }
+          title
+          image {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+    contentfulLandingDescription {
+      description
+      title
+      backgroundImage {
+        file {
+          url
+        }
+      }
+    }
+    allContentfulService(sort: { fields: order }) {
+      nodes {
+        description
+        order
+      }
+      edges {
+        node {
+          color
+          id
+          order
+          title
+          newOrder
+          newName
+          newColor
+          category
+          images {
+            file {
+              url
+            }
+          }
+          content {
+            json
+          }
+        }
+      }
+    }
+    allContentfulHomeClients {
+      edges {
+        node {
+          title
+          media {
+            title
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+    allContentfulAboutUs {
+      nodes {
+        image {
+          file {
+            url
+          }
+        }
+        description
+      }
+    }
+    allContentfulBanners {
+      edges {
+        node {
+          title
+          color
+          image {
+            file {
+              url
+            }
+          }
+          type
+        }
+      }
+    }
+  }
+`;
 

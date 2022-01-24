@@ -6,47 +6,55 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const styles = makeStyles((theme) => ({
   root: {
-    backgroundColor: ({ index }) => {
-      switch (index) {
-        case 0:
-          return '#FF9F3B';
-        case 1:
-          return '#7543DB';
-        case 2:
-          return '#37D4AD';
-        default:
-          return '#FFFF';
-      }
+    backgroundColor: ({ color }) => color,
+    height: 470,
+    marginRight: 10,
+    marginLeft: 10,
+    borderRadius: 6,
+    overflow: 'hidden',
+    boxSizing: 'border-box',
+    transition: 'border filter 0.3s linear',
+    filter:
+      'drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.1)) drop-shadow(-4px -4px 10px rgba(0, 0, 0, 0.1))',
+    '&:hover': {
+      filter: ({ index }) => {
+        switch (index) {
+          case 0:
+            return `drop-shadow(6px 6px 10px #FFC991) drop-shadow(-6px -6px 10px #FFC991)`;
+          case 1:
+            return `drop-shadow(6px 6px 10px #B192EF) drop-shadow(-6px -6px 10px #B192EF)`;
+          case 2:
+            return `drop-shadow(6px 6px 10px #B2ECDC) drop-shadow(-6px -6px 10px #B2ECDC)`;
+          default:
+            return 'drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.1)) drop-shadow(-4px -4px 10px rgba(0, 0, 0, 0.1))';
+        }
+      },
+      border: ({ color }) => `1px solid ${color}`,
     },
-    width: 350,
-    height: 500,
     '@media (max-width: 760px)': {
       marginBottom: 50,
     },
     '@media (max-width: 1368px)': {
-      width: 280,
       height: 450,
       marginBottom: 50,
     },
   },
   content: {
-    padding: 20,
-    marginLeft: -20,
-    marginTop: -20,
+    padding: 30,
     backgroundColor: '#FFFF',
-    height: 450,
+    height: 410,
     '@media (max-width: 1368px)': {
       height: 400,
     },
   },
   choose: {
-    textAlign: 'left',
-    marginLeft: 15,
+    textAlign: 'center',
     color: '#FFFF',
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    fontSize: 22,
-    transition:'all 0.3s linear',
+    fontSize: 15,
+    paddingBottom: theme.spacing(2),
+    transition: 'all 0.3s linear',
     '&:hover': {
       color: ({ index }) => {
         switch (index) {
@@ -86,24 +94,22 @@ const styles = makeStyles((theme) => ({
   },
   descriptionContainer: {
     height: 220,
-    width: 300,
     overflow: 'auto',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    paddingBottom: 40,
     '@media (max-width: 1368px)': {
       width: 230,
       height: 175,
     },
     '& p': {
-      lineHeight: '1.2em',
-      fontSize: '1.5vmin',
+      fontSize: theme.spacing(4),
       color: 'grey',
-      margin: 4,
+      paddingTop: 3,
       '@media (max-width: 1024px)': {
-        fontSize: '2.5vmin',
+        fontSize: theme.spacing(3),
+        paddingTop: 1,
       },
     },
     '& ul': {
@@ -120,7 +126,7 @@ const styles = makeStyles((theme) => ({
         // minHeight: 400,
       },
       '@media (max-width: 760px)': {
-        marginBottom: 14,
+        marginBottom: 10,
         '& li:last-child::after': {
           content: '" "',
           display: 'block',
@@ -142,7 +148,7 @@ const styles = makeStyles((theme) => ({
       },
     },
     '& li p::before': {
-      marginLeft: 15,
+      marginLeft: 0,
       content: '"· "',
       display: 'inline',
       fontWeight: 'bold',
@@ -162,10 +168,10 @@ const styles = makeStyles((theme) => ({
   },
   type: {
     textAlign: 'left',
-    color: '#1d2178',
+    color: '#231D4F',
     fontFamily: 'Montserrat',
     fontWeight: 600,
-    fontSize: 24,
+    fontSize: theme.spacing(5),
     '@media (max-width: 760px)': {
       fontSize: 25,
     },
@@ -181,15 +187,22 @@ const styles = makeStyles((theme) => ({
 
 const PlanCard = ({plan, index}) => {
     const {node:planNode} = plan 
-    const classes = styles({index});
+    const classes = styles({index, color: planNode.color});
     return (
-      <Grid item container className={classes.root}>
+      <Grid
+        item
+        container
+        className={classes.root}
+        sm={4}
+        md={4}
+        lg={3}
+      >
         <Grid
           item
           container
           direction="column"
           justify="space-between"
-          md={11}
+          md={12}
           className={classes.content}
         >
           <div className={classes.descriptionTitle}>
@@ -221,15 +234,19 @@ const PlanCard = ({plan, index}) => {
             />
           </div>
         </Grid>
-        <Link
+        
+          <Grid container item xs={12} alignItems="center" justifyContent="center">
+          <Link
           className={classes.link}
           encodeURIComponent
           to={`/contact?budged=${planNode.amount}#${planNode.title}`}
         >
-          <Typography className={classes.choose}>
-            CHOOSE PLAN
-          </Typography>
-        </Link>
+            <Typography className={classes.choose}>
+              CHOOSE PLAN
+            </Typography>
+            </Link>
+          </Grid>
+        
       </Grid>
     );
 }

@@ -19,7 +19,7 @@ const styles = makeStyles((theme) => ({
     },
   },
   package: {
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     '@media (max-width: 760px)': {
       flexDirection: 'column',
@@ -39,11 +39,12 @@ const styles = makeStyles((theme) => ({
     },
   },
   title: {
-    color: '#231D4F',
+    color: '#000000',
     fontFamily: 'Montserrat',
-    fontSize: 42,
+    fontSize: 30,
+    fontWeight: 700,
     '@media (max-width: 760px)': {
-      fontSize: 32,
+      fontSize: 24,
       paddingBottom: 20,
     },
   },
@@ -66,7 +67,7 @@ const styles = makeStyles((theme) => ({
   button: {
     borderRadius: 50,
     backgroundColor: 'transparent',
-    boxShadow:'none',
+    boxShadow: 'none',
     padding: '15px',
     '&:hover': {
       backgroundColor: '#FFFF',
@@ -89,8 +90,7 @@ const HomePlans = ({ plans }) => {
       <Grid
         container
         item
-        xl={8}
-        lg={10}
+        md={8}
         xs={12}
         className={classes.root}
       >
@@ -139,7 +139,13 @@ const HomePlans = ({ plans }) => {
         </div>
       </Grid>
       {packageView ? (
-        <Grid container item md={8} className={classes.package}>
+        <Grid
+          container
+          item
+          xs={10}
+          md={10}
+          className={classes.package}
+        >
           {plans.slice(12, 15).map((plan, i) => {
             return <PlanCard plan={plan} index={i} />;
           })}

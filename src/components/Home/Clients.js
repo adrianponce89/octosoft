@@ -17,17 +17,18 @@ const styles = makeStyles((theme) => ({
     },
   },
   title: {
+    color: '#000000',
     fontFamily: 'Montserrat',
-    fontSize: 42,
-    color: '#231D4F',
+    fontSize: 30,
+    fontWeight: 700,
     '@media (max-width: 760px)': {
-      fontSize: 32,
+      fontSize: 24,
       paddingBottom: 20,
     },
   },
   imgClient: {
-    width: 120,
-    height: 120,
+    width: 63,
+    height: 63,
     margin: 30,
   },
   titlesContainer: {
@@ -43,7 +44,7 @@ const styles = makeStyles((theme) => ({
   },
   root: {
     marginBottom: 60,
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     '@media (max-width: 760px)': {
       flexDirection: 'column',
@@ -59,13 +60,7 @@ const styles = makeStyles((theme) => ({
 export default function Clients({ title, dataClients }) {
       const classes = styles();
     return (
-      <Grid
-        container
-        xl={8}
-        lg={10}
-        xs={12}
-        className={classes.plans}
-      >
+      <Grid container md={8} xs={12} className={classes.plans}>
         <Grid
           container
           item
@@ -73,14 +68,14 @@ export default function Clients({ title, dataClients }) {
           className={classes.titlesContainer}
         >
           <Typography className={classes.title}>
-            Some of our clients
+            Clients who trust us
           </Typography>
         </Grid>
         <Grid
           container
           item
-          justify="center"
-          md={10}
+          justify="space-between"
+          xs={12}
           className={classes.root}
         >
           {dataClients.slice(0, 6).map((media, index) => {

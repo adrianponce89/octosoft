@@ -1,8 +1,39 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Paper, Typography, Divider } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
+
+import { sortGroupTeamMembersCategories } from '../../../utils';
 import OurTeamCategory from './OurTeamCategory';
+
+const OurTeam = ({ teamMembers, color }) => {
+  const classes = useStyle({ color });
+  const sortTeamMembersCategory =
+    sortGroupTeamMembersCategories(teamMembers) ?? [];
+  return (
+    <Paper square elevation={1} className={classes.root}>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        direction="column"
+      >
+        <Typography variant="h3" className={classes.headTitle}>
+          Get to know us!
+        </Typography>
+      </Grid>
+      <Grid container justify="center" alignItems="stretch">
+        {sortTeamMembersCategory.map((teamMembersCategory) => (
+          <OurTeamCategory
+            teamMembers={teamMembersCategory.teamMembers}
+            titleCategory={teamMembersCategory.category}
+            index={0}
+          />
+        ))}
+      </Grid>
+    </Paper>
+  );
+};
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -11,14 +42,15 @@ const useStyle = makeStyles((theme) => ({
     borderRadius: 16,
   },
   headTitle: {
-    color: ({ color }) => (color ? color : null),
+    color: ({ color }) => color ?? null,
     fontFamily: 'Poppins',
-    fontSize: '3em',
-    fontWeight: 800,
+    fontSize: '3rem',
+    textShadow: '3px 3px 0px #cac6c7',
+    fontWeight: 500,
     marginBottom: theme.spacing(4),
     '@media (max-width: 576px)': {
       textAlign: 'center',
-      fontSize: '2.5em',
+      fontSize: '2.5rem',
     },
   },
   subtitle: {
@@ -38,54 +70,5 @@ const useStyle = makeStyles((theme) => ({
     marginBottom: theme.spacing(4),
   },
 }));
-
-const OurTeam = ({ teamMembers, color }) => {
-  const classes = useStyle({ color });
-  const sortTeamMembersCategory = [];
-  const titleTypeCategorySet = new Set();
-
-  teamMembers.forEach((member) => {
-    titleTypeCategorySet.add(member.node.category);
-  });
-
-  titleTypeCategorySet.forEach((value) => {
-    sortTeamMembersCategory.push({
-      category: value,
-      teamMembers: teamMembers.filter(
-        (member) => member.node.category === value,
-      ),
-    });
-  });
-  return (
-    <Paper square elevation={1} className={classes.root}>
-      <Grid
-        container
-        justify="center"
-        alignItems="center"
-        direction="column"
-      >
-        <Typography variant="h1" className={classes.headTitle}>
-          The Octosoft Team
-        </Typography>
-        <Typography variant="h4" className={classes.subtitle}>
-          This is Us!
-        </Typography>
-        <Divider
-          orientation="horizontal"
-          className={classes.divider}
-        />
-      </Grid>
-      <Grid container justify="center" alignItems="stretch">
-        {sortTeamMembersCategory.map((teamMembersCategory) => (
-          <OurTeamCategory
-            teamMembers={teamMembersCategory.teamMembers}
-            titleCategory={teamMembersCategory.category}
-            index={0}
-          />
-        ))}
-      </Grid>
-    </Paper>
-  );
-};
 
 export default OurTeam;

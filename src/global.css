@@ -86,7 +86,11 @@ pre {
 }
 
 .MuiPaper-rounded {
-  border-radius: 0 !important;
+  border-radius: 12px !important;
+  -webkit-border-radius: 12px !important;
+  -moz-border-radius: 12px !important;
+  -ms-border-radius: 12px !important;
+  -o-border-radius: 12px !important;
 }
 
 @keyframes blink {
