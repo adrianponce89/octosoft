@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       paddingLeft: 0,
       paddingRight: 0,
+      alignItems: 'center',
     },
     color: ({ color }) => color,
   },
@@ -86,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (max-width: 820px)': {
       order: () => 1,
       alignItems: 'center',
-      width: '90%',
+      width: '100%',
     },
   },
   titleCard: {
@@ -94,6 +95,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     fontSize: 30,
     paddingBottom: 5,
+    '@media (max-width: 820px)': {
+      textAlign: 'center',
+      fontSize: '30px',
+      marginTop: '10px',
+    },
   },
   descriptionCard: {
     fontFamily: 'Montserrat',
@@ -102,9 +108,9 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '30px',
     textAlign: 'left',
     color: '#000000',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 820px)': {
       width: '90%',
-      textAlign: 'left',
+      textAlign: 'center',
       fontSize: 16,
       marginTop: 20,
       marginBottom: 20,
@@ -129,6 +135,9 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'underline',
       color: '#8249DC',
     },
+    '@media (max-width: 820px)': {
+      justifyContent: 'center',
+    },
   },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
@@ -139,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
-    '@media (max-width: 768px)': {
+    '@media (max-width: 820px)': {
       order: () => -1,
     },
   },
