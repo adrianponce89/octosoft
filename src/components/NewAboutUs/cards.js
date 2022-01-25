@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'stretch',
-    '@media (max-width: 1200px)': {
+    '@media (max-width: 1320px)': {
       flexDirection: 'column',
       paddingLeft: 0,
       paddingRight: 0,
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     whiteSpace: 'pre-wrap',
     order: ({ right }) => (right ? 1 : -1),
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1320px)': {
       order: () => 1,
       alignItems: 'center',
       width: '100%',
@@ -95,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     fontSize: 30,
     paddingBottom: 5,
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1320px)': {
       textAlign: 'center',
       fontSize: '30px',
       marginTop: '10px',
@@ -108,7 +108,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '30px',
     textAlign: 'left',
     color: '#000000',
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1320px)': {
       width: '90%',
       textAlign: 'center',
       fontSize: 16,
@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'underline',
       color: '#8249DC',
     },
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1320px)': {
       justifyContent: 'center',
     },
   },
@@ -148,7 +148,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
-    '@media (max-width: 1024px)': {
+    '@media (max-width: 1320px)': {
       order: () => -1,
     },
   },
