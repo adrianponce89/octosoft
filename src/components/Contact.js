@@ -158,7 +158,6 @@ const Contact = (props) => {
   return (
     <div
       className={classes.root}
-      // background={`url(${BackgroundImage})`}
       innerBackground={'none'}
     >
       <form

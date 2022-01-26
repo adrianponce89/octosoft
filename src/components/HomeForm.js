@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 import {
   Grid,
   Typography,
@@ -7,6 +7,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { submitForm } from '../utils';
 
 const styles = makeStyles((theme) => ({
   input: {
@@ -39,6 +40,42 @@ const styles = makeStyles((theme) => ({
 
 const HomeForm = ({plans}) => {
       const classes = styles();
+      const [name, setName] = useState('');
+      const [plan, setPlan] = useState('');
+      const [email, setEmail] = useState('');
+      const [content, setContent] = useState('');
+
+	  console.log('AAAA', name.length)
+
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        if (name.length !== 0 && plan.length !== 0 && email.length !== 0 && content.length !== 0) {
+          
+			submitForm('contact', {
+            name,
+            plan,
+            email,
+            content,
+          })
+            .then(() =>
+              alert(
+                'Your message was received. We will contact you shortly.',
+              ),
+            )
+            .catch((error) => alert(error));
+
+          setName('');
+          setPlan('');
+          setEmail('');
+          setContent('');
+        } else {
+			alert(
+                'Please, complete all fields.',
+              )
+		}
+          
+      };
+
     return (
       <Grid
         container
@@ -47,80 +84,100 @@ const HomeForm = ({plans}) => {
         justify="center"
         alignItems="center"
       >
-        <TextField
-          id="outlined-full-width"
-          label="Name"
-          fullWidth
-          className={classes.input}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-full-width"
-          label="Email"
-          fullWidth
-          className={classes.input}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-full-width"
-          select
-          label="Type of Plan"
-          fullWidth
-          className={classes.input}
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
+        <form
+          name="contact"
+          onSubmit={handleSubmit}
+          data-netlify="true"
         >
-          {plans.slice(12, 15).map((plan, i) => {
-            return (
-              <MenuItem key={plan.node.type} className={classes.menuItem} value={plan.node.type}>
-                
-                  {plan.node.type}
-               
-              </MenuItem>
-            );
-          })}
-        </TextField>
-        <TextField
-          id="outlined-full-width"
-          label="Tell us what you need"
-          fullWidth
-          className={classes.input}
-          margin="normal"
-          multiline
-          rows={7}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-        <Grid
-          container
-          item
-          justify="flex-end"
-          alignItems="center"
-          className={classes.btn}
-        >
-          <Button
-            variant="contained"
-            color="primary"
-            className={classes.btnForm}
+          <TextField
+            id="outlined-full-width"
+            label="Name"
+            fullWidth
+            value={name}
+            className={classes.input}
+            onChange={({ target }) => setName(target.value)}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-full-width"
+            label="Email"
+            fullWidth
+            className={classes.input}
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-full-width"
+            select
+            label="Type of Plan"
+            fullWidth
+            value={plan}
+            onChange={({ target }) => setPlan(target.value)}
+            className={classes.input}
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
           >
-            <Typography variant="primary" className={classes.submit}>
-              Submit
-            </Typography>
-          </Button>
-        </Grid>
+            {plans.slice(12, 15).map((plan, i) => {
+              return (
+                <MenuItem
+                  key={plan.node.type}
+                  className={classes.menuItem}
+                  value={plan.node.type}
+                >
+                  {plan.node.type}
+                </MenuItem>
+              );
+            })}
+          </TextField>
+          <TextField
+            id="outlined-full-width"
+            label="Tell us what you need"
+            fullWidth
+            className={classes.input}
+            onChange={({ target }) => setContent(target.value)}
+            margin="normal"
+            multiline
+            value={content}
+            rows={7}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            variant="outlined"
+          />
+          <Grid
+            container
+            item
+            justify="flex-end"
+            alignItems="center"
+            className={classes.btn}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              className={classes.btnForm}
+            >
+              <Typography
+                variant="primary"
+                className={classes.submit}
+              >
+                Submit
+              </Typography>
+            </Button>
+          </Grid>
+        </form>
       </Grid>
     );
 }
