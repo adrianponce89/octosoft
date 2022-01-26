@@ -123,6 +123,8 @@ const useStyles = makeStyles((theme) => ({
     color: '#999999',
     '@media (max-width: 760px)': {
       fontSize: 24,
+      alignItems: 'center',
+      textAlign: 'center',
     },
   },
 }));
