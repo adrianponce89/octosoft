@@ -97,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 5,
     '@media (max-width: 1320px)': {
       textAlign: 'center',
-      fontSize: '30px',
+      fontSize: '28px',
       marginTop: '10px',
     },
   },
@@ -109,8 +109,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     color: '#000000',
     '@media (max-width: 1320px)': {
-      width: '90%',
-      textAlign: 'center',
+      width: '100%',
+      textAlign: 'left',
       fontSize: 16,
       marginTop: 20,
       marginBottom: 20,
