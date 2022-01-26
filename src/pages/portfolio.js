@@ -13,6 +13,7 @@ const PortfolioPage = (props) => {
             newColor
             newName
             newOrder
+            category
             porfolioBackground{
               file {
                 url

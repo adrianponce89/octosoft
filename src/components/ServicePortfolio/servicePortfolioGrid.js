@@ -2,22 +2,17 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import BackgroundImage from '../../assets/Version_Horizontal.png';
-import './pepe.css'
+
 import ProjectCard from './ProjectCard';
 
 const ServicePortfolioGrid = ({ portfolio }) => {
-  const background =
-    portfolio.length > 0 ? portfolio[0].banner.file.url : '#784321';
   const classes = useStyle({ portfolio });
   // eslint-disable-next-line no-unused-expressions
-  portfolio.length > 0 ? console.log('yey', portfolio[0].banner.file.url) : null
-
   //Acá debería hacerse la query para pedir la data de los proyectos de esta categoría, hecho eso
   //Se rellena la grid con el contenido
 
   return (
     <Container className={classes.root}>
-      {/* La grilla es un molde que debiera extraerse en un componente diferente */}
       <div class="grid">
         {portfolio.length > 0 && portfolio.map(project => {
           return (

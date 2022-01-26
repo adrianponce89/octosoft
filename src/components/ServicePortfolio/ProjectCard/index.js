@@ -67,10 +67,10 @@ const useStyle = makeStyles((theme) => ({
     alignItems: 'center',
     cursor: 'pointer',
     mixBlendMode: 'normal',
-    transition: '200ms ease-in-out',
-    '&:hover': {
-      mixBlendMode: 'soft-light',
-    },
+    transition: 'all 200ms ease-in-out',
+    //'&:hover': {
+    //  mixBlendMode: 'soft-light',
+    //},
     '& div': {
       color: 'transparent',
     },
@@ -178,6 +178,11 @@ const useStyle = makeStyles((theme) => ({
     alignItems: 'center',
     width: '100%',
     height: '100%',
+    transition: 'all 200ms ease-in-out',
+    '&:hover': {
+      color: '#303030',
+      backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    },
   },
   itemTitle: {
     textTransform: 'uppercase',

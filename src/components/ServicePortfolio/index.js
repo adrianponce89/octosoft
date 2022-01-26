@@ -10,8 +10,6 @@ const Pepe = (props) => {
 
   const { newName, categories, newColor, categoryType } = props.pageContext
 
-  console.log(categoryType)
-
   const data = useStaticQuery(graphql`
     query projects {
       allContentfulPortfolio {
@@ -37,12 +35,11 @@ const Pepe = (props) => {
   const allProjects = data.allContentfulPortfolio.nodes
 
   useEffect(() => {
-    const hola = allProjects.filter(project => project.category === categoryType)
-    hola.sort(function(a, b) {
+    const filteredProjects = allProjects.filter(project => project.category === categoryType)
+    filteredProjects.sort(function (a, b) {
       return a.order - b.order;
     });
-    setProjectsToShow(hola)
-    console.log('filtered', hola);
+    setProjectsToShow(filteredProjects);
   }, [])
 
   return (
@@ -52,7 +49,7 @@ const Pepe = (props) => {
         innerBackground={'tranparent'}
       >
         <ServicePortfolioTitle
-          name={newName}
+          name={categoryType}
           categories={categories}
           color={newColor}
         />

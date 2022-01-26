@@ -5,8 +5,6 @@ import SoftwareProject from './SoftwareTemplate'
 const ProjectTemplate = (props) => {
   const { projectType, project, servicesInfo } = props.pageContext;
 
-  console.log('CULO', project)
-
   const filterSubCategories = () => {
     let categories = servicesInfo.filter((service)=> service.node.category === project.category)
     return categories[0].node.categories
