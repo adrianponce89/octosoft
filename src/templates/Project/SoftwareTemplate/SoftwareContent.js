@@ -54,7 +54,7 @@ const SoftwareContent = ({project}) => {
               href={project.linkProject}
             >
               <Typography className={classes.btnText}>
-                GITHUB
+                VIEW ON GITHUB
               </Typography>
             </Link>
           </Grid>

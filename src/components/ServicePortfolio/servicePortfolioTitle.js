@@ -50,7 +50,7 @@ const ServicePortfolioTitle = ({ name, categories, color }) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(8),
+    padding: '0px 60px 0px',
     marginTop: theme.spacing(8),
     zIndex: 1,
     [theme.breakpoints.down('md')]: {
@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       fontSize: '0.8em',
     },
-  }
+  },
 }));
 
 export default ServicePortfolioTitle;

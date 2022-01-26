@@ -56,8 +56,9 @@ const Title = ({ name, categories, color, size='5.5rem', marginTop='40px', subca
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: theme.spacing(8),
-    marginTop: ({marginTop}) => marginTop ? marginTop : theme.spacing(8),
+    padding: '30px 60px 0px',
+    marginTop: ({ marginTop }) =>
+      marginTop ? marginTop : theme.spacing(8),
     zIndex: 1,
     [theme.breakpoints.down('md')]: {
       padding: theme.spacing(7),
@@ -73,12 +74,12 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: '100%',
   },
-  color:{
-	color: ({ color }) => color ?? '#999999',
+  color: {
+    color: ({ color }) => color ?? '#999999',
   },
   titleCard: {
     color: ({ color }) => color ?? '#8249DC',
-    fontSize: '4.68rem' ,
+    fontSize: '4.68rem',
     fontWeight: 900,
     fontFamily: 'Montserrat',
     marginBottom: theme.spacing(4),
@@ -95,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
   },
   subtitle: {
     color: '#999999',
-	marginRight: theme.spacing(1),
+    marginRight: theme.spacing(1),
     fontSize: '1.5rem',
     fontWeight: 'bold',
     fontFamily: 'Montserrat',
@@ -106,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       fontSize: '0.8em',
     },
-  }
+  },
 }));
 
 export default Title;
