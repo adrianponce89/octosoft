@@ -20,11 +20,11 @@ const styles = makeStyles((theme) => ({
       filter: ({ index }) => {
         switch (index) {
           case 0:
-            return `drop-shadow(6px 6px 10px #FFC991) drop-shadow(-6px -6px 10px #FFC991)`;
+            return `drop-shadow(6px 6px 10px rgba(255, 159, 59, 0.1)) drop-shadow(-6px -6px 10px rgba(255, 159, 59, 0.1))`;
           case 1:
-            return `drop-shadow(6px 6px 10px #B192EF) drop-shadow(-6px -6px 10px #B192EF)`;
+            return `drop-shadow(6px 6px 10px rgba(117, 67, 219, 0.1)) drop-shadow(-6px -6px 10px rgba(117, 67, 219, 0.1))`;
           case 2:
-            return `drop-shadow(6px 6px 10px #B2ECDC) drop-shadow(-6px -6px 10px #B2ECDC)`;
+            return `drop-shadow(6px 6px 10px rgba(55, 212, 173, 0.1)) drop-shadow(-6px -6px 10px rgba(55, 212, 173, 0.1))`;
           default:
             return 'drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.1)) drop-shadow(-4px -4px 10px rgba(0, 0, 0, 0.1))';
         }
@@ -53,7 +53,7 @@ const styles = makeStyles((theme) => ({
     fontFamily: 'Montserrat',
     fontWeight: 600,
     fontSize: 15,
-    paddingBottom: theme.spacing(2),
+    //paddingBottom: theme.spacing(2),
     transition: 'all 0.3s linear',
     '&:hover': {
       color: ({ index }) => {
@@ -201,7 +201,7 @@ const PlanCard = ({plan, index}) => {
           item
           container
           direction="column"
-          justify="space-between"
+          justify="flex-start"
           md={12}
           className={classes.content}
         >
@@ -235,7 +235,7 @@ const PlanCard = ({plan, index}) => {
           </div>
         </Grid>
         
-          <Grid container item xs={12} alignItems="center" justifyContent="center">
+          <Grid container item xs={12} alignItems="flex-start" justifyContent="center">
           <Link
           className={classes.link}
           encodeURIComponent

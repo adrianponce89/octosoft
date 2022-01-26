@@ -94,13 +94,13 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: 5,
-    width: 130,
+    padding: '10px 20px',
     height: '40px',
-    borderRadius: '4px',
+    borderRadius: '10px',
     backgroundColor: '#33adff',
     color: 'black',
     fontSize: '14px',
-    fontWeight: 'bold',
+    fontWeight: 600,
     fontFamily: 'Montserrat',
     position: 'relative',
     left: '128px',
@@ -264,7 +264,7 @@ const Contact = (props) => {
                 type="submit"
                 className={classes.button}
               >
-                SUBMIT
+                Submit
               </Button>
             </div>
           </Grid>

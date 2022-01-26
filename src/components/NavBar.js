@@ -317,7 +317,7 @@ const NavBar = (props) => {
               <Box
                 data-aos="fade-down"
                 data-aos-easing="linear"
-                data-aos-duration="1500"
+                data-aos-duration="1000"
                 className={classes.links}
               >
                 <NavLinks transparent={transparent} />

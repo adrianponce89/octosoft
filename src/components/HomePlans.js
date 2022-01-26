@@ -87,13 +87,7 @@ const HomePlans = ({ plans }) => {
 
   return (
     <Grid container md={12} className={classes.plans}>
-      <Grid
-        container
-        item
-        md={8}
-        xs={12}
-        className={classes.root}
-      >
+      <Grid container item md={8} xs={12} className={classes.root}>
         <Typography className={classes.title}>
           Select your plan
         </Typography>
@@ -144,6 +138,7 @@ const HomePlans = ({ plans }) => {
           item
           xs={10}
           md={10}
+          xl={8}
           className={classes.package}
         >
           {plans.slice(12, 15).map((plan, i) => {
@@ -151,7 +146,7 @@ const HomePlans = ({ plans }) => {
           })}
         </Grid>
       ) : (
-        <HomeForm />
+        <HomeForm plans={plans} />
       )}
     </Grid>
   );

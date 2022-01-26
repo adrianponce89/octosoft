@@ -123,7 +123,7 @@ export default ({ descriptionLanding }) => {
       <div
         data-aos="fade-down"
         data-aos-easing="linear"
-        data-aos-duration="1500"
+        data-aos-duration="1000"
         data-aos-once="true"
         className={classes.mainLogo}
       >

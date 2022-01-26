@@ -35,7 +35,7 @@ export const theme = createMuiTheme({
            },
            MuiOutlinedInput: {
              root: {
-               borderRadius: 12,
+               borderRadius: 4,
              },
            },
            MuiButtonGroup: {
