@@ -49,11 +49,14 @@ const Pepe = (props) => {
         innerBackground={'tranparent'}
       >
         <ServicePortfolioTitle
-          name={categoryType}
+          name={newName}
           categories={categories}
           color={newColor}
         />
-        <ServicePortfolioGrid categoryType={categoryType} portfolio={projectsToShow} />
+        <ServicePortfolioGrid
+          categoryType={categoryType}
+          portfolio={projectsToShow}
+        />
       </Container>
     </div>
   );
