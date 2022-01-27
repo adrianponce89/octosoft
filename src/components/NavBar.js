@@ -112,6 +112,9 @@ const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: '#33adff',
     padding: '6px 30px',
+    '&:hover': {
+      backgroundColor: '#7DD1E3',
+    },
   },
   menu: {
     background: 'pink',

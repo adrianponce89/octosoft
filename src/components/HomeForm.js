@@ -29,6 +29,7 @@ const styles = makeStyles((theme) => ({
     borderRadius: 4,
     padding: '10px 50px',
     backgroundColor: '#37ADD4',
+    '&:hover': { backgroundColor: '#7DD1E3' },
   },
   submit: {
     fontSize: 14,
