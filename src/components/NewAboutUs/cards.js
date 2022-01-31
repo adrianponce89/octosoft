@@ -88,6 +88,7 @@ const useStyles = makeStyles((theme) => ({
       order: () => 1,
       alignItems: 'center',
       width: '100%',
+      maxWidth: '100%',
     },
   },
   titleCard: {
@@ -150,6 +151,7 @@ const useStyles = makeStyles((theme) => ({
     order: ({ right }) => (right ? -1 : 1),
     '@media (max-width: 1320px)': {
       order: () => -1,
+      maxWidth: '100%',
     },
   },
 }));
