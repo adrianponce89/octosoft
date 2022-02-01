@@ -11,23 +11,23 @@ const Cards = (props) => {
       item
       className={classes.root}
       xs={12}
-      alignItems="center"
-      justifyContent="center"
+      sm={11}
     >
       <div className={classes.cardBody}>
         <Grid
           item
           container
           xs={12}
-          sm={4}
+          sm={5}
           className={classes.backgroundCardImage}
         ></Grid>
+        <div className={classes.separator}></div>
         <Grid
           item
           container
           direction="column"
           xs={12}
-          sm={6}
+          sm={7}
           className={classes.containerCard}
         >
           <Typography variant="h5" className={classes.titleCard}>
@@ -41,7 +41,7 @@ const Cards = (props) => {
           {(props.link != null) && 
             <Link className={classes.link} to={props.link}>
               <Typography className={classes.descriptionLink}>
-                Learn more...
+                KNOW OUR TEAM
               </Typography>
             </Link>
           }
@@ -54,72 +54,104 @@ const Cards = (props) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginBottom: 60,
-    marginTop: 60,
+    marginBottom: '40px',
+    marginTop: '40px',
+  },
+  separator: {
+    borderWidth: 1,
+    alignSelf: 'stretch',
+    margin: 5,
+    '@media (max-width: 100px)': {
+      height: 0,
+    },
   },
   cardBody: {
-    paddingLeft: 20,
-    paddingRight: 20,
     width: '100%',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    '@media (max-width: 768px)': {
+    alignItems: 'stretch',
+    '@media (max-width: 1320px)': {
       flexDirection: 'column',
       paddingLeft: 0,
       paddingRight: 0,
+      alignItems: 'center',
     },
+    color: ({ color }) => color,
   },
   containerCard: {
     display: 'flex',
     justifyContent: 'center',
     whiteSpace: 'pre-wrap',
     order: ({ right }) => (right ? 1 : -1),
-    '@media (max-width: 768px)': {
+    '@media (max-width: 1320px)': {
       order: () => 1,
       alignItems: 'center',
-      width: '90%',
+      width: '100%',
+      maxWidth: '100%',
     },
   },
   titleCard: {
     fontFamily: 'Montserrat',
-    fontWeight: 900,
+    fontWeight: 700,
     fontSize: 30,
+    paddingBottom: 5,
+    '@media (max-width: 1320px)': {
+      textAlign: 'center',
+      fontSize: '28px',
+      marginTop: '10px',
+    },
   },
   descriptionCard: {
     fontFamily: 'Montserrat',
-    fontSize: 18,
+    fontSize: 16,
+    fontWeight: 500,
+    lineHeight: '30px',
     textAlign: 'left',
     color: '#000000',
-    '@media (max-width: 768px)': {
-      width: '90%',
-      textAlign: 'center',
+    '@media (max-width: 1320px)': {
+      width: '100%',
+      textAlign: 'left',
       fontSize: 16,
       marginTop: 20,
       marginBottom: 20,
     },
   },
+  link: {
+    width: '149px',
+    height: '50px',
+  },
   descriptionLink: {
     fontFamily: 'Montserrat',
-    fontSize: 18,
-    textAlign: 'right',
+    fontSize: 13,
+    lineHeight: '20px',
+    width: '149px',
+    height: '50px',
+    textAlign: 'center',
+    color: '#000000',
+    justifyContent: 'left',
+    alignItems: 'center',
+    display: 'flex',
     '&:hover': {
       textDecoration: 'underline',
+      color: '#8249DC',
+    },
+    '@media (max-width: 1320px)': {
+      justifyContent: 'center',
     },
   },
   backgroundCardImage: {
     backgroundImage: (props) => props.backgroundImage || '#ECEC',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'bottom',
+    minHeight: '20vh',
+    backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
-    height: '100%',
-    minHeight: '35vh',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
-    '@media (max-width: 576px)': {
+    '@media (max-width: 1320px)': {
       order: () => -1,
+      maxWidth: '100%',
     },
   },
 }));

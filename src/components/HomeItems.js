@@ -57,7 +57,7 @@ const styles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '100%',
-    minHeight: '35vh',
+    minHeight: '30vh',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
     '@media (max-width: 576px)': {
