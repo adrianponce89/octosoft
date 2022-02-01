@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -34,7 +33,7 @@ export default function HTML(props) {
             zIndex: 9900,
           }}
         >
-          <img src="/images/logoHome.svg" width="150" height="150" />
+          <img src='./assets/logoHome.svg' width="150" height="150" />
         </div>
         <div
           key={`body`}

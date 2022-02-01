@@ -7,9 +7,6 @@ import ProjectCard from './ProjectCard';
 
 const ServicePortfolioGrid = ({ portfolio }) => {
   const classes = useStyle({ portfolio });
-  // eslint-disable-next-line no-unused-expressions
-  //Acá debería hacerse la query para pedir la data de los proyectos de esta categoría, hecho eso
-  //Se rellena la grid con el contenido
 
   return (
     <Container className={classes.root}>
