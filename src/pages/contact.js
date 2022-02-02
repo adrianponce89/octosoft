@@ -187,7 +187,7 @@ const Contact = (props) => {
                 value={lastName}
                 name="lastName"
                 onChange={({ target }) => setLastName(target.value)}
-                label="LastName"
+                label="Last Name"
                 required
               />
             </Grid>

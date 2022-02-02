@@ -33,7 +33,7 @@ export default function HTML(props) {
             zIndex: 9900,
           }}
         >
-          <img src='./assets/logoHome.svg' width="150" height="150" />
+          <img src='/images/logoHome.svg' width="150" height="150" />
         </div>
         <div
           key={`body`}
