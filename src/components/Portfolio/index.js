@@ -4,7 +4,7 @@ import OurPortfolio from './OurPortfolio';
 
 const Portfolio = ({ data }) => {
 
-  let sectionData = data.allContentfulBanners.edges.find(node => node.node.title == 'Our Portfolio')
+  let sectionData = data.allContentfulBanners.edges.find(node => node.node.title === 'Our Portfolio')
 
   const { node: sectionTitle } = sectionData
   const { nodes: portfolioContent } = data.allContentfulService

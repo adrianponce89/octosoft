@@ -19,6 +19,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 import Contact from './Contact';
 
+
 const HideOnScroll = (props) => {
   const { children } = props;
   const trigger = useScrollTrigger({});
@@ -218,11 +219,13 @@ const NavBar = (props) => {
               </IconButton>
             </Hidden>
             <Hidden mdDown>
-              <Box className={classes.links}>
-                <NavLinks
-                  transparent={transparent}
-                  onDesktop={true}
-                />
+              <Box
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className={classes.links}
+              >
+                <NavLinks transparent={transparent} />
               </Box>
             </Hidden>
           </Toolbar>

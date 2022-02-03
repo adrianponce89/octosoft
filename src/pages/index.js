@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import { Grid } from '@material-ui/core';
-import Container from '../components/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import BackgroundImage from '../assets/Trama.png';
-import HomeItems from '../components/HomeItems';
-import Banners from '../components/Banners';
 import HomeBanner from '../components/Home/Banner';
-import PlansGrid from '../components/PlansGrid';
+import DescriptionHome from '../components/DescriptionHome';
+import Services from '../components/Home/Services';
+import HomePlans from '../components/HomePlans';
+import Clients from '../components/Home/Clients';
+import CalendarButton from '../components/CalendarButton'
+import { Link } from 'gatsby';
+
 
 const useStyles = makeStyles((theme) => ({
   containerCard: {
@@ -16,59 +19,90 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     width: '100%',
   },
+  backgroundHome: {
+    width: '100%',
+    height: '310vh',
+    opacity: 0.2,
+    top: '100vh',
+    left: 0,
+    bottom: 0,
+    right: 0,
+    position: 'absolute',
+    backgroundImage: ({ BackgroundImage }) =>
+      `url(${BackgroundImage})`,
+    backgroundColor: '#FFF',
+    backgroundPosition: 'initial',
+    backgroundRepeat: 'repeat',
+    backgroundSize: '100vw',
+    zIndex: '-1',
+  },
+  home: {
+    zIndex: 99,
+  },
 }));
 
 export default (props) => {
+  const [isActive, setIsActive] = useState(false);
+  const [firstView, setFirstView] = useState(true);
   const descriptionLanding = get(
     props,
     'data.contentfulLandingDescription',
   );
-  const banners = get(props, 'data.allContentfulBanners.edges');
-  const homeItems = get(props, 'data.allContentfulHomeItem.edges');
+  const servicesHome = get(props, 'data.allContentfulService');
   const plans = get(props, 'data.allContentfulPlan.edges');
+  const aboutUs = get(props, 'data.allContentfulAboutUs.nodes');
+  const clients = get(props, 'data.allContentfulHomeClients');
+
+  const handleScroll = () => {
+    if (window.scrollY >= 300 && !isActive && firstView) {
+      setIsActive(true);
+      setFirstView(false);
+    } else if (window.scrollY < 300 && isActive && !firstView) {
+      setIsActive(false);
+    } else if (!firstView) {
+      setIsActive(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  }, []);
+
+  
+
   const classes = useStyles({
-    backgroundImage: descriptionLanding.backgroundImage.file.url,
+    BackgroundImage: BackgroundImage,
+    isActive,
   });
 
-  const planBanner = banners.find(({ node }) => node.type === 'Plans')
-    .node;
+  const clientHome = clients.edges[0].node
 
   return (
     <>
-      <HomeBanner descriptionLanding={descriptionLanding} />
+      <HomeBanner descriptionLanding={descriptionLanding} isActive={isActive}/>
+      <Link to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03">
+        <CalendarButton />
+      </Link>
       <section id="work">
-        <Container
-          background={`url(${BackgroundImage})`}
-          innerBackground={'none'}
-          className={classes.containerCard}
+        <Grid
+          container
+          direction="column"
+          justify="center"
+          alignItems="center"
+          xs={12}
+          className={classes.home}
         >
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            xs={12}
-          >
-            {homeItems.map(({ node }, i) => (
-              <HomeItems
-                right={i % 2 == 0}
-                backgroundImage={`url(${node.image.file.url})`}
-                title={node.title}
-                description={node.description.description}
-                link={node.link}
-                color={node.color}
-              />
-            ))}
-            {/* <Banners
-              backgroundImage={`url(${planBanner.image.file.url})`}
-              title={planBanner.title}
-              right={true}
-              color={planBanner.color}
-              id="ourplans"
+          <DescriptionHome content={aboutUs[0]} />
+          <Services services={servicesHome} />
+          <HomePlans plans={plans} />
+          {clientHome && (
+            <Clients
+              title={clientHome.title}
+              dataClients={clientHome.media}
             />
-            <PlansGrid plans={plans} /> */}
-          </Grid>
-        </Container>
+          )}
+        </Grid>
       </section>
     </>
   );
@@ -120,6 +154,7 @@ export const pageQuery = graphql`
           type
           order
           link
+          color
           description {
             json
           }
@@ -141,6 +176,55 @@ export const pageQuery = graphql`
         }
       }
     }
+    allContentfulService(sort: { fields: order }) {
+      nodes {
+        description
+        order
+      }
+      edges {
+        node {
+          color
+          id
+          order
+          title
+          newOrder
+          newName
+          newColor
+          category
+          images {
+            file {
+              url
+            }
+          }
+          content {
+            json
+          }
+        }
+      }
+    }
+    allContentfulHomeClients {
+      edges {
+        node {
+          title
+          media {
+            title
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+    allContentfulAboutUs {
+      nodes {
+        image {
+          file {
+            url
+          }
+        }
+        description
+      }
+    }
     allContentfulBanners {
       edges {
         node {
@@ -157,3 +241,4 @@ export const pageQuery = graphql`
     }
   }
 `;
+
