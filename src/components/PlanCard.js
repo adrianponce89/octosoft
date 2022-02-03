@@ -193,7 +193,8 @@ const PlanCard = ({plan, index}) => {
         item
         container
         className={classes.root}
-        sm={4}
+        xs={10}
+        sm={5}
         md={4}
         lg={3}
       >
@@ -202,6 +203,8 @@ const PlanCard = ({plan, index}) => {
           container
           direction="column"
           justify="flex-start"
+          xs={12}
+          sm={12}
           md={12}
           className={classes.content}
         >

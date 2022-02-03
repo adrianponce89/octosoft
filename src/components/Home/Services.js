@@ -52,7 +52,7 @@ const Services = ({ services}) => {
         item
         xl={8}
         lg={10}
-        xs={12}
+        xs={10}
       >
         {servicesToShow.length > 0 &&
           servicesToShow
@@ -71,7 +71,7 @@ const Services = ({ services}) => {
         item
         xl={8}
         lg={10}
-        xs={12}
+        xs={10}
       >
         {servicesToShow.length > 0 &&
           servicesToShow

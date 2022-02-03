@@ -69,11 +69,7 @@ export default (props) => {
     handleScroll();
   }, []);
 
-  useEffect(() => {
-    if (isActive) {
-      window.scrollTo({top: 300});
-    }
-  }, [isActive]);
+  
 
   const classes = useStyles({
     BackgroundImage: BackgroundImage,

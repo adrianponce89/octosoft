@@ -14,12 +14,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '20vh',
-    minHeight: (props) =>
-      props.isActive ? '50vh' : '85vh',
+    minHeight: '45vh',
     position: 'relative',
-    '@media (max-width: 560px)': { height: '100%' },
+    '@media (max-width: 560px)': { minHeight: '30vh' },
     transition: 'all 1s linear',
-    
   },
   background: {
     backgroundImage: (props) => `url(${props.backgroundImage})`,

@@ -15,7 +15,7 @@ const styles = makeStyles((theme) => ({
     borderRadius: 4,
     fontFamily: 'Montserrat',
     '@media (max-width: 760px)': {
-      width: '80%',
+      width: '100%',
     },
   },
   btn: {
@@ -45,8 +45,6 @@ const HomeForm = ({plans}) => {
       const [plan, setPlan] = useState('');
       const [email, setEmail] = useState('');
       const [content, setContent] = useState('');
-
-	  console.log('AAAA', name.length)
 
       const handleSubmit = (event) => {
         event.preventDefault();
@@ -81,6 +79,7 @@ const HomeForm = ({plans}) => {
       <Grid
         container
         item
+        xs={10}
         md={3}
         justify="center"
         alignItems="center"
