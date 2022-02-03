@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import { useStaticQuery, graphql } from 'gatsby';
@@ -8,33 +9,30 @@ import BackgroundImage from '../assets/Trama.png';
 const PortfolioPage = (props) => {
   const data = useStaticQuery(graphql`
     query services {
-      allContentfulService{
-          nodes {
-            newColor
-            newName
-            newOrder
-            category
-            porfolioBackground{
-              file {
-                url
-              }
+      allContentfulService {
+        nodes {
+          newColor
+          newName
+          newOrder
+          category
+          porfolioBackground {
+            file {
+              url
             }
-<<<<<<< HEAD
-            porfolioBackgorundWide{
-              file {
-                url
-              }
-            }
-            portfolioLink
           }
+          porfolioBackgorundWide {
+            file {
+              url
+            }
+          }
+          portfolioLink
+        }
       }
       allContentfulBanners {
         edges {
           node {
             color
             title
-=======
->>>>>>> feature/new-home
           }
         }
       }
