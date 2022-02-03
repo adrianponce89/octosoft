@@ -20,6 +20,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 import Contact from './Contact';
 
+
 const HideOnScroll = (props) => {
   const { children } = props;
   const trigger = useScrollTrigger({});

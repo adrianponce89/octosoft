@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
 import { Grid } from '@material-ui/core';
@@ -42,6 +42,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default (props) => {
+  const [isActive, setIsActive] = useState(false);
+  const [firstView, setFirstView] = useState(true);
   const descriptionLanding = get(
     props,
     'data.contentfulLandingDescription',
@@ -51,15 +53,34 @@ export default (props) => {
   const aboutUs = get(props, 'data.allContentfulAboutUs.nodes');
   const clients = get(props, 'data.allContentfulHomeClients');
 
+  const handleScroll = () => {
+    if (window.scrollY >= 300 && !isActive && firstView) {
+      setIsActive(true);
+      setFirstView(false);
+    } else if (window.scrollY < 300 && isActive && !firstView) {
+      setIsActive(false);
+    } else if (!firstView) {
+      setIsActive(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+  }, []);
+
+  
+
   const classes = useStyles({
     BackgroundImage: BackgroundImage,
+    isActive,
   });
 
   const clientHome = clients.edges[0].node
 
   return (
     <>
-      <HomeBanner descriptionLanding={descriptionLanding} />
+      <HomeBanner descriptionLanding={descriptionLanding} isActive={isActive}/>
       <Link to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03">
         <CalendarButton />
       </Link>

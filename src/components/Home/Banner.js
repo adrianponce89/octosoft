@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MainLogo from './MainLogo';
 import BannerTrama from '../../assets/trama2.png';
@@ -14,9 +14,10 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-end',
     justifyContent: 'center',
     paddingTop: '20vh',
-    minHeight: '85vh',
+    minHeight: '45vh',
     position: 'relative',
-    '@media (max-width: 560px)': { height: '100%' },
+    '@media (max-width: 560px)': { minHeight: '30vh' },
+    transition: 'all 1s linear',
   },
   background: {
     backgroundImage: (props) => `url(${props.backgroundImage})`,
@@ -82,45 +83,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default ({ descriptionLanding }) => {
-  const [isActive, setIsActive] = useState(false)
-  const [firstView, setFirstView] = useState(true)
+export default ({ descriptionLanding, isActive }) => {
+  
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
+    isActive
   });
 
-  const handleScroll = () => {
-    if (window.scrollY >= 1000 && !isActive && firstView) {
-      setIsActive(true);
-      setFirstView(false);
-    } else if (window.scrollY < 1000 && isActive && !firstView) {
-      setIsActive(false);
-    } else if (!firstView) {
-      setIsActive(false);
-    }
-  };
-
-  useEffect(()=>{
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-  }, [])
+  
 
   return (
     <>
       <div
-        className={
-          isActive ? classes.background : classes.backgroundHead
-        }
+        //className={
+        //  isActive ? classes.background : classes.backgroundHead
+        //}
+        className={classes.backgroundHead}
+        //data-aos-offset="900"
+        //data-aos="fade-up"
+        //data-aos-duration="3000"
+        //data-aos-anchor-placement="center-center"
+        //data-aos-once="true"
       ></div>
-      {/* <div
-        data-aos="fade-down-right"
-        data-aos-once="true"
-        data-aos-easing="linear"
-        data-aos-duration="1500"
-        className={firstView ? classes.trama : { display: 'none' }}
-      ></div>*/}
 
       <div
+        id="banner"
         data-aos="fade-down"
         data-aos-easing="linear"
         data-aos-duration="1000"

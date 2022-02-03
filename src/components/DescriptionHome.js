@@ -48,8 +48,8 @@ const styles = makeStyles((theme) => ({
     width: 530,
     height: 300,
     '@media (max-width: 760px)': {
-      width: 330,
-      height: 200,
+      width: 300,
+      height: 190,
     },
   },
   mediaContainer:{
