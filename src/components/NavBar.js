@@ -19,6 +19,236 @@ import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 import Contact from './Contact';
 
+
+const HideOnScroll = (props) => {
+  const { children } = props;
+  const trigger = useScrollTrigger({});
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      {children}
+    </Slide>
+  );
+};
+
+const menuList = [
+  { title: 'HOME', link: '/' },
+  {
+    title: 'ABOUT US',
+    children: [
+      { title: 'About Octosoft', link: '/aboutus' },
+      { title: 'Our Team', link: '/ourteam' },
+      { title: 'Our Brand', link: '/brand' },
+    ],
+  },
+  {
+    title: 'WHAT WE DO',
+    children: [
+      { title: 'Our Services', link: '/ourservices' },
+      { title: 'Portfolio', link: '/portfolio' },
+    ],
+  },
+  {
+    title: 'COMMUNITY',
+    children: [
+      { title: 'News', link: '/underConstruction' },
+      { title: 'Events', link: '/underConstruction' },
+      { title: 'Blog', link: '/underConstruction' },
+      {
+        title: 'Bordeless Identities',
+        link: '/borderlessIdentities',
+      },
+    ],
+  },
+  { title: 'CONTACT US', children: [], linkContact: '/contact' },
+];
+const NavLinks = (props) => {
+  const classes = useStyles(props);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [menuSelected, setMenuSelected] = React.useState(null);
+
+  const handleClick = (event, title) => {
+    setAnchorEl(event.currentTarget);
+    setMenuSelected(title);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <>
+      {menuList.map((menu) =>
+        menu.link ? (
+          <Link className={classes.link} margin={2} 
+          to={'/'}
+           to={menu.link} >
+            <div className={classes.linkText}>{menu.title}</div>
+          </Link>
+        ) : menu.children ? (
+          <>
+            {props.onDesktop !== true ? (
+              menu.title !== 'CONTACT US' ? (
+                <a
+                  aria-controls="simple-menu"
+                  aria-haspopup="true"
+                  onClick={(e) => handleClick(e, menu.title)}
+                  className={classes.link}
+                  margin={2}
+                >
+                  <div className={classes.chevron}>{menu.title}</div>
+                </a>
+              ) : null
+            ) : (
+              <a
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={(e) => handleClick(e, menu.title)}
+                className={classes.link}
+                margin={2}
+              >
+                <div className={classes.chevron}>{menu.title}</div>
+              </a>
+            )}
+            {/* {(menu.title !== 'CONTACT US') &
+            (props.onDesktop !== true) ? (
+              <a
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={(e) => handleClick(e, menu.title)}
+                className={classes.link}
+                margin={2}
+              >
+                <div className={classes.chevron}>{menu.title}</div>
+              </a>
+            ) : null} */}
+
+            {/* {props.onDesktop === false &&
+            menu.title === 'CONTACT US' ? (
+              <Link
+                className={classes.link}
+                margin={2}
+                to={menu.linkContact}
+              >
+                <div className={classes.linkText}>{menu.title}</div>
+              </Link>
+            ) : null} */}
+            {menuSelected === menu.title ? (
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                {menu.title === 'CONTACT US' ? (
+                  <Contact />
+                ) : (
+                  menu.children.map((child) => (
+                    <MenuItem
+                      component={Link}
+                      to={'/'}
+                       to={child.link} 
+                      onClick={handleClose}
+                    >
+                      {child.title}
+                    </MenuItem>
+                  ))
+                )}
+              </Menu>
+            ) : null}
+          </>
+        ) : null,
+      )}
+      {!props.onDesktop && (
+        <Link className={classes.link} margin={2} 
+        to={'/'}
+         to={'/contact'} >
+          <div className={classes.linkText}>{'CONTACT US'}</div>
+        </Link>
+      )}
+
+      <Link
+        className={classes.linkButton}
+         to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03" 
+     to={'/'}
+      >
+        <Button className={classes.button}>
+          <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
+        </Button>
+      </Link>
+    </>
+  );
+};
+
+const NavBar = (props) => {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 20,
+  });
+  const transparent = !trigger && props.home;
+
+  const classes = useStyles({ transparent });
+  const [showDrawer, setShowDrawer] = useState(false);
+  return (
+    <React.Fragment>
+      <HideOnScroll {...props}>
+        <AppBar className={classes.appbar}>
+          <Toolbar className={classes.toolbar}>
+            <Link to={'/'} className={classes.link}>
+              <div className={classes.links}>
+                <div className={classes.logo}>
+                  <OctoLogo className={classes.logo} />
+                </div>
+                <div className={classes.textLogoContainer}>
+                  <p className={classes.textLogo}>{'Octosoft'}</p>
+                  <p className={classes.textLogoSub}>
+                    {'Professionals'}
+                  </p>
+                </div>
+              </div>
+            </Link>
+            <Hidden lgUp>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={() => setShowDrawer(true)}
+                edge="start"
+                className={classes.iconDrawer}
+              >
+                <MenuIcon />
+              </IconButton>
+            </Hidden>
+            <Hidden mdDown>
+              <Box
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className={classes.links}
+              >
+                <NavLinks transparent={transparent} />
+              </Box>
+            </Hidden>
+          </Toolbar>
+        </AppBar>
+      </HideOnScroll>
+      <Hidden lgUp>
+        <SwipeableDrawer
+          anchor={'right'}
+          open={showDrawer}
+          onClose={() => setShowDrawer(false)}
+          onOpen={() => setShowDrawer(true)}
+        >
+          <NavLinks
+            color="black"
+            textShadow="none"
+            onDesktop={false}
+          />
+        </SwipeableDrawer>
+      </Hidden>
+    </React.Fragment>
+  );
+};
+
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     paddingLeft: theme.spacing(5),
@@ -112,239 +342,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     backgroundColor: '#33adff',
     padding: '6px 30px',
-    '&:hover': {
-      backgroundColor: '#7DD1E3',
-    },
   },
   menu: {
     background: 'pink',
     width: '100vw',
   },
 }));
-
-const HideOnScroll = (props) => {
-  const { children } = props;
-  const trigger = useScrollTrigger({});
-  return (
-    <Slide appear={false} direction="down" in={!trigger}>
-      {children}
-    </Slide>
-  );
-};
-
-const menuList = [
-  { title: 'HOME', link: '/' },
-  {
-    title: 'ABOUT US',
-    children: [
-      { title: 'About Octosoft', link: '/aboutus' },
-      { title: 'Our Team', link: '/aboutus' },
-      { title: 'Our Brand', link: '/brand' },
-    ],
-  },
-  {
-    title: 'WHAT WE DO',
-    children: [
-      { title: 'Our Services', link: '/ourservices' },
-      { title: 'Portfolio', link: '/portfolio' },
-    ],
-  },
-  {
-    title: 'COMMUNITY',
-    children: [
-      { title: 'News', link: '/underConstruction' },
-      { title: 'Events', link: '/underConstruction' },
-      { title: 'Blog', link: '/underConstruction' },
-      {
-        title: 'Bordeless Identities',
-        link: '/borderlessIdentities',
-      },
-    ],
-  },
-  { title: 'CONTACT US', children: [], linkContact: '/contact' },
-];
-const NavLinks = (props) => {
-  const classes = useStyles(props);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [menuSelected, setMenuSelected] = React.useState(null);
-
-  const handleClick = (event, title) => {
-    setAnchorEl(event.currentTarget);
-    setMenuSelected(title);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  console.log(props.onDesktop);
-
-  return (
-    <>
-      {menuList.map((menu) =>
-        menu.link ? (
-          <Link className={classes.link} margin={2} to={menu.link}>
-            <div className={classes.linkText}>{menu.title}</div>
-          </Link>
-        ) : menu.children ? (
-          <>
-            {props.onDesktop !== true ? (
-              menu.title !== 'CONTACT US' ? (
-                <a
-                  aria-controls="simple-menu"
-                  aria-haspopup="true"
-                  onClick={(e) => handleClick(e, menu.title)}
-                  className={classes.link}
-                  margin={2}
-                >
-                  <div className={classes.chevron}>{menu.title}</div>
-                </a>
-              ) : null
-            ) : (
-              <a
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={(e) => handleClick(e, menu.title)}
-                className={classes.link}
-                margin={2}
-              >
-                <div className={classes.chevron}>{menu.title}</div>
-              </a>
-            )}
-            {/* {(menu.title !== 'CONTACT US') &
-            (props.onDesktop !== true) ? (
-              <a
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={(e) => handleClick(e, menu.title)}
-                className={classes.link}
-                margin={2}
-              >
-                <div className={classes.chevron}>{menu.title}</div>
-              </a>
-            ) : null} */}
-
-            {/* {props.onDesktop === false &&
-            menu.title === 'CONTACT US' ? (
-              <Link
-                className={classes.link}
-                margin={2}
-                to={menu.linkContact}
-              >
-                <div className={classes.linkText}>{menu.title}</div>
-              </Link>
-            ) : null} */}
-            {menuSelected === menu.title ? (
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                {menu.title === 'CONTACT US' ? (
-                  <Contact />
-                ) : (
-                  menu.children.map((child) => (
-                    <MenuItem
-                      component={Link}
-                      to={child.link}
-                      onClick={handleClose}
-                    >
-                      {child.title}
-                    </MenuItem>
-                  ))
-                )}
-              </Menu>
-            ) : null}
-          </>
-        ) : null,
-      )}
-      {!props.onDesktop && (
-        <Link className={classes.link} margin={2} to={'/contact'}>
-          <div className={classes.linkText}>{'CONTACT US'}</div>
-        </Link>
-      )}
-
-      <Link
-        className={classes.linkButton}
-        to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
-      >
-        <Button className={classes.button}>
-          <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
-        </Button>
-      </Link>
-    </>
-  );
-};
-
-const NavBar = (props) => {
-  const trigger = useScrollTrigger({
-    disableHysteresis: true,
-    threshold: 20,
-  });
-  const transparent = !trigger && props.home;
-
-  const classes = useStyles({ transparent });
-  const [showDrawer, setShowDrawer] = useState(false);
-  return (
-    <React.Fragment>
-      <HideOnScroll {...props}>
-        <AppBar className={classes.appbar}>
-          <Toolbar className={classes.toolbar}>
-            <Link to={'/'} className={classes.link}>
-              <div className={classes.links}>
-                <div className={classes.logo}>
-                  <OctoLogo className={classes.logo} />
-                </div>
-                <div className={classes.textLogoContainer}>
-                  <p className={classes.textLogo}>{'Octosoft'}</p>
-                  <p className={classes.textLogoSub}>
-                    {'Professionals'}
-                  </p>
-                </div>
-              </div>
-            </Link>
-            <Hidden lgUp>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={() => setShowDrawer(true)}
-                edge="start"
-                className={classes.iconDrawer}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
-            <Hidden mdDown>
-              <Box
-                data-aos="fade-down"
-                data-aos-easing="linear"
-                data-aos-duration="1000"
-                className={classes.links}
-              >
-                <NavLinks transparent={transparent} />
-              </Box>
-            </Hidden>
-          </Toolbar>
-        </AppBar>
-      </HideOnScroll>
-      <Hidden lgUp>
-        <SwipeableDrawer
-          anchor={'right'}
-          open={showDrawer}
-          onClose={() => setShowDrawer(false)}
-          onOpen={() => setShowDrawer(true)}
-        >
-          <NavLinks
-            color="black"
-            textShadow="none"
-            onDesktop={false}
-          />
-        </SwipeableDrawer>
-      </Hidden>
-    </React.Fragment>
-  );
-};
-
 export default NavBar;

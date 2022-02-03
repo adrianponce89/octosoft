@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
@@ -13,6 +12,7 @@ export default function HTML(props) {
         />
         <meta property="og:title" content="Octosoft Professionals" />
         <meta property="og:image" content="/images/sharing.png" />
+        <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
@@ -33,7 +33,7 @@ export default function HTML(props) {
             zIndex: 9900,
           }}
         >
-          <img src="/images/logoHome.svg" width="150" height="150" />
+          <img src='/images/logoHome.svg' width="150" height="150" />
         </div>
         <div
           key={`body`}

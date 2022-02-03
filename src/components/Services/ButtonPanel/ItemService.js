@@ -2,6 +2,49 @@ import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, Grid, Typography } from '@material-ui/core';
+import { Link } from 'gatsby';
+
+const ItemService = ({ node, selectedIndex }) => {
+  const classes = styles({
+    color: node.color,
+    image: node.images[0].file.url,
+    selected: node.order === selectedIndex,
+  });
+
+  return (
+    <Grid
+      item
+      xs={12}
+      container
+      justify="space-around"
+      alignItems="center"
+      className={classes.button}
+    >
+      <Grid item xs={4} sm={3} className={classes.buttonIcon} />
+
+      <Divider orientation="vertical" className={classes.divider} />
+
+      <Grid
+        item
+        xs={8}
+        sm={4}
+        container
+        justify="center"
+        className={classes.boxBtnText}
+      >
+        <Link
+          to={`/ourservices/subcategories?${node.title}`}
+          className={classes.link}
+        >
+          <Typography
+            variant="text"
+            className={classes.buttonText}
+          >{`${node.title}`}</Typography>
+        </Link>
+      </Grid>
+    </Grid>
+  );
+};
 
 const styles = makeStyles({
   button: {
@@ -46,42 +89,5 @@ const styles = makeStyles({
     },
   },
 });
-
-const ItemService = ({ node, selectedIndex }) => {
-  const classes = styles({
-    color: node.color,
-    image: node.images[0].file.url,
-    selected: node.order === selectedIndex,
-  });
-
-  return (
-    <Grid
-      item
-      xs={12}
-      container
-      justify="space-around"
-      alignItems="center"
-      className={classes.button}
-    >
-      <Grid item xs={4} sm={3} className={classes.buttonIcon} />
-
-      <Divider orientation="vertical" className={classes.divider} />
-
-      <Grid
-        item
-        xs={8}
-        sm={4}
-        container
-        justify="center"
-        className={classes.boxBtnText}
-      >
-        <Typography
-          variant="text"
-          className={classes.buttonText}
-        >{`${node.title}`}</Typography>
-      </Grid>
-    </Grid>
-  );
-};
 
 export default ItemService;

@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;800&display=swap');
 
+html, body {
+    overflow-x: hidden !important;
+}
+
 html {
   scroll-behavior: smooth;
   font-family: 'Montserrat', 'Montserrat', sans-serif;

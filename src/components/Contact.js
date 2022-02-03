@@ -89,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonContainer: {
     flex: 1,
+    marginTop: '5rem',
     display: 'flex',
     justifyContent: 'center',
   },

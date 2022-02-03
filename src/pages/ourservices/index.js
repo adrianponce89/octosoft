@@ -17,6 +17,7 @@ const OurServices = (props) => {
     ({ node }) => node.type === 'OurServices',
   ).node;
 
+  console.log(services);
   return (
     <Container
       background={`url(${BackgroundImage})`}

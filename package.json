@@ -23,6 +23,7 @@
     "gatsby-source-contentful": "^2.3.41",
     "jszip": "^3.7.1",
     "lodash": "^4.17.20",
+    "masonry-layout": "^4.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",

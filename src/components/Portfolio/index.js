@@ -3,27 +3,23 @@ import DetailPortfolio from './Detail';
 import OurPortfolio from './OurPortfolio';
 
 const Portfolio = ({ data }) => {
-  const {
-    allContentfulPortfolio: {
-      edges: [
-        {
-          node: {
-            colorTitle,
-            titlePortfolioPage,
-            description: { description },
-          },
-        },
-      ],
-    },
-  } = data;
+
+  let sectionData = data.allContentfulBanners.edges.find(node => node.node.title === 'Our Portfolio')
+
+  const { node: sectionTitle } = sectionData
+  const { nodes: portfolioContent } = data.allContentfulService
+
+  const orderedPortfolios = portfolioContent
+    .filter(portfolio => portfolio.newName !== 'Octosoft')
+    .sort((a, b) => a.newOrder - b.newOrder)
 
   return (
     <>
       <OurPortfolio
-        colorTitle={colorTitle}
-        title={titlePortfolioPage}
-        description={description}
+        colorTitle={sectionTitle.color}
+        title={sectionTitle.title}
       />
+      <DetailPortfolio portfolios={orderedPortfolios} />
     </>
   );
 };
