@@ -3,6 +3,7 @@ import DetailPortfolio from './Detail';
 import OurPortfolio from './OurPortfolio';
 
 const Portfolio = ({ data }) => {
+<<<<<<< HEAD
 
   let sectionData = data.allContentfulBanners.edges.find(node => node.node.title == 'Our Portfolio')
 
@@ -12,6 +13,21 @@ const Portfolio = ({ data }) => {
   const orderedPortfolios = portfolioContent
     .filter(portfolio => portfolio.newName !== 'Octosoft')
     .sort((a, b) => a.newOrder - b.newOrder)
+=======
+  const {
+    allContentfulPortfolio: {
+      edges: [
+        {
+          node: {
+            colorTitle,
+            titlePortfolioPage,
+            description: { description },
+          },
+        },
+      ],
+    },
+  } = data;
+>>>>>>> feature/new-home
 
   return (
     <>
@@ -19,7 +35,10 @@ const Portfolio = ({ data }) => {
         colorTitle={sectionTitle.color}
         title={sectionTitle.title}
       />
+<<<<<<< HEAD
       <DetailPortfolio portfolios={orderedPortfolios} />
+=======
+>>>>>>> feature/new-home
     </>
   );
 };

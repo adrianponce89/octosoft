@@ -19,6 +19,7 @@ const PortfolioPage = (props) => {
                 url
               }
             }
+<<<<<<< HEAD
             porfolioBackgorundWide{
               file {
                 url
@@ -32,6 +33,8 @@ const PortfolioPage = (props) => {
           node {
             color
             title
+=======
+>>>>>>> feature/new-home
           }
         }
       }
