@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import {
@@ -18,7 +19,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 import Contact from './Contact';
-
 
 const HideOnScroll = (props) => {
   const { children } = props;
@@ -219,13 +219,11 @@ const NavBar = (props) => {
               </IconButton>
             </Hidden>
             <Hidden mdDown>
-              <Box
-                data-aos="fade-down"
-                data-aos-easing="linear"
-                data-aos-duration="1000"
-                className={classes.links}
-              >
-                <NavLinks transparent={transparent} />
+              <Box className={classes.links}>
+                <NavLinks
+                  transparent={transparent}
+                  onDesktop={true}
+                />
               </Box>
             </Hidden>
           </Toolbar>
