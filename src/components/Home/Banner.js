@@ -95,23 +95,10 @@ export default ({ descriptionLanding, isActive }) => {
   return (
     <>
       <div
-        //className={
-        //  isActive ? classes.background : classes.backgroundHead
-        //}
         className={classes.backgroundHead}
-        //data-aos-offset="900"
-        //data-aos="fade-up"
-        //data-aos-duration="3000"
-        //data-aos-anchor-placement="center-center"
-        //data-aos-once="true"
       ></div>
 
       <div
-        id="banner"
-        data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="1000"
-        data-aos-once="true"
         className={classes.mainLogo}
       >
         <MainLogo />
