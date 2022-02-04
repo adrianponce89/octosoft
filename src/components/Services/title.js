@@ -3,13 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 
 const Title = ({ title, color }) => {
-  const classes = useStyles({color});
+  const classes = useStyles({ color });
   return (
     <Grid
       container
       item
-      xs={12}
-      justify="center"
       alignItems="center"
       direction="column"
       className={classes.titleContainer}

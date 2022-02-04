@@ -1,99 +1,84 @@
 import React from 'react';
-import { graphql } from 'gatsby';
-import get from 'lodash/get';
+import { makeStyles } from '@material-ui/core/styles';
+import { useStaticQuery, graphql } from 'gatsby';
 import Container from '../../components/Container';
-import BackgroundImage from '../../assets/Trama.png';
-import Services from '../../components/Services';
+import OurPortfolio from '../../components/Portfolio/OurPortfolio';
+import ServiceGrid from '../../components/ServicesItems/serviceGrid';
+import Title from '../../components/Services/title';
 
 const OurServices = (props) => {
-  const banners = get(props, 'data.allContentfulBanners.edges');
-  const services = get(props, 'data.allContentfulService.edges');
-  const category = get(props, 'data.allContentfulCategory.edges');
-  const {
-    location: { hash },
-  } = props;
+  const classes = useStyle();
+  const data = useStaticQuery(graphql`
+    query servicesData {
+      allContentfulService{
+        edges {
+          node {
+            title
+            newOrder
+            newName
+            newColor
+            description
+            categories
+            category
+            portfolioLink
+            newLogo{
+              file {
+                url
+              }
+            }
+            newTools {
+              file {
+                url
+              }
+            }
+          }
+        }
+      }
+      allContentfulBanners {
+        edges {
+          node {
+            color
+            title
+          }
+        }
+      }
+    }
+  `);
 
-  const outServices = banners.find(
-    ({ node }) => node.type === 'OurServices',
-  ).node;
+  const { allContentfulService, allContentfulBanners } = data
 
-  console.log(services);
+  const transformData = (array) => {
+    return array.reduce((total, data) => {
+      let nodeData = { ...data.node }
+      total = [nodeData, ...total]
+      return total
+    }, [])
+  }
+
+  const titleData = transformData(allContentfulBanners.edges).filter(data => data.title === 'Our Services')
+  const serviceData = transformData(allContentfulService.edges).filter(data => data.title !== 'Octosoft').sort((a, b) => { return a.newOrder - b.newOrder });
+
   return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      innerPadding="80px 25px 25px 25px"
-    >
-      <Services
-        services={services}
-        selected={hash && decodeURI(hash.slice(1))}
-        title={outServices.title}
-        subtitle={outServices.subTitle}
-        colorTitle={outServices.color}
-        image={`url(${outServices.image.file.url})`}
-        category={category}
+    <Container className={classes.container}>
+      <Title
+        color='#37ADD4'
+        //color={titleData[0].color}
+        title={titleData[0].title}
       />
+      <ServiceGrid data={serviceData} />
     </Container>
   );
 };
 
+const useStyle = makeStyles((theme) => ({
+  container: {
+    background: 'transparent',
+    [theme.breakpoints.down('sm')]: {
+    },
+    [theme.breakpoints.down('xs')]: {
+    },
+  },
+}));
+
 export default OurServices;
 
-export const pageQuery = graphql`
-  query OurServicesQuery {
-    allContentfulService(sort: { fields: order }) {
-      edges {
-        node {
-          categories
-          color
-          id
-          order
-          title
-          images {
-            file {
-              url
-            }
-          }
-          content {
-            json
-          }
-        }
-      }
-    }
-    allContentfulBanners {
-      edges {
-        node {
-          color
-          image {
-            file {
-              url
-            }
-          }
-          subTitle
-          type
-          title
-        }
-      }
-    }
-    allContentfulCategory {
-      edges {
-        node {
-          title
-          iconLarge {
-            file {
-              url
-            }
-          }
-          description {
-            description
-          }
-          icon {
-            file {
-              url
-            }
-          }
-          idcategory
-        }
-      }
-    }
-  }
-`;
