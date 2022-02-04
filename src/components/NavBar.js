@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import {
@@ -219,10 +220,11 @@ const NavBar = (props) => {
               </IconButton>
             </Hidden>
             <Hidden mdDown>
-              <Box
-                className={classes.links}
-              >
-                <NavLinks transparent={transparent} />
+              <Box className={classes.links}>
+                <NavLinks
+                  transparent={transparent}
+                  onDesktop={true}
+                />
               </Box>
             </Hidden>
           </Toolbar>

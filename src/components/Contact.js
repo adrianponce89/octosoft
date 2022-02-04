@@ -104,7 +104,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontFamily: 'Montserrat',
     position: 'relative',
-    left: '128px',
+    right: '25px',
     top: '-10px',
   },
   smartphoneImg: {
