@@ -30,6 +30,11 @@ const styles = makeStyles((theme) => ({
         }
       },
       border: ({ color }) => `1px solid ${color}`,
+      '@media (max-width: 760px)': {
+        '&:hover': {
+          filter: 'none',
+        },
+      },
     },
     '@media (max-width: 760px)': {
       marginBottom: 50,
@@ -183,42 +188,47 @@ const styles = makeStyles((theme) => ({
     textDecoration: 'none',
     float: 'right',
   },
+  btnChoose: {
+    border: 'none',
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+  },
 }));
 
-const PlanCard = ({plan, index}) => {
-    const {node:planNode} = plan 
-    const classes = styles({index, color: planNode.color});
-    return (
+const PlanCard = ({ plan, index, choosePlan }) => {
+  const { node: planNode } = plan;
+  const classes = styles({ index, color: planNode.color });
+  return (
+    <Grid
+      item
+      container
+      className={classes.root}
+      xs={10}
+      sm={5}
+      md={4}
+      lg={3}
+    >
       <Grid
         item
         container
-        className={classes.root}
-        xs={10}
-        sm={5}
-        md={4}
-        lg={3}
+        direction="column"
+        justify="flex-start"
+        xs={12}
+        sm={12}
+        md={12}
+        className={classes.content}
       >
-        <Grid
-          item
-          container
-          direction="column"
-          justify="flex-start"
-          xs={12}
-          sm={12}
-          md={12}
-          className={classes.content}
-        >
-          <div className={classes.descriptionTitle}>
-            <Typography className={classes.price}>
-              {`${planNode.amount}`}
-            </Typography>
-            <Typography className={classes.month}>/month</Typography>
-          </div>
-          <Typography className={classes.type}>
-            {planNode.type}
+        <div className={classes.descriptionTitle}>
+          <Typography className={classes.price}>
+            {`${planNode.amount}`}
           </Typography>
-          <Divider />
-          {/* <div className={classes.descriptionContainer}>
+          <Typography className={classes.month}>/month</Typography>
+        </div>
+        <Typography className={classes.type}>
+          {planNode.type}
+        </Typography>
+        <Divider />
+        {/* <div className={classes.descriptionContainer}>
             {plan.content.map((text) => {
               return (
                 <Typography className={classes.description}>
@@ -227,32 +237,31 @@ const PlanCard = ({plan, index}) => {
               );
             })}
           </div> */}
-          <div className={classes.descriptionContainer}>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: documentToHtmlString(
-                  planNode.description.json,
-                ),
-              }}
-            />
-          </div>
-        </Grid>
-        
-          <Grid container item xs={12} alignItems="flex-start" justifyContent="center">
-          <Link
-          className={classes.link}
-          encodeURIComponent
-          to={`/contact?budged=${planNode.amount}#${planNode.title}`}
-        >
-            <Typography className={classes.choose}>
-              CHOOSE PLAN
-            </Typography>
-            </Link>
-          </Grid>
-        
+        <div className={classes.descriptionContainer}>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: documentToHtmlString(planNode.description.json),
+            }}
+          />
+        </div>
       </Grid>
-    );
-}
+
+      <Grid
+        container
+        item
+        xs={12}
+        alignItems="flex-start"
+        justifyContent="center"
+      >
+        <button onClick={()=> choosePlan(false)} className={classes.btnChoose}>
+          <Typography className={classes.choose}>
+            CHOOSE PLAN
+          </Typography>
+        </button>
+      </Grid>
+    </Grid>
+  );
+};
 
 export default PlanCard;
 

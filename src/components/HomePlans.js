@@ -142,7 +142,13 @@ const HomePlans = ({ plans }) => {
           className={classes.package}
         >
           {plans.slice(12, 15).map((plan, i) => {
-            return <PlanCard plan={plan} index={i} />;
+            return (
+              <PlanCard
+                plan={plan}
+                index={i}
+                choosePlan={setPackageView}
+              />
+            );
           })}
         </Grid>
       ) : (

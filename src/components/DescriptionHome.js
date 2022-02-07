@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogoNew from '../assets/newLogo.svg'
 import OctoLogoName from '../assets/Logoocto2.svg';
 import YouTube from 'react-youtube';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -87,11 +85,7 @@ const DescriptionHome = ({ content }) => {
       color:'white',
     },
   };
-  useEffect(() => {
-    AOS.init({
-      duration: 2000,
-    });
-  }, []);
+  
   return (
     <Grid
       container
@@ -109,18 +103,12 @@ const DescriptionHome = ({ content }) => {
         className={classes.mediaContainer}
       >
         <div className={classes.imgContainer}>
-          <div
-            data-aos="fade-down"
-            data-aos-anchor-placement="top-center"
-            data-aos-once="true"
-          >
+          <div>
             <OctoLogoName className={classes.logoName} />
           </div>
         </div>
         <div
           className={classes.videoContainer}
-          data-aos="zoom-in-down"
-          data-aos-once="true"
         >
           <YouTube
             videoId="0uqkxOcoehc"
