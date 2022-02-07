@@ -19,7 +19,7 @@ const ServiceCard = ({ data }) => {
         id="panel1a-header"
       >
         <p className={classes.title}>{data.newName}</p>
-        <Link to={`/portfolio/${data.category}`} variant='outlined' className={classes.headerButton} style={{ visibility: isExpanded ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
+        <Link to={`/portfolio/${data.category}`} className={classes.headerButton} style={{ visibility: isExpanded ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
       </AccordionSummary>
       <AccordionDetails className={classes.itemContent} style={{ backgroundImage: `url(${data.newLogo.file.url})` }}>
         <div className={classes.content} >
@@ -43,6 +43,8 @@ const ServiceCard = ({ data }) => {
             {data.description}
           </p>
           <Link to={`/ourservices/subcategories?${data.title}`} className={classes.contentButton} style={{ backgroundColor: data.newColor }}>VIEW IN DETAIL</Link>
+          <br />
+          <Link to={`/portfolio/${data.category}`} className={classes.showInMobile} style={{ color: data.newColor, border: `1px solid ${data.newColor}` }}>BROWSE PORTFOLIO</Link>
           <div className={classes.tools}>
             {
               data.newTools === null ?
@@ -123,6 +125,10 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       fontSize: '1rem',
+      display: 'none',
+      ['& .showInMobile']: {
+        display: 'initial'
+      }
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '0.5rem',
@@ -209,9 +215,27 @@ const useStyles = makeStyles((theme) => ({
   toolImage: {
     marginRight: '7px',
     [theme.breakpoints.down('xs')]: {
-      width: '100%',
     },
-  }
+  },
+  showInMobile: {
+    borderRadius: '4px',
+    padding: '7px 30px',
+    alignSelf: 'center',
+    textDecoration: 'none',
+    marginBottom: '30px',
+    marginTop: '15px',
+    display: 'none',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '1.2rem',
+    },
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '12px',
+      display: 'inline-block',
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '10px',
+    },
+  },
 }));
 
 export default ServiceCard;
