@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Button } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -6,12 +6,13 @@ import { Link } from 'gatsby';
 
 
 
-const ServiceCard = ({ data }) => {
+const ServiceCard = ({ data, handleChange, expanded }) => {
   //console.log(data);
   const classes = useStyles();
-  const [isExpanded, setExpand] = useState(false)
+
+
   return (
-    <Accordion className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} square onChange={() => setExpand(!isExpanded)}>
+    <Accordion className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} square expanded={expanded === `panel-${data.newName}`} onChange={handleChange(`panel-${data.newName}`)}>
       <AccordionSummary
         className={classes.itemHeader}
         expandIcon={<ExpandMoreIcon style={{ color: '#FFF' }} />}
@@ -19,7 +20,7 @@ const ServiceCard = ({ data }) => {
         id="panel1a-header"
       >
         <p className={classes.title}>{data.newName}</p>
-        <Link to={`/portfolio/${data.category}`} className={classes.headerButton} style={{ visibility: isExpanded ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
+        <Link to={`/portfolio/${data.category}`} className={classes.headerButton} style={{ visibility: expanded === `panel-${data.newName}` ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
       </AccordionSummary>
       <AccordionDetails className={classes.itemContent} style={{ backgroundImage: `url(${data.newLogo.file.url})` }}>
         <div className={classes.content} >
@@ -179,6 +180,10 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
+      display: 'block',
+      textAlign: 'center',
+      marginBottom: '0px',
+      marginTop: '30px'
     },
   },
   serviceLogo: {
@@ -213,8 +218,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolImage: {
-    marginRight: '7px',
     [theme.breakpoints.down('xs')]: {
+      width: '14%'
     },
   },
   showInMobile: {
@@ -231,9 +236,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       fontSize: '12px',
       display: 'inline-block',
+      padding: '7px 27px',
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
+      display: 'block',
+      textAlign: 'center',
+      marginBottom: '30px',
+      marginTop: '0px'
     },
   },
 }));
