@@ -251,7 +251,7 @@ const NavBar = (props) => {
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
+    paddingRight: theme.spacing(5) + '!important',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -330,6 +330,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     background: 'none',
+    paddingRight: '0px !important',
     boxShadow: ({ transparent }) =>
       !!transparent ? 'none' : '0 0 4px gray',
   },
