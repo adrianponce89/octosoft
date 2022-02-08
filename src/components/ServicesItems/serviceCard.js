@@ -144,12 +144,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '290px 265px',
     backgroundRepeat: 'no-repeat',
     [theme.breakpoints.down('md')]: {
-      backgroundSize: '160px 150px'
     },
     [theme.breakpoints.down('sm')]: {
       padding: '25px 25px 0 25px',
     },
     [theme.breakpoints.down('xs')]: {
+      backgroundImage: 'none !important'
     },
   },
   content: {
@@ -243,7 +243,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
       textAlign: 'center',
       marginBottom: '30px',
-      marginTop: '0px'
+      marginTop: '-10px'
     },
   },
 }));
