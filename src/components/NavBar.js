@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import {
@@ -19,7 +18,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../assets/logo.svg';
 import Contact from './Contact';
-
+import PopUpContact from './PopupContact'; 
 
 const HideOnScroll = (props) => {
   const { children } = props;
@@ -66,7 +65,7 @@ const NavLinks = (props) => {
   const classes = useStyles(props);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [menuSelected, setMenuSelected] = React.useState(null);
-
+  const [showPopUp, setShowPopUp] = React.useState(false);
   const handleClick = (event, title) => {
     setAnchorEl(event.currentTarget);
     setMenuSelected(title);
@@ -80,9 +79,12 @@ const NavLinks = (props) => {
     <>
       {menuList.map((menu) =>
         menu.link ? (
-          <Link className={classes.link} margin={2} 
-          to={'/'}
-           to={menu.link} >
+          <Link
+            className={classes.link}
+            margin={2}
+            to={'/'}
+            to={menu.link}
+          >
             <div className={classes.linkText}>{menu.title}</div>
           </Link>
         ) : menu.children ? (
@@ -148,7 +150,7 @@ const NavLinks = (props) => {
                     <MenuItem
                       component={Link}
                       to={'/'}
-                       to={child.link} 
+                      to={child.link}
                       onClick={handleClose}
                     >
                       {child.title}
@@ -160,23 +162,30 @@ const NavLinks = (props) => {
           </>
         ) : null,
       )}
-      {!props.onDesktop && (
-        <Link className={classes.link} margin={2} 
-        to={'/'}
-         to={'/contact'} >
-          <div className={classes.linkText}>{'CONTACT US'}</div>
-        </Link>
-      )}
+      <>
+        {props.onDesktop !== true ? (
+          <a
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={() => setShowPopUp(!showPopUp)}
+            className={classes.link}
+            margin={2}
+          >
+            <div className={classes.linkText}>{'CONTACT US'}</div>
+          </a>
+        ) : null}
+      </>
 
       <Link
         className={classes.linkButton}
-         to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03" 
-     to={'/'}
+        to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
+        to={'/'}
       >
         <Button className={classes.button}>
           <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
         </Button>
       </Link>
+      <>{showPopUp ? <PopUpContact handleClose={setShowPopUp}/> : null}</>
     </>
   );
 };
