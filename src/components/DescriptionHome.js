@@ -19,7 +19,7 @@ const styles = makeStyles((theme) => ({
     marginBottom: 20,
     marginTop: 20,
   },
-  logo: {
+  logoNew: {
     width: 160,
     height: 160,
     marginRight: 20,
@@ -32,7 +32,8 @@ const styles = makeStyles((theme) => ({
   description: {
     width: 600,
     fontFamily: 'Montserrat',
-    fontSize: 22,
+    fontSize: 16,
+    lineHeight: '30px',
     '@media (max-width: 760px)': {
       fontSize: 18,
       textAlign: 'center',
@@ -50,8 +51,8 @@ const styles = makeStyles((theme) => ({
       height: 190,
     },
   },
-  mediaContainer:{
-   marginBottom:-250,
+  mediaContainer: {
+    marginBottom: -250,
   },
   imgContainer: {
     display: 'flex',
@@ -126,7 +127,7 @@ const DescriptionHome = ({ content }) => {
         alignItems="center"
         md={12}
       >
-        <OctoLogoNew className={classes.logo} />
+        <OctoLogoNew className={classes.logoNew} />
         <Typography variant="h2" className={classes.description}>
           {description}
         </Typography>

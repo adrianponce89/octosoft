@@ -23,9 +23,9 @@ const styles = makeStyles({
     justifyContent: 'center',
     width: '65px',
     height: '65px',
-    top: '90vh',
+    bottom: '25px',
     filter: 'drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))',
-    right: '10px',
+    right: '30px',
     zIndex: 99,
   },
   calendarIcon: {
