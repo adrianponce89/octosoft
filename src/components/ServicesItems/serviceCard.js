@@ -91,7 +91,8 @@ const useStyles = makeStyles((theme) => ({
         margin: '0px 15px !important',
       },
     },
-    ['& .Mui-expanded']: {
+    ['& .MuiSvgIcon-root ']: {
+      fontSize: '1.8em'
     },
     [theme.breakpoints.down('sm')]: {
       margin: '0px 5px !important',
@@ -99,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: '30px',
-    fontWeight: 700,
+    fontWeight: 550,
     fontFamily: 'Montserrat',
     lineHeight: 'normal',
     alignSelf: 'center',
@@ -111,6 +112,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       fontSize: '1.2rem',
       margin: '0px 30px',
+      fontWeight: 600,
     },
     [theme.breakpoints.down('xs')]: {
       margin: '0px 0px',
