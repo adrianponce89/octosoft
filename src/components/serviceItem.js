@@ -5,11 +5,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const styles = makeStyles((theme) => ({
   root: {
-    width: 230,
+    width: 250,
     paddingBottom: 20,
     paddingTop: 20,
-    marginLeft: 10,
-    marginRight: 10,
+    //marginLeft: 10,
+    //marginRight: 10,
     '@media (max-width: 820px)': {
       width: 300,
     },
@@ -19,7 +19,7 @@ const styles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     fontFamily: 'Montserrat',
     fontWeight: 700,
-    fontSize: theme.spacing(4),
+    fontSize: 18,
     textAlign: 'left',
     paddingBottom: 15,
     paddingTop: 15,
