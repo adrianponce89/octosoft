@@ -218,8 +218,9 @@ const useStyles = makeStyles((theme) => ({
   tools: {
     margin: '60px 0px 30px 0px',
     display: 'flex',
-    [theme.breakpoints.down('md')]: {
-      flexWrap: 'wrap'
+    [theme.breakpoints.down('sm')]: {
+      flexWrap: 'wrap',
+      margin: '35px 0px 30px 0px',
     },
   },
   toolImage: {
