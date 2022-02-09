@@ -311,9 +311,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
-
     '@media (max-width: 1900px)': {
-      height: '4rem',
+      height: '5rem',
     },
     '@media (max-width: 1200px)': {
       width: '100%',
@@ -372,6 +371,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
+    marginBottom: '5rem',
+
     '@media (max-width: 1024px)': {
       width: '100%',
       flexWrap: 'nowrap',
