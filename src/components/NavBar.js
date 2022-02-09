@@ -12,12 +12,11 @@ import {
   Button,
   Menu,
   MenuItem,
-  Typography,
 } from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import HorizontalLogo from '../assets/horizontalLogo.svg';
+import OctoLogo from '../assets/logo.svg';
 import Contact from './Contact';
 import PopUpContact from './PopupContact'; 
 
@@ -154,9 +153,7 @@ const NavLinks = (props) => {
                       to={child.link}
                       onClick={handleClose}
                     >
-                      <Typography className={classes.subItem}>
-                        {child.title}
-                      </Typography>
+                      {child.title}
                     </MenuItem>
                   ))
                 )}
@@ -170,7 +167,7 @@ const NavLinks = (props) => {
           <a
             aria-controls="simple-menu"
             aria-haspopup="true"
-            onClick={() => setShowPopUp(!showPopUp)}
+            onClick={() => setShowPopUp(true)}
             className={classes.link}
             margin={2}
           >
@@ -188,11 +185,7 @@ const NavLinks = (props) => {
           <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
         </Button>
       </Link>
-      <>
-        {showPopUp ? (
-          <PopUpContact handleClose={setShowPopUp} />
-        ) : null}
-      </>
+      <>{showPopUp ? <PopUpContact handleClose={setShowPopUp}/> : null}</>
     </>
   );
 };
@@ -211,12 +204,17 @@ const NavBar = (props) => {
       <HideOnScroll {...props}>
         <AppBar className={classes.appbar}>
           <Toolbar className={classes.toolbar}>
-            <Link to={'/'} className={classes.linkLogo}>
+            <Link to={'/'} className={classes.link}>
               <div className={classes.links}>
-                
-                  
-                  <HorizontalLogo className={classes.logo} />
-                
+                <div className={classes.logo}>
+                  <OctoLogo className={classes.logo} />
+                </div>
+                <div className={classes.textLogoContainer}>
+                  <p className={classes.textLogo}>{'Octosoft'}</p>
+                  <p className={classes.textLogoSub}>
+                    {'Professionals'}
+                  </p>
+                </div>
               </div>
             </Link>
             <Hidden lgUp>
@@ -277,17 +275,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'right',
     alignItems: 'center',
   },
-  subItem: {
-    fontFamily: 'Montserrat',
-  },
   link: {
     margin: '15px 10px',
     padding: '0px 15px',
-    color: theme.palette.text.primary,
-    textDecoration: 'none',
-    cursor: 'pointer',
-  },
-  linkLogo: {
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',
@@ -318,8 +308,8 @@ const useStyles = makeStyles((theme) => ({
     opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
   },
   logo: {
-    width: 135,
-    //height: 46,
+    width: 46,
+    height: 46,
     marginRight: 10,
     opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
     fill: '#33adff',
