@@ -38,9 +38,9 @@ const SubCategories = ({
             `drop-shadow(0px 4px 4px rgba(125, 219, 196, 0.4))`,
           );
           break;
-        case 'social':
+        case 'media':
           setSelected(media);
-          setTitle('Social Media');
+          setTitle('Media');
           setPaletteColor(media[0].node.color);
           setWidthEdited('80%');
           media.length % 5 === 0
@@ -62,7 +62,7 @@ const SubCategories = ({
             `drop-shadow(0px 4px 4px rgba(162, 132, 223, 1))`,
           );
           break;
-        case 'operations':
+        case 'social':
           setSelected(operations);
           setTitle('Operations');
           setPaletteColor(operations[0].node.color);
