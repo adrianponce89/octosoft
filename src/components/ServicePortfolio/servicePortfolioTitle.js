@@ -33,15 +33,15 @@ const ServicePortfolioTitle = ({ name, categories, color }) => {
             'Service Category'
             :
             //Esto es lo que debería renderizar las categorías (en este momento están mal escritas o son diferentes en contentful)
-            categories.map((category, index) =>{
-                return (
-                  <Typography variant="h5" className={[classes.subtitle]}>
-                    {
-                      index === categories.length - 1 ? index === 0 ? ` ${category} - ` : `${category}` : ` ${category} -`
-                    }
-                  </Typography>
-                )
-              })
+            categories.map((category, index) => {
+              return (
+                <Typography variant="h5" className={[classes.subtitle]}>
+                  {
+                    index === 0 ? `${category}` : `\u00A0- ${category}`
+                  }
+                </Typography>
+              )
+            })
         }
       </Grid>
     </Box>
