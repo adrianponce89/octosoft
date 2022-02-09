@@ -149,8 +149,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    border: '1px solid #33adff',
+    boxShadow: '-3px 2px 20px 4px rgba(0,0,0,0.50)',  
     flexDirection: 'column',
+    borderRadius: '10px',
     zIndex: '999',
   },
   closeButton: {
