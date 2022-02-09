@@ -114,7 +114,7 @@ const SubCategories = ({
           break;
         case 'software':
           setSelected(software);
-          setTitle('Software Engineer');
+          setTitle('Software Engineering');
           setPaletteColor(software[0].node.color);
           setWidthEdited('80%');
           software.length % 5 === 0

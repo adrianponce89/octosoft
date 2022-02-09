@@ -81,4 +81,3 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 export default OurServices;
-
