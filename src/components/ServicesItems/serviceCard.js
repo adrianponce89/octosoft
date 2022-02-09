@@ -70,7 +70,10 @@ const useStyles = makeStyles((theme) => ({
     transition: '0.5s ease-out',
     margin: '0px 0px !important',
     width: '100%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
+      boxShadow: 'none',
+      width: '130%',
+      marginLeft: '-15% !important'
     },
   },
   itemHeader: {
@@ -110,7 +113,6 @@ const useStyles = makeStyles((theme) => ({
       margin: '0px 30px',
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: '1rem',
       margin: '0px 0px',
     },
   },
@@ -180,10 +182,13 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
+      fontWeight: 'bold',
       display: 'block',
       textAlign: 'center',
+      padding: '10px 45px',
       marginBottom: '0px',
-      marginTop: '30px'
+      marginTop: '-10px',
+      marginInline: '20px'
     },
   },
   serviceLogo: {
@@ -218,8 +223,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   toolImage: {
+    marginRight: '5px',
+    marginBottom: '2px',
     [theme.breakpoints.down('xs')]: {
-      width: '14%'
+      width: '10%',
     },
   },
   showInMobile: {
@@ -236,14 +243,16 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       fontSize: '12px',
       display: 'inline-block',
-      padding: '7px 27px',
+      padding: '10px 27px',
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
+      fontWeight: 'bold',
       display: 'block',
       textAlign: 'center',
       marginBottom: '30px',
-      marginTop: '-10px'
+      marginTop: '-10px',
+      marginInline: '20px'
     },
   },
 }));

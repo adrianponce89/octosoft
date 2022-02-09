@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       textAlign: 'center',
       width: '100%',
       justifyContent: 'center',
-      fontSize: 50,
+      fontSize: 40,
     },
   },
 }));
