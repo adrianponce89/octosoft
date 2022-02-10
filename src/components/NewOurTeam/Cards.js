@@ -76,17 +76,12 @@ const Cards = ({
 const useStyles = makeStyles((theme) => ({
   paperFive: {
     display: 'flex',
-    width: '23%',
-    margin: '3%',
+    width: '23rem',
+    margin: '2rem',
     marginTop: '0rem',
     marginBottom: '0rem',
     height: 'fit-content',
-    '@media (max-width: 1800px)': {
-      width: '40%',
-      margin: '0%',
-      marginBottom: '2rem',
-      marginTop: '2rem',
-    },
+
     '@media (max-width: 1024px)': {
       width: '100%',
       margin: '0%',
@@ -97,15 +92,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
     margin: theme.spacing(3),
-    width: '23%',
+    width: '23rem',
     height: 'fit-content',
-    '@media (max-width: 1800px)': {
-      width: '40%',
-      height: 'fit-content',
-      margin: '0%',
-      marginBottom: '2rem',
-      marginTop: '2rem',
-    },
+
     '@media (max-width: 1024px)': {
       width: '100%',
       margin: '0%',
