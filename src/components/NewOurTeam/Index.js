@@ -164,7 +164,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     paddingTop: '10rem',
     backgroundColor: '#F5F7F7',
-
+    '@media (max-width: 760px)': {
+      paddingTop: '7rem',
+    },
   },
   divFather: {
     display: 'flex',
