@@ -8,8 +8,6 @@ const styles = makeStyles((theme) => ({
     width: 250,
     paddingBottom: 20,
     paddingTop: 20,
-    //marginLeft: 10,
-    //marginRight: 10,
     '@media (max-width: 820px)': {
       width: 300,
     },
