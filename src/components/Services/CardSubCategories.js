@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 const CardSubCategories = ({
@@ -8,16 +8,43 @@ const CardSubCategories = ({
   icon,
   octagon,
   length,
+  titleChanged,
+  filter,
 }) => {
-  const classes = useStyles({ color, octagon, icon });
+  const classes = useStyles({ color, octagon, icon, filter });
+  const [firstTitle, setFirstTitle] = useState('');
+  const [secondTitle, setSecondTitle] = useState('');
+console.log("TITLE",title)
+  useEffect(() => {
+    setFirstTitle(title.split(' ').slice(0, 1));
+    setSecondTitle(title.split(' ').slice(1, title.length));
+  }, [title]); 
+
   return (
     <div className={length ? classes.rootFive : classes.root}>
-      <div className={classes.octagon}>
+      <div className={classes.sortIcon}>
+        <img
+          src={octagon}
+          alt="octagon"
+          className={classes.octagon}
+        ></img>
         <div className={classes.icon} />
       </div>
-      <Typography variant="h3" className={classes.title}>
-        {title}
-      </Typography>
+      {!titleChanged ? (
+        <Typography className={classes.title}>{title}</Typography>
+      ) : (
+        <Fragment>
+          <Typography className={classes.title}>
+            {firstTitle}
+          </Typography>
+          {secondTitle ? (
+            <Typography className={classes.title}>
+              {secondTitle[0]}
+              {secondTitle[1] ? secondTitle[1] : null}
+            </Typography>
+          ) : null}
+        </Fragment>
+      )}
       <Typography
         variant="body1"
         color="initial"
@@ -33,10 +60,10 @@ const useStyles = makeStyles((theme) => ({
   rootFive: {
     display: 'flex',
     width: '25rem',
-    marginTop: '0.5rem',
-    marginBottom: '0.5rem',
-    marginLeft: '0.5rem',
-    marginRight: '0.5rem',
+    marginTop: '0.8rem',
+    marginBottom: '0.8rem',
+    marginLeft: '0.8rem',
+    marginRight: '0.8rem',
     minHeight: '35rem',
     height: 'fit-content',
     opacity: '0.8',
@@ -44,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#FFFFFF',
+    borderRadius: '0.8rem',
     '@media (max-width: 800px)': {
       width: '20rem',
       margin: '0%',
@@ -56,10 +84,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     width: '25rem',
-    marginTop: '0.5rem',
-    marginBottom: '0.5rem',
-    marginLeft: '0.5rem',
-    marginRight: '0.5rem',
+    marginTop: '0.8rem',
+    marginBottom: '0.8rem',
+    marginLeft: '0.8rem',
+    marginRight: '0.8rem',
     minHeight: '35rem',
     height: 'fit-content',
     opacity: '0.8',
@@ -67,6 +95,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#FFFFFF',
+    borderRadius: '0.8rem',
     '@media (max-width: 800px)': {
       width: '20rem',
       margin: '0%',
@@ -77,54 +106,58 @@ const useStyles = makeStyles((theme) => ({
       minHeight: '30rem',
     },
   },
-  octagon: {
+  sortIcon: {
     display: 'flex',
     width: '100%',
-    height: '15rem',
+    flexDirection: 'column',
+    height: 'fit-content',
     alignItems: 'center',
-    marginTop: '1.5rem',
-    marginBottom: '1rem',
     justifyContent: 'center',
-    backgroundImage: ({ octagon }) => octagon || '#ECECEC',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: '200px 200px',
+    position: 'relative',
+    marginBottom: '2rem',
+    marginTop: '2.5rem',
+  },
+  octagon: {
+    display: 'flex',
+    width: '250px',
+    filter: ({ filter }) => filter,
   },
   icon: {
     display: 'flex',
     width: '100%',
+    position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundImage: ({ icon }) => icon || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '90px 90px',
+    backgroundSize: '125px 125px',
     paddingBottom: '100%',
     marginBottom: '3%',
     zIndex: 1,
   },
   title: {
-    width: '80%',
+    width: '100%',
     color: ({ color }) => color,
     fontFamily: 'Montserrat',
     fontWeight: '700',
     textAlign: 'center',
     fontSize: '3vh',
     margin: '0%',
-    marginBottom: '1.5rem',
-    lineHeight: '1.5',
+    marginBottom: '1px',
     '@media (max-width: 800px)': {
       width: '90%',
     },
   },
   description: {
-    width: '80%',
+    width: '85%',
     color: '#000000',
     fontFamily: 'Montserrat',
     fontSize: '2vh',
     textAlign: 'center',
-    marginBottom: '1.5rem',
-
+    marginTop: '1rem',
+    marginBottom: '2rem',
+    lineHeight: '1.5',
     '@media (max-width: 800px)': {
       fontSize: '1,5vh',
       width: '90%',

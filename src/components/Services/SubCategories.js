@@ -19,21 +19,26 @@ const SubCategories = ({
   const [paletteColor, setPaletteColor] = useState('');
   const [widthEdited, setWidthEdited] = useState('');
   const [lengthEdited, setLengthEdited] = useState(false);
+  const [changeTitles, setChangeTitles] = useState(false);
+  const [filter, setFilter] = useState('');
   const classes = useStyles({ widthEdited });
-
+  
   useEffect(() => {
-    const selection = () => {
+    const selection = async() => {
       switch (search) {
-        case 'Design':
+        case 'design':
           setSelected(design);
           setTitle('Design');
-          setPaletteColor(design[0].node.color);
+          setPaletteColor(design[0]?.node?.color);
           setWidthEdited('80%');
           design.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(125, 219, 196, 0.4))`,
+          );
           break;
-        case 'Media':
+        case 'social':
           setSelected(media);
           setTitle('Social Media');
           setPaletteColor(media[0].node.color);
@@ -41,8 +46,11 @@ const SubCategories = ({
           media.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(125, 219, 196, 0.4))`,
+          );
           break;
-        case 'Marketing':
+        case 'marketing':
           setSelected(marketing);
           setTitle('Marketing');
           setPaletteColor(marketing[0].node.color);
@@ -50,26 +58,37 @@ const SubCategories = ({
           marketing.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(162, 132, 223, 1))`,
+          );
           break;
-        case 'Operations':
+        case 'operations':
           setSelected(operations);
           setTitle('Operations');
           setPaletteColor(operations[0].node.color);
-          setWidthEdited('60%');
+          setWidthEdited('80%');
           operations.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setChangeTitles(true);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(162, 132, 223, 1))`,
+          );
           break;
-        case 'Data':
+        case 'data':
           setSelected(dataScience);
           setTitle('Data Science');
           setPaletteColor(dataScience[0].node.color);
-          setWidthEdited('60%');
+          setWidthEdited('80%');
           dataScience.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setChangeTitles(true);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(219, 125, 196, 0.4))`,
+          );
           break;
-        case 'IT':
+        case 'it':
           setSelected(solutions);
           setTitle('IT Solutions');
           setPaletteColor(solutions[0].node.color);
@@ -77,8 +96,11 @@ const SubCategories = ({
           solutions.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(219, 125, 196, 0.4))`,
+          );
           break;
-        case 'Web':
+        case 'web':
           setSelected(web3);
           setTitle('Web 3');
           setPaletteColor(web3[0].node.color);
@@ -86,35 +108,46 @@ const SubCategories = ({
           web3.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(255, 159, 59, 0.4))`,
+          );
           break;
-        case 'Software':
+        case 'software':
           setSelected(software);
-          setTitle('Software Engineer');
+          setTitle('Software Engineering');
           setPaletteColor(software[0].node.color);
           setWidthEdited('80%');
           software.length % 5 === 0
             ? setLengthEdited(true)
             : setLengthEdited(false);
+          setChangeTitles(true);
+          setFilter(
+            `drop-shadow(0px 4px 4px rgba(255, 159, 59, 0.4))`,
+          );
+          
           break;
         default:
       }
     };
     selection();
   }, [search]);
+  console.log('selected', selected);
   return (
     <div className={classes.root}>
       <TitleComponent title={title} color={paletteColor} />
       <div className={classes.cardContainer}>
         {selected &&
-          selected.map((categories, index) => (
+          selected.sort((a, b) => a.node.order - b.node.order).map((categories, index) => (
             <CardSubCategories
               color={paletteColor}
               key={index}
               description={categories.node.description}
               title={categories.node.title}
-              octagon={`url(${categories.node.octagon.file.url})`}
               icon={`url(${categories.node.icon.file.url})`}
               length={lengthEdited}
+              titleChanged={changeTitles}
+              octagon={categories.node.octagon.file.url}
+              filter={filter}
             />
           ))}
       </div>
@@ -136,14 +169,13 @@ const useStyles = makeStyles((theme) => ({
       paddingTop: '8rem',
     },
   },
-
   cardContainer: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingBottom: '10rem',
+    paddingBottom: '7rem',
     width: ({ widthEdited }) => widthEdited || '100%',
     height: 'fit-content',
     '@media (max-width: 800px)': {

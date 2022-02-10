@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: 'fit-content',
     backgroundColor: '#F5F7F7',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 960px)': {
       padding: 0,
     },
   },
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     top: '30%',
     left: '-7%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 960px)': {
       display: 'none',
     },
   },
@@ -75,16 +75,16 @@ const useStyles = makeStyles((theme) => ({
     bottom: '-490%',
     right: '0%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 960px)': {
       display: 'none',
     },
   },
   OctoThree: {
     position: 'absolute',
-    top: '5%',
+    top: '9%',
     right: '0%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 960px)': {
       display: 'none',
     },
   },
@@ -93,7 +93,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: '-190%',
     left: '0%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 960px)': {
       display: 'none',
     },
   },
@@ -102,7 +102,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: '-579%',
     right: '0%',
     zIndex: '0',
-    '@media (max-width: 768px)': {
+    '@media (max-width: 960px)': {
       display: 'none',
     },
   },

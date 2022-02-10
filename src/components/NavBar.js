@@ -12,12 +12,14 @@ import {
   Button,
   Menu,
   MenuItem,
+  Typography,
 } from '@material-ui/core';
 
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
-import OctoLogo from '../assets/logo.svg';
+import HorizontalLogo from '../assets/horizontalLogo.svg';
 import Contact from './Contact';
+import PopUpContact from './PopupContact'; 
 
 const HideOnScroll = (props) => {
   const { children } = props;
@@ -35,7 +37,7 @@ const menuList = [
     title: 'ABOUT US',
     children: [
       { title: 'About Octosoft', link: '/aboutus' },
-      { title: 'Our Team', link: '/aboutus' },
+      { title: 'Our Team', link: '/ourteam' },
       { title: 'Our Brand', link: '/brand' },
     ],
   },
@@ -64,7 +66,7 @@ const NavLinks = (props) => {
   const classes = useStyles(props);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [menuSelected, setMenuSelected] = React.useState(null);
-
+  const [showPopUp, setShowPopUp] = React.useState(false);
   const handleClick = (event, title) => {
     setAnchorEl(event.currentTarget);
     setMenuSelected(title);
@@ -74,15 +76,16 @@ const NavLinks = (props) => {
     setAnchorEl(null);
   };
 
-  console.log(props.onDesktop);
-
   return (
     <>
       {menuList.map((menu) =>
         menu.link ? (
-          <Link className={classes.link} margin={2} 
-          to={'/'}
-          /* to={menu.link} */>
+          <Link
+            className={classes.link}
+            margin={2}
+            to={'/'}
+            to={menu.link}
+          >
             <div className={classes.linkText}>{menu.title}</div>
           </Link>
         ) : menu.children ? (
@@ -148,10 +151,12 @@ const NavLinks = (props) => {
                     <MenuItem
                       component={Link}
                       to={'/'}
-                     /*  to={child.link} */
+                      to={child.link}
                       onClick={handleClose}
                     >
-                      {child.title}
+                      <Typography className={classes.subItem}>
+                        {child.title}
+                      </Typography>
                     </MenuItem>
                   ))
                 )}
@@ -160,23 +165,34 @@ const NavLinks = (props) => {
           </>
         ) : null,
       )}
-      {!props.onDesktop && (
-        <Link className={classes.link} margin={2} 
-        to={'/'}
-        /* to={'/contact'} */>
-          <div className={classes.linkText}>{'CONTACT US'}</div>
-        </Link>
-      )}
+      <>
+        {props.onDesktop !== true ? (
+          <a
+            aria-controls="simple-menu"
+            aria-haspopup="true"
+            onClick={() => setShowPopUp(!showPopUp)}
+            className={classes.link}
+            margin={2}
+          >
+            <div className={classes.linkText}>{'CONTACT US'}</div>
+          </a>
+        ) : null}
+      </>
 
       <Link
         className={classes.linkButton}
-     /*    to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03" */
-     to={'/'}
+        to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
+        to={'/'}
       >
         <Button className={classes.button}>
           <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
         </Button>
       </Link>
+      <>
+        {showPopUp ? (
+          <PopUpContact handleClose={setShowPopUp} />
+        ) : null}
+      </>
     </>
   );
 };
@@ -195,17 +211,12 @@ const NavBar = (props) => {
       <HideOnScroll {...props}>
         <AppBar className={classes.appbar}>
           <Toolbar className={classes.toolbar}>
-            <Link to={'/'} className={classes.link}>
+            <Link to={'/'} className={classes.linkLogo}>
               <div className={classes.links}>
-                <div className={classes.logo}>
-                  <OctoLogo className={classes.logo} />
-                </div>
-                <div className={classes.textLogoContainer}>
-                  <p className={classes.textLogo}>{'Octosoft'}</p>
-                  <p className={classes.textLogoSub}>
-                    {'Professionals'}
-                  </p>
-                </div>
+                
+                  
+                  <HorizontalLogo className={classes.logo} />
+                
               </div>
             </Link>
             <Hidden lgUp>
@@ -251,7 +262,7 @@ const NavBar = (props) => {
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     paddingLeft: theme.spacing(5),
-    paddingRight: theme.spacing(5),
+    paddingRight: theme.spacing(5) + '!important',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -266,9 +277,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'right',
     alignItems: 'center',
   },
+  subItem: {
+    fontFamily: 'Montserrat',
+  },
   link: {
     margin: '15px 10px',
     padding: '0px 15px',
+    color: theme.palette.text.primary,
+    textDecoration: 'none',
+    cursor: 'pointer',
+  },
+  linkLogo: {
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',
@@ -299,8 +318,8 @@ const useStyles = makeStyles((theme) => ({
     opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
   },
   logo: {
-    width: 46,
-    height: 46,
+    width: 135,
+    //height: 46,
     marginRight: 10,
     opacity: ({ transparent }) => (!!transparent ? '0' : '1'),
     fill: '#33adff',
@@ -330,6 +349,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appbar: {
     background: 'none',
+    paddingRight: '0px !important',
     boxShadow: ({ transparent }) =>
       !!transparent ? 'none' : '0 0 4px gray',
   },
@@ -347,5 +367,4 @@ const useStyles = makeStyles((theme) => ({
     width: '100vw',
   },
 }));
-
 export default NavBar;

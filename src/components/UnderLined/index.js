@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     '@media (min-width: 1400px)': {
       width: '75%',
     },
-    '@media (max-width: 760px)': {
+    '@media (max-width: 960px)': {
       visibility: 'hidden',
     },
   },

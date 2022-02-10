@@ -158,7 +158,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'justify',
     width: '280px',
     '@media (max-width: 768px)': {
-      height: 'fit-content',
+      height: '5rem',
     },
   },
   groupButtons: {

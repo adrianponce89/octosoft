@@ -2,6 +2,7 @@ import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import OctoLogo from '../../assets/logoHome.svg';
+import BannerLogo from '../../assets/bannerLogo.svg';
 
 const useStyles = makeStyles((theme) => ({
   containerHead: {
@@ -10,9 +11,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
-  logo: {
-    width: 100,
-    height: 100,
+  logoBanner: {
+    width: 350,
+    //height: 100,
   },
   textLogo: {
     cursor: 'default',
@@ -35,15 +36,7 @@ export default ({ className }) => {
   const classes = useStyles();
   return (
     <Grid className={`${classes.containerHead} ${className}`}>
-      <OctoLogo className={classes.logo} />
-      <Grid item container xs={4} justifyContent="center">
-        <Typography variant="h1" className={classes.textLogo}>
-          {'Octosoft'}
-        </Typography>
-        <Typography variant="h2" className={classes.textLogoSub}>
-          {'Professionals'}
-        </Typography>
-      </Grid>
+      <BannerLogo className={classes.logoBanner} />
     </Grid>
   );
 };
