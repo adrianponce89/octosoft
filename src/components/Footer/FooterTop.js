@@ -145,7 +145,7 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             <Link
               className={classes.link}
               margin={2}
-              to="/ourservices"
+              to="/"
             >
               <div className={classes.linkText}>Services</div>
             </Link>
