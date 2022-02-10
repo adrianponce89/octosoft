@@ -8,8 +8,6 @@ const styles = makeStyles((theme) => ({
     width: 250,
     paddingBottom: 20,
     paddingTop: 20,
-    //marginLeft: 10,
-    //marginRight: 10,
     '@media (max-width: 820px)': {
       width: 300,
     },
@@ -25,6 +23,9 @@ const styles = makeStyles((theme) => ({
     paddingTop: 15,
   },
   description: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    minHeight: '100px',
     textAlign: 'left',
     fontFamily: 'Montserrat',
     fontSize: theme.spacing(3),
@@ -56,7 +57,7 @@ const ServiceItem = ({ service, description }) => {
     <Grid
       container
       item
-      alignItems="center"
+      alignItems="flex-start"
       justify="flex-start"
       className={classes.root}
     >

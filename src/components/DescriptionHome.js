@@ -52,7 +52,7 @@ const styles = makeStyles((theme) => ({
     },
   },
   mediaContainer: {
-    marginBottom: -250,
+    marginBottom:-50//marginBottom: -250,
   },
   imgContainer: {
     display: 'flex',
@@ -60,11 +60,11 @@ const styles = makeStyles((theme) => ({
     height: 200,
     // overflow: 'hidden',
     position: 'relative',
-    top: -250,
+    //top: -250,
   },
   videoContainer: {
     position: 'relative',
-    top: -250,
+    top: -50,//-250
   },
   logoName: {
     width: 310,
@@ -103,11 +103,11 @@ const DescriptionHome = ({ content }) => {
         alignItems="center"
         className={classes.mediaContainer}
       >
-        <div className={classes.imgContainer}>
+        {/*<div className={classes.imgContainer}>
           <div>
             <OctoLogoName className={classes.logoName} />
           </div>
-        </div>
+        </div>*/}
         <div
           className={classes.videoContainer}
         >
