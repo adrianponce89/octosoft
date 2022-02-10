@@ -180,7 +180,7 @@ const NavLinks = (props) => {
     <>
       {menuList.map((menu) =>
         menu.link ? (
-          <Link className={classes.link} margin={2} to={menu.link}>
+          <Link className={classes.link} margin={2} to={'/'}>
             <div className={classes.linkText}>{menu.title}</div>
           </Link>
         ) : menu.children ? (
@@ -245,7 +245,7 @@ const NavLinks = (props) => {
                   menu.children.map((child) => (
                     <MenuItem
                       component={Link}
-                      to={child.link}
+                      to={'/' }
                       onClick={handleClose}
                     >
                       {child.title}
@@ -258,7 +258,7 @@ const NavLinks = (props) => {
         ) : null,
       )}
       {!props.onDesktop && (
-        <Link className={classes.link} margin={2} to={'/contact'}>
+        <Link className={classes.link} margin={2} to={'/'}>
           <div className={classes.linkText}>{'CONTACT US'}</div>
         </Link>
       )}

@@ -7,28 +7,7 @@ import Portfolio from '../components/Portfolio';
 import BackgroundImage from '../assets/Trama.png';
 
 const PortfolioPage = () => {
-  const data = useStaticQuery(graphql`
-    query Portfolio {
-      allContentfulPortfolio {
-        edges {
-          node {
-            titlePortfolioPage
-            colorTitle
-            description {
-              description
-            }
-            portfoliosImage {
-              file {
-                url
-              }
-              title
-              description
-            }
-          }
-        }
-      }
-    }
-  `);
+
   return (
     <Container
       background={`url(${BackgroundImage})`}

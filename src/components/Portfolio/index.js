@@ -3,20 +3,7 @@ import DetailPortfolio from './Detail';
 import OurPortfolio from './OurPortfolio';
 
 const Portfolio = ({ data }) => {
-  const {
-    allContentfulPortfolio: {
-      edges: [
-        {
-          node: {
-            colorTitle,
-            titlePortfolioPage,
-            description: { description },
-            portfoliosImage,
-          },
-        },
-      ],
-    },
-  } = data;
+
 
   return (
     <>
@@ -25,7 +12,7 @@ const Portfolio = ({ data }) => {
         title={titlePortfolioPage}
         description={description}
       />
-      <DetailPortfolio portfolios={portfoliosImage} />
+      <DetailPortfolio  />
     </>
   );
 };
