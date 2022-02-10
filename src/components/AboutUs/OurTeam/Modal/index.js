@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 import SocialNetwork from '../SocialNetwork';
-import CornerTopRight from '../../../../assets/Trama2.png';
+import CornerTopRight from '../../../../assets/trama2.png';
 import CornerBottomRight from '../../../../assets/octoOrang.png';
 
 const OurTeamModal = ({

@@ -3,6 +3,67 @@ import { Typography, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'gatsby';
 
+const Banners = ({
+  id,
+  link,
+  description,
+  subtitle,
+  title,
+  backgroundImage,
+  right,
+  color,
+}) => {
+  const classes = styles({ backgroundImage, right, color });
+  return (
+    <Grid item className={classes.root} xs={12} id={id}>
+      <Link className={classes.link} to={link}>
+        <div className={classes.cardBody}>
+          <Grid
+            item
+            container
+            xs={12}
+            sm={6}
+            className={classes.imageContainer}
+          >
+            <div className={classes.backgroundCardImage} />
+          </Grid>
+          <div className={classes.separator}></div>
+          <Grid
+            item
+            container
+            direction="column"
+            xs={12}
+            sm={6}
+            className={classes.containerCard}
+          >
+            <Typography variant="h5" className={classes.titleCard}>
+              {title}
+            </Typography>
+            {!!subtitle ? (
+              <Typography
+                variant="h5"
+                className={classes.subtitleCard}
+              >
+                {subtitle}
+              </Typography>
+            ) : (
+              ''
+            )}
+            {!!description ? (
+              <div className={classes.descriptionContainer}>
+                <Typography className={classes.description}>
+                  {description}
+                </Typography>
+              </div>
+            ) : (
+              ''
+            )}
+          </Grid>
+        </div>
+      </Link>
+    </Grid>
+  );
+};
 const styles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -53,11 +114,12 @@ const styles = makeStyles((theme) => ({
   },
   imageContainer: {
     display: 'flex',
-    justifyContent: (props) =>
-      props.right ? 'flex-end' : 'flex-start',
+    justifyContent: ({ right }) =>
+      right ? 'flex-end' : 'flex-start',
   },
   backgroundCardImage: {
-    backgroundImage: (props) => props.backgroundImage || '#ECEC',
+    backgroundImage: ({ backgroundImage }) =>
+      backgroundImage || '#ECEC',
     backgroundPosition: '100% 50%',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
@@ -92,58 +154,5 @@ const styles = makeStyles((theme) => ({
     color: '#000',
   },
 }));
-
-const Banners = (props) => {
-  const classes = styles(props);
-  return (
-    <Grid item className={classes.root} xs={12} id={props.id}>
-      <Link className={classes.link} to={props.link}>
-        <div className={classes.cardBody}>
-          <Grid
-            item
-            container
-            xs={12}
-            sm={6}
-            className={classes.imageContainer}
-          >
-            <div className={classes.backgroundCardImage} />
-          </Grid>
-          <div className={classes.separator}></div>
-          <Grid
-            item
-            container
-            direction="column"
-            xs={12}
-            sm={6}
-            className={classes.containerCard}
-          >
-            <Typography variant="h5" className={classes.titleCard}>
-              {props.title}
-            </Typography>
-            {!!props.subtitle ? (
-              <Typography
-                variant="h5"
-                className={classes.subtitleCard}
-              >
-                {props.subtitle}
-              </Typography>
-            ) : (
-              ''
-            )}
-            {!!props.description ? (
-              <div className={classes.descriptionContainer}>
-                <Typography className={classes.description}>
-                  {props.description}
-                </Typography>
-              </div>
-            ) : (
-              ''
-            )}
-          </Grid>
-        </div>
-      </Link>
-    </Grid>
-  );
-};
 
 export default Banners;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import TitleBrand from '../TitleBrand'
-import TitleIcons from '../IconsBrand/titleIcons'
+import TitleBrand from '../TitleBrand';
+import TitleIcons from '../ColorsBrand/titleComponent';
 
 const TypographySection = () => {
   const classes = useStyles();
@@ -15,7 +15,7 @@ const TypographySection = () => {
       alignItems="center"
       className={classes.root}
     >
-      <TitleIcons title={'TYPOGRAPHY'} sort={'Left'} />
+      <TitleIcons title={'TYPOGRAPHY'} />
       <Grid
         xs={12}
         container
@@ -59,7 +59,7 @@ const TypographySection = () => {
             </Button>
           </a>
         </Grid>
-        <Grid item xs={11} md={5} container>
+        <Grid item xs={11} md={6} container>
           <Typography
             variant="h4"
             className={classes.typographyMontserrat}
@@ -111,7 +111,7 @@ const TypographySection = () => {
             </Button>
           </a>
         </Grid>
-        <Grid item xs={11} md={5} container>
+        <Grid item xs={11} md={6} container>
           <Typography
             variant="h4"
             className={classes.typographyPoppins}
@@ -128,8 +128,7 @@ const TypographySection = () => {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-  },
+  root: {},
   fontContainer: {
     margin: theme.spacing(6, 0),
   },
@@ -155,7 +154,7 @@ const useStyles = makeStyles((theme) => ({
   typographyMontserrat: {
     fontFamily: 'Montserrat',
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: '50px',
     color: '#000000',
     letterSpacing: '0.05em',
@@ -166,7 +165,7 @@ const useStyles = makeStyles((theme) => ({
   montserratHeadlines: {
     fontFamily: 'Montserrat',
     fontWeight: 900,
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
@@ -176,7 +175,7 @@ const useStyles = makeStyles((theme) => ({
   poppinsSubtitles: {
     fontFamily: 'Montserrat',
     fontWeight: 900,
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: '40px',
     textTransform: 'uppercase',
     color: '#000000',
@@ -187,7 +186,7 @@ const useStyles = makeStyles((theme) => ({
   montserratSubtitles: {
     fontFamily: 'Montserrat',
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: 25,
     textTransform: 'uppercase',
     lineHeight: '40px',
     color: '#000000',
@@ -198,7 +197,7 @@ const useStyles = makeStyles((theme) => ({
   montserratRegular: {
     fontFamily: 'Montserrat',
     fontWeight: 400,
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
@@ -208,7 +207,7 @@ const useStyles = makeStyles((theme) => ({
   poppinsRegular: {
     fontFamily: 'Montserrat',
     fontWeight: 400,
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {
@@ -218,7 +217,7 @@ const useStyles = makeStyles((theme) => ({
   typographyPoppins: {
     fontFamily: 'Poppins',
     fontWeight: 700,
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: '50px',
     color: '#000000',
     letterSpacing: '0.05em',
@@ -229,7 +228,7 @@ const useStyles = makeStyles((theme) => ({
   poppinsHeadlines: {
     fontFamily: 'Montserrat',
     fontWeight: 900,
-    fontSize: 20,
+    fontSize: 25,
     lineHeight: '40px',
     color: '#000000',
     '@media (max-width: 760px)': {

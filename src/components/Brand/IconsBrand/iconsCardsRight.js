@@ -13,7 +13,6 @@ const IconsCardRight = ({ logos }) => {
     <Grid
       container
       xs={12}
-      justify="flex-end"
       className={classes.gridContainer}
       spacing={8}
     >
@@ -69,8 +68,14 @@ const IconsCardRight = ({ logos }) => {
 
 const useStyles = makeStyles((theme) => ({
   gridContainer: {
+    justifyContent: 'flex-end',
     alignItems: 'center',
     marginLeft: '1rem',
+    '@media (max-width: 768px)': {
+      justifyContent: 'flex-start',
+      alignItems: 'flex-start',
+      marginLeft: '0',
+    },
   },
   eachGrid: {
     zIndex: '1',
@@ -81,7 +86,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   btnText: {
-    fontSize: 16,
+    fontFamily: 'Montserrat',
+    fontWeight: 600,
+    fontSize: 12,
+    '@media (min-width: 1980px)': {
+      fontSize: 12,
+    },
   },
   noBorder: {
     width: '100%',
@@ -126,7 +136,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'justify',
     width: '280px',
     '@media (max-width: 768px)': {
-      height: 'fit-content',
+      height: '5rem',
     },
   },
   groupButtons: {
@@ -163,7 +173,7 @@ const useStyles = makeStyles((theme) => ({
   iconButton: {
     paddingLeft: '0%',
     height: 21,
-    width: '2rem',
+    width: '1.5rem',
     marginBottom: theme.spacing(2),
   },
 }));

@@ -57,7 +57,7 @@ const styles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     height: '100%',
-    minHeight: '35vh',
+    minHeight: '30vh',
     height: 'inherit',
     order: ({ right }) => (right ? -1 : 1),
     '@media (max-width: 576px)': {
@@ -81,16 +81,17 @@ const styles = makeStyles((theme) => ({
 
 const HomeItems = (props) => {
   const classes = styles(props);
+  console.log("ACA ESTA EL PROPS", props.link);
   return (
     <Grid item className={classes.root} xs={12}>
       <div className={classes.cardBody}>
-        <Grid
-          item
-          container
-          xs={12}
-          sm={4}
-          className={classes.backgroundCardImage}
-        ></Grid>
+        <Grid item container xs={12} sm={4}>
+          <img
+            src="../assets/BannerFinal.jpg"
+            width="150"
+            height="150"
+          />
+        </Grid>
         <div className={classes.separator}></div>
         <Grid
           item
