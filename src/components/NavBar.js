@@ -80,16 +80,7 @@ const NavLinks = (props) => {
     <>
       {menuList.map((menu) =>
         menu.link ? (
-<<<<<<< HEAD
           <Link className={classes.link} margin={2} to={'/'}>
-=======
-          <Link
-            className={classes.link}
-            margin={2}
-            to={'/'}
-            to={menu.link}
-          >
->>>>>>> 53230dcf46bd7d6a79d20e3cb0e76a8f7eecc349
             <div className={classes.linkText}>{menu.title}</div>
           </Link>
         ) : menu.children ? (
@@ -154,12 +145,7 @@ const NavLinks = (props) => {
                   menu.children.map((child) => (
                     <MenuItem
                       component={Link}
-<<<<<<< HEAD
                       to={'/' }
-=======
-                      to={'/'}
-                      to={child.link}
->>>>>>> 53230dcf46bd7d6a79d20e3cb0e76a8f7eecc349
                       onClick={handleClose}
                     >
                       <Typography className={classes.subItem}>
@@ -173,13 +159,6 @@ const NavLinks = (props) => {
           </>
         ) : null,
       )}
-<<<<<<< HEAD
-      {!props.onDesktop && (
-        <Link className={classes.link} margin={2} to={'/'}>
-          <div className={classes.linkText}>{'CONTACT US'}</div>
-        </Link>
-      )}
-=======
       <>
         {props.onDesktop !== true ? (
           <a
@@ -193,7 +172,6 @@ const NavLinks = (props) => {
           </a>
         ) : null}
       </>
->>>>>>> 53230dcf46bd7d6a79d20e3cb0e76a8f7eecc349
 
       <Link
         className={classes.linkButton}
