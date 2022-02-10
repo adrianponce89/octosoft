@@ -25,6 +25,9 @@ const styles = makeStyles((theme) => ({
     paddingTop: 15,
   },
   description: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    minHeight: '100px',
     textAlign: 'left',
     fontFamily: 'Montserrat',
     fontSize: theme.spacing(3),
@@ -56,7 +59,7 @@ const ServiceItem = ({ service, description }) => {
     <Grid
       container
       item
-      alignItems="center"
+      alignItems="flex-start"
       justify="flex-start"
       className={classes.root}
     >
