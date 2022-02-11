@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Accordion, AccordionSummary, AccordionDetails, Typography, Button } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link } from 'gatsby';
-
-
+import { useMediaQuery } from '@material-ui/core';
 
 const ServiceCard = ({ data, handleChange, expanded }) => {
   //console.log(data);
   const classes = useStyles();
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <Accordion className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} square expanded={expanded === `panel-${data.newName}`} onChange={handleChange(`panel-${data.newName}`)}>
@@ -24,7 +24,7 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
       </AccordionSummary>
       <AccordionDetails className={classes.itemContent} style={{ backgroundImage: `url(${data.newLogo.file.url})` }}>
         <div className={classes.content} >
-          <div>
+          <div className={classes.subcategoriesContent}>
             {
               data.categories === null ?
                 'No categories loaded'
@@ -33,7 +33,8 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
                   return (
                     <Typography key={category} variant="h5" className={classes.category}>
                       {
-                        index === 0 ? `${category}` : `\u00A0- ${category}`
+                        category
+                        //index === 0 ? `${category}` : `\u00A0- ${category}`
                       }
                     </Typography>
                   )
@@ -53,7 +54,13 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
                 :
                 data.newTools.map((tool, index) => {
                   return (
-                    <img key={tool.file.url} src={tool.file.url} alt={tool.file.url} className={`${classes.toolImage}`} />
+                    <img
+                      key={tool.file.url}
+                      src={tool.file.url}
+                      alt={tool.file.url}
+                      className={`${classes.toolImage}`}
+                      style={{ display: matches && index >= 8 ? 'none' : 'initial' }}
+                    />
                   )
                 })
             }
@@ -195,6 +202,18 @@ const useStyles = makeStyles((theme) => ({
   },
   serviceLogo: {
   },
+  subcategoriesContent: {
+    [theme.breakpoints.down('md')]: {
+    },
+    [theme.breakpoints.down('sm')]: {
+    },
+    [theme.breakpoints.down('xs')]: {
+      display: 'grid',
+      gridTemplateColumns: 'auto auto',
+      textAlign: 'center',
+      alignItems: 'center'
+    },
+  },
   category: {
     color: '#999999',
     fontSize: '16px',
@@ -222,6 +241,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     [theme.breakpoints.down('sm')]: {
       flexWrap: 'wrap',
+      justifyContent: 'space-between',
       margin: '35px 0px 30px 0px',
     },
   },
@@ -230,6 +250,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '2px',
     [theme.breakpoints.down('xs')]: {
       width: '10%',
+      marginRight: '0px',
     },
   },
   showInMobile: {
