@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Container } from '@material-ui/core';
 import ServiceCard from './serviceCard';
 import { Link } from 'gatsby';
+import Background from '../Background/index';
 
 const ServiceGrid = ({ data }) => {
   const classes = useStyle();
@@ -14,6 +15,7 @@ const ServiceGrid = ({ data }) => {
 
   return (
     <Container className={classes.root}>
+      <Background />
       <Grid container className={classes.gridContainer}>
         {data.map((node) =>
           <ServiceCard

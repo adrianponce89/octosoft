@@ -5,6 +5,7 @@ import Container from '../../components/Container';
 import OurPortfolio from '../../components/Portfolio/OurPortfolio';
 import ServiceGrid from '../../components/ServicesItems/serviceGrid';
 import Title from '../../components/Services/title';
+import Background from '../../components/Background/index';
 
 const OurServices = (props) => {
   const classes = useStyle();
@@ -60,6 +61,7 @@ const OurServices = (props) => {
 
   return (
     <Container className={classes.container}>
+      <Background />
       <Title
         color='#37ADD4'
         //color={titleData[0].color}
