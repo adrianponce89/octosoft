@@ -14,7 +14,6 @@ const ServiceGrid = ({ data }) => {
 
   return (
     <Container className={classes.root}>
-      <Background />
       <Grid container className={classes.gridContainer}>
         {data.map((node) =>
           <ServiceCard
