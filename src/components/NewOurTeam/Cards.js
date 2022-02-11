@@ -132,6 +132,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: 'no-repeat',
     backgroundSize: '337px 337px',
     paddingBottom: '100%',
+    transition: "background-image 1.5s ease",
+
     zIndex: 1,
     '&:hover': {
       backgroundImage: ({ hover }) => hover || '#ECECEC',
