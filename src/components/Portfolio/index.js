@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: '5rem',
+    paddingTop: '0rem',
     flexDirection: 'column',
     height: '100vh',
     backgroundColor: '#F5F7F7',
