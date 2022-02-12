@@ -36,8 +36,6 @@ const NewOurTeam = ({ teamMembers }) => {
   const handleClose = () => {
     setMember(null);
   };
-  console.log("teamMembers",teamMembers)
-  console.log("associates",associates)
 
   return (
     <Grid

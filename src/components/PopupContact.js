@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import { submitForm } from '../utils';
-import PrimaryInput from './PrimaryInput';
+import { FormControl, TextField } from '@material-ui/core';
 import discord from '../assets/discord.png';
 import whatsapp from '../assets/whatsapp.png';
 import telegram from '../assets/telegram.png';
@@ -79,52 +79,82 @@ const PopUpContact = (props) => {
         data-netlify="true"
         className={classes.formContainer}
       >
-        <input
-          className={classes.input}
-          id="NameInput"
-          value={name}
-          name="name"
-          onChange={({ target }) => setName(target.value)}
-          placeholder="Name"
-          required={true}
-        />
-        <input
-          className={classes.input}
-          id="SubjectInput"
-          value={subject}
-          name="subject"
-          onChange={({ target }) => setSubject(target.value)}
-          placeholder="Subject (Optional)"
+        <FormControl
           variant="outlined"
-        />
-        <input
+          fullWidth
           className={classes.input}
-          id="EmailInput"
-          value={email}
-          name="email"
-          type="email"
-          onChange={({ target }) => setEmail(target.value)}
-          placeholder="Your Email"
-          required={true}
-        />
-        <input
+        >
+          <TextField
+            id="NameInput"
+            value={name}
+            name="name"
+            onChange={({ target }) => setName(target.value)}
+            label="Name"
+            variant="outlined"
+            required
+          />
+        </FormControl>
+        <FormControl
+          variant="outlined"
           className={classes.input}
-          id="PhoneInput"
-          value={phone}
-          name="phone"
-          onChange={({ target }) => setPhone(target.value)}
-          placeholder="Your Phone Number"
-          required={true}
-        />
-        <textarea
-          className={classes.textarea}
-          id="ContentInput"
-          value={content}
-          name="content"
-          onChange={({ target }) => setContent(target.value)}
-          placeholder="Your Message"
-          style={{ resize: 'none' }}
-        />
+          fullWidth
+        >
+          <TextField
+            id="SubjectInput"
+            value={subject}
+            name="subject"
+            onChange={({ target }) => setSubject(target.value)}
+            label="Subject (Optional)"
+            variant="outlined"
+          />
+        </FormControl>
+        <FormControl
+          variant="outlined"
+          className={classes.input}
+          fullWidth
+        >
+          <TextField
+            id="EmailInput"
+            value={email}
+            name="email"
+            type="email"
+            onChange={({ target }) => setEmail(target.value)}
+            label="Your Email"
+            variant="outlined"
+            required
+          />
+        </FormControl>
+        <FormControl
+          variant="outlined"
+          className={classes.input}
+          fullWidth
+        >
+          <TextField
+            id="PhoneInput"
+            value={phone}
+            name="phone"
+            onChange={({ target }) => setPhone(target.value)}
+            label="Your Phone Number"
+            variant="outlined"
+            required
+          />
+        </FormControl>
+        <FormControl
+          variant="outlined"
+          className={classes.textArea}
+          fullWidth
+        >
+          <TextField
+            id="ContentInput"
+            value={content}
+            name="content"
+            onChange={({ target }) => setContent(target.value)}
+            multiline
+            label="Your message"
+            variant="outlined"
+            size="small"
+          />
+        </FormControl>
 
         <Button
           variant="contained"
@@ -143,13 +173,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     position: 'fixed',
     width: '90%',
-    height: '90%',
+    height: '95%',
     top: '3%',
     left: '5%',
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    boxShadow: '-3px 2px 20px 4px rgba(0,0,0,0.50)',  
+    boxShadow: '-3px 2px 20px 4px rgba(0,0,0,0.50)',
     flexDirection: 'column',
     borderRadius: '10px',
     zIndex: '999',
@@ -195,21 +225,39 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '2rem',
     marginBottom: '2rem',
   },
+
   input: {
     width: '75%',
-    height: 'fit-content',
-    marginBottom: '1rem',
-    fontFamily: 'Montserrat',
+    padding: '2%',
+    marginBottom: '0.2rem',
     fontSize: '2vh',
-    border: '1px solid #000000',
+    '& div': {
+      '& label ': {
+        fontSize: '2vh',
+        fontFamily: 'Montserrat',
+      },
+      '& label.Mui-focused': {
+        fontSize: '1.5vh',
+      },
+    },
   },
-  textarea: {
+  textArea: {
     width: '75%',
-    height: '40%',
-    marginBottom: '1rem',
+    padding: '2%',
+    marginBottom: '0.2rem',
+    '& div': {
+      height: '8rem',
+      '& label ': {
+        fontSize: '2vh',
+        fontFamily: 'Montserrat',
+      },
+    },
+  },
+  button: {
+    marginTop: '0.2rem',
     fontFamily: 'Montserrat',
-    border: '1px solid #000000',
-    fontSize: '2vh',
+    fontWeight: '700',
+    borderRadius: '10px',
   },
 }));
 
