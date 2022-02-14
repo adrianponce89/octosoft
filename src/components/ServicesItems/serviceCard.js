@@ -9,7 +9,7 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
   //console.log(data);
   const classes = useStyles();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('xs'));
+  const widthIsSM = useMediaQuery(theme.breakpoints.down('xs'));
 
   return (
     <Accordion className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} square expanded={expanded === `panel-${data.newName}`} onChange={handleChange(`panel-${data.newName}`)}>
@@ -33,8 +33,8 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
                   return (
                     <Typography key={category} variant="h5" className={classes.category}>
                       {
-                        category
-                        //index === 0 ? `${category}` : `\u00A0- ${category}`
+                        widthIsSM ? category :
+                          index === data.categories.length - 1 ? `${category}` : `${category} -\u00A0`
                       }
                     </Typography>
                   )
@@ -59,7 +59,7 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
                       src={tool.file.url}
                       alt={tool.file.url}
                       className={`${classes.toolImage}`}
-                      style={{ display: matches && index >= 8 ? 'none' : 'initial' }}
+                      style={{ display: widthIsSM && index >= 8 ? 'none' : 'initial' }}
                     />
                   )
                 })
@@ -210,7 +210,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('xs')]: {
       display: 'grid',
       gridTemplateColumns: 'auto auto',
-      textAlign: 'center',
       alignItems: 'center'
     },
   },
@@ -226,6 +225,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       fontSize: '0.8em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.75em',
     },
   },
   text: {

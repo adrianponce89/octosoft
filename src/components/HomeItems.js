@@ -81,7 +81,6 @@ const styles = makeStyles((theme) => ({
 
 const HomeItems = (props) => {
   const classes = styles(props);
-  console.log("ACA ESTA EL PROPS", props.link);
   return (
     <Grid item className={classes.root} xs={12}>
       <div className={classes.cardBody}>

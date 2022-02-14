@@ -49,7 +49,6 @@ const underConstructionPage = () => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: '50px 34px 50px',
     '@media (min-width: 1362px)': {
       maxWidth: '90%',
     },

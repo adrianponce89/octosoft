@@ -14,6 +14,7 @@ const Portfolio = ({ data }) => {
 
   const { node: sectionTitle } = sectionData;
   const { nodes: portfolioContent } = data.allContentfulService;
+  const { nodes: projectsContent } = data.allContentfulPortfolio;
 
   const orderedPortfolios = portfolioContent
     .filter((portfolio) => portfolio.newName !== 'Octosoft')
@@ -23,11 +24,14 @@ const Portfolio = ({ data }) => {
     <div className={classes.root}>
       <Background />
       <div className={classes.aux}>
-      <OurPortfolio
-        colorTitle={sectionTitle.color}
-        title={sectionTitle.title}
-      />
-      <DetailPortfolio portfolios={orderedPortfolios} />
+        <OurPortfolio
+          colorTitle={sectionTitle.color}
+          title={sectionTitle.title}
+        />
+        <DetailPortfolio
+          portfolios={orderedPortfolios}
+          projectsContent={projectsContent}
+        />
       </div>
     </div>
   );
