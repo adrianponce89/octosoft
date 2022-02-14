@@ -4,28 +4,35 @@ import { Grid, Container } from '@material-ui/core';
 import ItemPortfolio from './Item';
 import { Link } from 'gatsby';
 
-const DetailPortfolio = ({ portfolios }) => {
+const DetailPortfolio = ({ portfolios, projectsContent }) => {
   const classes = useStyle();
 
   return (
     <Container className={classes.root}>
       <Grid container xs={12} className={classes.gridContainer}>
-        {portfolios.map(node =>
-          <Link
-            item
-            xs={12}
-            md={3}
-            container
-            justify="center"
-            key={node.newName}
-            className={classes.boxGrid}
-            to={`/portfolio/${node.category}`}
-          >
-            <ItemPortfolio
-              data={node}
-            />
-          </Link>
-        )}
+        {portfolios.map((node) => {
+          let viewPage = projectsContent.some(
+              (project) => project.category === node.category,
+            );
+            
+          return (
+            <Link
+              item
+              xs={12}
+              md={3}
+              container
+              justify="center"
+              key={node.newName}
+              className={classes.boxGrid}
+              to={
+                viewPage
+                  ? `/portfolio/${node.category}`
+                  : `/underConstruction/`
+              }
+            >
+              <ItemPortfolio data={node} />
+            </Link>
+          );})}
       </Grid>
     </Container>
   );

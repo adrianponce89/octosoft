@@ -55,7 +55,7 @@ const menuList = [
       { title: 'Events', link: '/underConstruction' },
       { title: 'Blog', link: '/underConstruction' },
       {
-        title: 'Bordeless Identities',
+        title: 'Borderless Identities',
         link: '/borderlessIdentities',
       },
     ],
@@ -143,6 +143,14 @@ const NavLinks = (props) => {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
               >
                 {menu.title === 'CONTACT US' ? (
                   <Contact />
@@ -279,10 +287,11 @@ const useStyles = makeStyles((theme) => ({
   },
   subItem: {
     fontFamily: 'Montserrat',
+    fontSize: 16,
   },
   link: {
-    margin: '15px 10px',
-    padding: '0px 15px',
+    margin: '15px 25px',
+    padding: '0px',
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',
