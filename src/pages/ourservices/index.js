@@ -74,7 +74,7 @@ const OurServices = (props) => {
 
 const useStyle = makeStyles((theme) => ({
   container: {
-    paddingTop: '5rem',
+    paddingTop: '10rem',
     background: 'transparent',
     [theme.breakpoints.down('sm')]: {
     },
