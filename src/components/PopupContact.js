@@ -251,6 +251,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '2vh',
         fontFamily: 'Montserrat',
       },
+      '& label.Mui-focused': {
+        fontSize: '1.5vh',
+      },
     },
   },
   button: {
