@@ -11,7 +11,7 @@ const OurServices = (props) => {
   const classes = useStyle();
   const data = useStaticQuery(graphql`
     query servicesData {
-      allContentfulService{
+      allContentfulService {
         edges {
           node {
             title
@@ -22,7 +22,7 @@ const OurServices = (props) => {
             categories
             category
             portfolioLink
-            newLogo{
+            newLogo {
               file {
                 url
               }
@@ -46,24 +46,30 @@ const OurServices = (props) => {
     }
   `);
 
-  const { allContentfulService, allContentfulBanners } = data
+  const { allContentfulService, allContentfulBanners } = data;
 
   const transformData = (array) => {
     return array.reduce((total, data) => {
-      let nodeData = { ...data.node }
-      total = [nodeData, ...total]
-      return total
-    }, [])
-  }
+      let nodeData = { ...data.node };
+      total = [nodeData, ...total];
+      return total;
+    }, []);
+  };
 
-  const titleData = transformData(allContentfulBanners.edges).filter(data => data.title === 'Our Services')
-  const serviceData = transformData(allContentfulService.edges).filter(data => data.title !== 'Octosoft').sort((a, b) => { return a.newOrder - b.newOrder });
+  const titleData = transformData(allContentfulBanners.edges).filter(
+    (data) => data.title === 'Our Services',
+  );
+  const serviceData = transformData(allContentfulService.edges)
+    .filter((data) => data.title !== 'Octosoft')
+    .sort((a, b) => {
+      return a.newOrder - b.newOrder;
+    });
 
   return (
     <Container className={classes.container}>
       <Background />
       <Title
-        color='#37ADD4'
+        color="#37ADD4"
         //color={titleData[0].color}
         title={titleData[0].title}
       />
@@ -76,9 +82,10 @@ const useStyle = makeStyles((theme) => ({
   container: {
     paddingTop: '10rem',
     background: 'transparent',
-    [theme.breakpoints.down('sm')]: {
-    },
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {},
+    [theme.breakpoints.down('xs')]: {},
+    '@media (max-width: 1024px)': {
+      paddingTop: '5rem',
     },
   },
 }));
