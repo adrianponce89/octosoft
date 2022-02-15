@@ -106,12 +106,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    fontSize: '30px',
+    fontSize: '25px',
     fontWeight: 550,
     fontFamily: 'Montserrat',
     lineHeight: 'normal',
     alignSelf: 'center',
-    margin: '0px 60px',
+    margin: '0px 0px',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.5rem',
       margin: '0px 40px',
@@ -132,6 +132,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '7px 20px',
     alignSelf: 'center',
     textDecoration: 'none',
+    fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.2rem',
     },
@@ -183,6 +184,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     marginBottom: '30px',
     marginTop: '15px',
+    fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
       fontSize: '14px',
     },
@@ -191,7 +193,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
-      fontWeight: 'bold',
       display: 'block',
       textAlign: 'center',
       padding: '10px 45px',
@@ -265,6 +266,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '30px',
     marginTop: '15px',
     display: 'none',
+    fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.2rem',
     },
@@ -275,7 +277,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
-      fontWeight: 'bold',
       display: 'block',
       textAlign: 'center',
       marginBottom: '30px',
