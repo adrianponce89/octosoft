@@ -148,9 +148,10 @@ const NavLinks = (props) => {
                   horizontal: 'right',
                 }}
                 transformOrigin={{
-                  vertical: 'top',
+                  vertical: 'bottom',
                   horizontal: 'right',
                 }}
+                style={{marginTop: '4px'}}
               >
                 {menu.title === 'CONTACT US' ? (
                   <Contact />
@@ -205,6 +206,7 @@ const NavLinks = (props) => {
   );
 };
 
+
 const NavBar = (props) => {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -221,10 +223,7 @@ const NavBar = (props) => {
           <Toolbar className={classes.toolbar}>
             <Link to={'/'} className={classes.linkLogo}>
               <div className={classes.links}>
-                
-                  
                   <HorizontalLogo className={classes.logo} />
-                
               </div>
             </Link>
             <Hidden lgUp>

@@ -152,10 +152,11 @@ const Contact = (props) => {
               value={content}
               name="content"
               onChange={({ target }) => setContent(target.value)}
-              multiline
               label="Your message"
               variant="outlined"
-              size="small"
+              multiline
+              maxRows={5}
+              inputProps={{ maxLength: 150 }}
             />
           </FormControl>
           <div className={classes.buttonContainer}>
@@ -176,8 +177,9 @@ const Contact = (props) => {
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
     width: '100vw',
-    padding: 0,
+    margin: '0',
     maxWidth: '100%',
     backgroundColor: 'white',
     height: '100%',
@@ -190,7 +192,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start',
     justifyContent: 'center',
   },
-  firstColumn: {  
+  firstColumn: {
     display: 'flex',
     width: '20%',
     flexDirection: 'column',
@@ -222,10 +224,13 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '1rem',
   },
   input: {
-    width: '30%',
+    display: 'flex',
+    width: '20rem',
     padding: '1%',
     fontSize: '2vh',
     '& div': {
+      width: '20rem',
+
       '& label ': {
         fontSize: '2vh',
         fontFamily: 'Montserrat',
@@ -236,9 +241,13 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   textArea: {
-    width: '30%',
+    display: 'flex',
+    width: '20rem',
     padding: '1%',
+    fontSize: '2vh',
     '& div': {
+      alignItems: 'flex-start',
+      width: '20rem',
       height: '9rem',
       '& label ': {
         fontSize: '2vh',
