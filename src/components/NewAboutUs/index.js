@@ -27,10 +27,8 @@ const NewAboutUs = ({ aboutUs }) => {
       >
         <TitleComponent title={'About Us'} />
         
-        <Container
-          innerBackground={'none'}
+        <div
           className={classes.containerCard}
-          xs={10}
         >
           <Grid
             container
@@ -52,7 +50,7 @@ const NewAboutUs = ({ aboutUs }) => {
               ))}
           </Grid>
           {<div className={classes.cardsopen}></div>}
-        </Container>
+        </div>
 
       </Grid>
     </Grid>
@@ -72,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     '@media (min-width: 1362px)': {
       maxWidth: '95%!important',
+    },
+    '@media (max-width: 760px)': {
+      width: '80%',
     },
     padding: 'unset!important',
   },
