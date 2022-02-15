@@ -33,8 +33,8 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
                   return (
                     <Typography key={category} variant="h5" className={classes.category}>
                       {
-                        widthIsSM ? category :
-                          index === data.categories.length - 1 ? `${category}` : `${category} -\u00A0`
+                        widthIsSM ? category : category
+                        //index === data.categories.length - 1 ? `${category}` : `${category} -\u00A0`
                       }
                     </Typography>
                   )
@@ -203,12 +203,14 @@ const useStyles = makeStyles((theme) => ({
   serviceLogo: {
   },
   subcategoriesContent: {
+    display: 'grid',
+    gridTemplateColumns: 'auto auto',
     [theme.breakpoints.down('md')]: {
     },
     [theme.breakpoints.down('sm')]: {
     },
     [theme.breakpoints.down('xs')]: {
-      display: 'grid',
+      display: 'none',
       gridTemplateColumns: 'auto auto',
       alignItems: 'center'
     },
