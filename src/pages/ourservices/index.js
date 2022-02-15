@@ -43,10 +43,15 @@ const OurServices = (props) => {
           }
         }
       }
+      allContentfulPortfolio {
+        nodes {
+          category
+        }
+      }
     }
   `);
 
-  const { allContentfulService, allContentfulBanners } = data;
+  const { allContentfulService, allContentfulBanners, allContentfulPortfolio } = data;
 
   const transformData = (array) => {
     return array.reduce((total, data) => {
@@ -65,6 +70,8 @@ const OurServices = (props) => {
       return a.newOrder - b.newOrder;
     });
 
+  const portfoliosData = allContentfulPortfolio.nodes
+
   return (
     <Container className={classes.container}>
       <Background />
@@ -73,7 +80,7 @@ const OurServices = (props) => {
         //color={titleData[0].color}
         title={titleData[0].title}
       />
-      <ServiceGrid data={serviceData} />
+      <ServiceGrid data={serviceData} porfoliosData={portfoliosData} />
     </Container>
   );
 };

@@ -4,7 +4,7 @@ import { Grid, Container } from '@material-ui/core';
 import ServiceCard from './serviceCard';
 import { Link } from 'gatsby';
 
-const ServiceGrid = ({ data }) => {
+const ServiceGrid = ({ data, porfoliosData }) => {
   const classes = useStyle();
 
   const [expanded, setExpanded] = React.useState(false);
@@ -21,6 +21,7 @@ const ServiceGrid = ({ data }) => {
             data={node}
             handleChange={(panel) => handleChange(panel)}
             expanded={expanded}
+            porfoliosData={porfoliosData}
           />
         )}
       </Grid>
