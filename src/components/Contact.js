@@ -230,7 +230,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '2vh',
     '& div': {
       width: '20rem',
-
+      height: '3.5rem',
       '& label ': {
         fontSize: '2vh',
         fontFamily: 'Montserrat',
@@ -248,7 +248,7 @@ const useStyles = makeStyles((theme) => ({
     '& div': {
       alignItems: 'flex-start',
       width: '20rem',
-      height: '9rem',
+      height: '8.5rem',
       '& label ': {
         fontSize: '2vh',
         fontFamily: 'Montserrat',
