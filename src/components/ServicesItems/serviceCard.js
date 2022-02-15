@@ -5,11 +5,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link } from 'gatsby';
 import { useMediaQuery } from '@material-ui/core';
 
-const ServiceCard = ({ data, handleChange, expanded }) => {
+const ServiceCard = ({ data, handleChange, expanded, porfoliosData }) => {
   //console.log(data);
   const classes = useStyles();
   const theme = useTheme();
   const widthIsSM = useMediaQuery(theme.breakpoints.down('xs'));
+
+  const viewPage = porfoliosData.some(
+    (project) => project.category === data.category,
+  );
 
   return (
     <Accordion className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} square expanded={expanded === `panel-${data.newName}`} onChange={handleChange(`panel-${data.newName}`)}>
@@ -20,7 +24,7 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
         id="panel1a-header"
       >
         <p className={classes.title}>{data.newName}</p>
-        <Link to={`/portfolio/${data.category}`} className={classes.headerButton} style={{ visibility: expanded === `panel-${data.newName}` ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
+        <Link to={viewPage ? `/portfolio/${data.category}` : '/underConstruction'} className={classes.headerButton} style={{ visibility: expanded === `panel-${data.newName}` ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
       </AccordionSummary>
       <AccordionDetails className={classes.itemContent} style={{ backgroundImage: `url(${data.newLogo.file.url})` }}>
         <div className={classes.content} >
@@ -46,11 +50,11 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
           </p>
           <Link to={`/ourservices/subcategories?${data.title}`} className={classes.contentButton} style={{ backgroundColor: data.newColor }}>VIEW IN DETAIL</Link>
           <br />
-          <Link to={`/portfolio/${data.category}`} className={classes.showInMobile} style={{ color: data.newColor, border: `1px solid ${data.newColor}` }}>BROWSE PORTFOLIO</Link>
+          <Link to={viewPage ? `/portfolio/${data.category}` : '/underConstruction'} className={classes.showInMobile} style={{ color: data.newColor, border: `1px solid ${data.newColor}` }}>BROWSE PORTFOLIO</Link>
           <div className={classes.tools}>
             {
               data.newTools === null ?
-                'No tools loaded'
+                null
                 :
                 data.newTools.map((tool, index) => {
                   return (
