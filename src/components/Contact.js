@@ -187,6 +187,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: 'fit-content',
     flexDirection: 'row',
+    alignItems: 'flex-start',
     justifyContent: 'center',
   },
   firstColumn: {  
@@ -200,15 +201,15 @@ const useStyles = makeStyles((theme) => ({
   secondColumn: {
     display: 'flex',
     flexDirection: 'column',
-    width: '60%',
+    width: '50%',
     flexWrap: 'wrap',
-    height: '25rem',
+    height: '18rem',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
   title: {
     fontFamily: 'Montserrat',
-    fontSize: '6vh',
+    fontSize: '5vh',
     color: '#33adff',
     fontWeight: '700',
     marginTop: '1rem',
@@ -222,7 +223,7 @@ const useStyles = makeStyles((theme) => ({
   },
   input: {
     width: '30%',
-    padding: '2%',
+    padding: '1%',
     fontSize: '2vh',
     '& div': {
       '& label ': {
@@ -236,9 +237,9 @@ const useStyles = makeStyles((theme) => ({
   },
   textArea: {
     width: '30%',
-    padding: '2%',
+    padding: '1%',
     '& div': {
-      height: '11rem',
+      height: '9rem',
       '& label ': {
         fontSize: '2vh',
         fontFamily: 'Montserrat',
