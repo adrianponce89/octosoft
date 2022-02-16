@@ -43,11 +43,11 @@ const styles = makeStyles((theme) => ({
     lineHeight: '30px',
     '@media (max-width: 760px)': {
       fontSize: 18,
-      textAlign: 'center',
+      textAlign: 'left',
     },
     '@media (max-width: 1368px)': {
       fontSize: 20,
-      textAlign: 'center',
+      textAlign: 'left',
     },
   },
   video: {

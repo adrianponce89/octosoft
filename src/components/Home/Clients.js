@@ -27,9 +27,9 @@ const styles = makeStyles((theme) => ({
     },
   },
   imgClient: {
-    width: 70,
-    height: 70,
-    margin: 25,
+    width: 100,
+    height: 100,
+    margin: 20,
   },
   titlesContainer: {
     justifyContent: 'flex-start',
