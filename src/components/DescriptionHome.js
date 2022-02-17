@@ -79,7 +79,7 @@ const styles = makeStyles((theme) => ({
 }));
 
 const DescriptionHome = ({ content }) => {
-  const {description} = content;
+  const {description} = content.description;
   const classes = styles();
   const opts = {
     width: 530,

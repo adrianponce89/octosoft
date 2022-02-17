@@ -46,8 +46,8 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const ServiceItem = ({ service, description }) => {
-  const classes = styles({color: service.node.newColor});
+const ServiceItem = ({ service, description, projectPath }) => {
+  const classes = styles({ color: service.node.newColor });
 
   let descriptionText = description.filter(
     (item) => Number(item.order) === service.node.order,
@@ -74,7 +74,7 @@ const ServiceItem = ({ service, description }) => {
           {descriptionText[0].description}
         </Typography>
         <Link
-          to={`/portfolio/${service.node.category}`}
+          to={projectPath ? `/portfolio/${service.node.category}` : '/underConstruction/'}
           className={classes.link}
         >
           <Typography variant="body1" className={classes.textLink}>

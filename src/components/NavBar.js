@@ -51,12 +51,12 @@ const menuList = [
   {
     title: 'COMMUNITY',
     children: [
-      { title: 'News', link: '/underConstruction' },
-      { title: 'Events', link: '/underConstruction' },
-      { title: 'Blog', link: '/underConstruction' },
+      { title: 'News', link: '/underConstruction/' },
+      { title: 'Events', link: '/underConstruction/' },
+      { title: 'Blog', link: '/underConstruction/' },
       {
         title: 'Borderless Identities',
-        link: '/borderlessIdentities',
+        link: '/underConstruction/',
       },
     ],
   },
