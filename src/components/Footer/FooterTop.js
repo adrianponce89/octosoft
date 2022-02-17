@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     '@global': {
       '.MuiFormLabel-root': {
         color: '#FFFF',
+        opacity: 0.5,
+        fontSize: '15px',
+        
       },
     },
   },
@@ -104,11 +107,10 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
                 value={email}
                 name="email"
                 onChange={({ target }) => setEmail(target.value)}
-                label="Your Email"
+                label="Email address"
                 variant="filled"
                 type="email"
                 className={classes.input}
-                required
                 InputProps={{
                   endAdornment: (
                     <InputAdornment
@@ -162,14 +164,18 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-            <Link className={classes.link} margin={2} to="/news">
+            <Link
+              className={classes.link}
+              margin={2}
+              to="/underConstruction/"
+            >
               <div className={classes.linkText}>News</div>
             </Link>
 
             <Link
               className={classes.link}
               margin={2}
-              to="/borderlessIdentities"
+              to="/underConstruction/"
             >
               <div className={classes.linkText}>
                 Borderless Identities
@@ -193,7 +199,11 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-            <Link className={classes.link} margin={2} to="/contact">
+            <Link
+              className={classes.link}
+              margin={2}
+              to="/underConstruction/"
+            >
               <div className={classes.linkText}>Contact Us</div>
             </Link>
             <Link
