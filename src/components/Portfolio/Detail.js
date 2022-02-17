@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 
 const DetailPortfolio = ({ portfolios, projectsContent }) => {
   const classes = useStyle();
+  console.log(projectsContent);
 
   return (
     <Container className={classes.root}>

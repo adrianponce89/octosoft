@@ -49,6 +49,7 @@ export default (props) => {
     'data.contentfulLandingDescription',
   );
   const servicesHome = get(props, 'data.allContentfulService');
+   const portfolio = get(props, 'data.allContentfulPortfolio.nodes');
   const plans = get(props, 'data.allContentfulPlan.edges');
   const aboutUs = get(props, 'data.allContentfulAboutUs.nodes');
   const clients = get(props, 'data.allContentfulHomeClients');
@@ -80,7 +81,10 @@ export default (props) => {
 
   return (
     <>
-      <HomeBanner descriptionLanding={descriptionLanding} isActive={isActive}/>
+      <HomeBanner
+        descriptionLanding={descriptionLanding}
+        isActive={isActive}
+      />
       <Link to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03">
         <CalendarButton />
       </Link>
@@ -94,7 +98,7 @@ export default (props) => {
           className={classes.home}
         >
           <DescriptionHome content={aboutUs[0]} />
-          <Services services={servicesHome} />
+          <Services services={servicesHome} projects={portfolio} />
           <HomePlans plans={plans} />
           {clientHome && (
             <Clients
@@ -222,21 +226,26 @@ export const pageQuery = graphql`
             url
           }
         }
-        description
+        description {
+          description
+        }
       }
     }
-    allContentfulBanners {
-      edges {
-        node {
-          title
-          color
-          image {
-            file {
-              url
-            }
+    allContentfulPortfolio {
+      nodes {
+        active
+        category
+        contentful_id
+        subtitle
+        title
+        type
+        banner {
+          file {
+            url
           }
-          type
         }
+        bannerDimensions
+        order
       }
     }
   }

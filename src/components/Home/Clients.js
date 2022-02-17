@@ -27,9 +27,14 @@ const styles = makeStyles((theme) => ({
     },
   },
   imgClient: {
-    width: 70,
-    height: 70,
-    margin: 25,
+    width: 100,
+    height: 100,
+    margin: 20,
+  },
+  imgNearverse: {
+    width: 110,
+    height: 110,
+    margin: 20,
   },
   titlesContainer: {
     justifyContent: 'flex-start',
@@ -79,6 +84,16 @@ export default function Clients({ title, dataClients }) {
           className={classes.root}
         >
           {dataClients.slice(0, 6).map((media, index) => {
+            if(index === 1) {
+              return (
+                <img
+                  key={index}
+                  alt={media.title}
+                  src={media.file.url}
+                  className={classes.imgNearverse} //se le cambio la clase porque se pidio que el logo estuviera mas grande programaticamente -.-
+                />
+              );
+            }
             return (
               <img
                 key={index}
