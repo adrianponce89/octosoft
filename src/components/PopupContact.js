@@ -21,6 +21,10 @@ const PopUpContact = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!content) {
+      alert('Please fill in the message field');
+      return;
+    }
     submitForm('contact', {
       name,
       subject,
@@ -150,7 +154,7 @@ const PopUpContact = (props) => {
             name="content"
             onChange={({ target }) => setContent(target.value)}
             multiline
-            label="Your message"
+            label="Your Message*"
             variant="outlined"
             size="small"
           />
