@@ -23,6 +23,10 @@ const Contact = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!content) {
+      alert('Please fill in the message field');
+      return;
+    }
     submitForm('contact', {
       name,
       subject,
@@ -152,7 +156,7 @@ const Contact = (props) => {
               value={content}
               name="content"
               onChange={({ target }) => setContent(target.value)}
-              label="Your message"
+              label="Your Message*"
               variant="outlined"
               multiline
               maxRows={5}
