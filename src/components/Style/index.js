@@ -27,6 +27,26 @@ export const theme = createMuiTheme({
         },
       },
     },
+    MuiInputLabel:{
+      filled:{
+        transform: 'translate(0px, 16px) scale(1)',
+      }
+    },
+    MuiFilledInput: {
+      root: {
+        color: 'rgba(255, 255, 255,1)',
+        fontSize: 15,
+        backgroundColor: 'transparent',
+      },
+      input: {
+        padding: '23px 0px 5px 15px',
+      },
+      underline: {
+        '&:before': {
+          borderBottom: '2px solid rgba(255, 255, 255, 0.1)',
+        },
+      },
+    },
     MuiFormLabel: {
       root: {
         fontFamily: 'Montserrat !important',
