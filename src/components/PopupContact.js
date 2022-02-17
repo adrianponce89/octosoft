@@ -199,7 +199,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#33adff',
     fontWeight: '700',
     marginTop: '2rem',
-    marginBottom: '2rem',
+    marginBottom: '1rem',
   },
   container: {
     display: 'flex',
@@ -222,7 +222,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'column',
-    marginTop: '2rem',
+    marginTop: '1.3rem',
     marginBottom: '2rem',
   },
 
@@ -250,6 +250,9 @@ const useStyles = makeStyles((theme) => ({
       '& label ': {
         fontSize: '2vh',
         fontFamily: 'Montserrat',
+      },
+      '& label.Mui-focused': {
+        fontSize: '1.5vh',
       },
     },
   },

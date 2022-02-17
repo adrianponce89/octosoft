@@ -5,11 +5,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Link } from 'gatsby';
 import { useMediaQuery } from '@material-ui/core';
 
-const ServiceCard = ({ data, handleChange, expanded }) => {
+const ServiceCard = ({ data, handleChange, expanded, porfoliosData }) => {
   //console.log(data);
   const classes = useStyles();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('xs'));
+  const widthIsSM = useMediaQuery(theme.breakpoints.down('xs'));
+
+  const viewPage = porfoliosData.some(
+    (project) => project.category === data.category,
+  );
 
   return (
     <Accordion className={classes.itemContainer} style={{ 'backgroundColor': data.newColor }} square expanded={expanded === `panel-${data.newName}`} onChange={handleChange(`panel-${data.newName}`)}>
@@ -20,7 +24,7 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
         id="panel1a-header"
       >
         <p className={classes.title}>{data.newName}</p>
-        <Link to={`/portfolio/${data.category}`} className={classes.headerButton} style={{ visibility: expanded === `panel-${data.newName}` ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
+        <Link to={viewPage ? `/portfolio/${data.category}` : '/underConstruction'} className={classes.headerButton} style={{ visibility: expanded === `panel-${data.newName}` ? 'visible' : 'hidden' }}>BROWSE PORTFOLIO</Link>
       </AccordionSummary>
       <AccordionDetails className={classes.itemContent} style={{ backgroundImage: `url(${data.newLogo.file.url})` }}>
         <div className={classes.content} >
@@ -33,8 +37,8 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
                   return (
                     <Typography key={category} variant="h5" className={classes.category}>
                       {
-                        category
-                        //index === 0 ? `${category}` : `\u00A0- ${category}`
+                        widthIsSM ? category : category
+                        //index === data.categories.length - 1 ? `${category}` : `${category} -\u00A0`
                       }
                     </Typography>
                   )
@@ -46,11 +50,11 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
           </p>
           <Link to={`/ourservices/subcategories?${data.title}`} className={classes.contentButton} style={{ backgroundColor: data.newColor }}>VIEW IN DETAIL</Link>
           <br />
-          <Link to={`/portfolio/${data.category}`} className={classes.showInMobile} style={{ color: data.newColor, border: `1px solid ${data.newColor}` }}>BROWSE PORTFOLIO</Link>
+          <Link to={viewPage ? `/portfolio/${data.category}` : '/underConstruction'} className={classes.showInMobile} style={{ color: data.newColor, border: `1px solid ${data.newColor}` }}>BROWSE PORTFOLIO</Link>
           <div className={classes.tools}>
             {
               data.newTools === null ?
-                'No tools loaded'
+                null
                 :
                 data.newTools.map((tool, index) => {
                   return (
@@ -59,7 +63,7 @@ const ServiceCard = ({ data, handleChange, expanded }) => {
                       src={tool.file.url}
                       alt={tool.file.url}
                       className={`${classes.toolImage}`}
-                      style={{ display: matches && index >= 8 ? 'none' : 'initial' }}
+                      style={{ display: widthIsSM && index >= 8 ? 'none' : 'initial' }}
                     />
                   )
                 })
@@ -106,12 +110,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    fontSize: '30px',
+    fontSize: '25px',
     fontWeight: 550,
     fontFamily: 'Montserrat',
     lineHeight: 'normal',
     alignSelf: 'center',
-    margin: '0px 60px',
+    margin: '0px 0px',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.5rem',
       margin: '0px 40px',
@@ -132,6 +136,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '7px 20px',
     alignSelf: 'center',
     textDecoration: 'none',
+    fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.2rem',
     },
@@ -183,6 +188,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: 'none',
     marginBottom: '30px',
     marginTop: '15px',
+    fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
       fontSize: '14px',
     },
@@ -191,7 +197,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
-      fontWeight: 'bold',
       display: 'block',
       textAlign: 'center',
       padding: '10px 45px',
@@ -203,14 +208,15 @@ const useStyles = makeStyles((theme) => ({
   serviceLogo: {
   },
   subcategoriesContent: {
+    display: 'grid',
+    gridTemplateColumns: 'auto auto',
     [theme.breakpoints.down('md')]: {
     },
     [theme.breakpoints.down('sm')]: {
     },
     [theme.breakpoints.down('xs')]: {
-      display: 'grid',
+      display: 'none',
       gridTemplateColumns: 'auto auto',
-      textAlign: 'center',
       alignItems: 'center'
     },
   },
@@ -226,6 +232,9 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       fontSize: '0.8em',
+    },
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '0.75em',
     },
   },
   text: {
@@ -261,6 +270,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '30px',
     marginTop: '15px',
     display: 'none',
+    fontWeight: 'bold',
     [theme.breakpoints.down('md')]: {
       fontSize: '1.2rem',
     },
@@ -271,7 +281,6 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       fontSize: '10px',
-      fontWeight: 'bold',
       display: 'block',
       textAlign: 'center',
       marginBottom: '30px',
