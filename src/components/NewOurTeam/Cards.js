@@ -113,12 +113,12 @@ const useStyles = makeStyles((theme) => ({
   },
   octogane: {
     display: 'flex',
-    width: '350px',
-    height: '355px',
+    width: '300px',
+    height: '300px',
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: '10rem',
+    paddingBottom: '8.5rem',
   },
   iconAvatar: {
     display: 'flex',
@@ -130,7 +130,7 @@ const useStyles = makeStyles((theme) => ({
       photoNoBackground || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '347px 352px',
+    backgroundSize: '300px 350px',
     paddingBottom: '100%',
     transition: "background-image 1.5s ease",
 
