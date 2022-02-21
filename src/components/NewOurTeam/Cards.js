@@ -82,7 +82,6 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '0rem',
     marginBottom: '0rem',
     height: 'fit-content',
-
     '@media (max-width: 1024px)': {
       width: '23rem',
       margin: '0%',
@@ -118,7 +117,10 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: '8.5rem',
+    paddingBottom: '8rem',
+    '@media (max-width: 1024px)': {
+      paddingBottom: '7rem',
+    },
   },
   iconAvatar: {
     display: 'flex',
