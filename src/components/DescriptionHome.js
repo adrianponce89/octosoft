@@ -27,8 +27,8 @@ const styles = makeStyles((theme) => ({
     marginTop: 20,
   },
   logoNew: {
-    width: 160,
-    height: 160,
+    width: 170,
+    height: 170,
     marginRight: 20,
     '@media (max-width: 760px)': {
       width: 150,
@@ -37,7 +37,20 @@ const styles = makeStyles((theme) => ({
     },
   },
   description: {
-    width: 600,
+    width: 670,
+    fontFamily: 'Montserrat',
+    fontSize: 16,
+    lineHeight: '30px',
+    '@media (max-width: 760px)': {
+      fontSize: 18,
+      textAlign: 'left',
+    },
+    '@media (max-width: 1368px)': {
+      fontSize: 20,
+      textAlign: 'left',
+    },
+  },
+  descriptionWords: {
     fontFamily: 'Montserrat',
     fontSize: 16,
     lineHeight: '30px',
@@ -115,9 +128,7 @@ const DescriptionHome = ({ content }) => {
             <OctoLogoName className={classes.logoName} />
           </div>
         </div>*/}
-        <div
-          className={classes.videoContainer}
-        >
+        <div className={classes.videoContainer}>
           <YouTube
             videoId="0uqkxOcoehc"
             opts={opts}
@@ -135,9 +146,19 @@ const DescriptionHome = ({ content }) => {
         md={12}
       >
         <OctoLogoNew className={classes.logoNew} />
-        <Typography variant="h2" className={classes.description}>
-          {description}
-        </Typography>
+        <div className={classes.description}>
+          {description.split('>').map((item) => {
+            return (
+              <Typography
+                variant="h2"
+                className={classes.descriptionWords}
+              >
+                {`${item}`}
+              </Typography>
+            );
+            
+          })}
+        </div>
       </Grid>
     </Grid>
   );
