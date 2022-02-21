@@ -27,13 +27,13 @@ const styles = makeStyles((theme) => ({
     },
   },
   imgClient: {
-    width: 100,
-    height: 100,
+    width: 110,
+    height: 110,
     margin: 20,
   },
   imgNearverse: {
-    width: 110,
-    height: 110,
+    width: 120,
+    height: 120,
     margin: 20,
   },
   titlesContainer: {
@@ -83,7 +83,7 @@ export default function Clients({ title, dataClients }) {
           xs={12}
           className={classes.root}
         >
-          {dataClients.slice(0, 6).map((media, index) => {
+          {dataClients.slice(0, 4).map((media, index) => {
             if(index === 1) {
               return (
                 <img
@@ -94,6 +94,24 @@ export default function Clients({ title, dataClients }) {
                 />
               );
             }
+            return (
+              <img
+                key={index}
+                alt={media.title}
+                src={media.file.url}
+                className={classes.imgClient}
+              />
+            );
+          })}
+        </Grid>
+         <Grid
+          container
+          item
+          justify="space-between"
+          xs={12}
+          className={classes.root}
+        >
+          {dataClients.slice(4, 8).map((media, index) => {
             return (
               <img
                 key={index}
