@@ -14,7 +14,7 @@ const Cards = ({
   photoNoBackground,
   hover,
   octogone,
-  octoColors
+  octoColors,
 }) => {
   useEffect(() => {
     length && length % 5 === 0 ? setType(true) : setType(false);
@@ -34,10 +34,10 @@ const Cards = ({
     <div className={type ? classes.paperFive : classes.paper}>
       <div className={classes.itemAvatar}>
         <Octogane fill={octoColors} className={classes.octogane} />
-          <div
-            className={classes.iconAvatar}
-            onClick={() => handleClickCard(name)}
-          />
+        <div
+          className={classes.iconAvatar}
+          onClick={() => handleClickCard(name)}
+        />
         <Grid
           container
           justify="center"
@@ -112,14 +112,14 @@ const useStyles = makeStyles((theme) => ({
   },
   octogane: {
     display: 'flex',
-    width: '300px',
-    height: '300px',
+    width: '20rem',
+    height: '20rem',
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
     paddingBottom: '8rem',
     '@media (max-width: 1024px)': {
-      paddingBottom: '7rem',
+      paddingBottom: '8rem',
     },
   },
   iconAvatar: {
@@ -132,16 +132,15 @@ const useStyles = makeStyles((theme) => ({
       photoNoBackground || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '300px 350px',
-    paddingBottom: '100%',
-    transition: "background-image 1.5s ease",
+    backgroundSize: '20rem 22rem',
+    paddingBottom: '22rem',
+    transition: 'background-image 1.5s ease',
 
     zIndex: 1,
     '&:hover': {
       backgroundImage: ({ hover }) => hover || '#ECECEC',
       cursor: 'pointer',
     },
- 
   },
 
   name: {
@@ -152,7 +151,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#000000',
     marginTop: '2rem',
     textTransform: 'capitalize',
- 
   },
   title: {
     fontFamily: 'Montserrat',
@@ -160,7 +158,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#0024B5',
     width: '100%',
     fontSize: 20,
-  
   },
   section: {
     fontFamily: 'Montserrat',
@@ -169,7 +166,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '20',
     textTransform: 'uppercase',
     color: ({ color }) => color || '#ECECEC',
- 
   },
   descriptionAvatars: {
     fontFamily: 'Montserrat',
