@@ -141,13 +141,13 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-            <Link className={classes.link} margin={2} to="/">
+            <Link className={classes.link} margin={2} to="/aboutus">
               <div className={classes.linkText}>About Us</div>
             </Link>
             <Link
               className={classes.link}
               margin={2}
-              to="/"
+              to="/ourservices"
             >
               <div className={classes.linkText}>Services</div>
             </Link>
@@ -164,26 +164,18 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-<<<<<<< HEAD
-            <Link className={classes.link} margin={2} to="/">
-=======
             <Link
               className={classes.link}
               margin={2}
               to="/underConstruction/"
             >
->>>>>>> newDevelop
               <div className={classes.linkText}>News</div>
             </Link>
 
             <Link
               className={classes.link}
               margin={2}
-<<<<<<< HEAD
-              to="/"
-=======
               to="/underConstruction/"
->>>>>>> newDevelop
             >
               <div className={classes.linkText}>
                 Borderless Identities
@@ -207,21 +199,17 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-<<<<<<< HEAD
-            <Link className={classes.link} margin={2} to="/">
-=======
             <Link
               className={classes.link}
               margin={2}
               to="/underConstruction/"
             >
->>>>>>> newDevelop
               <div className={classes.linkText}>Contact Us</div>
             </Link>
             <Link
               className={classes.link}
               margin={2}
-              to="/"
+              to="/clientsupport"
             >
               <div className={classes.linkText}>Client Support</div>
             </Link>

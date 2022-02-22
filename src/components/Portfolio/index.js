@@ -8,39 +8,15 @@ import { makeStyles } from '@material-ui/core/styles';
 const Portfolio = ({ data }) => {
   const classes = useStyles();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  let sectionData = data.allContentfulBanners.edges.find(node => node.node.title === 'Our Portfolio')
-=======
   let sectionData = data.allContentfulBanners.edges.find(
     (node) => node.node.title === 'Our Portfolio',
   );
->>>>>>> newDevelop
 
   const { node: sectionTitle } = sectionData;
   const { nodes: portfolioContent } = data.allContentfulService;
   const { nodes: projectsContent } = data.allContentfulPortfolio;
 
   const orderedPortfolios = portfolioContent
-<<<<<<< HEAD
-    .filter(portfolio => portfolio.newName !== 'Octosoft')
-    .sort((a, b) => a.newOrder - b.newOrder)
->>>>>>> 53230dcf46bd7d6a79d20e3cb0e76a8f7eecc349
-
-  return (
-    <>
-      <OurPortfolio
-        colorTitle={sectionTitle.color}
-        title={sectionTitle.title}
-      />
-<<<<<<< HEAD
-      <DetailPortfolio  />
-=======
-      <DetailPortfolio portfolios={orderedPortfolios} />
->>>>>>> 53230dcf46bd7d6a79d20e3cb0e76a8f7eecc349
-    </>
-=======
     .filter((portfolio) => portfolio.newName !== 'Octosoft')
     .sort((a, b) => a.newOrder - b.newOrder);
 
@@ -58,7 +34,6 @@ const Portfolio = ({ data }) => {
         />
       </div>
     </div>
->>>>>>> newDevelop
   );
 };
 

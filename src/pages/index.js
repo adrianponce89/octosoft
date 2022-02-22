@@ -1,13 +1,46 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
-<<<<<<< HEAD
-import { useStaticQuery, graphql } from 'gatsby';
-
-import Container from '../components/Container';
-import UnderConstruction from '../components/UnderConstruction';
 import BackgroundImage from '../assets/Trama.png';
-=======
+import HomeBanner from '../components/Home/Banner';
+import DescriptionHome from '../components/DescriptionHome';
+import Services from '../components/Home/Services';
+import HomePlans from '../components/HomePlans';
+import Clients from '../components/Home/Clients';
+import CalendarButton from '../components/CalendarButton'
+import { Link } from 'gatsby';
+
+
+const useStyles = makeStyles((theme) => ({
+  containerCard: {
+    padding: '3vh',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  backgroundHome: {
+    width: '100%',
+    height: '310vh',
+    opacity: 0.2,
+    top: '100vh',
+    left: 0,
+    bottom: 0,
+    right: 0,
+    position: 'absolute',
+    backgroundImage: ({ BackgroundImage }) =>
+      `url(${BackgroundImage})`,
+    backgroundColor: '#FFF',
+    backgroundPosition: 'initial',
+    backgroundRepeat: 'repeat',
+    backgroundSize: '100vw',
+    zIndex: '-1',
+  },
+  home: {
+    zIndex: 99,
+  },
+}));
+
 export default (props) => {
   const [isActive, setIsActive] = useState(false);
   const [firstView, setFirstView] = useState(true);
@@ -78,27 +111,106 @@ export default (props) => {
     </>
   );
 };
->>>>>>> newDevelop
 
-const underConstructionPage = () => {
-  const classes = useStyles();
-  const {
-    allContentfulAsset: {
-      edges: [
-        {
-          node: {
-            file: { url },
-          },
-        },
-      ],
-    },
-  } = useStaticQuery(graphql`
-    {
-      allContentfulAsset(
-        filter: { title: { eq: "underconstruction" } }
-      ) {
-        edges {
-          node {
+export const pageQuery = graphql`
+  query HomeQuery {
+    allContentfulHomeItem(sort: { fields: order }) {
+      edges {
+        node {
+          id
+          link
+          order
+          color
+          image {
+            file {
+              url
+            }
+          }
+          title
+          description {
+            description
+          }
+        }
+      }
+    }
+    allContentfulHomeBorderlessIdentities {
+      edges {
+        node {
+          id
+          title
+          description {
+            description
+          }
+          image {
+            file {
+              url
+            }
+          }
+          link
+        }
+      }
+    }
+    allContentfulPlan(sort: { fields: order }) {
+      edges {
+        node {
+          id
+          amount
+          type
+          order
+          link
+          color
+          description {
+            json
+          }
+          title
+          image {
+            file {
+              url
+            }
+          }
+        }
+      }
+    }
+    contentfulLandingDescription {
+      description
+      title
+      backgroundImage {
+        file {
+          url
+        }
+      }
+    }
+    allContentfulService(sort: { fields: order }) {
+      nodes {
+        description
+        order
+      }
+      edges {
+        node {
+          color
+          id
+          order
+          title
+          newOrder
+          newName
+          newColor
+          category
+          images {
+            file {
+              url
+            }
+          }
+          content {
+            json
+          }
+        }
+      }
+    }
+    allContentfulHomeClients {
+      edges {
+        node {
+          title
+          media {
             title
             file {
               url
@@ -107,29 +219,6 @@ const underConstructionPage = () => {
         }
       }
     }
-<<<<<<< HEAD
-  `);
-
-  return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      innerBackground={'none'}
-      className={classes.root}
-    >
-      <UnderConstruction imgUrl={url} />
-    </Container>
-  );
-};
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    margin: '50px 34px 50px',
-    '@media (min-width: 1362px)': {
-      maxWidth: '90%',
-    },
-  },
-}));
-=======
     allContentfulAboutUs {
       nodes {
         image {
@@ -161,6 +250,3 @@ const useStyles = makeStyles((theme) => ({
     }
   }
 `;
->>>>>>> newDevelop
-
-export default underConstructionPage;
