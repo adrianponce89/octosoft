@@ -13,8 +13,14 @@ const DetailPortfolio = ({ portfolios, projectsContent }) => {
       <Grid container xs={12} className={classes.gridContainer}>
         {portfolios.map((node) => {
           let viewPage = projectsContent.some(
-              (project) => project.category === node.category,
-            );
+            (project) =>{
+              if(project.active){
+                return project.category === node.category
+              }else{
+                return false
+              }
+            }
+          );
             
           return (
             <Link

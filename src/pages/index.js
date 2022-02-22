@@ -49,10 +49,12 @@ export default (props) => {
     'data.contentfulLandingDescription',
   );
   const servicesHome = get(props, 'data.allContentfulService');
-   const portfolio = get(props, 'data.allContentfulPortfolio.nodes');
+  const portfolio = get(props, 'data.allContentfulPortfolio.nodes');
   const plans = get(props, 'data.allContentfulPlan.edges');
   const aboutUs = get(props, 'data.allContentfulAboutUs.nodes');
   const clients = get(props, 'data.allContentfulHomeClients');
+
+  console.log('portfolioportfolio', portfolio);
 
   const handleScroll = () => {
     if (window.scrollY >= 300 && !isActive && firstView) {
