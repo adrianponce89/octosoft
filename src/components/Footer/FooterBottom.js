@@ -93,18 +93,18 @@ const FooterBottom = () => {
             justify="flex-start"
             alignItems="flex-start"
           >
-            <Link className={classes.link} margin={2} to="/">
+            <Link className={classes.link} margin={2} to="/legal">
               <div className={classes.linkText}>
                 Terms & Conditions
               </div>
             </Link>
 
-            <Link className={classes.link} margin={2} to="/">
+            <Link className={classes.link} margin={2} to="/legal">
               <div className={classes.linkText}>Privacy Policy</div>
             </Link>
           </Grid>
           <Typography className={classes.bottomText}>
-            Copyright 2018-2021 Octosoft Professionals All Rights
+            Copyright 2018-2022 Octosoft Professionals All Rights
             Reserved.
           </Typography>
         </Grid>

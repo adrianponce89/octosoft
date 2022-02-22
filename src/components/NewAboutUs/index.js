@@ -1,8 +1,7 @@
 import React from 'react';
-import UnderLined from '../UnderLined';
 import Background from '../Background';
 import Container from '../Container';
-import { Typography, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Cards from './cards';
 import TitleComponent from '../TitleComponent/index';
@@ -26,27 +25,10 @@ const NewAboutUs = ({ aboutUs }) => {
         justify="center"
         alignItems="center"
       >
-        <Grid
-          container
-          item
-          xs={12}
-          justify="center"
-          alignItems="center"
-          direction="column"
-          className={classes.titleContainer}
-        >
-          <Typography variant="h5" className={classes.mainTitle}>
-            About Us
-          </Typography>
-          <Typography variant="h5" className={classes.subtitle}>
-            OCTOSOFT PROFESSIONAL
-          </Typography>
-        </Grid>
+        <TitleComponent title={'About Us'} />
         
-        <Container
-          innerBackground={'none'}
+        <div
           className={classes.containerCard}
-          xs={10}
         >
           <Grid
             container
@@ -68,7 +50,7 @@ const NewAboutUs = ({ aboutUs }) => {
               ))}
           </Grid>
           {<div className={classes.cardsopen}></div>}
-        </Container>
+        </div>
 
       </Grid>
     </Grid>
@@ -83,10 +65,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   containerCard:{
+    marginTop: '5rem',
     justifyContent: 'center',
     width: '100%',
     '@media (min-width: 1362px)': {
       maxWidth: '95%!important',
+    },
+    '@media (max-width: 760px)': {
+      width: '80%',
     },
     padding: 'unset!important',
   },

@@ -18,7 +18,7 @@ const Title = ({ title }) => {
         {title}
       </Typography>
       <Typography variant="h5" className={classes.subtitle}>
-        OCTOSOFT PROFESSIONAL
+        OCTOSOFT PROFESSIONALS
       </Typography>
     </Grid>
   );

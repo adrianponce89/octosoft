@@ -81,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
   OctoThree: {
     position: 'absolute',
-    top: '9%',
+    top: '8%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 960px)': {

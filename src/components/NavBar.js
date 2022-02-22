@@ -51,12 +51,12 @@ const menuList = [
   {
     title: 'COMMUNITY',
     children: [
-      { title: 'News', link: '/underConstruction' },
-      { title: 'Events', link: '/underConstruction' },
-      { title: 'Blog', link: '/underConstruction' },
+      { title: 'News', link: '/underConstruction/' },
+      { title: 'Events', link: '/underConstruction/' },
+      { title: 'Blog', link: '/underConstruction/' },
       {
-        title: 'Bordeless Identities',
-        link: '/borderlessIdentities',
+        title: 'Borderless Identities',
+        link: '/underConstruction/',
       },
     ],
   },
@@ -80,7 +80,12 @@ const NavLinks = (props) => {
     <>
       {menuList.map((menu) =>
         menu.link ? (
-          <Link className={classes.link} margin={2} to={'/'}>
+          <Link
+            className={classes.link}
+            margin={2}
+            to={'/'}
+            to={menu.link}
+          >
             <div className={classes.linkText}>{menu.title}</div>
           </Link>
         ) : menu.children ? (
@@ -138,6 +143,15 @@ const NavLinks = (props) => {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'right',
+                }}
+                style={{marginTop: '4px'}}
               >
                 {menu.title === 'CONTACT US' ? (
                   <Contact />
@@ -145,7 +159,8 @@ const NavLinks = (props) => {
                   menu.children.map((child) => (
                     <MenuItem
                       component={Link}
-                      to={'/' }
+                      to={'/'}
+                      to={child.link}
                       onClick={handleClose}
                     >
                       <Typography className={classes.subItem}>
@@ -191,6 +206,7 @@ const NavLinks = (props) => {
   );
 };
 
+
 const NavBar = (props) => {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -207,10 +223,7 @@ const NavBar = (props) => {
           <Toolbar className={classes.toolbar}>
             <Link to={'/'} className={classes.linkLogo}>
               <div className={classes.links}>
-                
-                  
                   <HorizontalLogo className={classes.logo} />
-                
               </div>
             </Link>
             <Hidden lgUp>
@@ -273,10 +286,11 @@ const useStyles = makeStyles((theme) => ({
   },
   subItem: {
     fontFamily: 'Montserrat',
+    fontSize: 16,
   },
   link: {
-    margin: '15px 10px',
-    padding: '0px 15px',
+    margin: '15px 25px',
+    padding: '0px',
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',

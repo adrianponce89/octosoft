@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
     padding: 0,
     display: 'flex',
     justifyContent: 'center',
-    position: 'relative',
   }),
   background: (props) => ({
     width: '100%',

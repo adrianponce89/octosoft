@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   gridContainer: {
     justifyContent: 'flex-end',
     alignItems: 'center',
-    marginLeft: '1rem',
+    marginRight: '1rem',
     '@media (max-width: 768px)': {
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
@@ -133,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
     height: '5rem',
     marginBottom: '1rem',
     marginTop: '1rem',
-    textAlign: 'justify',
+    textAlign: 'left',
     width: '280px',
     '@media (max-width: 768px)': {
       height: '5rem',
