@@ -6,6 +6,8 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const PostTemplate = path.resolve('./src/templates/Post.js');
+    const ServicePortfolio = path.resolve('./src/components/ServicePortfolio/index.js')
+    const ProjectTemplate = path.resolve('./src/templates/Project/index.js')
     resolve(
       graphql(
         `
@@ -27,6 +29,60 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
+            allContentfulService {
+              edges {
+                node {
+                  newName
+                  categories
+                  newColor
+                  category
+                }
+              }
+            }
+            allContentfulPortfolio {
+              edges {
+                node {
+                  active
+                  asset {
+                    file {
+                      url
+                    }
+                  }
+                  category
+                  subcategory
+                  clientName
+                  colorTitle
+                  contentful_id
+                  description {
+                    description
+                  }
+                  linkProject
+                  subtitle
+                  title
+                  titlePortfolioPage
+                  type
+                  banner {
+                    file {
+                      url
+                    }
+                  }
+                  bannerDimensions
+                  designAssets {
+                    description
+                    file {
+                      url
+                      details {
+                        image {
+                          height
+                          width
+                        }
+                      }
+                      fileName
+                    }
+                  }
+                }
+              }
+            }
           }
         `,
       ).then((result) => {
@@ -36,6 +92,21 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const posts = result.data.allContentfulPost.edges;
+        const services = result.data.allContentfulService.edges;
+        const projects = result.data.allContentfulPortfolio.edges;
+
+        services.forEach((service) => {
+          createPage({
+            path: `/portfolio/${service.node.category}/`,
+            component: ServicePortfolio,
+            context: {
+              newName: service.node.newName,
+              categories: service.node.categories,
+              newColor: service.node.newColor,
+              categoryType: service.node.category,
+            },
+          });
+        });
         posts.forEach((post) => {
           createPage({
             path: `/news/${post.node.slug}/`,
@@ -44,6 +115,20 @@ exports.createPages = ({ graphql, actions }) => {
               slug: post.node.slug,
             },
           });
+        });
+        projects && projects.forEach((project) => {
+          if(project.active){
+              createPage({
+                path: `/portfolio/${project.node.category}/${project.node.contentful_id}/`,
+                component: ProjectTemplate,
+                context: {
+                  servicesInfo: services,
+                  projectType: project.node.type,
+                  project: project.node,
+                },
+            });
+          }
+          
         });
       }),
     );

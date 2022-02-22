@@ -1,42 +1,63 @@
 import React from 'react';
 
 import { useStaticQuery, graphql } from 'gatsby';
-
 import Container from '../components/Container';
 import Portfolio from '../components/Portfolio';
 import BackgroundImage from '../assets/Trama.png';
 
-const PortfolioPage = () => {
+const PortfolioPage = (props) => {
   const data = useStaticQuery(graphql`
-    query Portfolio {
-      allContentfulPortfolio {
-        edges {
-          node {
-            titlePortfolioPage
-            colorTitle
-            description {
-              description
-            }
-            portfoliosImage {
-              file {
-                url
-              }
-              title
-              description
+    query services {
+      allContentfulService {
+        nodes {
+          newColor
+          newName
+          newOrder
+          category
+          porfolioBackground {
+            file {
+              url
             }
           }
+          porfolioBackgorundWide {
+            file {
+              url
+            }
+          }
+          portfolioLink
+        }
+      }
+      allContentfulBanners {
+        edges {
+          node {
+            color
+            title
+          }
+        }
+      }
+      allContentfulPortfolio {
+        nodes {
+          active
+          category
+          contentful_id
+          subtitle
+          title
+          type
+          banner {
+            file {
+              url
+            }
+          }
+          bannerDimensions
+          order
         }
       }
     }
   `);
+
   return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      innerPadding="80px 25px 25px 25px"
-      innerBackground={'#93D6C3'}
-    >
+
       <Portfolio data={data} />
-    </Container>
   );
 };
 

@@ -138,7 +138,7 @@ const socialNetwork = ({ socialMedia, ...props }) => {
         key={'linkedin'}
       >
         <Grid item xs={1} className={classes.linkedin}>
-          <Tooltip title="Linked In" classes={classes}>
+          <Tooltip title="Linkedin" classes={classes}>
             <LinkedInIcon fontSize="large" className={classes.icon} />
           </Tooltip>
         </Grid>

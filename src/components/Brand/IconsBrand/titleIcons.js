@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 40,
     marginBottom: '1%',
     marginTop: '3%',
+    marginLeft: '2%',
   },
   titleLeft: {
     display: 'flex',
@@ -42,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     marginBottom: '1rem',
     marginTop: '1rem',
+    marginRight: '2rem',
     '@media (max-width: 768px)': {
+      marginRight: '0',
       alignItems: 'center',
       justifyContent: 'flex-start',
     },

@@ -1,9 +1,7 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
-import TypingAnimation from '../TypingAnimation';
 import MainLogo from './MainLogo';
+import BannerTrama from '../../assets/trama2.png';
 
 const useStyles = makeStyles((theme) => ({
   backgroundHead: {
@@ -15,56 +13,40 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingTop: '10vh',
-    minHeight: '60vh',
+    paddingTop: '20vh',
+    minHeight: '35vh',
     position: 'relative',
-    '@media (max-width: 560px)': { height: '100%' },
+    '@media (max-width: 560px)': { minHeight: '30vh' },
+    transition: 'all 1s linear',
   },
   mainLogo: {
     position: 'absolute',
     left: '2vw',
     top: '5vh',
-  },
-  typingContainer: {
-    alignSelf: 'flex-start',
-    display: 'flex',
-    marginLeft: '20vw',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  arrowDown: {
-    fontSize: '5em',
-    color: '#37add4',
-    margin: 0,
-    padding: 0,
-  },
-  containerArrow: {
-    position: 'absolute',
-    bottom: -25,
+    zIndex: 16,
   },
 }));
 
-const words = ['Diverse.', 'Secure.', 'Budget friendly.'];
-
-export default ({ descriptionLanding }) => {
+export default ({ descriptionLanding, isActive }) => {
+  
   const classes = useStyles({
     backgroundImage: descriptionLanding.backgroundImage.file.url,
+    isActive
   });
+
+  
+
   return (
-    <div className={classes.backgroundHead}>
-      <MainLogo className={classes.mainLogo} />
-      <div className={classes.typingContainer}>
-        <TypingAnimation words={words} />
-      </div>
-      <Grid
-        container
-        justify="center"
-        className={`Arrow ${classes.containerArrow}`}
+    <>
+      <div
+        className={classes.backgroundHead}
+      ></div>
+
+      <div
+        className={classes.mainLogo}
       >
-        <a href="#work">
-          <ExpandMoreIcon className={classes.arrowDown} />
-        </a>
-      </Grid>
-    </div>
+        <MainLogo />
+      </div>
+    </>
   );
 };

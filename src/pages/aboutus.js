@@ -1,86 +1,36 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import get from 'lodash/get';
-import Container from '../components/Container';
-import BackgroundImage from '../assets/Trama.png';
-import AboutUs from '../components/AboutUs';
+import NewAboutUs from '../components/NewAboutUs/index';
 
-const AboutUsPage = (props) => {
-  const teamMembers = get(
-    props,
-    'data.allContentfulTeamMember.edges',
-  );
-
-  const aboutUsBanner = get(props, 'data.contentfulBanners');
-
-  return (
-    <Container
-      background={`url(${BackgroundImage})`}
-      innerPadding="80px 25px 25px 25px"
-      innerBackground={'#5ebff4'}
-    >
-      <AboutUs
-        teamMembers={teamMembers}
-        aboutUs={aboutUsBanner}
-        cla
-      />
-    </Container>
+const NewAboutUsPage = (props) => {
+  const aboutUsBanner = get(props, 'data.allContentfulHomeItem');
+  return (    
+    <div styles={{ width: '100%', backgroundColor: '#F5F7F7' }}>
+      <NewAboutUs aboutUs={aboutUsBanner} />
+    </div>
   );
 };
 
-export default AboutUsPage;
+export default NewAboutUsPage;
 
 export const pageQuery = graphql`
-  query AboutUsQuery {
-    contentfulBanners(type: { eq: "AboutUs" }) {
-      color
-      image {
-        file {
-          url
-        }
-      }
-      subTitle
-      title
-      type
-      description {
-        id
-        internal {
-          content
-        }
-      }
-    }
-    allContentfulTeamMember(sort: { fields: order }) {
+  query newAboutUsQuery {
+    allContentfulHomeItem(sort: {fields: order}, filter: {order: {gt: 1}}) {
       edges {
         node {
           id
+          link
+          order
           title
-          category
-          section
-          socialMedia {
-            github
-            facebook
-            behance
-            instagram
-            linkedin
-            twitter
-            web
-          }
-          photo {
+          color
+          image {
             file {
               url
             }
           }
-          fullPhoto {
-            file {
-              url
-            }
-          }
-          name
-          biography {
-            json
-          }
-          expertise {
-            json
+          description {
+            description
           }
         }
       }
