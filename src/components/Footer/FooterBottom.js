@@ -104,7 +104,7 @@ const FooterBottom = () => {
             </Link>
           </Grid>
           <Typography className={classes.bottomText}>
-            Copyright 2018-2021 Octosoft Professionals All Rights
+            Copyright 2018-2022 Octosoft Professionals All Rights
             Reserved.
           </Typography>
         </Grid>

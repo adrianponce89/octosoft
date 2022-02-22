@@ -15,21 +15,6 @@ const useStyles = makeStyles((theme) => ({
     width: 350,
     //height: 100,
   },
-  textLogo: {
-    cursor: 'default',
-    fontSize: 35,
-    lineHeight: 0.75,
-    letterSpacing: 2,
-    fontWeight: 'bold',
-    fontFamily: 'Montserrat',
-  },
-  textLogoSub: {
-    cursor: 'default',
-    fontSize: 21,
-    letterSpacing: 2,
-    fontWeight: 'bold',
-    fontFamily: 'Montserrat',
-  },
 }));
 
 export default ({ className }) => {

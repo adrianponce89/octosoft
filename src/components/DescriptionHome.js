@@ -8,6 +8,13 @@ import YouTube from 'react-youtube';
 const styles = makeStyles((theme) => ({
   container: {
     backgroundColor: '#F7F8FA',
+    paddingBottom: 60,
+    '@media (max-width: 760px)': {
+      padding: '40px 20px',
+    },
+  },
+  containerDesc: {
+    backgroundColor: '#F7F8FA',
     paddingTop: 60,
     paddingBottom: 60,
     '@media (max-width: 760px)': {
@@ -36,11 +43,11 @@ const styles = makeStyles((theme) => ({
     lineHeight: '30px',
     '@media (max-width: 760px)': {
       fontSize: 18,
-      textAlign: 'center',
+      textAlign: 'left',
     },
     '@media (max-width: 1368px)': {
       fontSize: 20,
-      textAlign: 'center',
+      textAlign: 'left',
     },
   },
   video: {
@@ -52,7 +59,7 @@ const styles = makeStyles((theme) => ({
     },
   },
   mediaContainer: {
-    marginBottom:-50//marginBottom: -250,
+    //marginBottom:-50//marginBottom: -250,
   },
   imgContainer: {
     display: 'flex',
@@ -64,7 +71,7 @@ const styles = makeStyles((theme) => ({
   },
   videoContainer: {
     position: 'relative',
-    top: -50,//-250
+    //top: -50,//-250
   },
   logoName: {
     width: 310,
@@ -72,7 +79,7 @@ const styles = makeStyles((theme) => ({
 }));
 
 const DescriptionHome = ({ content }) => {
-  const {description} = content;
+  const {description} = content.description;
   const classes = styles();
   const opts = {
     width: 530,
@@ -121,7 +128,7 @@ const DescriptionHome = ({ content }) => {
 
       <Grid
         container
-        className={classes.container}
+        className={classes.containerDesc}
         flexDirection="row"
         justify="center"
         alignItems="center"
