@@ -135,7 +135,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '20rem 22rem',
     paddingBottom: '22rem',
     transition: 'background-image 1.5s ease',
-
     zIndex: 1,
     '&:hover': {
       backgroundImage: ({ hover }) => hover || '#ECECEC',
@@ -180,6 +179,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FFFFFF',
     marginTop: '0.5rem',
     borderColor: ({ color }) => color || '#ECECEC',
+    '&:hover': {
+      backgroundColor: '#FFFFFF',
+      opacity: 0.6,
+    },
   },
   textButton: {
     fontFamily: 'Montserrat',
