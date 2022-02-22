@@ -59,7 +59,9 @@ const Services = ({ services, projects}) => {
             .slice(1, 5)
             .map((service, index) => {
                 let viewPage = projects.some(
-                  (project) => project.category === service.node.category,
+                  (project) =>
+                    project.category === service.node.category &&
+                    project.active,
                 );
               return  (
               <ServiceItem

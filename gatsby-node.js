@@ -116,16 +116,19 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         });
-        projects.forEach((project) => {
-          createPage({
-            path: `/portfolio/${project.node.category}/${project.node.contentful_id}/`,
-            component: ProjectTemplate,
-            context: {
-              servicesInfo: services, 
-              projectType: project.node.type,
-              project: project.node,
-            },
-          });
+        projects && projects.forEach((project) => {
+          if(project.active){
+              createPage({
+                path: `/portfolio/${project.node.category}/${project.node.contentful_id}/`,
+                component: ProjectTemplate,
+                context: {
+                  servicesInfo: services,
+                  projectType: project.node.type,
+                  project: project.node,
+                },
+            });
+          }
+          
         });
       }),
     );
