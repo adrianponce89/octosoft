@@ -27,7 +27,7 @@ const sortArray = (arr) => {
   return arr
 }
 
-const Services = ({ services, projects}) => {
+const Services = ({ services}) => {
   const { edges: servicesData, nodes: servicesDesc} = services;
 
   const [servicesToShow, setServicesToShow] = useState([]);
@@ -57,20 +57,13 @@ const Services = ({ services, projects}) => {
         {servicesToShow.length > 0 &&
           servicesToShow
             .slice(1, 5)
-            .map((service, index) => {
-                let viewPage = projects.some(
-                  (project) => project.category === service.node.category,
-                );
-              return  (
+            .map((service, index) => (
               <ServiceItem
                 key={index}
                 service={service}
                 description={servicesDesc}
-                projectPath={viewPage}
               />
-            )
-            
-            })}
+            ))}
       </Grid>
       <Grid
         container
@@ -83,21 +76,13 @@ const Services = ({ services, projects}) => {
         {servicesToShow.length > 0 &&
           servicesToShow
             .slice(5, 9)
-            .map((service, index) => {
-               let viewPage = projects.some(
-                  (project) => project.category === service.node.category,
-                );
-
-              return  (
+            .map((service, index) => (
               <ServiceItem
                 key={index}
                 service={service}
                 description={servicesDesc}
-                projectPath={viewPage}
               />
-            )
-            
-            })}
+            ))}
       </Grid>
     </Grid>
   );

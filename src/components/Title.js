@@ -5,6 +5,7 @@ import { Grid, Typography, Box } from '@material-ui/core';
 
 const Title = ({ name, categories, color, size='5.5rem', marginTop='40px', subcategory=null }) => {
   const classes = useStyles({ color, size, marginTop });
+  console.log(categories, subcategory)
 
   return (
     <Box className={classes.root}>
@@ -37,6 +38,7 @@ const Title = ({ name, categories, color, size='5.5rem', marginTop='40px', subca
             categories.map((category, index) =>{
               let categoryArr = category.split(' ')
               let categoryString = categoryArr.join('')
+              console.log(categoryString.toLowerCase())
                 return (
                   <Typography variant="h5" className={categoryString.toLowerCase() === subcategory ? [classes.color, classes.subtitle] : [classes.subtitle]}>
                     {

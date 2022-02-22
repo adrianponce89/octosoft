@@ -35,9 +35,6 @@ const useStyles = makeStyles((theme) => ({
     '@global': {
       '.MuiFormLabel-root': {
         color: '#FFFF',
-        opacity: 0.5,
-        fontSize: '15px',
-        
       },
     },
   },
@@ -107,10 +104,11 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
                 value={email}
                 name="email"
                 onChange={({ target }) => setEmail(target.value)}
-                label="Email address"
+                label="Your Email"
                 variant="filled"
                 type="email"
                 className={classes.input}
+                required
                 InputProps={{
                   endAdornment: (
                     <InputAdornment
@@ -141,13 +139,13 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-            <Link className={classes.link} margin={2} to="/aboutus">
+            <Link className={classes.link} margin={2} to="/">
               <div className={classes.linkText}>About Us</div>
             </Link>
             <Link
               className={classes.link}
               margin={2}
-              to="/ourservices"
+              to="/"
             >
               <div className={classes.linkText}>Services</div>
             </Link>
@@ -164,18 +162,14 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-            <Link
-              className={classes.link}
-              margin={2}
-              to="/underConstruction/"
-            >
+            <Link className={classes.link} margin={2} to="/">
               <div className={classes.linkText}>News</div>
             </Link>
 
             <Link
               className={classes.link}
               margin={2}
-              to="/underConstruction/"
+              to="/"
             >
               <div className={classes.linkText}>
                 Borderless Identities
@@ -199,17 +193,13 @@ const FooterTop = ({ handleSubmit, email, setEmail }) => {
             justify="flex-start"
             alignItems="flex-start"
           >
-            <Link
-              className={classes.link}
-              margin={2}
-              to="/underConstruction/"
-            >
+            <Link className={classes.link} margin={2} to="/">
               <div className={classes.linkText}>Contact Us</div>
             </Link>
             <Link
               className={classes.link}
               margin={2}
-              to="/clientsupport"
+              to="/"
             >
               <div className={classes.linkText}>Client Support</div>
             </Link>

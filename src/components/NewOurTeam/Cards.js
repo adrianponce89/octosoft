@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Octogane from '../../assets/senior.svg';
 
 const Cards = ({
   color,
@@ -14,7 +13,6 @@ const Cards = ({
   photoNoBackground,
   hover,
   octogone,
-  octoColors,
 }) => {
   useEffect(() => {
     length && length % 5 === 0 ? setType(true) : setType(false);
@@ -33,11 +31,12 @@ const Cards = ({
   return (
     <div className={type ? classes.paperFive : classes.paper}>
       <div className={classes.itemAvatar}>
-        <Octogane fill={octoColors} className={classes.octogane} />
-        <div
-          className={classes.iconAvatar}
-          onClick={() => handleClickCard(name)}
-        />
+        <div className={classes.octogane}>
+          <div
+            className={classes.iconAvatar}
+            onClick={() => handleClickCard(name)}
+          />
+        </div>
         <Grid
           container
           justify="center"
@@ -77,13 +76,19 @@ const Cards = ({
 const useStyles = makeStyles((theme) => ({
   paperFive: {
     display: 'flex',
-    width: '23rem',
-    margin: '2rem',
+    width: '23%',
+    margin: '3%',
     marginTop: '0rem',
     marginBottom: '0rem',
     height: 'fit-content',
+    '@media (max-width: 1800px)': {
+      width: '40%',
+      margin: '0%',
+      marginBottom: '2rem',
+      marginTop: '2rem',
+    },
     '@media (max-width: 1024px)': {
-      width: '23rem',
+      width: '100%',
       margin: '0%',
       marginBottom: '2rem',
       marginTop: '2rem',
@@ -92,10 +97,17 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     display: 'flex',
     margin: theme.spacing(3),
-    width: '23rem',
+    width: '23%',
     height: 'fit-content',
+    '@media (max-width: 1800px)': {
+      width: '40%',
+      height: 'fit-content',
+      margin: '0%',
+      marginBottom: '2rem',
+      marginTop: '2rem',
+    },
     '@media (max-width: 1024px)': {
-      width: '23rem',
+      width: '100%',
       margin: '0%',
       marginBottom: '2rem',
       marginTop: '2rem',
@@ -112,36 +124,36 @@ const useStyles = makeStyles((theme) => ({
   },
   octogane: {
     display: 'flex',
-    width: '20rem',
-    height: '20rem',
-    position: 'absolute',
+    width: '100%',
+    height: 'fit-content',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: '8rem',
-    '@media (max-width: 1024px)': {
-      paddingBottom: '8rem',
+    backgroundImage: ({ octogone }) => octogone || '#ECECEC',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '315px 345px',
+    '@media (max-width: 1800px)': {
+      height: '20rem',
     },
   },
   iconAvatar: {
     display: 'flex',
-    width: '100%',
-    height: '100%',
+    width: '90%',
     alignItems: 'center',
+    height: '1rem',
     justifyContent: 'center',
     backgroundImage: ({ photoNoBackground }) =>
       photoNoBackground || '#ECECEC',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '20rem 22rem',
-    paddingBottom: '22rem',
-    transition: 'background-image 1.5s ease',
+    backgroundSize: '310px 340px',
+    paddingBottom: '100%',
     zIndex: 1,
     '&:hover': {
       backgroundImage: ({ hover }) => hover || '#ECECEC',
       cursor: 'pointer',
     },
   },
-
   name: {
     width: '100%',
     fontFamily: 'Montserrat',
@@ -150,6 +162,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#000000',
     marginTop: '2rem',
     textTransform: 'capitalize',
+    '@media (max-width: 768px)': {
+      fontSize: '2em',
+    },
   },
   title: {
     fontFamily: 'Montserrat',
@@ -157,6 +172,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#0024B5',
     width: '100%',
     fontSize: 20,
+    '@media (max-width: 768px)': {
+      fontSize: '5vw',
+    },
   },
   section: {
     fontFamily: 'Montserrat',
@@ -165,6 +183,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '20',
     textTransform: 'uppercase',
     color: ({ color }) => color || '#ECECEC',
+    '@media (max-width: 768px)': {
+      fontSize: '4vw',
+    },
   },
   descriptionAvatars: {
     fontFamily: 'Montserrat',
@@ -179,10 +200,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#FFFFFF',
     marginTop: '0.5rem',
     borderColor: ({ color }) => color || '#ECECEC',
-    '&:hover': {
-      backgroundColor: '#FFFFFF',
-      opacity: 0.6,
-    },
   },
   textButton: {
     fontFamily: 'Montserrat',

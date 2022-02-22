@@ -8,6 +8,8 @@ const styles = makeStyles((theme) => ({
     width: 250,
     paddingBottom: 20,
     paddingTop: 20,
+    //marginLeft: 10,
+    //marginRight: 10,
     '@media (max-width: 820px)': {
       width: 300,
     },
@@ -46,8 +48,8 @@ const styles = makeStyles((theme) => ({
   },
 }));
 
-const ServiceItem = ({ service, description, projectPath }) => {
-  const classes = styles({ color: service.node.newColor });
+const ServiceItem = ({ service, description }) => {
+  const classes = styles({color: service.node.newColor});
 
   let descriptionText = description.filter(
     (item) => Number(item.order) === service.node.order,
@@ -74,7 +76,7 @@ const ServiceItem = ({ service, description, projectPath }) => {
           {descriptionText[0].description}
         </Typography>
         <Link
-          to={projectPath ? `/portfolio/${service.node.category}` : '/underConstruction/'}
+          to={`/portfolio/${service.node.category}`}
           className={classes.link}
         >
           <Typography variant="body1" className={classes.textLink}>

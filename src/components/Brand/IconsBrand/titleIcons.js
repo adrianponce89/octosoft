@@ -43,9 +43,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     marginBottom: '1rem',
     marginTop: '1rem',
-    marginRight: '2rem',
     '@media (max-width: 768px)': {
-      marginRight: '0',
       alignItems: 'center',
       justifyContent: 'flex-start',
     },

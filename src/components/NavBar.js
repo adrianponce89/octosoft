@@ -51,12 +51,12 @@ const menuList = [
   {
     title: 'COMMUNITY',
     children: [
-      { title: 'News', link: '/underConstruction/' },
-      { title: 'Events', link: '/underConstruction/' },
-      { title: 'Blog', link: '/underConstruction/' },
+      { title: 'News', link: '/underConstruction' },
+      { title: 'Events', link: '/underConstruction' },
+      { title: 'Blog', link: '/underConstruction' },
       {
-        title: 'Borderless Identities',
-        link: '/underConstruction/',
+        title: 'Bordeless Identities',
+        link: '/borderlessIdentities',
       },
     ],
   },
@@ -138,15 +138,6 @@ const NavLinks = (props) => {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                style={{marginTop: '4px'}}
               >
                 {menu.title === 'CONTACT US' ? (
                   <Contact />
@@ -200,7 +191,6 @@ const NavLinks = (props) => {
   );
 };
 
-
 const NavBar = (props) => {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
@@ -217,7 +207,10 @@ const NavBar = (props) => {
           <Toolbar className={classes.toolbar}>
             <Link to={'/'} className={classes.linkLogo}>
               <div className={classes.links}>
+                
+                  
                   <HorizontalLogo className={classes.logo} />
+                
               </div>
             </Link>
             <Hidden lgUp>
@@ -280,11 +273,10 @@ const useStyles = makeStyles((theme) => ({
   },
   subItem: {
     fontFamily: 'Montserrat',
-    fontSize: 16,
   },
   link: {
-    margin: '15px 25px',
-    padding: '0px',
+    margin: '15px 10px',
+    padding: '0px 15px',
     color: theme.palette.text.primary,
     textDecoration: 'none',
     cursor: 'pointer',

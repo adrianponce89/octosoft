@@ -7,7 +7,6 @@ import Footer from './Footer';
 import { theme } from './Style';
 
 const LocaleContext = React.createContext();
-const underConstructiionPath = '/underConstruction/';
 
 const Layout = (props) => {
   const {
@@ -27,10 +26,7 @@ const Layout = (props) => {
         ></link>
       </Helmet>
       <ThemeProvider theme={theme}>
-        {pathname !== underConstructiionPath && (
-          <NavBar home={pathname === '/'} />
-        )}
-
+        <NavBar home={pathname === '/'} />
         <main>
           {children}
           <Footer />

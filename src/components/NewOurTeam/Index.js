@@ -9,11 +9,11 @@ import TitleComponent from '../TitleComponent/index';
 import Executive from '../../assets/Executive.png';
 import Junior from '../../assets/Junior.png';
 import Associates from '../../assets/Associates.png';
-import Senior from '../../assets/senior.svg';
+import Senior from '../../assets/Senior.png';
 const NewOurTeam = ({ teamMembers }) => {
   const classes = useStyles();
   const [member, setMember] = useState(null);
-  
+
   const executives = teamMembers.filter(
     (item) => item.node.category === 'Executive Partners',
   );
@@ -24,7 +24,7 @@ const NewOurTeam = ({ teamMembers }) => {
     (item) => item.node.category === 'Junior Partners',
   );
   const associates = teamMembers.filter(
-    (item) => item.node.category === "Associates",
+    (item) => item.node.category === 'Associates',
   );
   const handleClick = (member) => {
     let selected = teamMembers.find(
@@ -65,7 +65,6 @@ const NewOurTeam = ({ teamMembers }) => {
                   handleClick={handleClick}
                   octogone={`url(${Executive})`}
                   hover={`url(${member.node.hover.file.url})`}
-                  octoColors={'#A9D9E9'}
                 />
               ))}
           </div>
@@ -84,7 +83,6 @@ const NewOurTeam = ({ teamMembers }) => {
                   handleClick={handleClick}
                   octogone={`url(${Senior})`}
                   hover={`url(${member.node.hover.file.url})`}
-                  octoColors={'#A9E9D9'}
                 />
               ))}
           </div>
@@ -103,7 +101,6 @@ const NewOurTeam = ({ teamMembers }) => {
                   handleClick={handleClick}
                   octogone={`url(${Junior})`}
                   hover={`url(${member.node.hover.file.url})`}
-                  octoColors={'#F9D4AC'}
                 />
               ))}
           </div>
@@ -122,7 +119,6 @@ const NewOurTeam = ({ teamMembers }) => {
                   handleClick={handleClick}
                   octogone={`url(${Associates})`}
                   hover={`url(${member.node.hover.file.url})`}
-                  octoColors={'#E8AAD9'}
                 />
               ))}
           </div>
@@ -163,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: '10rem',
     backgroundColor: '#F5F7F7',
     '@media (max-width: 760px)': {
-      paddingTop: '7rem',
+      marginTop: '7rem',
     },
   },
   divFather: {

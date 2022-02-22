@@ -143,7 +143,7 @@ const HomeForm = ({plans}) => {
           </TextField>
           <TextField
             id="outlined-full-width"
-            label="Let us know what you need"
+            label="Tell us what you need"
             fullWidth
             className={classes.input}
             onChange={({ target }) => setContent(target.value)}

@@ -54,8 +54,8 @@ const Cards = (props) => {
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    marginBottom: '60px',
-    marginTop: '60px',
+    marginBottom: '40px',
+    marginTop: '40px',
   },
   separator: {
     borderWidth: 1,
