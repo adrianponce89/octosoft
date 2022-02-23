@@ -8,6 +8,7 @@ const styles = makeStyles((theme) => ({
     width: 250,
     paddingBottom: 20,
     paddingTop: 20,
+    alignItems: 'center',
     '@media (max-width: 820px)': {
       width: 300,
     },
@@ -25,7 +26,7 @@ const styles = makeStyles((theme) => ({
   description: {
     display: 'flex',
     alignItems: 'flex-start',
-    minHeight: '100px',
+    minHeight: '150px',
     textAlign: 'left',
     fontFamily: 'Montserrat',
     fontSize: theme.spacing(3),
@@ -58,7 +59,6 @@ const ServiceItem = ({ service, description, projectPath }) => {
       container
       item
       alignItems="flex-start"
-      justify="flex-start"
       className={classes.root}
     >
       <Grid item>
@@ -69,19 +69,23 @@ const ServiceItem = ({ service, description, projectPath }) => {
           {service.node.newName}
         </Typography>
       </Grid>
-      <Grid item>
+      
         <Typography variant="body1" className={classes.description}>
           {descriptionText[0].description}
         </Typography>
         <Link
-          to={projectPath ? `/portfolio/${service.node.category}` : '/underConstruction/'}
+          to={
+            projectPath
+              ? `/portfolio/${service.node.category}`
+              : '/underConstruction/'
+          }
           className={classes.link}
         >
           <Typography variant="body1" className={classes.textLink}>
             VIEW PORTFOLIO
           </Typography>
         </Link>
-      </Grid>
+      
     </Grid>
   );
 };
