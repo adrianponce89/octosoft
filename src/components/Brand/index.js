@@ -11,7 +11,6 @@ import OctoOne from '../../assets/OctoOne.png';
 import OctoTwo from '../../assets/OctoBrandSecond.png';
 import OctoThree from '../../assets/VectorStart.png';
 import OctoFour from '../../assets/VectorMid.png';
-import OctoFive from '../../assets/VectorEnd.png';
 const Brand = ({
   logos,
   colors,
@@ -36,7 +35,6 @@ const Brand = ({
       <img src={OctoTwo} alt="" className={classes.octoTwo} />
       <img src={OctoThree} alt="" className={classes.OctoThree} />
       <img src={OctoFour} alt="" className={classes.OctoFour} />
-      <img src={OctoFive} alt="" className={classes.OctoFive} />
       <BrandHeader titles={titles} />
       <Icons logos={logos} />
       <Colors colors={colors} />
