@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Typography, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
+import OctoFour from '../../../assets/VectorMid.png';
+
 import {
   onDownloadPNG,
   onDownloadSVG,
@@ -11,62 +13,85 @@ const IconsCardRight = ({ logos }) => {
   const classes = useStyles();
   return (
     <Grid
-      container
+      item
       xs={12}
-      className={classes.gridContainer}
-      spacing={8}
+      container
+      justify="center"
+      className={classes.root}
     >
-      {logos &&
-        logos.slice(3, 6).map((item, index) => (
-          <Grid item key={index} className={classes.eachGrid}>
-            <div className={classes.logoCard}>
-              <div
-                className={classes.cardMedia}
-                style={{
-                  backgroundImage: `url(${item.image.file.url})`,
-                }}
-              />
-            </div>
-            <Typography className={classes.description}>
-              {item.description.description}
-            </Typography>
-            <Box className={classes.groupButtons}>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() =>
-                  onDownloadPNG(item.image.file.url, 'logoOcto')
-                }
-              >
-                <Download className={classes.iconButton} />
-                <Typography
-                  variant="subtitle"
-                  className={classes.btnText}
+      <img src={OctoFour} alt="" className={classes.OctoFive} />
+      <Grid
+        container
+        xs={11}
+        className={classes.gridContainer}
+        spacing={8}
+      >
+        {logos &&
+          logos.slice(3, 6).map((item, index) => (
+            <Grid item key={index} className={classes.eachGrid}>
+              <div className={classes.logoCard}>
+                <div
+                  className={classes.cardMedia}
+                  style={{
+                    backgroundImage: `url(${item.image.file.url})`,
+                  }}
+                />
+              </div>
+              <Typography className={classes.description}>
+                {item.description.description}
+              </Typography>
+              <Box className={classes.groupButtons}>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() =>
+                    onDownloadPNG(item.image.file.url, 'logoOcto')
+                  }
                 >
-                  PNG
-                </Typography>
-              </Button>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() =>
-                  onDownloadSVG(item.image.file.url, 'logoOcto')
-                }
-              >
-                <Download className={classes.iconButton} />
-                <Typography
-                  variant="subtitle"
-                  className={classes.btnText}
+                  <Download className={classes.iconButton} />
+                  <Typography
+                    variant="subtitle"
+                    className={classes.btnText}
+                  >
+                    PNG
+                  </Typography>
+                </Button>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() =>
+                    onDownloadSVG(item.image.file.url, 'logoOcto')
+                  }
                 >
-                  SVG
-                </Typography>
-              </Button>
-            </Box>
-          </Grid>
-        ))}
+                  <Download className={classes.iconButton} />
+                  <Typography
+                    variant="subtitle"
+                    className={classes.btnText}
+                  >
+                    SVG
+                  </Typography>
+                </Button>
+              </Box>
+            </Grid>
+          ))}
+      </Grid>
     </Grid>
   );
 };
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    width: '100%',
+    position: 'relative',
+    height: 'fit-content',
+    '@media (max-width: 960px)': {
+      padding: 0,
+    },
+  },
+  OctoFive: {
+    position: 'absolute',
+    top: '-50%',
+    left: 0,
+  },
   gridContainer: {
     justifyContent: 'flex-end',
     alignItems: 'center',

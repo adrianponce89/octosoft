@@ -8,9 +8,7 @@ import Icons from './IconsBrand/indexIcons';
 import Colors from './ColorsBrand/indexColors';
 import EndSection from './BrandSectionText/sectionEnd';
 import OctoOne from '../../assets/OctoOne.png';
-import OctoTwo from '../../assets/OctoBrandSecond.png';
 import OctoThree from '../../assets/VectorStart.png';
-import OctoFour from '../../assets/VectorMid.png';
 const Brand = ({
   logos,
   colors,
@@ -32,9 +30,7 @@ const Brand = ({
       className={classes.root}
     >
       <img src={OctoOne} alt="" className={classes.octoOne} />
-      <img src={OctoTwo} alt="" className={classes.octoTwo} />
       <img src={OctoThree} alt="" className={classes.OctoThree} />
-      <img src={OctoFour} alt="" className={classes.OctoFour} />
       <BrandHeader titles={titles} />
       <Icons logos={logos} />
       <Colors colors={colors} />
@@ -67,16 +63,7 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-  octoTwo: {
-    position: 'absolute',
-    width: '700px',
-    bottom: '-490%',
-    right: '0%',
-    zIndex: '0',
-    '@media (max-width: 960px)': {
-      display: 'none',
-    },
-  },
+ 
   OctoThree: {
     position: 'absolute',
     top: '8%',

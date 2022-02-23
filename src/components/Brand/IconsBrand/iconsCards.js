@@ -12,7 +12,7 @@ const IconsCards = ({ logos }) => {
   return (
     <Grid
       container
-      xs={12}
+      xs={11}
       className={classes.gridContainer}
       spacing={8}
     >

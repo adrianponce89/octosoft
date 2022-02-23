@@ -3,6 +3,7 @@ import { Grid, Typography, Button, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Download from '../../../assets/download.svg';
 import { onDownloadFBX } from '../../../utils/index.js';
+import OctoTwo from '../../../assets/OctoBrandSecond.png';
 
 const IconsMovie = ({ logos }) => {
   const handleDownload = (asset) => {
@@ -17,94 +18,116 @@ const IconsMovie = ({ logos }) => {
   const classes = useStyles();
   return (
     <Grid
-      container
-      xs={12}
-      className={classes.gridContainer}
-      spacing={8}
+    item
+    xs={12}
+    container
+    justify="center"
+    className={classes.root}
     >
-      {logos &&
-        logos.slice(6, 9).map((item, index) => (
-          <Grid item key={index} className={classes.eachGrid}>
-            <div className={classes.logoCard}>
-              <video
-                src={item.image.file.url}
-                autoPlay={true}
-                loop={true}
-                className={classes.cardMedia}
-                muted={true}
-              ></video>
-            </div>
-            <Typography className={classes.description}>
-              {item.description.description}
-            </Typography>
-            <Box className={classes.groupButtons}>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() => handleDownload(item.fbxMedia[0])}
-              >
-                <Download className={classes.iconButton} />
-                <Typography className={classes.btnText}>
-                  FBX Metallic
-                </Typography>
-              </Button>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() => handleDownload(item.fbxMedia[1])}
-              >
-                <Download className={classes.iconButton} />
+      <img src={OctoTwo} alt="" className={classes.OctoFive} />
+      <Grid
+        container
+        xs={11}
+        className={classes.gridContainer}
+        spacing={8}
+      >
+        {logos &&
+          logos.slice(6, 9).map((item, index) => (
+            <Grid item key={index} className={classes.eachGrid}>
+              <div className={classes.logoCard}>
+                <video
+                  src={item.image.file.url}
+                  autoPlay={true}
+                  loop={true}
+                  className={classes.cardMedia}
+                  muted={true}
+                ></video>
+              </div>
+              <Typography className={classes.description}>
+                {item.description.description}
+              </Typography>
+              <Box className={classes.groupButtons}>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() => handleDownload(item.fbxMedia[0])}
+                >
+                  <Download className={classes.iconButton} />
+                  <Typography className={classes.btnText}>
+                    FBX Metallic
+                  </Typography>
+                </Button>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() => handleDownload(item.fbxMedia[1])}
+                >
+                  <Download className={classes.iconButton} />
 
-                <Typography className={classes.btnText}>
-                  FBX Matte
-                </Typography>
-              </Button>
-            </Box>
-            <Box className={classes.groupButtons}>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() => handleDownload(item.fbxMedia[2])}
-              >
-                <Download className={classes.iconButton} />
-                <Typography className={classes.btnText}>
-                  FBX Metallic Thin
-                </Typography>
-              </Button>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() => handleDownload(item.fbxMedia[3])}
-              >
-                <Download className={classes.iconButton} />
-                <Typography className={classes.btnText}>
-                  FBX Matte Thin
-                </Typography>
-              </Button>
-            </Box>
-            <Box className={classes.groupButtons}>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() => handleDownload(item.fbxMedia[4])}
-              >
-                <Download className={classes.iconButton} />
-                <Typography className={classes.btnText}>
-                  FBX Metallic Bold
-                </Typography>
-              </Button>
-              <Button
-                className={classes.buttonsCard}
-                onClick={() => handleDownload(item.fbxMedia[5])}
-              >
-                <Download className={classes.iconButton} />
-                <Typography className={classes.btnText}>
-                  FBX Matte Bold
-                </Typography>
-              </Button>
-            </Box>
-          </Grid>
-        ))}
+                  <Typography className={classes.btnText}>
+                    FBX Matte
+                  </Typography>
+                </Button>
+              </Box>
+              <Box className={classes.groupButtons}>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() => handleDownload(item.fbxMedia[2])}
+                >
+                  <Download className={classes.iconButton} />
+                  <Typography className={classes.btnText}>
+                    FBX Metallic Thin
+                  </Typography>
+                </Button>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() => handleDownload(item.fbxMedia[3])}
+                >
+                  <Download className={classes.iconButton} />
+                  <Typography className={classes.btnText}>
+                    FBX Matte Thin
+                  </Typography>
+                </Button>
+              </Box>
+              <Box className={classes.groupButtons}>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() => handleDownload(item.fbxMedia[4])}
+                >
+                  <Download className={classes.iconButton} />
+                  <Typography className={classes.btnText}>
+                    FBX Metallic Bold
+                  </Typography>
+                </Button>
+                <Button
+                  className={classes.buttonsCard}
+                  onClick={() => handleDownload(item.fbxMedia[5])}
+                >
+                  <Download className={classes.iconButton} />
+                  <Typography className={classes.btnText}>
+                    FBX Matte Bold
+                  </Typography>
+                </Button>
+              </Box>
+            </Grid>
+          ))}
+      </Grid>
     </Grid>
   );
 };
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    width: '100%',
+    position: 'relative',
+    height: 'fit-content',
+    '@media (max-width: 960px)': {
+      padding: 0,
+    },
+  },
+  OctoFive: {
+    position: 'absolute',
+    right: 0,
+  },
   gridContainer: {
     justifyContent: 'flex-start',
     alignItems: 'center',

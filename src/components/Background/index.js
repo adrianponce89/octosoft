@@ -1,8 +1,6 @@
 import React from 'react';
 import OctoThree from '../../assets/VectorStart.png';
 import OctoOne from '../../assets/Complete.png';
-import OctoTwo from '../../assets/OctoBrandSecond.png';
-import OctoFour from '../../assets/VectorMid.png';
 import { makeStyles } from '@material-ui/core/styles';
 
 const Background = ({isFullLength = false}) => {
@@ -19,13 +17,6 @@ const Background = ({isFullLength = false}) => {
         className={classes.octoOne}
         alt="background"
       />
-      {isFullLength && (
-        <>
-          <img src={OctoThree} alt="" className={classes.OctoThree} />
-          <img src={OctoFour} alt="" className={classes.OctoFour} />
-          <img src={OctoTwo} alt="" className={classes.octoTwo} />
-        </>
-      )}
     </div>
   );
 };
@@ -35,16 +26,6 @@ const useStyles = makeStyles((theme) => ({
     height: 'fit-content',
     minHeight: '100vh',
     backgroundColor: '#F5F7F7',
-  },
-  octoTwo: {
-    position: 'absolute',
-    width: '700px',
-    bottom: '-250%',
-    right: '0%',
-    zIndex: '0',
-    '@media (max-width: 960px)': {
-      display: 'none',
-    },
   },
   octoOne: {
     position: 'absolute',
@@ -59,24 +40,6 @@ const useStyles = makeStyles((theme) => ({
   OctoThree: {
     position: 'absolute',
     top: '7%',
-    right: '0%',
-    zIndex: '0',
-    '@media (max-width: 960px)': {
-      display: 'none',
-    },
-  },
-  OctoFour: {
-    position: 'absolute',
-    bottom: '-190%',
-    left: '0%',
-    zIndex: '0',
-    '@media (max-width: 960px)': {
-      display: 'none',
-    },
-  },
-  OctoFive: {
-    position: 'absolute',
-    bottom: '-579%',
     right: '0%',
     zIndex: '0',
     '@media (max-width: 960px)': {

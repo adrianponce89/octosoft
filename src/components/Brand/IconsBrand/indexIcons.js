@@ -20,12 +20,18 @@ const IndexIcons = ({ logos }) => {
 
   const classes = useStyles();
   return (
-    <Grid className={classes.root} xs={11} container justify="center">
-      <TitleIcons title={'LOGOS'} sort={'Left'} />
+    <Grid className={classes.root} xs={12} container justify="center">
+      <Grid xs={11} container justify="center">
+        <TitleIcons title={'LOGOS'} sort={'Left'} />
+      </Grid>
       <IconsCards logos={logos} />
-      <TitleIcons title={' NEGATIVE LOGOS'} sort={'Right'} />
+      <Grid xs={11} container justify="center">
+        <TitleIcons title={' NEGATIVE LOGOS'} sort={'Right'} />
+      </Grid>
       <IconsCardsRight logos={logos} />
-      <TitleIcons title={'3D LOGOS'} sort={'Left'} />
+      <Grid xs={11} container justify="center">
+        <TitleIcons title={'3D LOGOS'} sort={'Left'} />
+      </Grid>
       <IconsMovie logos={logos} />
       <Box className={classes.buttonAll}>
         <ButtonAll files={logoFiles} />
