@@ -62,7 +62,7 @@ const SubCategories = ({
             `drop-shadow(0px 4px 4px rgba(162, 132, 223, 1))`,
           );
           break;
-        case 'social':
+        case 'operations':
           setSelected(operations);
           setTitle('Operations');
           setPaletteColor(operations[0].node.color);
