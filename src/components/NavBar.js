@@ -151,7 +151,7 @@ const NavLinks = (props) => {
                   vertical: 'bottom',
                   horizontal: 'right',
                 }}
-                style={{marginTop: '4px'}}
+                style={{ marginTop: '4px' }}
               >
                 {menu.title === 'CONTACT US' ? (
                   <Contact />
@@ -190,7 +190,7 @@ const NavLinks = (props) => {
 
       <Link
         className={classes.linkButton}
-        to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03"
+        to="https://calendly.com/xoakin-r/interview"
       >
         <Button className={classes.button}>
           <div className={classes.linkText}>{'BOOK A ZOOM CALL'}</div>
