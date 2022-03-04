@@ -87,7 +87,7 @@ export default (props) => {
         descriptionLanding={descriptionLanding}
         isActive={isActive}
       />
-      <Link to="https://calendly.com/octosoftprofessionals/no-strings-consultation?month=2021-03">
+      <Link to="https://calendly.com/xoakin-r/interview">
         <CalendarButton />
       </Link>
       <section id="work">
